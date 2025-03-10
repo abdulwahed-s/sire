@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "109824316097",
+    "project_id": "wmcommerce-6a48c",
+    "storage_bucket": "wmcommerce-6a48c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:109824316097:android:249dbcf9037e7f824b3a40",
+        "android_client_info": {
+          "package_name": "com.mw.sire"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAnrZJt9G0gMWlcRDZZmiMPfGhv7qWtW10"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
