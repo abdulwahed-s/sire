@@ -1,5 +1,8 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:sire/core/class/statusrequest.dart';
+import 'package:sire/core/constant/color.dart';
 import 'package:sire/core/functions/handlingdata.dart';
 import 'package:sire/core/services/services.dart';
 import 'package:sire/data/datasource/remote/favourites/favouritesdata.dart';
@@ -7,8 +10,8 @@ import 'package:sire/data/datasource/remote/favourites/favouritesdata.dart';
 abstract class FavouritesController extends GetxController {
   Map favourites = {};
   setFavourites(int id, int value);
-  addFavourites(int itemId);
-  deleteFavourites(int itemId);
+  addFavourites(String itemId);
+  deleteFavourites(String itemId);
 }
 
 class FavouritesControllerImp extends FavouritesController {
@@ -23,14 +26,20 @@ class FavouritesControllerImp extends FavouritesController {
   }
 
   @override
-  addFavourites(int itemId) async {
+  addFavourites(String itemId) async {
     statusRequest = StatusRequest.loding;
     var response = await favouritesData.favouritesAdd(
         services.sharedPreferences.getString("id")!, itemId);
     statusRequest = handlingdata(response);
     if (statusRequest == StatusRequest.success) {
       if (response["status"] == "success") {
-        Get.rawSnackbar(title: "yes");
+        Get.snackbar(
+          "Added to Favorites",
+          "This item has been successfully added to your favorites!",
+          colorText: Appcolor.charcoalGray,
+          backgroundColor: Appcolor.rosePompadour,
+          icon: const Icon(Icons.favorite),
+        );
       } else if (response["status"] == "failure") {
         statusRequest = StatusRequest.failure;
       }
@@ -38,14 +47,21 @@ class FavouritesControllerImp extends FavouritesController {
   }
 
   @override
-  deleteFavourites(int itemId) async {
+  deleteFavourites(String itemId) async {
     statusRequest = StatusRequest.loding;
     var response = await favouritesData.favouritesDelete(
         services.sharedPreferences.getString("id")!, itemId);
     statusRequest = handlingdata(response);
+    print(response);
     if (statusRequest == StatusRequest.success) {
       if (response["status"] == "success") {
-        Get.rawSnackbar(title: "no");
+        Get.snackbar(
+          "Removed from Favorites",
+          "This item has been successfully removed from your favorites.",
+          colorText: Appcolor.charcoalGray,
+          backgroundColor: Appcolor.rosePompadour,
+          icon: const Icon(Icons.favorite_border),
+        );
       } else if (response["status"] == "failure") {
         statusRequest = StatusRequest.failure;
       }

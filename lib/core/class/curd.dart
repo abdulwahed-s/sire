@@ -21,6 +21,7 @@ class Curd {
         return left(StatusRequest.offlinefailure);
       }
     } catch (e) {
+      print(e.toString());
       return left(StatusRequest.serverexception);
     }
   }

@@ -60,12 +60,12 @@ class CustomItemsList extends GetView<ItemscontrollerImp> {
                     onTap: () {
                       if (controller.favourites[itemsModel.itemId] == 1) {
                         controller.setFavourites(itemsModel.itemId!, 0);
-                        controller.deleteFavourites(
-                            controller.favourites[itemsModel.itemId]);
+                        controller
+                            .deleteFavourites(itemsModel.itemId!.toString());
                       } else {
                         controller.setFavourites(itemsModel.itemId!, 1);
-                        controller.addFavourites(
-                            controller.favourites[itemsModel.itemId]);
+                        controller.addFavourites(itemsModel.itemId!.toString());
+                        print(controller.favourites[itemsModel.itemId]);
                       }
                     },
                     child: Icon(controller.favourites[itemsModel.itemId] == 1
