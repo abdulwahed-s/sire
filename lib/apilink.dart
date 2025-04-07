@@ -21,6 +21,8 @@ static const String items = "$server/items/items.php";
 //favourites
 static const String favouritesAdd = "$server/favourites/add.php";
 static const String favouritesDelete = "$server/favourites/delete.php";
+static const String favouritesView = "$server/favourites/view.php";
+
 
 
 

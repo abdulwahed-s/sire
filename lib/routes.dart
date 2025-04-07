@@ -4,6 +4,7 @@ import 'package:sire/core/middleware/myMiddleware.dart';
 import 'package:sire/view/screens/OnBoarding.dart';
 import 'package:sire/view/screens/home/homescreen.dart';
 import 'package:sire/view/screens/items/ItemsView.dart';
+import 'package:sire/view/screens/items/viewFavourite.dart';
 import 'package:sire/view/screens/resetpassword/resetpassword.dart';
 import 'package:sire/view/screens/resetpassword/forgotpassword.dart';
 import 'package:sire/view/screens/auth/login.dart';
@@ -27,4 +28,5 @@ List<GetPage<dynamic>>? route = [
   GetPage(name: Approutes.homescreen, page: () => HomeScreen()),
   GetPage(name: Approutes.item, page: () => ItemsView()),
   GetPage(name: Approutes.itemDetails, page: () => ItemDetails()),
+  GetPage(name: Approutes.viewFavourite, page: () => ViewFavourite()),
 ];

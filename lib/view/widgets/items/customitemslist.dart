@@ -65,7 +65,6 @@ class CustomItemsList extends GetView<ItemscontrollerImp> {
                       } else {
                         controller.setFavourites(itemsModel.itemId!, 1);
                         controller.addFavourites(itemsModel.itemId!.toString());
-                        print(controller.favourites[itemsModel.itemId]);
                       }
                     },
                     child: Icon(controller.favourites[itemsModel.itemId] == 1
