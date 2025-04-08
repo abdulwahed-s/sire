@@ -81,32 +81,32 @@ class ViewFavouritesModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['favourite_id'] = this.favouriteId;
-    data['favourite_userid'] = this.favouriteUserid;
-    data['favourite_itemid'] = this.favouriteItemid;
-    data['item_id'] = this.itemId;
-    data['item_name'] = this.itemName;
-    data['item_name_ar'] = this.itemNameAr;
-    data['item_name_es'] = this.itemNameEs;
-    data['item_desc'] = this.itemDesc;
-    data['item_desc_ar'] = this.itemDescAr;
-    data['item_desc_es'] = this.itemDescEs;
-    data['item_img'] = this.itemImg;
-    data['item_count'] = this.itemCount;
-    data['item_active'] = this.itemActive;
-    data['item_price'] = this.itemPrice;
-    data['item_discount'] = this.itemDiscount;
-    data['item_date'] = this.itemDate;
-    data['item_cat'] = this.itemCat;
-    data['user_id'] = this.userId;
-    data['user_email'] = this.userEmail;
-    data['user_name'] = this.userName;
-    data['user_password'] = this.userPassword;
-    data['user_phone'] = this.userPhone;
-    data['user_verifycode'] = this.userVerifycode;
-    data['user_approve'] = this.userApprove;
-    data['user_create'] = this.userCreate;
+    final Map<String, dynamic> data ={};
+    data['favourite_id'] = favouriteId;
+    data['favourite_userid'] = favouriteUserid;
+    data['favourite_itemid'] = favouriteItemid;
+    data['item_id'] = itemId;
+    data['item_name'] = itemName;
+    data['item_name_ar'] = itemNameAr;
+    data['item_name_es'] = itemNameEs;
+    data['item_desc'] = itemDesc;
+    data['item_desc_ar'] = itemDescAr;
+    data['item_desc_es'] = itemDescEs;
+    data['item_img'] = itemImg;
+    data['item_count'] = itemCount;
+    data['item_active'] = itemActive;
+    data['item_price'] = itemPrice;
+    data['item_discount'] = itemDiscount;
+    data['item_date'] = itemDate;
+    data['item_cat'] = itemCat;
+    data['user_id'] = userId;
+    data['user_email'] = userEmail;
+    data['user_name'] = userName;
+    data['user_password'] = userPassword;
+    data['user_phone'] = userPhone;
+    data['user_verifycode'] = userVerifycode;
+    data['user_approve'] = userApprove;
+    data['user_create'] = userCreate;
     return data;
   }
 }
