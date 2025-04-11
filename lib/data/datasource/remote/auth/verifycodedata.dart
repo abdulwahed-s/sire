@@ -11,4 +11,11 @@ class VerifycodeData {
     });
     return resp.fold((s) => s, (r) => r);
   }
+
+    resendCode(String email)async {
+    var resp = await curd.postData(AppLink.resendcode, {
+      "email": email,
+    });
+    return resp.fold((s) => s, (r) => r);
+  }
 }

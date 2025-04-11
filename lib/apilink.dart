@@ -6,6 +6,8 @@ static const String test = "$server/test.php";
 static const String signup = "$server/auth/signup.php";
 static const String login = "$server/auth/login.php";
 static const String verifycode = "$server/auth/verifycode.php";
+static const String resendcode = "$server/auth/resendcode.php";
+
 //Forget password
 static const String checkemail = "$server/forgotpassword/checkemail.php";
 static const String verifycodepass = "$server/forgotpassword/verifycodepass.php";

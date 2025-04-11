@@ -1,11 +1,16 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:sire/core/class/statusrequest.dart';
+import 'package:sire/core/constant/color.dart';
 import 'package:sire/core/functions/handlingdata.dart';
 import 'package:sire/data/datasource/remote/resetpassword/verifycodepass.dart';
 import 'package:sire/view/screens/resetpassword/resetpassword.dart';
 
 abstract class VerifyCodeController extends GetxController {
-  verifyCode(String code);}
+  verifyCode(String code);
+  resendCode();
+}
 
 class VerifyCodeControllerImp extends VerifyCodeController {
   String? email;
@@ -21,7 +26,7 @@ class VerifyCodeControllerImp extends VerifyCodeController {
     if (statusRequest == StatusRequest.success) {
       if (response["status"] == "success") {
         // data.addAll(response['data']);
-        Get.to(() =>RestPassword(),
+        Get.to(() => RestPassword(),
             arguments: {"email": email, "code": code},
             transition: Transition.rightToLeft,
             duration: Duration(milliseconds: 800));
@@ -30,6 +35,31 @@ class VerifyCodeControllerImp extends VerifyCodeController {
         Get.defaultDialog(
             title: "warning!!",
             middleText: "the email you entered isn't connected to an account.");
+      }
+    }
+    update();
+  }
+
+  @override
+  resendCode() async {
+    statusRequest = StatusRequest.loding;
+    update();
+    var response = await verifyCodePassData.resendCode(email!);
+    statusRequest = handlingdata(response);
+    if (statusRequest == StatusRequest.success) {
+      if (response["status"] == "success") {
+        Get.snackbar(
+          "Verification code resent successfully.",
+          "Please check your email for the new code",
+          colorText: Appcolor.charcoalGray,
+          backgroundColor: Appcolor.rosePompadour,
+          icon: const Icon(Icons.email_rounded),
+        );
+      } else if (response["status"] == "failure") {
+        statusRequest = StatusRequest.failure;
+        Get.defaultDialog(
+            title: "Failed to resend verification code.",
+            middleText: "Something went wrong. Please try again later.");
       }
     }
     update();

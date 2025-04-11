@@ -6,6 +6,7 @@ import 'package:sire/core/class/handlingdatareq.dart';
 import 'package:sire/core/constant/color.dart';
 import 'package:sire/view/widgets/auth/appbar.dart';
 import 'package:sire/view/widgets/auth/button.dart';
+import 'package:sire/view/widgets/auth/resendbutton.dart';
 import 'package:sire/view/widgets/auth/titleText.dart';
 
 class VerifyCode extends StatelessWidget {
@@ -44,6 +45,7 @@ class VerifyCode extends StatelessWidget {
                 horizontal: 10,
               ),
               child: ListView(
+                
                 shrinkWrap: true,
                 children: [
                   SizedBox(height: 10),
@@ -81,6 +83,11 @@ class VerifyCode extends StatelessWidget {
                       controller.verifyCode(codes);
                     },
                   ),
+                  ResendButton(
+                    onTap: () {
+                      controller.resendCode();
+                    },
+                  )
                 ],
               ),
             ),
