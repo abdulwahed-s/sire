@@ -8,6 +8,7 @@ import 'package:sire/data/model/viewfavouritesmodel.dart';
 
 abstract class ViewFavouritesController extends GetxController {
   deleteFavourites(String itemId);
+
   viewFavourites();
 }
 
@@ -38,13 +39,27 @@ class ViewFavouritesControllerImp extends ViewFavouritesController {
     }
   }
 
+  final Map<String, bool> _deletingItems = {};
+
   @override
-  deleteFavourites(String itemId) {
-     favouritesData.favouritesDelete(
+  Future<void> deleteFavourites(String itemId) async {
+    // Mark item as being deleted
+    _deletingItems[itemId] = true;
+    update();
+
+    // Wait for the animation to complete
+    await Future.delayed(Duration(milliseconds: 300));
+
+    // Perform the actual deletion
+    await favouritesData.favouritesDelete(
         services.sharedPreferences.getString("id")!, itemId);
+
     fav.removeWhere((element) => element.itemId.toString() == itemId);
+    _deletingItems.remove(itemId);
     update();
   }
+
+  bool isDeleting(String itemId) => _deletingItems[itemId] ?? false;
 
   @override
   void onInit() {
