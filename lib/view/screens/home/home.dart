@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:sire/controller/home/homeController.dart';
-import 'package:sire/core/constant/approutes.dart';
 import 'package:sire/core/constant/color.dart';
 import 'package:sire/view/widgets/home/categorieslist.dart';
 import 'package:sire/view/widgets/home/discountcard.dart';
