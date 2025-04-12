@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:sire/core/constant/color.dart';
+import 'package:sire/view/screens/items/viewFavourite.dart';
 
 class Greeting extends StatelessWidget {
   final String name;
   final void Function()? onPressed;
-  final void Function()? onPressedFav;
   final String img;
-  const Greeting(
-      {super.key,
-      required this.name,
-      required this.img,
-      this.onPressed,
-      this.onPressedFav});
+  const Greeting({
+    super.key,
+    required this.name,
+    required this.img,
+    this.onPressed,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,12 @@ class Greeting extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             InkWell(
-              onTap: onPressedFav,
+              onTap: () {
+                Get.to(() => ViewFavourite(),
+                    transition: Transition.circularReveal,
+                    duration: Duration(seconds: 1),
+                    fullscreenDialog: false);
+              },
               child: Icon(
                 Icons.favorite,
                 color: Appcolor.white,

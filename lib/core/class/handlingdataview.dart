@@ -32,6 +32,10 @@ class HandlingDataView extends StatelessWidget {
               Lottie.asset(AppImage.nodata),
               Text(
                 "No Data",
+                style: TextStyle(
+                  fontFamily: 'Sw',
+                  fontSize: 20,
+                ),
               ),
               SizedBox(
                 height: 200,
@@ -46,7 +50,7 @@ class HandlingDataView extends StatelessWidget {
 
     return Scaffold(
       body: AnimatedSwitcher(
-        duration: const Duration(milliseconds: 500), 
+        duration: const Duration(milliseconds: 500),
         switchInCurve: Curves.easeIn,
         switchOutCurve: Curves.easeOut,
         child: displayedWidget,

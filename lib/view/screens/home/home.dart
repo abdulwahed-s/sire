@@ -33,10 +33,6 @@ class Home extends StatelessWidget {
                       img:
                           "https://i.pinimg.com/736x/ac/76/4c/ac764cb8541c8d73e039fba4c3d4df40.jpg",
                       onPressed: () {},
-                      onPressedFav: () {
-                        Get.toNamed(Approutes.viewFavourite);
-
-                      },
                     ),
                     discountcard: Discountcard(
                         title: "Uncover exciting products at fantastic prices!",
