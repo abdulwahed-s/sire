@@ -12,6 +12,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
     return GetBuilder<HomeScreenControllerImp>(
       builder: (controller) {
         return BottomAppBar(
+          height: 70,
           shape: const CircularNotchedRectangle(),
           notchMargin: 10,
           color: Appcolor.amaranthpink,
