@@ -7,6 +7,7 @@ import 'package:sire/core/services/services.dart';
 import 'package:sire/data/datasource/remote/auth/logindata.dart';
 import 'package:sire/view/screens/auth/signUp.dart';
 import 'package:sire/view/screens/home/home.dart';
+import 'package:sire/view/screens/home/homescreen.dart';
 import 'package:sire/view/screens/resetpassword/forgotpassword.dart';
 
 abstract class loginController extends GetxController {
@@ -43,7 +44,7 @@ class LogincontrollerImp extends loginController {
         service.sharedPreferences
             .setString("phone", response["data"]["user_phone"]);
         service.sharedPreferences.setString("step", "2");
-        Get.off(() =>Home(),
+        Get.off(() => HomeScreen(),
             transition: Transition.rightToLeft,
             duration: Duration(milliseconds: 800));
       } else if (response["status"] == "failure") {
@@ -58,7 +59,7 @@ class LogincontrollerImp extends loginController {
 
   @override
   goToSignUp() {
-    Get.off(() =>SignUp(),
+    Get.off(() => SignUp(),
         transition: Transition.rightToLeft,
         duration: Duration(milliseconds: 800));
   }

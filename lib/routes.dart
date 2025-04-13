@@ -13,6 +13,7 @@ import 'package:sire/view/screens/resetpassword/verifycode.dart';
 import 'package:sire/view/screens/auth/verifycodesignup.dart';
 import 'package:sire/view/screens/home/home.dart';
 import 'package:sire/view/screens/items/itemdetails.dart';
+import 'package:sire/view/screens/settings/settings.dart';
 
 List<GetPage<dynamic>>? route = [
   GetPage(name: "/", page: () => OnBoarding(), middlewares: [MyMiddleware()]),
@@ -29,4 +30,6 @@ List<GetPage<dynamic>>? route = [
   GetPage(name: Approutes.item, page: () => ItemsView()),
   GetPage(name: Approutes.itemDetails, page: () => ItemDetails()),
   GetPage(name: Approutes.viewFavourite, page: () => ViewFavourite()),
+  //setting
+  GetPage(name: Approutes.settings, page: () => Settings(),)
 ];

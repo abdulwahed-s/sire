@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:sire/view/screens/home/home.dart';
+import 'package:sire/view/screens/settings/settings.dart';
 
 abstract class HomeScreenController extends GetxController {
   changePage(int i);
@@ -17,9 +18,7 @@ class HomeScreenControllerImp extends HomeScreenController {
     Center(
       child: Text("Setton"),
     ),
-    Center(
-      child: Text("sdasd"),
-    ),
+    Settings()
   ];
   List<String> namepages = [
     "Home",
@@ -28,10 +27,10 @@ class HomeScreenControllerImp extends HomeScreenController {
     "Setting",
   ];
   List<IconData> iconpages = [
-   Icons.home_outlined,
-   Icons.favorite_outline,
-   Icons.person_outline,
-   Icons.settings_outlined,
+    Icons.home_outlined,
+    Icons.favorite_outline,
+    Icons.person_outline,
+    Icons.settings_outlined,
   ];
 
   @override

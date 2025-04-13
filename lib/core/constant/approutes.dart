@@ -16,4 +16,8 @@ class Approutes {
   static const String itemDetails = "/itemDetails";
   //favourite
   static const String viewFavourite = "/viewFavourite";
+  //settings
+  static const String settings = "/settings";
+
+  
 }
