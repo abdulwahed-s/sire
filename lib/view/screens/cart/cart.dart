@@ -39,6 +39,9 @@ class Cart extends StatelessWidget {
               child: CartFloatingButton(
                 price: 100,
                 shippingPrice: 100,
+                onTap: () {
+                  
+                },
               )),
         ],
       ),

@@ -4,7 +4,9 @@ import 'package:sire/core/constant/color.dart';
 class CartFloatingButton extends StatelessWidget {
   final int price;
   final int shippingPrice;
-  const CartFloatingButton({super.key, required this.price, required this.shippingPrice});
+  final void Function()? onTap;
+  const CartFloatingButton(
+      {super.key, required this.price, required this.shippingPrice, this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +66,7 @@ class CartFloatingButton extends StatelessWidget {
                 ),
               ),
               Text(
-                "${price+shippingPrice}\$",
+                "${price + shippingPrice}\$",
                 style: TextStyle(
                   fontFamily: "Sw",
                   color: Appcolor.berry,
@@ -78,7 +80,7 @@ class CartFloatingButton extends StatelessWidget {
             color: Appcolor.berry,
             borderRadius: BorderRadius.circular(10),
             child: InkWell(
-              onTap: () {},
+              onTap: onTap,
               borderRadius: BorderRadius.circular(10),
               splashColor: Appcolor.shadowWhite,
               child: Container(
