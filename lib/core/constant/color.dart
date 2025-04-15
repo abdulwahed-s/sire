@@ -32,5 +32,10 @@ class Appcolor {
   static const Color blueGray = Color.fromARGB(255, 96, 125, 139); // Blue Gray
   static const Color deepPink = Color.fromARGB(255, 109, 27, 53) ;
   static const Color shadowPink = Color.fromARGB(60, 255, 69, 147);
-  
+  static const Color whitePink = Color(0xfffef0f7);
+  static const Color lightPink =  Color.fromARGB(255, 255, 235, 235);
+  static const Color berry = Color(0xffa43068);
+  static const Color blackShadow = Color(0x1A000000);
+  static const Color shadowWhite =  Color(0x4DFFFFFF);
+  static const Color dustyPink = Color(0xfff0e6ec);
 }
