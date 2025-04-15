@@ -6,7 +6,6 @@ import 'package:sire/core/functions/handlingdata.dart';
 import 'package:sire/core/services/services.dart';
 import 'package:sire/data/datasource/remote/auth/logindata.dart';
 import 'package:sire/view/screens/auth/signUp.dart';
-import 'package:sire/view/screens/home/home.dart';
 import 'package:sire/view/screens/home/homescreen.dart';
 import 'package:sire/view/screens/resetpassword/forgotpassword.dart';
 

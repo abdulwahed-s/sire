@@ -2,6 +2,7 @@ import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:sire/core/constant/approutes.dart';
 import 'package:sire/core/middleware/myMiddleware.dart';
 import 'package:sire/view/screens/OnBoarding.dart';
+import 'package:sire/view/screens/cart/cart.dart';
 import 'package:sire/view/screens/home/homescreen.dart';
 import 'package:sire/view/screens/items/ItemsView.dart';
 import 'package:sire/view/screens/items/viewFavourite.dart';
@@ -16,7 +17,9 @@ import 'package:sire/view/screens/items/itemdetails.dart';
 import 'package:sire/view/screens/settings/settings.dart';
 
 List<GetPage<dynamic>>? route = [
-  GetPage(name: "/", page: () => OnBoarding(), middlewares: [MyMiddleware()]),
+  // GetPage(name: "/", page: () => OnBoarding(), middlewares: [MyMiddleware()]),
+  GetPage(name: "/", page: () => Cart()),
+
   //auth
   GetPage(name: Approutes.login, page: () => Login()),
   GetPage(name: Approutes.signUp, page: () => SignUp()),
