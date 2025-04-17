@@ -24,6 +24,11 @@ static const String items = "$server/items/items.php";
 static const String favouritesAdd = "$server/favourites/add.php";
 static const String favouritesDelete = "$server/favourites/delete.php";
 static const String favouritesView = "$server/favourites/view.php";
+//cart
+static const String cartAdd = "$server/cart/addcart.php";
+static const String cartDelete = "$server/cart/deletecart.php";
+static const String cartView = "$server/cart/viewcart.php";
+static const String cartCount = "$server/cart/countcart.php";
 
 
 

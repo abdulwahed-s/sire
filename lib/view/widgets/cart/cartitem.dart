@@ -7,13 +7,17 @@ class CartItem extends StatelessWidget {
   final String itemCategory;
   final String itemPrice;
   final String itemCount;
+  final Function()? onAdd;
+  final Function()? onRemove;
   const CartItem(
       {super.key,
       required this.img,
       required this.itemName,
       required this.itemCategory,
       required this.itemPrice,
-      required this.itemCount});
+      required this.itemCount,
+      required this.onAdd,
+      required this.onRemove});
 
   @override
   Widget build(BuildContext context) {
@@ -75,16 +79,25 @@ class CartItem extends StatelessWidget {
                               color: Appcolor.lightPink,
                               borderRadius: BorderRadius.circular(5),
                             ),
-                            child: const Icon(
-                              Icons.add_rounded,
-                              color: Appcolor.berry,
+                            child: Material(
+                              color: Colors.transparent,
+                              child: InkWell(
+                                borderRadius: BorderRadius.circular(5),
+                                splashColor:
+                                    Appcolor.pink.withValues(alpha: 0.1),
+                                onTap: onAdd,
+                                child: const Icon(
+                                  Icons.add_rounded,
+                                  color: Appcolor.berry,
+                                ),
+                              ),
                             ),
                           ),
                           Container(
                               margin: const EdgeInsets.only(
                                   right: 5, left: 5, bottom: 2),
                               decoration: const BoxDecoration(),
-                              child:  Text(
+                              child: Text(
                                 itemCount,
                                 style: TextStyle(
                                     fontFamily: "Sw",
@@ -97,8 +110,17 @@ class CartItem extends StatelessWidget {
                               color: Appcolor.lightPink,
                               borderRadius: BorderRadius.circular(5),
                             ),
-                            child: const Icon(Icons.remove_rounded,
-                                color: Appcolor.berry),
+                            child: Material(
+                              color: Colors.transparent,
+                              child: InkWell(
+                                borderRadius: BorderRadius.circular(5),
+                                splashColor:
+                                    Appcolor.pink.withValues(alpha: 0.1),
+                                onTap: onRemove,
+                                child: const Icon(Icons.remove_rounded,
+                                    color: Appcolor.berry),
+                              ),
+                            ),
                           )
                         ],
                       ),

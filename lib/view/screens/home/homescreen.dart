@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sire/controller/home/homescreenController.dart';
+import 'package:sire/view/screens/cart/cart.dart';
 import 'package:sire/view/widgets/home/custombottomnavigationbar.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -14,7 +15,13 @@ class HomeScreen extends StatelessWidget {
         return Scaffold(
           floatingActionButton: FloatingActionButton(
             shape: const CircleBorder(),
-            onPressed: () {},
+            onPressed: () {
+              Get.to(
+                () => Cart(),
+                transition: Transition.fade,
+                duration: Duration(seconds: 1),
+              );
+            },
             child: const Icon(Icons.shopping_basket_outlined),
           ),
           floatingActionButtonLocation:

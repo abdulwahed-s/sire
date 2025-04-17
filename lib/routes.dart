@@ -17,8 +17,8 @@ import 'package:sire/view/screens/items/itemdetails.dart';
 import 'package:sire/view/screens/settings/settings.dart';
 
 List<GetPage<dynamic>>? route = [
-  // GetPage(name: "/", page: () => OnBoarding(), middlewares: [MyMiddleware()]),
-  GetPage(name: "/", page: () => Cart()),
+  GetPage(name: "/", page: () => OnBoarding(), middlewares: [MyMiddleware()]),
+  // GetPage(name: "/", page: () => Cart()),
 
   //auth
   GetPage(name: Approutes.login, page: () => Login()),
@@ -34,5 +34,8 @@ List<GetPage<dynamic>>? route = [
   GetPage(name: Approutes.itemDetails, page: () => ItemDetails()),
   GetPage(name: Approutes.viewFavourite, page: () => ViewFavourite()),
   //setting
-  GetPage(name: Approutes.settings, page: () => Settings(),)
+  GetPage(
+    name: Approutes.settings,
+    page: () => Settings(),
+  )
 ];
