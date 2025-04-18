@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:sire/controller/cart/cartController.dart';
 import 'package:sire/core/class/statusrequest.dart';
 import 'package:sire/core/constant/color.dart';
 import 'package:sire/core/functions/handlingdata.dart';

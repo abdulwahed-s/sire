@@ -25,20 +25,44 @@ class Cart extends StatelessWidget {
             SingleChildScrollView(
               child: Column(
                 children: [
-                  ...List.generate(
-                    controller.data.length,
-                    (index) => CartItem(
-                      img: AppLink.itemimage + controller.data[index].itemImg!,
-                      itemName: controller.data[index].itemName!,
-                      itemCategory: controller.data[index].categoryName!,
-                      itemPrice: controller.data[index].itemPrice.toString(),
-                      itemCount: controller.data[index].countitems.toString(),
-                      onAdd: () => controller.add(
-                          "${controller.data[index].itemId}", index),
-                      onRemove: () => controller.remove(
-                          "${controller.data[index].itemId}", index),
-                    ),
-                  ),
+                  controller.data.isNotEmpty
+                      ? Column(
+                          children: List.generate(
+                            controller.data.length,
+                            (index) => CartItem(
+                              img: AppLink.itemimage +
+                                  controller.data[index].itemImg!,
+                              itemName: controller.data[index].itemName!,
+                              itemCategory:
+                                  controller.data[index].categoryName!,
+                              itemPrice:
+                                  controller.data[index].itemPrice.toString(),
+                              itemCount:
+                                  controller.data[index].countitems.toString(),
+                              onAdd: () => controller.add(
+                                  "${controller.data[index].itemId}", index),
+                              onRemove: () => controller.remove(
+                                  "${controller.data[index].itemId}", index),
+                            ),
+                          ),
+                        )
+                      : Column(
+                          children: [
+                            Container(
+                              height: 300,
+                              // width: 300,
+                              alignment: Alignment.bottomCenter,
+                              padding: EdgeInsets.symmetric(horizontal: 20),
+                              child: Text(
+                                textAlign: TextAlign.justify,
+                                "Your cart is empty 🛒",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Appcolor.pink),
+                              ),
+                            ),
+                          ],
+                        ),
                   const SizedBox(height: 300),
                 ],
               ),
