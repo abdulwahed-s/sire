@@ -9,6 +9,9 @@ import 'package:sire/data/model/itemsmodel.dart';
 
 abstract class ItemsDetailsController extends GetxController {
   initiateData();
+  addCart(String itemId);
+  add();
+  remove();
 }
 
 class ItemsDetailsControllerImp extends ItemsDetailsController {
@@ -27,6 +30,7 @@ class ItemsDetailsControllerImp extends ItemsDetailsController {
     update();
   }
 
+  @override
   addCart(itemId) async {
     statusRequest = StatusRequest.loding;
     dynamic response;
@@ -50,11 +54,13 @@ class ItemsDetailsControllerImp extends ItemsDetailsController {
     }
   }
 
+  @override
   add() {
     counter++;
     update();
   }
 
+  @override
   remove() {
     if (counter > 1) {
       counter--;
