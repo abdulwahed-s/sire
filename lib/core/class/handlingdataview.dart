@@ -49,6 +49,7 @@ class HandlingDataView extends StatelessWidget {
     }
 
     return Scaffold(
+      backgroundColor: Colors.white,
       body: AnimatedSwitcher(
         duration: const Duration(milliseconds: 500),
         switchInCurve: Curves.easeIn,
