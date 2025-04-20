@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:sire/core/class/statusrequest.dart';
+import 'package:sire/core/constant/approutes.dart';
 import 'package:sire/core/functions/handlingdata.dart';
 import 'package:sire/core/services/services.dart';
 import 'package:sire/data/datasource/remote/favourites/favouritesdata.dart';
@@ -8,7 +9,7 @@ import 'package:sire/data/model/viewfavouritesmodel.dart';
 
 abstract class ViewFavouritesController extends GetxController {
   deleteFavourites(String itemId);
-
+  goToItemDetails(itemModel);
   viewFavourites();
 }
 
@@ -65,5 +66,10 @@ class ViewFavouritesControllerImp extends ViewFavouritesController {
   void onInit() {
     viewFavourites();
     super.onInit();
+  }
+
+  @override
+  goToItemDetails(itemModel) {
+    Get.toNamed(Approutes.itemDetails, arguments: {"itemsModel": itemModel});
   }
 }

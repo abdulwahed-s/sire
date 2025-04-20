@@ -12,6 +12,20 @@ class ViewFavourite extends StatelessWidget {
     Get.put(ViewFavouritesControllerImp());
     return Scaffold(
       backgroundColor: Appcolor.white,
+      appBar: AppBar(
+        backgroundColor: Appcolor.white,
+        title: Text(
+          "Favourites",
+          style: TextStyle(
+            fontSize: 20,
+            color: Appcolor.black,
+            fontWeight: FontWeight.w600,
+            letterSpacing: 0.5,
+          ),
+        ),
+        centerTitle: true,
+        elevation: 0,
+      ),
       body: GetBuilder<ViewFavouritesControllerImp>(
           builder: (controller) => FavouritesList(controller: controller)),
     );

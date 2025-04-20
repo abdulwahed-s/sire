@@ -5,7 +5,6 @@ import 'package:sire/core/constant/color.dart';
 import 'package:sire/core/functions/handlingdata.dart';
 import 'package:sire/core/services/services.dart';
 import 'package:sire/data/datasource/remote/cart/cartdata.dart';
-import 'package:sire/data/model/itemsmodel.dart';
 
 abstract class ItemsDetailsController extends GetxController {
   initiateData();
@@ -17,7 +16,7 @@ abstract class ItemsDetailsController extends GetxController {
 class ItemsDetailsControllerImp extends ItemsDetailsController {
   // CartControllerImp cartcontroller = Get.put(CartControllerImp());
   int counter = 1;
-  late ItemsModel itemsModel;
+  var data;
   late StatusRequest statusRequest;
   CartData cartData = CartData(Get.find());
   Services services = Get.find();
@@ -25,7 +24,7 @@ class ItemsDetailsControllerImp extends ItemsDetailsController {
   @override
   initiateData() async {
     statusRequest = StatusRequest.loding;
-    itemsModel = Get.arguments['itemsModel'];
+    data = Get.arguments['itemsModel'];
     statusRequest = StatusRequest.success;
     update();
   }
