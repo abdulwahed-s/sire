@@ -45,101 +45,117 @@ class FavouritesList extends StatelessWidget {
                               AnimatedOpacity(
                                 opacity: isDeleting ? 0 : 1,
                                 duration: Duration(milliseconds: 250),
-                                child: InkWell(
-                                  onTap: () {},
-                                  child: Container(
-                                    width: double.infinity,
-                                    decoration:
-                                        BoxDecoration(color: Appcolor.white),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Row(
-                                          children: [
-                                            Container(
-                                              margin: EdgeInsets.only(
-                                                  left: 10,
-                                                  bottom: 40,
-                                                  right: 4),
-                                              child: Text(
-                                                  (index + 1).toString(),
-                                                  style: TextStyle(
-                                                      color: Appcolor.black,
-                                                      fontFamily: 'Sw',
-                                                      fontSize: 20,
-                                                      fontWeight:
-                                                          FontWeight.bold)),
-                                            ),
-                                            Container(
-                                              margin:
-                                                  EdgeInsets.only(right: 10),
-                                              height: 92,
-                                              width: 100,
+                                child: Material(
+                                  color: Appcolor
+                                      .white, // Match your container background
+                                  child: InkWell(
+                                    splashColor: Colors.pink.withOpacity(
+                                        0.2), // Customize as needed
+                                    onTap: () {
+                                      controller.goToItemDetails(
+                                          controller.fav[index]);
+                                    },
+                                    child: Container(
+                                      width: double.infinity,
+                                      padding:
+                                          EdgeInsets.symmetric(vertical: 8),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Row(
+                                            children: [
+                                              Container(
+                                                margin: EdgeInsets.only(
+                                                    left: 10,
+                                                    bottom: 40,
+                                                    right: 4),
+                                                child: Text(
+                                                    (index + 1).toString(),
+                                                    style: TextStyle(
+                                                        color: Appcolor.black,
+                                                        fontFamily: 'Sw',
+                                                        fontSize: 20,
+                                                        fontWeight:
+                                                            FontWeight.bold)),
+                                              ),
+                                              Container(
+                                                margin:
+                                                    EdgeInsets.only(right: 10),
+                                                height: 92,
+                                                width: 100,
+                                                decoration: BoxDecoration(
+                                                  color: Appcolor.mimiPink,
+                                                  borderRadius:
+                                                      BorderRadius.circular(8),
+                                                ),
+                                                child: Center(
+                                                  child: Hero(
+                                                    tag: controller
+                                                        .fav[index].itemId!,
+                                                    child: CachedNetworkImage(
+                                                      imageUrl:
+                                                          AppLink.itemimage +
+                                                              controller
+                                                                  .fav[index]
+                                                                  .itemImg!,
+                                                      height: 85,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                      "${controller.fav[index].itemName}"),
+                                                  Text(
+                                                    "\$${(controller.fav[index].itemPrice! + 0.00).toStringAsFixed(2)}",
+                                                    style: TextStyle(
+                                                      fontFamily: "Sw",
+                                                    ),
+                                                  ),
+                                                  Row(
+                                                    children: [
+                                                      Container(
+                                                        margin: EdgeInsets.only(
+                                                            top: 2),
+                                                        child: Icon(
+                                                          Icons.star,
+                                                          color: Appcolor.pink,
+                                                          size: 15,
+                                                        ),
+                                                      ),
+                                                      Text("4.9"),
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                          InkWell(
+                                            onTap: () {
+                                              controller
+                                                  .deleteFavourites(itemId);
+                                            },
+                                            child: Container(
+                                              margin: EdgeInsets.only(right: 5),
+                                              height: 30,
+                                              width: 30,
                                               decoration: BoxDecoration(
-                                                color: Appcolor.mimiPink,
+                                                color: Appcolor.pink,
                                                 borderRadius:
                                                     BorderRadius.circular(8),
                                               ),
-                                              child: Center(
-                                                child: CachedNetworkImage(
-                                                  imageUrl: AppLink.itemimage +
-                                                      controller
-                                                          .fav[index].itemImg!,
-                                                  height: 85,
-                                                ),
+                                              child: Icon(
+                                                Icons.remove,
+                                                size: 29,
                                               ),
                                             ),
-                                            Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                    "${controller.fav[index].itemName}"),
-                                                Text(
-                                                  "\$${(controller.fav[index].itemPrice! + 0.00).toStringAsFixed(2)}",
-                                                  style: TextStyle(
-                                                    fontFamily: "Sw",
-                                                  ),
-                                                ),
-                                                Row(
-                                                  children: [
-                                                    Container(
-                                                      margin: EdgeInsets.only(
-                                                          top: 2),
-                                                      child: Icon(
-                                                        Icons.star,
-                                                        color: Appcolor.pink,
-                                                        size: 15,
-                                                      ),
-                                                    ),
-                                                    Text("4.9"),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                        InkWell(
-                                          onTap: () {
-                                            controller.deleteFavourites(itemId);
-                                          },
-                                          child: Container(
-                                            margin: EdgeInsets.only(right: 5),
-                                            height: 30,
-                                            width: 30,
-                                            decoration: BoxDecoration(
-                                              color: Appcolor.pink,
-                                              borderRadius:
-                                                  BorderRadius.circular(8),
-                                            ),
-                                            child: Icon(
-                                              Icons.remove,
-                                              size: 29,
-                                            ),
-                                          ),
-                                        )
-                                      ],
+                                          )
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ),

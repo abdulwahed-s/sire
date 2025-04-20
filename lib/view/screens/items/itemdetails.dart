@@ -21,7 +21,7 @@ class ItemDetails extends StatelessWidget {
         bottomNavigationBar: MaterialButton(
           color: Appcolor.amaranthpink,
           onPressed: () {
-            controller.addCart("${controller.itemsModel.itemId}");
+            controller.addCart("${controller.data.itemId}");
           },
           height: 70,
           child: Text("Add To Cart"),
@@ -49,10 +49,10 @@ class ItemDetails extends StatelessWidget {
                               ),
                             ),
                             child: Hero(
-                              tag: controller.itemsModel.itemId!,
+                              tag: controller.data.itemId!,
                               child: CachedNetworkImage(
                                 imageUrl: AppLink.itemimage +
-                                    controller.itemsModel.itemImg!,
+                                    controller.data.itemImg!,
                               ),
                             ),
                           ),
@@ -60,7 +60,7 @@ class ItemDetails extends StatelessWidget {
                             width: Get.width,
                             padding: const EdgeInsets.only(left: 10),
                             child: Text(
-                              controller.itemsModel.itemName!,
+                              controller.data.itemName!,
                               style: Theme.of(context).textTheme.bodyLarge!,
                             ),
                           ),
@@ -68,7 +68,7 @@ class ItemDetails extends StatelessWidget {
                             width: Get.width,
                             padding: const EdgeInsets.only(left: 10),
                             child: Text(
-                              controller.itemsModel.itemDesc!,
+                              controller.data.itemDesc!,
                               style: Theme.of(context)
                                   .textTheme
                                   .bodyMedium!

@@ -36,8 +36,12 @@ class Home extends StatelessWidget {
                     discountcard: Discountcard(
                         title: "Uncover exciting products at fantastic prices!",
                         content: "50% discount"),
-                    serchBar:
-                        SerchBar(onPressed: () {}, hint: "Search Product"),
+                    serchBar: SerchBar(
+                        controller: controller.textEditingController,
+                        onPressed: () async {
+                          controller.goToSearch();
+                        },
+                        hint: "Search Product"),
                     categorieslist: Categorieslist(),
                   ),
                   HomeDivider(leftText: "Products Promo", rightText: "See All"),

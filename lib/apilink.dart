@@ -29,6 +29,10 @@ static const String cartAdd = "$server/cart/addcart.php";
 static const String cartDelete = "$server/cart/deletecart.php";
 static const String cartView = "$server/cart/viewcart.php";
 static const String cartCount = "$server/cart/countcart.php";
+//search
+static const String search ="$server/search/search.php";
+static const String suggestion ="$server/search/suggestion.php";
+
 
 
 

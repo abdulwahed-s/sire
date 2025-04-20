@@ -1,14 +1,17 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sire/core/class/statusrequest.dart';
 import 'package:sire/core/functions/handlingdata.dart';
 import 'package:sire/core/services/services.dart';
 import 'package:sire/data/datasource/remote/home/homedata.dart';
 import 'package:sire/view/screens/items/ItemsView.dart';
+import 'package:sire/view/screens/search/search.dart';
 
 abstract class HomeController extends GetxController {
   intiialiData();
   getData();
   goToItem(List categories, int selected, String catId);
+  goToSearch();
 }
 
 class HomeControllerImp extends HomeController {
@@ -17,6 +20,7 @@ class HomeControllerImp extends HomeController {
   HomeData homeData = HomeData(Get.find());
   List categories = [];
   List items = [];
+  TextEditingController? textEditingController;
 
   String? username;
   String? id;
@@ -29,6 +33,7 @@ class HomeControllerImp extends HomeController {
 
   @override
   void onInit() {
+    textEditingController = TextEditingController();
     intiialiData();
     getData();
     super.onInit();
@@ -60,6 +65,16 @@ class HomeControllerImp extends HomeController {
           "categories": categories,
           "selected": selected,
           "catId": catId
+        });
+  }
+
+  @override
+  goToSearch() {
+    Get.to(Search(),
+        transition: Transition.native,
+        duration: Duration(seconds: 1),
+        arguments: {
+          "input": textEditingController!.text,
         });
   }
 }
