@@ -20,31 +20,34 @@ class CartModel {
   String? categoryNameAr;
   String? categoryNameEs;
   double? totalprice;
+  double? itemFinalPrice;
   int? countitems;
 
-  CartModel(
-      {this.cartId,
-      this.cartUserid,
-      this.cartItemid,
-      this.itemId,
-      this.itemName,
-      this.itemNameAr,
-      this.itemNameEs,
-      this.itemDesc,
-      this.itemDescAr,
-      this.itemDescEs,
-      this.itemImg,
-      this.itemCount,
-      this.itemActive,
-      this.itemPrice,
-      this.itemDiscount,
-      this.itemDate,
-      this.itemCat,
-      this.categoryName,
-      this.categoryNameAr,
-      this.categoryNameEs,
-      this.totalprice,
-      this.countitems});
+  CartModel({
+    this.cartId,
+    this.cartUserid,
+    this.cartItemid,
+    this.itemId,
+    this.itemName,
+    this.itemNameAr,
+    this.itemNameEs,
+    this.itemDesc,
+    this.itemDescAr,
+    this.itemDescEs,
+    this.itemImg,
+    this.itemCount,
+    this.itemActive,
+    this.itemPrice,
+    this.itemDiscount,
+    this.itemDate,
+    this.itemCat,
+    this.categoryName,
+    this.categoryNameAr,
+    this.categoryNameEs,
+    this.totalprice,
+    this.countitems,
+    this.itemFinalPrice,
+  });
 
   CartModel.fromJson(Map<String, dynamic> json) {
     cartId = json['cart_id'];
@@ -69,32 +72,34 @@ class CartModel {
     categoryNameEs = json['category_name_es'];
     totalprice = (json['totalprice'] as num?)?.toDouble();
     countitems = json['countitems'];
+    itemFinalPrice = (json['item_final_price'] as num?)?.toDouble();
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['cart_id'] = this.cartId;
-    data['cart_userid'] = this.cartUserid;
-    data['cart_itemid'] = this.cartItemid;
-    data['item_id'] = this.itemId;
-    data['item_name'] = this.itemName;
-    data['item_name_ar'] = this.itemNameAr;
-    data['item_name_es'] = this.itemNameEs;
-    data['item_desc'] = this.itemDesc;
-    data['item_desc_ar'] = this.itemDescAr;
-    data['item_desc_es'] = this.itemDescEs;
-    data['item_img'] = this.itemImg;
-    data['item_count'] = this.itemCount;
-    data['item_active'] = this.itemActive;
-    data['item_price'] = this.itemPrice;
-    data['item_discount'] = this.itemDiscount;
-    data['item_date'] = this.itemDate;
-    data['item_cat'] = this.itemCat;
-    data['category_name'] = this.categoryName;
-    data['category_name_ar'] = this.categoryNameAr;
-    data['category_name_es'] = this.categoryNameEs;
-    data['totalprice'] = this.totalprice;
-    data['countitems'] = this.countitems;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['cart_id'] = cartId;
+    data['cart_userid'] = cartUserid;
+    data['cart_itemid'] = cartItemid;
+    data['item_id'] = itemId;
+    data['item_name'] = itemName;
+    data['item_name_ar'] = itemNameAr;
+    data['item_name_es'] = itemNameEs;
+    data['item_desc'] = itemDesc;
+    data['item_desc_ar'] = itemDescAr;
+    data['item_desc_es'] = itemDescEs;
+    data['item_img'] = itemImg;
+    data['item_count'] = itemCount;
+    data['item_active'] = itemActive;
+    data['item_price'] = itemPrice;
+    data['item_discount'] = itemDiscount;
+    data['item_date'] = itemDate;
+    data['item_cat'] = itemCat;
+    data['category_name'] = categoryName;
+    data['category_name_ar'] = categoryNameAr;
+    data['category_name_es'] = categoryNameEs;
+    data['totalprice'] = totalprice;
+    data['countitems'] = countitems;
+    data['item_final_price'] = itemFinalPrice;
     return data;
   }
 }

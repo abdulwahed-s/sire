@@ -19,6 +19,7 @@ class CustomItemsList extends GetView<ItemscontrollerImp> {
         controller.goToItemDetails(itemsModel);
       },
       child: Card(
+        color: const Color.fromARGB(255, 255, 242, 254),
         child: Column(
           children: [
             Hero(
@@ -40,17 +41,36 @@ class CustomItemsList extends GetView<ItemscontrollerImp> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Text(
-                  () {
-                    double price = itemsModel.itemPrice!;
-                    int discount = itemsModel.itemDiscount!;
-
-                    double discountedPrice = price - (price * discount ~/ 100);
-
-                    return "\$$discountedPrice";
-                  }(),
-                  style: TextStyle(
-                      fontFamily: "", fontSize: 20, color: Appcolor.deepPink),
+                Expanded(
+                  child: Row(
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(left: 5),
+                        child: Text(
+                          "\$${itemsModel.itemFinalPrice?.toStringAsFixed(2)}",
+                          style: TextStyle(
+                              fontFamily: "Sw",
+                              fontSize: 20,
+                              color: itemsModel.itemDiscount! > 0
+                                  ? Appcolor.deepPurple
+                                  : Appcolor.deepPink),
+                        ),
+                      ),
+                      if (itemsModel.itemDiscount! > 0)
+                        Container(
+                          margin: EdgeInsets.only(top: 6, left: 3, right: 3),
+                          child: Text(
+                            "\$${itemsModel.itemPrice?.toInt()}",
+                            textAlign: TextAlign.end,
+                            style: TextStyle(
+                                fontFamily: "Sw",
+                                decoration: TextDecoration.lineThrough,
+                                fontSize: 12,
+                                color: Appcolor.deepPink),
+                          ),
+                        )
+                    ],
+                  ),
                 ),
                 SizedBox(
                   width: 45,

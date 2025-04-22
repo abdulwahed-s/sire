@@ -35,8 +35,8 @@ class Cart extends StatelessWidget {
                               itemName: controller.data[index].itemName!,
                               itemCategory:
                                   controller.data[index].categoryName!,
-                              itemPrice:
-                                  controller.data[index].itemPrice.toString(),
+                              itemPrice: controller.data[index].itemFinalPrice
+                                  .toString(),
                               itemCount:
                                   controller.data[index].countitems.toString(),
                               onAdd: () => controller.add(

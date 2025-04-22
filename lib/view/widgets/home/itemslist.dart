@@ -74,34 +74,36 @@ class Items extends StatelessWidget {
             )
           ],
         ),
-        SizedBox(width: 180, child: Text(databaseTranslation(itemsModel.itemName!, itemsModel.itemNameAr!, itemsModel.itemNameEs!))),
+        SizedBox(
+            width: 180,
+            child: Text(databaseTranslation(itemsModel.itemName!,
+                itemsModel.itemNameAr!, itemsModel.itemNameEs!))),
         SizedBox(
             width: 180,
             child: Row(
               children: [
-                Text(
-                  "\$${itemsModel.itemPrice}",
-                  style: TextStyle(
-                      decoration: TextDecoration.lineThrough,
-                      color: Colors.grey,
-                      fontFamily: "Sw"),
-                ),
-                SizedBox(width: 10),
                 AnimatedTextKit(
                   animatedTexts: [
-                    ColorizeAnimatedText(speed: Duration(seconds: 20), (() {
-                      double price = itemsModel.itemPrice!;
-                      int discount = itemsModel.itemDiscount!;
-
-                      double discountedPrice = price - (price * discount ~/ 100);
-
-                      return "\$$discountedPrice";
-                    })(),
+                    ColorizeAnimatedText(
+                        speed: Duration(seconds: 20),
+                        ("\$${itemsModel.itemFinalPrice}"),
                         textStyle: TextStyle(fontSize: 20.0, fontFamily: "Sw"),
                         colors: colors),
                   ],
                   isRepeatingAnimation: true,
                   repeatForever: true,
+                ),
+                SizedBox(width: 5),
+                Container(
+                  margin: EdgeInsets.only(top: 6),
+                  child: Text(
+                    "\$${itemsModel.itemPrice}",
+                    style: TextStyle(
+                        decoration: TextDecoration.lineThrough,
+                        color: Colors.grey,
+                        fontSize: 12,
+                        fontFamily: "Sw"),
+                  ),
                 ),
               ],
             ))
