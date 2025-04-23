@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:sire/controller/cart/cartController.dart';
 import 'package:sire/controller/favourites/ViewFavouritesController.dart';
 import 'package:sire/controller/home/homeController.dart';
 import 'package:sire/controller/setting/settingcontroller.dart';
@@ -10,7 +9,8 @@ import 'package:sire/view/screens/items/viewFavourite.dart';
 import 'package:sire/view/screens/settings/settings.dart';
 
 abstract class HomeScreenController extends GetxController {
-  changePage(int i);
+  void removeController(int i);
+  void changePage(int i);
 }
 
 class HomeScreenControllerImp extends HomeScreenController {
@@ -44,7 +44,7 @@ class HomeScreenControllerImp extends HomeScreenController {
   ];
 
   @override
-  void removeController(int i) {
+   removeController(i) {
     for (int j = 0; j < controllerPages.length; j++) {
       if (j != i) {
         final type = controllerPages[j];
@@ -62,7 +62,7 @@ class HomeScreenControllerImp extends HomeScreenController {
   }
 
   @override
-  changePage(int i) {
+  changePage(i) {
     currentpage = i;
     removeController(i);
     update();
