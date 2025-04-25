@@ -46,3 +46,6 @@ app.*.map.json
 
 # Android Studio
 /android/app/src/main/AndroidManifest.xml
+
+# Api key
+lib/core/constant/apikey.dart
