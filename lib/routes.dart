@@ -32,8 +32,6 @@ List<GetPage<dynamic>>? route = [
   GetPage(name: Approutes.itemDetails, page: () => ItemDetails()),
   GetPage(name: Approutes.viewFavourite, page: () => ViewFavourite()),
   //setting
-  GetPage(
-    name: Approutes.settings,
-    page: () => Settings(),
-  )
+  GetPage(name: Approutes.settings, page: () => Settings()),
+
 ];
