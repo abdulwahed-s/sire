@@ -39,5 +39,7 @@ class Appcolor {
   static const Color shadowWhite =  Color(0x4DFFFFFF);
   static const Color dustyPink = Color(0xfff0e6ec);
   static const Color red = Color.fromARGB(255, 255, 0, 0);
+  static const Color textColor =  Color(0xFF4A2C3A);
+  static const Color deepRed = Color.fromARGB(255, 131, 0, 50);
 
 }
