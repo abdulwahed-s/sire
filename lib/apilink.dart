@@ -32,6 +32,11 @@ static const String cartCount = "$server/cart/countcart.php";
 //search
 static const String search ="$server/search/search.php";
 static const String suggestion ="$server/search/suggestion.php";
+//addresses
+static const String addAddress    ="$server/address/add.php";
+static const String deleteAddress ="$server/address/delete.php";
+static const String updateAddress ="$server/address/update.php";
+static const String viewAddress   ="$server/address/view.php";
 
 
 
