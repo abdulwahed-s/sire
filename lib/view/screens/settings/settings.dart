@@ -78,7 +78,9 @@ class Settings extends StatelessWidget {
                           color: Appcolor.amaranthpink,
                         ),
                       ),
-                      onTap: () {},
+                      onTap: () {
+                        controller.goToAddress();
+                      },
                     ),
                     SizedBox(
                       height: 5,
