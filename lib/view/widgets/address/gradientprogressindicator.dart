@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:sire/core/constant/color.dart';
 
 class GradientProgressIndicator extends StatefulWidget {
-  const GradientProgressIndicator({super.key});
+  final double strokeWidth;
+  const GradientProgressIndicator({super.key, required this.strokeWidth});
 
   @override
   State<GradientProgressIndicator> createState() =>
@@ -23,7 +24,6 @@ class _GradientProgressIndicatorState extends State<GradientProgressIndicator>
       duration: const Duration(seconds: 2),
     )..repeat();
   }
-  
 
   @override
   Widget build(BuildContext context) {
@@ -32,8 +32,10 @@ class _GradientProgressIndicatorState extends State<GradientProgressIndicator>
       builder: (_, __) {
         return CustomPaint(
           painter: GradientArcPainter(
+            widget.strokeWidth,
             arcRotation: _controller.value,
             gradientRotation: _controller.value * 2,
+  
           ),
           size: const Size(60, 60),
         );
@@ -51,8 +53,9 @@ class _GradientProgressIndicatorState extends State<GradientProgressIndicator>
 class GradientArcPainter extends CustomPainter {
   final double arcRotation;
   final double gradientRotation;
+  final double StrokeWidth;
 
-  GradientArcPainter({
+  GradientArcPainter(this.StrokeWidth, {
     required this.arcRotation,
     required this.gradientRotation,
   });
@@ -66,7 +69,7 @@ class GradientArcPainter extends CustomPainter {
 
     final paint = Paint()
       ..style = PaintingStyle.stroke
-      ..strokeWidth = 5
+      ..strokeWidth = StrokeWidth
       ..strokeCap = StrokeCap.round
       ..shader = SweepGradient(
         startAngle: 0,
