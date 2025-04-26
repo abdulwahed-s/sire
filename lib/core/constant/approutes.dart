@@ -18,6 +18,6 @@ class Approutes {
   static const String viewFavourite = "/viewFavourite";
   //settings
   static const String settings = "/settings";
-
-  
+  //addresses
+  static const String viewAddress = "/viewAddress";
 }
