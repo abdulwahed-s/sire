@@ -75,6 +75,7 @@ dependencies:
   flutter_typeahead: ^5.2.0
   flutter_slidable: ^4.0.0
   flutter_google_places_hoc081098: ^2.0.0
+  shimmer: ^3.0.0
 
 
 dev_dependencies:
