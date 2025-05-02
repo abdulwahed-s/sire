@@ -11,11 +11,14 @@ abstract class CouponController extends GetxController {
 }
 
 class CouponControllerImp extends CouponController {
+
   StatusRequest statusRequest = StatusRequest.none;
   CouponData couponData = CouponData(Get.find());
   List<CouponModel> couponList = [];
   TextEditingController? couponTextEditingController;
   bool isCouponUsed = false;
+  double? totalprice;
+  double? subtotal;
 
   @override
   checkCoupon() async {
@@ -57,6 +60,8 @@ class CouponControllerImp extends CouponController {
         shouldIconPulse: true,
       );
       isCouponUsed = true;
+      totalprice =
+          totalprice! - (totalprice! * couponList[0].couponDiscount! / 100);
     } else if (response["status"] == "failure") {
       statusRequest = StatusRequest.failure;
       Get.snackbar(
@@ -78,6 +83,8 @@ class CouponControllerImp extends CouponController {
   @override
   void onInit() {
     couponTextEditingController = TextEditingController();
+    totalprice = Get.arguments["totalprice"];
+    subtotal = Get.arguments["totalprice"];
     super.onInit();
   }
 }
