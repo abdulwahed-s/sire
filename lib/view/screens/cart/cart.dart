@@ -72,11 +72,13 @@ class Cart extends StatelessWidget {
                 left: 20,
                 right: 20,
                 child: CartFloatingButton(
-                  statusRequest: controller.statusRequest,
-                  price: controller.data.isNotEmpty ? controller.totalprice : 0,
-                  shippingPrice: 100,
-                  onTap: () {},
-                )),
+                    statusRequest: controller.statusRequest,
+                    price:
+                        controller.data.isNotEmpty ? controller.totalprice : 0,
+                    shippingPrice: 100,
+                    onTap: () {
+                      controller.placeOrder();
+                    })),
           ],
         ),
       ),
