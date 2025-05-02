@@ -1,32 +1,23 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:shimmer/shimmer.dart';
+import 'package:sire/apilink.dart';
+import 'package:sire/controller/checkout/checkoutcontroller.dart';
+import 'package:sire/core/class/statusrequest.dart';
 import 'package:sire/core/constant/color.dart';
+import 'package:sire/view/widgets/checkout/couponsection.dart';
+import 'package:sire/view/widgets/checkout/deliverytype.dart';
+import 'package:sire/view/widgets/checkout/itemview.dart';
+import 'package:sire/view/widgets/checkout/paymentmethod.dart';
+import 'package:sire/view/widgets/checkout/shippingaddress.dart';
+import 'package:sire/view/widgets/checkout/summaryrow.dart';
 
 class Checkout extends StatelessWidget {
   const Checkout({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final List<Map<String, dynamic>> orderedItems = [
-      {
-        'image': 'https://via.placeholder.com/150',
-        'name': 'Product 1',
-        'price': '\$29.99',
-        'quantity': 2,
-      },
-      {
-        'image': 'https://via.placeholder.com/150',
-        'name': 'Product 2',
-        'price': '\$19.99',
-        'quantity': 1,
-      },
-      {
-        'image': 'https://via.placeholder.com/150',
-        'name': 'Product 3',
-        'price': '\$39.99',
-        'quantity': 3,
-      },
-    ];
+    Get.put(CheckoutControllerImp());
     return Scaffold(
       backgroundColor: Appcolor.white,
       appBar: AppBar(),
@@ -46,369 +37,190 @@ class Checkout extends StatelessWidget {
                 ),
                 const SizedBox(height: 12),
                 SizedBox(
-                  height: 140,
-                  child: ListView.builder(
-                    scrollDirection: Axis.horizontal,
-                    itemCount: orderedItems.length,
-                    itemBuilder: (context, index) {
-                      final item = orderedItems[index];
-                      return Container(
-                        width: 160,
-                        margin: const EdgeInsets.only(right: 12),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          border: Border.all(color: Colors.grey.shade300),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                height: 60,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(4),
-                                  image: DecorationImage(
-                                    image: CachedNetworkImageProvider(
-                                        item['image']),
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                              ),
-                              const SizedBox(height: 4),
-                              Text(
-                                item['name'],
-                                style: const TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                              const SizedBox(height: 2),
-                              Text(
-                                item['price'],
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  color: Colors.grey.shade700,
-                                ),
-                              ),
-                              const SizedBox(height: 2),
-                              Text(
-                                'Qty: ${item['quantity']}',
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  color: Colors.grey.shade700,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      );
-                    },
-                  ),
-                ),
+                    height: 140,
+                    child: GetBuilder<CheckoutControllerImp>(
+                      builder: (controller) => ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: controller.orderDetails!.length,
+                        itemBuilder: (context, index) {
+                          return ItemView(
+                              itemName:
+                                  controller.orderDetails![index].itemName!,
+                              itemImage: AppLink.itemimage +
+                                  controller.orderDetails![index].itemImg!,
+                              itemprice: controller
+                                  .orderDetails![index].itemFinalPrice!
+                                  .toStringAsFixed(3),
+                              itmeQuantity: controller
+                                  .orderDetails![index].countitems!
+                                  .toString());
+                        },
+                      ),
+                    )),
               ],
             ),
-            Card(
-              color: Appcolor.white,
-              elevation: 2,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
+            const SizedBox(height: 12),
+            GetBuilder<CheckoutControllerImp>(
+              builder: (controller) => DeliveryType(
+                isDelivery: controller.deliveryType == 0,
+                isPickUp: controller.deliveryType == 1,
+                onTapDelivery: () {
+                  controller.changeDeliveryType(0);
+                },
+                onTapPickUp: () {
+                  controller.changeDeliveryType(1);
+                },
               ),
-              child: Padding(
-                padding: const EdgeInsets.all(16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      'Delivery Type',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
+            ),
+            GetBuilder<CheckoutControllerImp>(
+              builder: (controller) => Card(
+                color: Appcolor.white,
+                elevation: 2,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        "Shipping Address",
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 12),
-                    Row(
-                      children: [
-                        Expanded(
+                      const SizedBox(height: 12),
+                      if (controller.addresses.isEmpty &&
+                          controller.statusRequest == StatusRequest.loding)
+                        Shimmer.fromColors(
+                          baseColor: Colors.grey.shade300,
+                          highlightColor: Colors.grey.shade100,
                           child: Container(
+                            padding: EdgeInsets.all(8),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(8),
-                              border: Border.all(
-                                color: false
-                                    ? Appcolor.deepPink
-                                    : Colors.grey.shade300,
-                                width: false ? 1.5 : 1,
-                              ),
+                              color: Colors.white,
                             ),
-                            child: Material(
-                              color: false
-                                  ? Appcolor.deepPink.withOpacity(0.1)
-                                  : Colors.transparent,
-                              borderRadius: BorderRadius.circular(8),
-                              child: InkWell(
-                                borderRadius: BorderRadius.circular(8),
-                                onTap: () {},
-                                child: Padding(
-                                  padding: const EdgeInsets.all(12),
+                            child: Row(
+                              children: [
+                                Container(
+                                  width: 24,
+                                  height: 24,
+                                  color: Colors.white,
+                                ),
+                                SizedBox(width: 16),
+                                Expanded(
                                   child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
-                                      Icon(
-                                        Icons.store,
-                                        size: 32,
-                                        color: false
-                                            ? Appcolor.deepPink
-                                            : Colors.grey.shade700,
+                                      Container(
+                                        height: 16,
+                                        width: double.infinity,
+                                        color: Colors.white,
                                       ),
-                                      const SizedBox(height: 8),
-                                      Text(
-                                        'Pick Up',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          color: false
-                                              ? Appcolor.deepPink
-                                              : Colors.black,
-                                        ),
+                                      SizedBox(height: 8),
+                                      Container(
+                                        height: 12,
+                                        width: double.infinity,
+                                        color: Colors.white,
+                                      ),
+                                      SizedBox(height: 4),
+                                      Container(
+                                        height: 12,
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.5,
+                                        color: Colors.white,
                                       ),
                                     ],
                                   ),
                                 ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(width: 12),
-                        Expanded(
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8),
-                              border: Border.all(
-                                color: true
-                                    ? Appcolor.deepPink
-                                    : Colors.grey.shade300,
-                                width: true ? 1.5 : 1,
-                              ),
-                            ),
-                            child: Material(
-                              color: true
-                                  ? Appcolor.deepPink.withOpacity(0.1)
-                                  : Colors.transparent,
-                              borderRadius: BorderRadius.circular(8),
-                              child: InkWell(
-                                borderRadius: BorderRadius.circular(8),
-                                onTap: () {},
-                                child: Padding(
-                                  padding: const EdgeInsets.all(12),
-                                  child: Column(
-                                    children: [
-                                      Icon(
-                                        Icons.delivery_dining,
-                                        size: 32,
-                                        color: true
-                                            ? Appcolor.deepPink
-                                            : Colors.grey.shade700,
-                                      ),
-                                      const SizedBox(height: 8),
-                                      Text(
-                                        "Delivery",
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          color: true
-                                              ? Appcolor.deepPink
-                                              : Colors.black,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
+                                SizedBox(width: 16),
+                                Container(
+                                  width: 20,
+                                  height: 20,
+                                  color: Colors.white,
                                 ),
-                              ),
+                              ],
                             ),
                           ),
                         ),
-                      ],
-                    ),
-                  ],
+                      ListView.builder(
+                        itemCount: controller.addresses.length,
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        itemBuilder: (context, index) {
+                          return ShippingAddress(
+                            title: controller.addresses[index].addressName!,
+                            subTitle:
+                                " Building: ${controller.addresses[index].addressBuilding!}, "
+                                "Street: ${controller.addresses[index].addressStreet!}, "
+                                "Block: ${controller.addresses[index].addressBlock!}, "
+                                "Floor: ${controller.addresses[index].addressFloor!}.",
+                            placeName:
+                                controller.addresses[index].addressBymap!,
+                            icon: Icons.home,
+                            isSelected: controller.addressId ==
+                                controller.addresses[index].addressId!,
+                            onTap: () {
+                              controller.chooseAddressId(
+                                  controller.addresses[index].addressId!);
+                            },
+                          );
+                        },
+                      ),
+                      const SizedBox(height: 8),
+                    ],
+                  ),
                 ),
               ),
             ),
-            Card(
-              color: Appcolor.white,
-              elevation: 2,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      "Shipping Address",
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 12),
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                        border: Border.all(
-                          color: Appcolor.deepPink,
-                          width: 1.5,
-                        ),
-                      ),
-                      child: ListTile(
-                        leading:
-                            const Icon(Icons.home, color: Appcolor.deepPink),
-                        title: const Text(
-                          "Home",
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                        subtitle: const Text.rich(
-                          TextSpan(
-                            children: [
-                              TextSpan(
-                                text: "Sohar, ",
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              TextSpan(
-                                text:
-                                    "Building: 12, Street: b14, Block: 145, Floor: 2",
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.normal,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        trailing: Radio(
-                          value: true,
-                          groupValue: true,
-                          onChanged: (value) {},
-                          activeColor: Appcolor.deepPink,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                  ],
+            GetBuilder<CheckoutControllerImp>(
+              builder: (controller) => Card(
+                color: Appcolor.white,
+                elevation: 2,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12),
                 ),
-              ),
-            ),
-            Card(
-              color: Appcolor.white,
-              elevation: 2,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      "Payment Method",
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: 12),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Appcolor.white,
-                        borderRadius: BorderRadius.circular(8),
-                        border: Border.all(
-                          color:
-                              false ? Appcolor.deepPink : Colors.grey.shade300,
-                          width: false ? 1.5 : 1,
+                child: Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        "Payment Method",
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
-                      child: RadioListTile(
-                        dense: true,
-                        controlAffinity: ListTileControlAffinity.trailing,
-                        contentPadding:
-                            const EdgeInsets.symmetric(horizontal: 8),
-                        title: Row(
-                          children: [
-                            Container(
-                              height: 30,
-                              width: 30,
-                              margin: const EdgeInsets.only(right: 12),
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                  image: CachedNetworkImageProvider(
-                                      "https://cdn-icons-png.flaticon.com/256/745/745640.png"),
-                                  fit: BoxFit.contain,
-                                ),
-                              ),
-                            ),
-                            Text(
-                              "Cash",
-                              style: const TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ],
-                        ),
-                        value: true,
-                        groupValue: null,
-                        onChanged: (value) {},
-                        activeColor: Appcolor.deepPink,
+                      const SizedBox(height: 12),
+                      PaymentMethod(
+                        paymentName: "Cash",
+                        paymentImg:
+                            "https://cdn-icons-png.flaticon.com/256/745/745640.png",
+                        value: 1,
+                        groupValue: controller.paymentType,
+                        onTap: () {
+                          controller.changePaymentType(1);
+                        },
                       ),
-                    ),
-                    const SizedBox(height: 8),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Appcolor.white,
-                        borderRadius: BorderRadius.circular(8),
-                        border: Border.all(
-                          color:
-                              true ? Appcolor.deepPink : Colors.grey.shade300,
-                          width: true ? 1.5 : 1,
-                        ),
+                      const SizedBox(height: 8),
+                      PaymentMethod(
+                        paymentName: "Visa",
+                        paymentImg:
+                            "https://1000logos.net/wp-content/uploads/2021/11/VISA-logo.png",
+                        value: 0,
+                        groupValue: controller.paymentType,
+                        onTap: () {
+                          controller.changePaymentType(0);
+                        },
                       ),
-                      child: RadioListTile(
-                        dense: true,
-                        controlAffinity: ListTileControlAffinity.trailing,
-                        contentPadding:
-                            const EdgeInsets.symmetric(horizontal: 8),
-                        title: Row(
-                          children: [
-                            Container(
-                              height: 30,
-                              width: 30,
-                              margin: const EdgeInsets.only(right: 12),
-                              decoration: BoxDecoration(
-                                image: DecorationImage(
-                                  image: CachedNetworkImageProvider(
-                                      "https://1000logos.net/wp-content/uploads/2021/11/VISA-logo.png"),
-                                  fit: BoxFit.contain,
-                                ),
-                              ),
-                            ),
-                            Text(
-                              "Visa",
-                              style: const TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ],
-                        ),
-                        value: true,
-                        groupValue: true,
-                        onChanged: (value) {},
-                        activeColor: Appcolor.deepPink,
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -431,66 +243,7 @@ class Checkout extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 8),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: TextFormField(
-                            decoration: InputDecoration(
-                              hintText: "Enter coupon code",
-                              hintStyle: const TextStyle(
-                                fontFamily: "Sw",
-                                fontWeight: FontWeight.normal,
-                                color: Colors.grey,
-                              ),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(8),
-                                borderSide: BorderSide.none,
-                              ),
-                              filled: true,
-                              fillColor: Colors.grey[100],
-                              contentPadding: const EdgeInsets.symmetric(
-                                horizontal: 16,
-                                vertical: 14,
-                              ),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(width: 8),
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
-                            gradient: LinearGradient(
-                              colors: [
-                                Appcolor.deepPink,
-                                Appcolor.berry,
-                              ],
-                            ),
-                          ),
-                          child: Material(
-                            color: Colors.transparent,
-                            borderRadius: BorderRadius.circular(8),
-                            child: InkWell(
-                              borderRadius: BorderRadius.circular(8),
-                              onTap: () {},
-                              child: const Padding(
-                                padding: EdgeInsets.symmetric(
-                                  horizontal: 20,
-                                  vertical: 14,
-                                ),
-                                child: Text(
-                                  "Apply",
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                    CouponSection(),
                   ],
                 ),
               ),
@@ -516,130 +269,72 @@ class Checkout extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 16),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Subtotal",
-                          style: TextStyle(
-                            fontFamily: "Sw",
-                            fontWeight: FontWeight.normal,
-                            fontSize: 14,
-                            color: Colors.black,
-                          ),
-                        ),
-                        Text(
-                          "\$220",
-                          style: TextStyle(
-                            fontFamily: "Sw",
-                            fontWeight: FontWeight.normal,
-                            fontSize: 14,
-                            color: Colors.black,
-                          ),
-                        ),
-                      ],
+                    GetBuilder<CheckoutControllerImp>(
+                      builder: (controller) => SummaryRow(
+                        label: "Subtotal",
+                        value: "\$${controller.couponController.subtotal}",
+                        isTotal: false,
+                      ),
                     ),
                     const SizedBox(height: 8),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Shipping fee",
-                          style: TextStyle(
-                            fontFamily: "Sw",
-                            fontWeight: FontWeight.normal,
-                            fontSize: 14,
-                            color: Colors.black,
-                          ),
-                        ),
-                        Text(
-                          "\$100",
-                          style: TextStyle(
-                            fontFamily: "Sw",
-                            fontWeight: FontWeight.normal,
-                            fontSize: 14,
-                            color: Colors.black,
-                          ),
-                        ),
-                      ],
-                    ),
+                    GetBuilder<CheckoutControllerImp>(
+                        builder: (controller) =>
+                            controller.couponController.isCouponUsed
+                                ? SummaryRow(
+                                    label: "Discount",
+                                    value:
+                                        "-%${controller.couponController.couponList[0].couponDiscount}",
+                                    isTotal: false,
+                                  )
+                                : SizedBox()),
                     const SizedBox(height: 8),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Discount (10%)",
-                          style: TextStyle(
-                            fontFamily: "Sw",
-                            fontWeight: FontWeight.normal,
-                            fontSize: 14,
-                            color: Colors.black,
-                          ),
-                        ),
-                        Text(
-                          "\$22",
-                          style: TextStyle(
-                            fontFamily: "Sw",
-                            fontWeight: FontWeight.normal,
-                            fontSize: 14,
-                            color: Colors.black,
-                          ),
-                        ),
-                      ],
+                    GetBuilder<CheckoutControllerImp>(
+                      builder: (controller) => SummaryRow(
+                        label: "Shipping fee",
+                        value: "\$${controller.shippingFee}",
+                        isTotal: false,
+                      ),
                     ),
                     const Divider(height: 24, thickness: 1),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Total amount",
-                          style: TextStyle(
-                            fontFamily: "Sw",
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                            color: Appcolor.deepPink,
-                          ),
-                        ),
-                        Text(
-                          "\$298",
-                          style: TextStyle(
-                            fontFamily: "Sw",
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18,
-                            color: Appcolor.deepPink,
-                          ),
-                        ),
-                      ],
-                    ),
+                    GetBuilder<CheckoutControllerImp>(
+                      builder: (controller) => SummaryRow(
+                        label: "Total amount",
+                        value:
+                            "\$${controller.couponController.totalprice! + controller.shippingFee}",
+                        isTotal: true,
+                      ),
+                    )
                   ],
                 ),
               ),
             ),
-            Container(
-              width: double.infinity,
-              margin: EdgeInsets.only(bottom: 10, top: 10),
-              child: ElevatedButton(
-                onPressed: () {
-                  // Handle checkout
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Appcolor.deepPink,
-                  padding: const EdgeInsets.symmetric(vertical: 16),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
+            GetBuilder<CheckoutControllerImp>(
+              builder: (controller) => Container(
+                width: double.infinity,
+                margin: EdgeInsets.only(bottom: 10, top: 10),
+                child: ElevatedButton(
+                  onPressed: () async {
+                    await controller.placeOrder();
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Appcolor.deepPink,
+                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    elevation: 2,
                   ),
-                  elevation: 2,
-                ),
-                child: const Text(
-                  "Complete Order",
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                  child: const Text(
+                    "Complete Order",
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ),
-            ),
+            )
           ],
         ),
       ),
