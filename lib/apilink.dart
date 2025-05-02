@@ -39,6 +39,8 @@ static const String updateAddress ="$server/address/update.php";
 static const String viewAddress   ="$server/address/view.php";
 //coupon
 static const String checkCoupon   ="$server/coupon/checkcoupon.php";
+//checkout
+static const String checkout = "$server/checkout/checkout.php";
 
 
 
