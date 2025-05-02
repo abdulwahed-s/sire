@@ -6,6 +6,7 @@ import 'package:sire/core/functions/handlingdata.dart';
 import 'package:sire/core/services/services.dart';
 import 'package:sire/data/datasource/remote/cart/cartdata.dart';
 import 'package:sire/data/model/cartmodel.dart';
+import 'package:sire/view/screens/checkout/checkout.dart';
 
 abstract class CartController extends GetxController {
   addCart(String itemId);
@@ -14,6 +15,7 @@ abstract class CartController extends GetxController {
   viewCart();
   add(String itemId, int index);
   remove(String itemId, int index);
+  placeOrder();
 }
 
 class CartControllerImp extends CartController {
@@ -150,12 +152,19 @@ class CartControllerImp extends CartController {
         update();
       }
     } else if (counter <= 1) {
-        data.removeAt(index);
+      data.removeAt(index);
       await deleteCart(itemId);
       if (statusRequest == StatusRequest.success) {
-      
         update();
       }
     }
+  }
+
+  @override
+  placeOrder() {
+    Get.to(() => Checkout(), arguments: {
+      "orderDetails": data,
+      "totalprice": totalprice,
+    });
   }
 }
