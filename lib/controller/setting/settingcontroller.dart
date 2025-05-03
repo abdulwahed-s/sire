@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:get/get.dart';
 import 'package:sire/core/services/services.dart';
 import 'package:sire/view/screens/address/viewaddress.dart';
@@ -19,6 +20,9 @@ class SettingControllerImp extends SettingController {
 
   @override
   logout() {
+    FirebaseMessaging.instance.subscribeToTopic("notAuthorized");
+    FirebaseMessaging.instance.unsubscribeFromTopic("users");
+    FirebaseMessaging.instance.unsubscribeFromTopic(services.sharedPreferences.getString("id")!);
     services.sharedPreferences.clear();
     services.sharedPreferences.setString("step", "1");
     Get.offAll(

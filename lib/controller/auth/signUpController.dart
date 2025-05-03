@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sire/core/class/statusrequest.dart';
@@ -48,6 +49,9 @@ class SignUpcontrollerImp extends SignupController {
         service.sharedPreferences.setString("email", response["data"]["user_email"]);
         service.sharedPreferences.setString("phone", response["data"]["user_phone"]);
         service.sharedPreferences.setString("step", "2");
+        FirebaseMessaging.instance.unsubscribeFromTopic("notAuthorized");
+        FirebaseMessaging.instance.subscribeToTopic("users");
+        FirebaseMessaging.instance.subscribeToTopic(response["data"]["user_id"].toString());
           goToVerfiy();
         } else {
           statusRequest = StatusRequest.failure;

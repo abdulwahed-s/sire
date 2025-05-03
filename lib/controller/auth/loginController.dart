@@ -43,6 +43,9 @@ class LogincontrollerImp extends loginController {
         service.sharedPreferences
             .setString("phone", response["data"]["user_phone"]);
         service.sharedPreferences.setString("step", "2");
+    FirebaseMessaging.instance.unsubscribeFromTopic("notAuthorized");
+    FirebaseMessaging.instance.subscribeToTopic("users");
+    FirebaseMessaging.instance.subscribeToTopic(response["data"]["user_id"].toString());
         Get.off(() => HomeScreen(),
             transition: Transition.rightToLeft,
             duration: Duration(milliseconds: 800));
