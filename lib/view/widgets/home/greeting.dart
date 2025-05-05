@@ -2,16 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sire/core/constant/color.dart';
 import 'package:sire/view/screens/items/viewFavourite.dart';
+import 'package:sire/view/screens/notification/viewnotification.dart';
 
 class Greeting extends StatelessWidget {
   final String name;
-  final void Function()? onPressed;
   final String img;
   const Greeting({
     super.key,
     required this.name,
     required this.img,
-    this.onPressed,
   });
 
   @override
@@ -34,7 +33,12 @@ class Greeting extends StatelessWidget {
               ),
             ),
             InkWell(
-              onTap: onPressed,
+              onTap: () {
+                Get.to(() => ViewNotification(),
+                    transition: Transition.circularReveal,
+                    duration: Duration(seconds: 1),
+                    fullscreenDialog: false);
+              },
               child: Container(
                 padding: EdgeInsets.only(right: 2),
                 child: Icon(
