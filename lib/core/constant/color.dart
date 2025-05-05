@@ -41,5 +41,6 @@ class Appcolor {
   static const Color red = Color.fromARGB(255, 255, 0, 0);
   static const Color textColor =  Color(0xFF4A2C3A);
   static const Color deepRed = Color.fromARGB(255, 131, 0, 50);
+  static const Color lightRed =Colors.red;
 
 }
