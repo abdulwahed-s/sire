@@ -41,7 +41,9 @@ static const String viewAddress   ="$server/address/view.php";
 static const String checkCoupon   ="$server/coupon/checkcoupon.php";
 //checkout
 static const String checkout = "$server/checkout/checkout.php";
-
+//notification
+static const String viewNotification = "$server/notification/viewnotification.php";
+static const String deleteNotification = "$server/notification/deleteNotification.php";
 
 
 
