@@ -12,7 +12,6 @@ class CheckoutData {
     String pricedelivery,
     String paymenttype,
     String couponID,
-    String orderStatus,
   ) async {
     var resp = await curd.postData(AppLink.checkout, {
       'userid': userID,
@@ -21,7 +20,6 @@ class CheckoutData {
       'price': price,
       'paymenttype': paymenttype,
       'coupon': couponID,
-      'orderstatus': orderStatus,
       'deliveryprice': pricedelivery,
     });
     return resp.fold((s) => s, (r) => r);

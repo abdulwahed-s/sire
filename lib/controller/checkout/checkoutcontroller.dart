@@ -116,7 +116,6 @@ class CheckoutControllerImp extends CheckoutController {
         couponController.isCouponUsed
             ? couponController.couponList[0].couponId!.toString()
             : "0",
-        "0",
       );
       print(response);
       statusRequest = handlingdata(response);
