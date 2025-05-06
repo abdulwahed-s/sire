@@ -44,6 +44,11 @@ static const String checkout = "$server/checkout/checkout.php";
 //notification
 static const String viewNotification = "$server/notification/viewnotification.php";
 static const String deleteNotification = "$server/notification/deleteNotification.php";
+//orders
+static const String viewPendingOrders = "$server/orders/pending.php";
+static const String viewArchivedOrders = "$server/orders/archived.php";
+
+
 
 
 
