@@ -10,4 +10,11 @@ class OrderData {
     });
     return resp.fold((s) => s, (r) => r);
   }
+
+    getArchivedOrders(String userid) async {
+    var resp = await curd.postData(AppLink.viewPendingOrders, {
+      "userID": userid,
+    });
+    return resp.fold((s) => s, (r) => r);
+  }
 }
