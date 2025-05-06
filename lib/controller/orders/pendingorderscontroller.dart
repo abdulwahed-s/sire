@@ -7,7 +7,7 @@ import 'package:sire/data/datasource/remote/orders/orderdata.dart';
 import 'package:sire/data/model/ordersmodel.dart';
 
 abstract class PendingOrdersController extends GetxController {
-  getOrders();
+  getPendingOrders();
   Color getStatusColor(int? statusCode);
   String getStatusText(int? statusCode);
   String getPaymentType(int paymentCode);
@@ -22,7 +22,7 @@ class PendingOrdersControllerImp extends PendingOrdersController {
   List<OrdersModel> pendingOrders = [];
 
   @override
-  getOrders() async {
+  getPendingOrders() async {
     statusRequest = StatusRequest.loding;
     pendingOrders.clear();
     var response =
@@ -45,7 +45,7 @@ class PendingOrdersControllerImp extends PendingOrdersController {
 
   @override
   void onInit() {
-    getOrders();
+    getPendingOrders();
     super.onInit();
   }
 
@@ -60,6 +60,8 @@ class PendingOrdersControllerImp extends PendingOrdersController {
         return Colors.lightBlue; // On the way/delivery
       case 3:
         return Colors.green; // Delivered
+      case 4:
+        return Colors.purple; // Waiting for customer pickup
       case -1:
         return Colors.red; // Cancelled
       default:
@@ -78,6 +80,8 @@ class PendingOrdersControllerImp extends PendingOrdersController {
         return 'On The Way';
       case 3:
         return 'Delivered';
+      case 4:
+         return 'Ready for Pickup';
       case -1:
         return 'Cancelled';
       default:
