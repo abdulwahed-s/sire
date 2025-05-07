@@ -47,6 +47,7 @@ static const String deleteNotification = "$server/notification/deleteNotificatio
 //orders
 static const String viewPendingOrders = "$server/orders/pending.php";
 static const String viewArchivedOrders = "$server/orders/archived.php";
+static const String getOrderDetails = "$server/orders/vieworder.php";
 
 
 

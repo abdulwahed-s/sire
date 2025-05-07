@@ -11,9 +11,17 @@ class OrderData {
     return resp.fold((s) => s, (r) => r);
   }
 
-    getArchivedOrders(String userid) async {
+  getArchivedOrders(String userid) async {
     var resp = await curd.postData(AppLink.viewArchivedOrders, {
       "userID": userid,
+    });
+    return resp.fold((s) => s, (r) => r);
+  }
+
+  getOrderDetails(String userid, String orderid) async {
+    var resp = await curd.postData(AppLink.getOrderDetails, {
+      "userID": userid,
+      "orderID": orderid,
     });
     return resp.fold((s) => s, (r) => r);
   }
