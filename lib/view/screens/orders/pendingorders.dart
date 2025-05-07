@@ -99,7 +99,8 @@ class PendingOrders extends StatelessWidget {
                     alignment: Alignment.centerRight,
                     child: ElevatedButton(
                       onPressed: () {
-                        // Handle order details
+                        controller.getOrderDetails(
+                            controller.pendingOrders[index].orderId!.toString());
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Appcolor.amaranthpink,

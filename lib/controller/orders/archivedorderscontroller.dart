@@ -4,11 +4,13 @@ import 'package:sire/core/functions/handlingdata.dart';
 import 'package:sire/core/services/services.dart';
 import 'package:sire/data/datasource/remote/orders/orderdata.dart';
 import 'package:sire/data/model/ordersmodel.dart';
+import 'package:sire/view/screens/orders/orderdetails.dart';
 
 abstract class ArchivedOrdersController extends GetxController {
   getArchivedOrders();
   String getPaymentType(int paymentCode);
   String getOrderType(int typeCode);
+    getOrderDetails(String orderid);
 }
 
 class ArchivedOrdersControllerImp extends ArchivedOrdersController {
@@ -74,5 +76,13 @@ class ArchivedOrdersControllerImp extends ArchivedOrdersController {
       default:
         return 'Unknown Order Method';
     }
+  }
+
+  @override
+  getOrderDetails(orderid) {
+    Get.to(
+      () => OrderDetails(),
+      arguments: {"orderid": orderid},
+    );
   }
 }

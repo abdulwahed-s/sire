@@ -5,6 +5,7 @@ import 'package:sire/core/functions/handlingdata.dart';
 import 'package:sire/core/services/services.dart';
 import 'package:sire/data/datasource/remote/orders/orderdata.dart';
 import 'package:sire/data/model/ordersmodel.dart';
+import 'package:sire/view/screens/orders/orderdetails.dart';
 
 abstract class PendingOrdersController extends GetxController {
   getPendingOrders();
@@ -12,6 +13,7 @@ abstract class PendingOrdersController extends GetxController {
   String getStatusText(int? statusCode);
   String getPaymentType(int paymentCode);
   String getOrderType(int typeCode);
+  getOrderDetails(String orderid);
 }
 
 class PendingOrdersControllerImp extends PendingOrdersController {
@@ -25,8 +27,8 @@ class PendingOrdersControllerImp extends PendingOrdersController {
   getPendingOrders() async {
     statusRequest = StatusRequest.loding;
     pendingOrders.clear();
-    var response =
-        await orderData.getPendingOrders(services.sharedPreferences.getString("id")!);
+    var response = await orderData
+        .getPendingOrders(services.sharedPreferences.getString("id")!);
     statusRequest = handlingdata(response);
     if (statusRequest == StatusRequest.success) {
       if (response["status"] == "success") {
@@ -62,6 +64,8 @@ class PendingOrdersControllerImp extends PendingOrdersController {
         return Colors.green; // Delivered
       case 4:
         return Colors.purple; // Waiting for customer pickup
+      case 5:
+        return Colors.green; // Waiting for customer pickup
       case -1:
         return Colors.red; // Cancelled
       default:
@@ -81,7 +85,9 @@ class PendingOrdersControllerImp extends PendingOrdersController {
       case 3:
         return 'Delivered';
       case 4:
-         return 'Ready for Pickup';
+        return 'Ready for Pickup';
+      case 5:
+        return 'User Picked Up';
       case -1:
         return 'Cancelled';
       default:
@@ -117,5 +123,13 @@ class PendingOrdersControllerImp extends PendingOrdersController {
       default:
         return 'Unknown Order Method';
     }
+  }
+
+  @override
+  getOrderDetails(orderid) {
+    Get.to(
+      () => OrderDetails(),
+      arguments: {"orderid": orderid},
+    );
   }
 }

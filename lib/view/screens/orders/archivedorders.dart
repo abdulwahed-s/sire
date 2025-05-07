@@ -98,7 +98,9 @@ class ArchivedOrders extends StatelessWidget {
                     alignment: Alignment.centerRight,
                     child: ElevatedButton(
                       onPressed: () {
-                        // Handle order details
+                        controller.getOrderDetails(controller
+                            .archivedOrders[index].orderId
+                            .toString());
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Appcolor.amaranthpink,
