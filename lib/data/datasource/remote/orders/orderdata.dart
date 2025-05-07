@@ -25,4 +25,12 @@ class OrderData {
     });
     return resp.fold((s) => s, (r) => r);
   }
+
+  cancelorder(String orderid)async{
+        var resp = await curd.postData(AppLink.cancelOrder, {
+      "orderid": orderid,
+    });
+    return resp.fold((s) => s, (r) => r);
+  }
+
 }
