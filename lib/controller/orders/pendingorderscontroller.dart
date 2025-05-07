@@ -14,6 +14,7 @@ abstract class PendingOrdersController extends GetxController {
   String getPaymentType(int paymentCode);
   String getOrderType(int typeCode);
   getOrderDetails(String orderid);
+  cancelorder(String orderid);
 }
 
 class PendingOrdersControllerImp extends PendingOrdersController {
@@ -131,5 +132,21 @@ class PendingOrdersControllerImp extends PendingOrdersController {
       () => OrderDetails(),
       arguments: {"orderid": orderid},
     );
+  }
+
+  @override
+  cancelorder(orderid) async {
+    statusRequest = StatusRequest.loding;
+    var response = await orderData.cancelorder(orderid);
+    statusRequest = handlingdata(response);
+    if (statusRequest == StatusRequest.success) {
+      if (response["status"] == "success") {
+        print("done");
+      } else if (response["status"] == "failure") {
+        statusRequest = StatusRequest.failure;
+      }
+    }
+    getPendingOrders();
+    update();
   }
 }
