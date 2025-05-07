@@ -6,6 +6,11 @@ import 'package:sire/apilink.dart';
 import 'package:sire/controller/orders/orderdetailscontroller.dart';
 import 'package:sire/core/constant/color.dart';
 import 'package:sire/view/screens/address/updateadress.dart';
+import 'package:sire/view/widgets/orders/helpoption.dart';
+import 'package:sire/view/widgets/orders/inforow.dart';
+import 'package:sire/view/widgets/orders/sectionheader.dart';
+
+import '../../widgets/orders/orderdetailrow.dart';
 
 class OrderDetails extends StatelessWidget {
   const OrderDetails({super.key});
@@ -36,67 +41,8 @@ class OrderDetails extends StatelessWidget {
           ));
         }
 
-        String getStatusText(int statusCode, int orderType) {
-          switch (statusCode) {
-            case 0:
-              return 'Pending Approval';
-            case 1:
-              return 'Preparing';
-            case -1:
-              return 'Cancelled';
-            case 5:
-              return 'User Picked Up';
-            case 6:
-              return 'Archived';
-          }
-
-          if (orderType == 0) {
-            switch (statusCode) {
-              case 2:
-                return 'On The Way';
-              case 3:
-                return 'Delivered';
-            }
-          } else {
-            if (statusCode == 4) return 'Ready for Pickup';
-          }
-
-          return 'Unknown Status';
-        }
-
-        List<Map<String, dynamic>> getSteps(int orderType) {
-          if (orderType == 0) {
-            return [
-              {'title': getStatusText(0, orderType), 'icon': Icons.access_time},
-              {'title': getStatusText(1, orderType), 'icon': Icons.build},
-              {
-                'title': getStatusText(2, orderType),
-                'icon': Icons.delivery_dining
-              },
-              {
-                'title': getStatusText(3, orderType),
-                'icon': Icons.check_circle
-              },
-              if (controller.orderDetails[0].orderStatus == 6)
-                {'title': getStatusText(6, orderType), 'icon': Icons.archive},
-            ];
-          } else {
-            return [
-              {'title': getStatusText(0, orderType), 'icon': Icons.access_time},
-              {'title': getStatusText(1, orderType), 'icon': Icons.restaurant},
-              {'title': getStatusText(4, orderType), 'icon': Icons.store},
-              {
-                'title': getStatusText(5, orderType),
-                'icon': Icons.check_circle
-              },
-              if (controller.orderDetails[0].orderStatus == 6)
-                {'title': getStatusText(6, orderType), 'icon': Icons.archive},
-            ];
-          }
-        }
-
         final int orderType = controller.orderDetails[0].orderType ?? 0;
-        final List<Map<String, dynamic>> steps = getSteps(orderType);
+        final List<Map<String, dynamic>> steps = controller.getSteps(orderType);
         final int currentStatus = controller.orderDetails[0].orderStatus!;
         final isDelivery = orderType == 0;
         final isCancelled = currentStatus == -1;
@@ -152,7 +98,7 @@ class OrderDetails extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
-                shadowColor: Colors.black.withOpacity(0.1),
+                shadowColor: Colors.black.withValues(alpha: 0.1),
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Column(
@@ -173,24 +119,25 @@ class OrderDetails extends StatelessWidget {
                             padding: EdgeInsets.symmetric(
                                 horizontal: 12, vertical: 6),
                             decoration: BoxDecoration(
-                              color: _getStatusColor(
+                              color: controller
+                                  .getStatusColor(
                                       controller.orderDetails[0].orderStatus!,
                                       orderType)
-                                  .withOpacity(0.1),
+                                  .withValues(alpha: 0.1),
                               borderRadius: BorderRadius.circular(16),
                               border: Border.all(
-                                color: _getStatusColor(
+                                color: controller.getStatusColor(
                                     controller.orderDetails[0].orderStatus!,
                                     orderType),
                                 width: 1,
                               ),
                             ),
                             child: Text(
-                              getStatusText(
+                              controller.getStatusText(
                                   controller.orderDetails[0].orderStatus!,
                                   orderType),
                               style: TextStyle(
-                                  color: _getStatusColor(
+                                  color: controller.getStatusColor(
                                       controller.orderDetails[0].orderStatus!,
                                       orderType),
                                   fontWeight: FontWeight.w600,
@@ -200,7 +147,7 @@ class OrderDetails extends StatelessWidget {
                         ],
                       ),
                       SizedBox(height: 16),
-                      _buildInfoRow(
+                      InfoRow(
                         icon: Icons.calendar_today,
                         title: Jiffy.parse(
                                 controller.orderDetails[0].orderDatetime!)
@@ -210,7 +157,7 @@ class OrderDetails extends StatelessWidget {
                             .fromNow(),
                       ),
                       SizedBox(height: 12),
-                      _buildInfoRow(
+                      InfoRow(
                         icon: orderType == 0
                             ? Icons.delivery_dining
                             : Icons.store,
@@ -224,14 +171,14 @@ class OrderDetails extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 20),
-              _buildSectionHeader("Order Items"),
+              SectionHeader(title: "Order Items"),
               SizedBox(height: 12),
               Card(
                 elevation: 2,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
-                shadowColor: Colors.black.withOpacity(0.1),
+                shadowColor: Colors.black.withValues(alpha: 0.1),
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Column(
@@ -253,7 +200,7 @@ class OrderDetails extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(8),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Colors.black.withOpacity(0.1),
+                                    color: Colors.black.withValues(alpha: 0.1),
                                     blurRadius: 4,
                                     offset: Offset(0, 2),
                                   )
@@ -313,12 +260,12 @@ class OrderDetails extends StatelessWidget {
                                             horizontal: 8, vertical: 4),
                                         decoration: BoxDecoration(
                                           color: Appcolor.amaranthpink
-                                              .withOpacity(0.1),
+                                              .withValues(alpha: 0.1),
                                           borderRadius:
                                               BorderRadius.circular(6),
                                           border: Border.all(
                                             color: Appcolor.amaranthpink
-                                                .withOpacity(0.3),
+                                                .withValues(alpha: 0.3),
                                             width: 1,
                                           ),
                                         ),
@@ -393,14 +340,14 @@ class OrderDetails extends StatelessWidget {
               ),
               SizedBox(height: 20),
               if (orderType == 0) ...[
-                _buildSectionHeader("Delivery Address"),
+                SectionHeader(title: "Delivery Address"),
                 SizedBox(height: 12),
                 Card(
                   elevation: 2,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  shadowColor: Colors.black.withOpacity(0.1),
+                  shadowColor: Colors.black.withValues(alpha: 0.1),
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: Column(
@@ -411,7 +358,8 @@ class OrderDetails extends StatelessWidget {
                             Container(
                               padding: EdgeInsets.all(6),
                               decoration: BoxDecoration(
-                                color: Appcolor.amaranthpink.withOpacity(0.1),
+                                color: Appcolor.amaranthpink
+                                    .withValues(alpha: 0.1),
                                 shape: BoxShape.circle,
                               ),
                               child: Icon(
@@ -455,14 +403,24 @@ class OrderDetails extends StatelessWidget {
                                 ),
                               ),
                               SizedBox(height: 16),
-                              _buildAddressDetailRow("Building",
-                                  controller.orderDetails[0].addressBuilding!),
-                              _buildAddressDetailRow("Street",
-                                  controller.orderDetails[0].addressStreet!),
-                              _buildAddressDetailRow("Block",
-                                  controller.orderDetails[0].addressBlock!),
-                              _buildAddressDetailRow("Floor",
-                                  controller.orderDetails[0].addressFloor!),
+                              DetailRow(
+                                label: "Building",
+                                value:
+                                    controller.orderDetails[0].addressBuilding!,
+                              ),
+                              DetailRow(
+                                label: "Street",
+                                value:
+                                    controller.orderDetails[0].addressStreet!,
+                              ),
+                              DetailRow(
+                                label: "Block",
+                                value: controller.orderDetails[0].addressBlock!,
+                              ),
+                              DetailRow(
+                                label: "Floor",
+                                value: controller.orderDetails[0].addressFloor!,
+                              ),
                             ],
                           ),
                         ),
@@ -503,14 +461,14 @@ class OrderDetails extends StatelessWidget {
                 SizedBox(height: 20),
               ],
               if (orderType == 1) ...[
-                _buildSectionHeader("Pickup Information"),
+                SectionHeader(title: "Pickup Information"),
                 SizedBox(height: 12),
                 Card(
                   elevation: 2,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  shadowColor: Colors.black.withOpacity(0.1),
+                  shadowColor: Colors.black.withValues(alpha: 0.1),
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: Column(
@@ -521,7 +479,8 @@ class OrderDetails extends StatelessWidget {
                             Container(
                               padding: EdgeInsets.all(6),
                               decoration: BoxDecoration(
-                                color: Appcolor.amaranthpink.withOpacity(0.1),
+                                color: Appcolor.amaranthpink
+                                    .withValues(alpha: 0.1),
                                 shape: BoxShape.circle,
                               ),
                               child: Icon(
@@ -565,12 +524,15 @@ class OrderDetails extends StatelessWidget {
                                 ),
                               ),
                               SizedBox(height: 16),
-                              _buildAddressDetailRow("Pickup Time",
-                                  "When order status is 'Ready for Pickup'"),
-                              _buildAddressDetailRow(
-                                  "Location", "123 Main Street, City Center"),
-                              _buildAddressDetailRow(
-                                  "Contact", "+123 456 7890"),
+                              DetailRow(
+                                  label: "Pickup Time",
+                                  value:
+                                      "When order status is 'Ready for Pickup'"),
+                              DetailRow(
+                                  label: "Location",
+                                  value: "123 Main Street, City Center"),
+                              DetailRow(
+                                  label: "Contact", value: "+123 456 7890"),
                             ],
                           ),
                         ),
@@ -580,14 +542,14 @@ class OrderDetails extends StatelessWidget {
                 ),
                 SizedBox(height: 20),
               ],
-              _buildSectionHeader("Order Status"),
+              SectionHeader(title: "Order Status"),
               SizedBox(height: 12),
               Card(
                 elevation: 2,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
-                shadowColor: Colors.black.withOpacity(0.1),
+                shadowColor: Colors.black.withValues(alpha: 0.1),
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Column(
@@ -606,7 +568,7 @@ class OrderDetails extends StatelessWidget {
                             final isLast = idx == steps.length - 1;
                             final isCurrent = idx == currentStepIndex;
 
-                            return Container(
+                            return SizedBox(
                               width: 120,
                               child: Column(
                                 children: [
@@ -618,17 +580,22 @@ class OrderDetails extends StatelessWidget {
                                         width: 40,
                                         decoration: BoxDecoration(
                                           shape: BoxShape.circle,
-                                          color: isCancelled || isArchived
-                                              ? Colors.grey[300]
-                                              : isCompleted
-                                                  ? Appcolor.amaranthpink
-                                                  : Colors.grey[200],
+                                          color: isCancelled
+                                              ? Colors.red[300]
+                                              : isArchived
+                                                  ? Colors.grey[300]
+                                                  : isCompleted
+                                                      ? Appcolor.amaranthpink
+                                                      : Colors.grey[200],
                                           border: Border.all(
-                                            color: isCancelled || isArchived
-                                                ? Colors.grey
-                                                : isCompleted
-                                                    ? Appcolor.amaranthpink
-                                                    : Colors.grey[300]!,
+                                            color: isCancelled
+                                                ? const Color.fromARGB(
+                                                    255, 175, 0, 0)
+                                                : isArchived
+                                                    ? Colors.grey
+                                                    : isCompleted
+                                                        ? Appcolor.amaranthpink
+                                                        : Colors.grey[300]!,
                                             width: 2,
                                           ),
                                         ),
@@ -657,7 +624,7 @@ class OrderDetails extends StatelessWidget {
                                           decoration: BoxDecoration(
                                             shape: BoxShape.circle,
                                             color: Appcolor.amaranthpink
-                                                .withOpacity(0.1),
+                                                .withValues(alpha: 0.1),
                                           ),
                                         ),
                                     ],
@@ -669,11 +636,13 @@ class OrderDetails extends StatelessWidget {
                                     style: TextStyle(
                                       fontWeight: FontWeight.w600,
                                       fontSize: 12,
-                                      color: isCancelled || isArchived
-                                          ? Colors.grey
-                                          : isCompleted
-                                              ? Colors.black
-                                              : Colors.grey[600],
+                                      color: isCancelled
+                                          ? Colors.red[300]
+                                          : isArchived
+                                              ? Colors.grey
+                                              : isCompleted
+                                                  ? Colors.black
+                                                  : Colors.grey[600],
                                     ),
                                   ),
                                   SizedBox(height: 6),
@@ -692,11 +661,13 @@ class OrderDetails extends StatelessWidget {
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       fontSize: 10,
-                                      color: isCancelled || isArchived
-                                          ? Colors.grey
-                                          : isCompleted
-                                              ? Appcolor.amaranthpink
-                                              : Colors.grey[400],
+                                      color: isCancelled
+                                          ? Colors.red[300]
+                                          : isArchived
+                                              ? Colors.grey
+                                              : isCompleted
+                                                  ? Appcolor.amaranthpink
+                                                  : Colors.grey[400],
                                     ),
                                   ),
                                   if (!isLast)
@@ -705,13 +676,15 @@ class OrderDetails extends StatelessWidget {
                                         child: Container(
                                           width: 40,
                                           height: 2,
-                                          color: isCancelled || isArchived
-                                              ? Colors.grey[300]
-                                              : idx < currentStepIndex ||
-                                                      (idx == currentStepIndex &&
-                                                          isCurrentStepCompleted)
-                                                  ? Appcolor.amaranthpink
-                                                  : Colors.grey[300],
+                                          color: isCancelled
+                                              ? Colors.red[300]
+                                              : isArchived
+                                                  ? Colors.grey[300]
+                                                  : idx < currentStepIndex ||
+                                                          (idx == currentStepIndex &&
+                                                              isCurrentStepCompleted)
+                                                      ? Appcolor.amaranthpink
+                                                      : Colors.grey[300],
                                         ),
                                       ),
                                     ),
@@ -731,7 +704,7 @@ class OrderDetails extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
-                shadowColor: Colors.black.withOpacity(0.1),
+                shadowColor: Colors.black.withValues(alpha: 0.1),
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Column(
@@ -745,11 +718,19 @@ class OrderDetails extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: 12),
-                      _buildHelpOption(Icons.headset_mic, "Contact Support",
-                          "Get help with your order", () {}),
+                      HelpOption(
+                        icon: Icons.headset_mic,
+                        title: "Contact Support",
+                        subtitle: "Get help with your order",
+                        onTap: () {},
+                      ),
                       Divider(height: 24, color: Colors.grey[200]),
-                      _buildHelpOption(Icons.replay, "Report an Issue",
-                          "Having problems with your order?", () {}),
+                      HelpOption(
+                        icon: Icons.replay,
+                        title: "Report an Issue",
+                        subtitle: "Having problems with your order?",
+                        onTap: () {},
+                      ),
                     ],
                   ),
                 ),
@@ -760,175 +741,5 @@ class OrderDetails extends StatelessWidget {
         );
       }),
     );
-  }
-
-  Widget _buildSectionHeader(String title) {
-    return Text(
-      title,
-      style: TextStyle(
-        fontSize: 18,
-        fontWeight: FontWeight.bold,
-        color: Colors.grey[800],
-      ),
-    );
-  }
-
-  Widget _buildInfoRow({
-    required IconData icon,
-    required String title,
-    String? subtitle,
-  }) {
-    return Row(
-      children: [
-        Container(
-          padding: EdgeInsets.all(6),
-          decoration: BoxDecoration(
-            color: Appcolor.amaranthpink.withOpacity(0.1),
-            shape: BoxShape.circle,
-          ),
-          child: Icon(
-            icon,
-            color: Appcolor.amaranthpink,
-            size: 18,
-          ),
-        ),
-        SizedBox(width: 12),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              title,
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-            if (subtitle != null) ...[
-              SizedBox(height: 2),
-              Text(
-                subtitle,
-                style: TextStyle(
-                  fontSize: 12,
-                  color: Colors.grey[600],
-                ),
-              ),
-            ],
-          ],
-        ),
-      ],
-    );
-  }
-
-  Widget _buildAddressDetailRow(String label, String value) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 8.0),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            width: 80,
-            child: Text(
-              "$label:",
-              style: TextStyle(
-                fontSize: 14,
-                color: Colors.grey[600],
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-          ),
-          SizedBox(width: 8),
-          Expanded(
-            child: Text(
-              value,
-              style: TextStyle(
-                fontSize: 14,
-                color: Colors.grey[800],
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildHelpOption(
-      IconData icon, String title, String subtitle, VoidCallback onTap) {
-    return InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(8),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 8.0),
-        child: Row(
-          children: [
-            Container(
-              padding: EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                color: Appcolor.amaranthpink.withOpacity(0.1),
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: Icon(
-                icon,
-                color: Appcolor.amaranthpink,
-                size: 22,
-              ),
-            ),
-            SizedBox(width: 12),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: TextStyle(
-                      fontWeight: FontWeight.w600,
-                      fontSize: 15,
-                    ),
-                  ),
-                  SizedBox(height: 2),
-                  Text(
-                    subtitle,
-                    style: TextStyle(
-                      fontSize: 13,
-                      color: Colors.grey[600],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Icon(
-              Icons.chevron_right,
-              color: Colors.grey[400],
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Color _getStatusColor(int status, int orderType) {
-    if (status == -1) return Colors.grey;
-    if (status == 6) return Colors.grey.shade600;
-
-    switch (status) {
-      case 0:
-        return Colors.orange;
-      case 1:
-        return Colors.blue;
-      case 5:
-        return orderType == 1 ? Colors.green : Colors.grey.shade600;
-    }
-
-    if (orderType == 0) {
-      switch (status) {
-        case 2:
-          return Colors.purple;
-        case 3:
-          return Colors.green;
-      }
-    } else {
-      if (status == 4) return Colors.teal;
-    }
-
-    return Colors.grey;
   }
 }
