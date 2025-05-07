@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:sire/controller/setting/settingcontroller.dart';
 import 'package:sire/core/constant/color.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Settings extends StatelessWidget {
   const Settings({super.key});
@@ -101,17 +103,86 @@ class Settings extends StatelessWidget {
                       height: 5,
                     ),
                     ListTile(
-                      splashColor: Appcolor.rosePompadour,
-                      title: Text("Contact Us"),
-                      trailing: CircleAvatar(
-                        backgroundColor: Appcolor.white,
-                        child: Icon(
-                          Icons.phone_rounded,
-                          color: Appcolor.indigoBlue,
+                        splashColor: Appcolor.rosePompadour,
+                        title: Text("Contact Us"),
+                        trailing: CircleAvatar(
+                          backgroundColor: Appcolor.white,
+                          child: Icon(
+                            Icons.phone_rounded,
+                            color: Appcolor.indigoBlue,
+                          ),
                         ),
-                      ),
-                      onTap: () {},
-                    ),
+                        onTap: () {
+                          Get.defaultDialog(
+                            title: "Contact Us",
+                            titleStyle: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Appcolor.indigoBlue,
+                            ),
+                            middleText: "How would you like to contact us?",
+                            middleTextStyle: TextStyle(color: Colors.grey[600]),
+                            backgroundColor: Colors.white,
+                            radius: 10,
+                            contentPadding: EdgeInsets.all(20),
+                            actions: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: Colors.green,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(20),
+                                      ),
+                                    ),
+                                    child: Row(
+                                      children: [
+                                        FaIcon(FontAwesomeIcons.whatsapp,
+                                            color: Colors.white),
+                                        SizedBox(width: 5),
+                                        Text("WhatsApp",
+                                            style:
+                                                TextStyle(color: Colors.white)),
+                                      ],
+                                    ),
+                                    onPressed: () {
+                                      Get.back();
+                                      controller.contactus(0);
+                                    },
+                                  ),
+                                  ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: Appcolor.indigoBlue,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(20),
+                                      ),
+                                    ),
+                                    child: Row(
+                                      children: [
+                                        Icon(Icons.sms, color: Colors.white),
+                                        SizedBox(width: 5),
+                                        Text("SMS",
+                                            style:
+                                                TextStyle(color: Colors.white)),
+                                      ],
+                                    ),
+                                    onPressed: () {
+                                      Get.back();
+                                      controller.contactus(1);
+                                    },
+                                  ),
+                                ],
+                              ),
+                            ],
+                            confirm: TextButton(
+                              child: Text("Cancel",
+                                  style: TextStyle(color: Colors.grey)),
+                              onPressed: () => Get.back(),
+                            ),
+                          );
+                        }),
                     SizedBox(
                       height: 5,
                     ),
