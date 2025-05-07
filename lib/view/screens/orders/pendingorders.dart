@@ -97,22 +97,123 @@ class PendingOrders extends StatelessWidget {
                   // Details button
                   Align(
                     alignment: Alignment.centerRight,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        controller.getOrderDetails(
-                            controller.pendingOrders[index].orderId!.toString());
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Appcolor.amaranthpink,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        ElevatedButton(
+                          onPressed: () {
+                            controller.getOrderDetails(
+                              controller.pendingOrders[index].orderId!
+                                  .toString(),
+                            );
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.white,
+                            foregroundColor: Appcolor.amaranthpink,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                              side: BorderSide(
+                                color: Appcolor.amaranthpink,
+                                width: 1.5,
+                              ),
+                            ),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 16, vertical: 10),
+                            elevation: 0,
+                          ),
+                          child: Text(
+                            'Order Details',
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
                         ),
-                      ),
-                      child: Text(
-                        'Order Details',
-                        style: TextStyle(
-                            fontSize: 14, fontWeight: FontWeight.w600),
-                      ),
+                        if (controller.pendingOrders[index].orderStatus! == 0)
+                          SizedBox(width: 12),
+                        if (controller.pendingOrders[index].orderStatus! == 0)
+                          ElevatedButton(
+                            onPressed: () {
+                              Get.defaultDialog(
+                                title: "Cancel Order?",
+                                titleStyle: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.red[700],
+                                ),
+                                middleText:
+                                    "Are you sure you want to cancel this order?",
+                                middleTextStyle: TextStyle(fontSize: 14),
+                                backgroundColor: Colors.white,
+                                radius: 12,
+                                contentPadding: EdgeInsets.all(20),
+                                actions: [
+                                  // Cancel Button (No action - just closes dialog)
+                                  ElevatedButton(
+                                    onPressed: () => Get.back(),
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: Appcolor.berry,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 16, vertical: 8),
+                                    ),
+                                    child: Text(
+                                      "No, Keep It",
+                                      style: TextStyle(
+                                        color: Appcolor.white,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                  ),
+                                  // Confirm Cancel Button
+                                  ElevatedButton(
+                                    onPressed: () {
+                                      controller.cancelorder(
+                                        controller.pendingOrders[index].orderId!
+                                            .toString(),
+                                      );
+                                      Get.back(); // Close the dialog
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: Colors.red[700],
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 16, vertical: 8),
+                                    ),
+                                    child: Text(
+                                      "Yes, Cancel",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              );
+                            },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Appcolor.red,
+                              foregroundColor: Colors.white,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: 12,
+                                  vertical: 8), // Smaller padding
+                            ),
+                            child: Text(
+                              'Cancel Order',
+                              style: TextStyle(
+                                fontSize: 13, // Slightly smaller text
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ),
+                      ],
                     ),
                   )
                 ],
