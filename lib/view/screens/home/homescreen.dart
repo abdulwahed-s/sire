@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sire/controller/home/homescreenController.dart';
+import 'package:sire/core/functions/alertexitapp.dart';
 import 'package:sire/view/screens/cart/cart.dart';
 import 'package:sire/view/widgets/home/custombottomnavigationbar.dart';
 
@@ -28,12 +29,18 @@ class HomeScreen extends StatelessWidget {
               FloatingActionButtonLocation.centerDocked,
           bottomNavigationBar: CustomBottomNavigationBar(),
           extendBody: true,
-          body: AnimatedSwitcher(
-            duration: const Duration(milliseconds: 300),
-            transitionBuilder: (Widget child, Animation<double> animation) {
-              return FadeTransition(opacity: animation, child: child);
+          body: PopScope(
+            canPop: false,
+            onPopInvokedWithResult: (didPop, result) {
+              alertExitApp();
             },
-            child: controller.listpages.elementAt(controller.currentpage),
+            child: AnimatedSwitcher(
+              duration: const Duration(milliseconds: 300),
+              transitionBuilder: (Widget child, Animation<double> animation) {
+                return FadeTransition(opacity: animation, child: child);
+              },
+              child: controller.listpages.elementAt(controller.currentpage),
+            ),
           ),
         );
       },
