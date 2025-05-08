@@ -49,6 +49,9 @@ static const String viewPendingOrders = "$server/orders/pending.php";
 static const String viewArchivedOrders = "$server/orders/archived.php";
 static const String getOrderDetails = "$server/orders/vieworder.php";
 static const String cancelOrder = "$server/orders/cancel.php";
+//rating
+static const String addRating = "$server/rating/add.php";
+
 
 
 
