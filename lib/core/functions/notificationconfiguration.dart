@@ -23,7 +23,13 @@ Future<void> notificationConfiguration() async {
   );
 
   if (settings.authorizationStatus == AuthorizationStatus.authorized) {
-    Get.snackbar("Success", "Notification permission granted");
+    Get.snackbar(
+      "Success",
+      "Notification permission granted",
+      colorText: Appcolor.charcoalGray,
+      backgroundColor: Appcolor.rosePompadour,
+      icon: const Icon(Icons.notifications_active),
+    );
   } else if (settings.authorizationStatus == AuthorizationStatus.denied ||
       settings.authorizationStatus == AuthorizationStatus.provisional) {
     Get.defaultDialog(
