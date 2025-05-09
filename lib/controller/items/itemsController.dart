@@ -28,6 +28,7 @@ class ItemscontrollerImp extends ItemsController {
   getData(catId) async {
     data.clear();
     statusRequest = StatusRequest.loding;
+    update();
     var response = await itemsdata.postData(
         catId, services.sharedPreferences.getString("id")!);
     statusRequest = handlingdata(response);
