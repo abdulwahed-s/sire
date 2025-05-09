@@ -13,4 +13,19 @@ class RatingData {
     });
     return resp.fold((s) => s, (r) => r);
   }
+
+  getRating(String itemid) async {
+    var resp = await curd.postData(AppLink.getRating, {
+      "itemid": itemid,
+    });
+    return resp.fold((s) => s, (r) => r);
+  }
+
+  isOrdered(String userid, String itemid) async {
+    var resp = await curd.postData(AppLink.getIsOrdered, {
+      "userid": userid,
+      "itemid": itemid,
+    });
+    return resp.fold((s) => s, (r) => r);
+  }
 }
