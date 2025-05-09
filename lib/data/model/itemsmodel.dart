@@ -21,6 +21,7 @@ class ItemsModel {
   String? categoryDate;
   int? favourite;
   double? itemFinalPrice;
+  String? itemAvgRating;
 
   ItemsModel({
     this.itemId,
@@ -45,6 +46,7 @@ class ItemsModel {
     this.categoryDate,
     this.favourite,
     this.itemFinalPrice,
+    this.itemAvgRating,
   });
 
   ItemsModel.fromJson(Map<String, dynamic> json) {
@@ -70,6 +72,7 @@ class ItemsModel {
     categoryDate = json['category_date'];
     favourite = json['favourite'];
     itemFinalPrice = (json['item_final_price'] as num?)?.toDouble();
+    itemAvgRating = json['item_avg_rating'];
   }
 
   Map<String, dynamic> toJson() {
@@ -95,6 +98,7 @@ class ItemsModel {
     data['category_img'] = categoryImg;
     data['category_date'] = categoryDate;
     data['favourite'] = favourite;
+    data['item_avg_rating'] = itemAvgRating;
     data['item_final_price'] = itemFinalPrice;
     return data;
   }
