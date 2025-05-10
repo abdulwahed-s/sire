@@ -706,8 +706,7 @@ class ItemDetails extends StatelessWidget {
                         controller.data.itemId.toString(),
                         controller.stars.toString(),
                         controller.comment!.text);
-                    Get.back();
-                  },
+                    Get.back(closeOverlays: true);                  },
                   child: const Text('Submit Review',
                       style:
                           TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
