@@ -8,14 +8,17 @@ import 'package:sire/controller/items/itemsController.dart';
 import 'package:sire/core/constant/color.dart';
 import 'package:sire/core/functions/databasetranslation.dart';
 import 'package:sire/data/model/itemsmodel.dart';
+import 'package:sire/view/widgets/address/gradientprogressindicator.dart';
 
 class CustomItemsList extends GetView<ItemscontrollerImp> {
   final ItemsModel itemsModel;
   final Function()? onTap;
+  final bool loading;
   const CustomItemsList({
     super.key,
     required this.itemsModel,
     required this.onTap,
+    required this.loading,
   });
 
   @override
@@ -213,8 +216,13 @@ class CustomItemsList extends GetView<ItemscontrollerImp> {
                             ),
                             padding: EdgeInsets.symmetric(horizontal: 14),
                             constraints: const BoxConstraints(),
-                            child: const Icon(Icons.add_shopping_cart,
-                                size: 18, color: Appcolor.deepPurple),
+                            child: loading
+                                ? SizedBox(
+                                    width: 18,
+                                    child: GradientProgressIndicator(
+                                        strokeWidth: 2))
+                                : Icon(Icons.add_shopping_cart,
+                                    size: 18, color: Appcolor.deepPurple),
                           ),
                         ),
                       ),
