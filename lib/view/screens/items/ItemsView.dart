@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
 import 'package:sire/controller/favourites/favouritesController.dart';
 import 'package:sire/controller/items/itemsController.dart';
@@ -25,22 +26,29 @@ class ItemsView extends StatelessWidget {
                 widget: ListView(
                   children: [
                     CategorieslistItems(),
-                    GridView.builder(
-                        itemCount: controller.data.length,
-                        shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            childAspectRatio: 0.75,
-                            crossAxisSpacing: 5),
-                        itemBuilder: (context, index) {
-                          favouritesController.favourites[controller.data[index]
-                                  ["item_id"]] =
-                              controller.data[index]["favourite"];
-                          return CustomItemsList(
-                              itemsModel:
-                                  ItemsModel.fromJson(controller.data[index]));
-                        })
+                    MasonryGridView.count(
+                      crossAxisCount: 2,
+                      mainAxisSpacing: 5,
+                      crossAxisSpacing: 5,
+                      itemCount: controller.data.length,
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      itemBuilder: (context, index) {
+                        favouritesController
+                                .favourites[controller.data[index]["item_id"]] =
+                            controller.data[index]["favourite"];
+                        return CustomItemsList(
+                          loading: controller
+                              .isLoadingItem(controller.data[index]["item_id"]),
+                          onTap: () {
+                            controller.addToCart(
+                                "${controller.data[index]["item_id"]}");
+                          },
+                          itemsModel:
+                              ItemsModel.fromJson(controller.data[index]),
+                        );
+                      },
+                    )
                   ],
                 ));
           },
