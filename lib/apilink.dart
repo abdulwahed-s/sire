@@ -18,6 +18,7 @@ static const String home = "$server/home.php";
 static const String image = "http://10.0.2.2/ecommerce/upload";
 static const String itemimage = "$image/items/";
 static const String categoriesimage = "$image/categories/";
+static const String pfpimage = "$image/pfp/";
 //items
 static const String items = "$server/items/items.php";
 //favourites
@@ -51,6 +52,9 @@ static const String getOrderDetails = "$server/orders/vieworder.php";
 static const String cancelOrder = "$server/orders/cancel.php";
 //rating
 static const String addRating = "$server/rating/add.php";
+static const String getRating = "$server/rating/get.php";
+static const String getIsOrdered = "$server/rating/isordered.php";
+static const String deleteRating = "$server/rating/delete.php";
 
 
 
