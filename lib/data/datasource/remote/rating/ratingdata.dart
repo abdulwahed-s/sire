@@ -28,4 +28,12 @@ class RatingData {
     });
     return resp.fold((s) => s, (r) => r);
   }
+
+  deleteRating(String userid, String rateid) async {
+    var resp = await curd.postData(AppLink.deleteRating, {
+      "userid": userid,
+      "rateid": rateid,
+    });
+    return resp.fold((s) => s, (r) => r);
+  }
 }
