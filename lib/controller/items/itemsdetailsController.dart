@@ -8,6 +8,7 @@ import 'package:sire/core/services/services.dart';
 import 'package:sire/data/datasource/remote/cart/cartdata.dart';
 import 'package:sire/data/datasource/remote/rating/ratingdata.dart';
 import 'package:sire/data/model/ratingmodel.dart';
+import 'package:sire/view/screens/items/viewrating.dart';
 import 'package:sire/view/widgets/items/form.dart';
 
 abstract class ItemsDetailsController extends GetxController {
@@ -18,6 +19,7 @@ abstract class ItemsDetailsController extends GetxController {
   addRating(String itemid, String stars, String comment);
   getRating();
   getIsOrdered();
+  goToAllRating();
 }
 
 class ItemsDetailsControllerImp extends ItemsDetailsController {
@@ -101,9 +103,9 @@ class ItemsDetailsControllerImp extends ItemsDetailsController {
     statusRequest = handlingdata(response);
     if (statusRequest == StatusRequest.success) {
       if (response["status"] == "success") {
-        Get.back();
         Get.find<ItemscontrollerImp>().statusRequest = StatusRequest.loding;
         Get.find<ItemscontrollerImp>().getData("${data.itemCat}");
+        Get.back();
       } else if (response["status"] == "failure") {
         statusRequest = StatusRequest.failure;
       }
@@ -144,5 +146,13 @@ class ItemsDetailsControllerImp extends ItemsDetailsController {
       isOrdered = false;
     }
     update();
+  }
+
+  @override
+  goToAllRating() {
+    Get.to(
+      () => ViewRating(),
+      arguments: {"allRating": allRating},
+    );
   }
 }
