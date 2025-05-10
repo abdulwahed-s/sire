@@ -283,7 +283,9 @@ class ItemDetails extends StatelessWidget {
                     ),
               ),
               InkWell(
-                onTap: () {}, // TODO: Navigate to all reviews
+                onTap: () {
+                  controller.goToAllRating();
+                },
                 child: Text(
                   "See All",
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
@@ -606,7 +608,7 @@ class ItemDetails extends StatelessWidget {
       ),
       child: SafeArea(
         child: SizedBox(
-          width: double.infinity, 
+          width: double.infinity,
           height: 70,
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
@@ -704,7 +706,7 @@ class ItemDetails extends StatelessWidget {
                         controller.data.itemId.toString(),
                         controller.stars.toString(),
                         controller.comment!.text);
-                    Get.back(); 
+                    Get.back();
                   },
                   child: const Text('Submit Review',
                       style:
