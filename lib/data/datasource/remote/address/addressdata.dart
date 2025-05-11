@@ -15,6 +15,7 @@ class AddressData {
       String way,
       String additional,
       String bymap,
+      String deliverytime,
       String marker,
       String lat,
       String long) async {
@@ -29,6 +30,7 @@ class AddressData {
       "way": way,
       "additional": additional,
       "bymap": bymap,
+      "deliverytime": deliverytime,
       "marker": marker,
       "lat": lat,
       "long": long
@@ -61,6 +63,7 @@ class AddressData {
       String way,
       String additional,
       String bymap,
+      String deliverytime,
       String marker,
       String lat,
       String long) async {
@@ -75,7 +78,8 @@ class AddressData {
       "way": way,
       "additional": additional,
       "bymap": bymap,
-      "marker":marker,
+      "deliverytime": deliverytime,
+      "marker": marker,
       "lat": lat,
       "long": long
     });
