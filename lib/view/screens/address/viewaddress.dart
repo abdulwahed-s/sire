@@ -87,36 +87,67 @@ class ViewAddress extends StatelessWidget {
                                             label: 'Delete',
                                           ),
                                         ]),
-                                    child: ListTile(
-                                      title: Text(controller
-                                          .addresses[index].addressName!),
-                                      subtitle: Text.rich(
-                                        TextSpan(
-                                          children: [
+                                    child: Stack(
+                                      children: [
+                                        Positioned(
+                                            right: 10,
+                                            top: 10,
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.min,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              children: [
+                                                Icon(
+                                                  Icons
+                                                      .local_shipping_rounded, // More appropriate delivery icon
+                                                  color: Appcolor.amaranthpink,
+                                                  size: 16,
+                                                ),
+                                                const SizedBox(width: 4),
+                                                Text(
+                                                  'Delivers in ${controller.addresses[index].addressDeliverytime!}',
+                                                  style: TextStyle(
+                                                    fontFamily: "Sw",
+                                                    fontSize: 14,
+                                                    color: Colors.grey[700],
+                                                  ),
+                                                ),
+                                              ],
+                                            )),
+                                        ListTile(
+                                          title: Text(controller
+                                              .addresses[index].addressName!),
+                                          subtitle: Text.rich(
                                             TextSpan(
-                                              text: controller.addresses[index]
-                                                  .addressBymap!,
-                                              style: TextStyle(
-                                                fontSize: 18,
-                                                fontWeight: FontWeight.bold,
-                                              ),
+                                              children: [
+                                                TextSpan(
+                                                  text: controller
+                                                      .addresses[index]
+                                                      .addressBymap!,
+                                                  style: TextStyle(
+                                                    fontSize: 18,
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                                ),
+                                                TextSpan(
+                                                  text:
+                                                      " Building: ${controller.addresses[index].addressBuilding!}, "
+                                                      "Street: ${controller.addresses[index].addressStreet!}, "
+                                                      "Block: ${controller.addresses[index].addressBlock!}, "
+                                                      "Floor: ${controller.addresses[index].addressFloor!}.",
+                                                  style: TextStyle(
+                                                    fontSize: 18,
+                                                    fontWeight:
+                                                        FontWeight.normal,
+                                                  ),
+                                                ),
+                                              ],
                                             ),
-                                            TextSpan(
-                                              text:
-                                                  " Building: ${controller.addresses[index].addressBuilding!}, "
-                                                  "Street: ${controller.addresses[index].addressStreet!}, "
-                                                  "Block: ${controller.addresses[index].addressBlock!}, "
-                                                  "Floor: ${controller.addresses[index].addressFloor!}.",
-                                              style: TextStyle(
-                                                fontSize: 18,
-                                                fontWeight: FontWeight.normal,
-                                              ),
-                                            ),
-                                          ],
+                                            overflow: TextOverflow.ellipsis,
+                                            maxLines: 2,
+                                          ),
                                         ),
-                                        overflow: TextOverflow.ellipsis,
-                                        maxLines: 2,
-                                      ),
+                                      ],
                                     )),
                                 Divider(
                                   endIndent: 10,
