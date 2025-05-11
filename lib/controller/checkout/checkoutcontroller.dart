@@ -100,15 +100,16 @@ class CheckoutControllerImp extends CheckoutController {
 
   @override
   placeOrder() async {
-    if (showSnackBarIf(addressId, 'Delivery address missing') ||
-        showSnackBarIf(deliveryType, "Delivery type not selected") ||
+    if (showSnackBarIf(deliveryType, "Delivery type not selected") ||
+        (deliveryType == 0 &&
+            showSnackBarIf(addressId, 'Delivery address missing')) ||
         showSnackBarIf(paymentType, "Payment method not selected")) {
       return;
     } else {
       statusRequest = StatusRequest.loding;
       var response = await checkoutData.placeOrder(
         services.sharedPreferences.getString("id")!,
-        addressId!.toString(),
+        addressId.toString(),
         deliveryType!.toString(),
         couponController.totalprice!.toString(),
         shippingFee.toString(),
