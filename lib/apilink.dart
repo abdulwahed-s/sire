@@ -13,12 +13,13 @@ static const String checkemail = "$server/forgotpassword/checkemail.php";
 static const String verifycodepass = "$server/forgotpassword/verifycodepass.php";
 static const String resetpassword = "$server/forgotpassword/resetpassword.php";
 //Home
-static const String home = "$server/home.php";
+static const String home = "$server/home/home.php";
 //Images
 static const String image = "http://10.0.2.2/ecommerce/upload";
 static const String itemimage = "$image/items/";
 static const String categoriesimage = "$image/categories/";
 static const String pfpimage = "$image/pfp/";
+static const String homeimage = "$image/home/";
 //items
 static const String items = "$server/items/items.php";
 //favourites
