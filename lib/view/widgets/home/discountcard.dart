@@ -1,11 +1,12 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:sire/core/constant/color.dart';
-import 'package:sire/core/constant/imageasset.dart';
 
 class Discountcard extends StatelessWidget {
   final String title;
   final String content;
-  const Discountcard({super.key, required this.title, required this.content});
+  final String image;
+  const Discountcard({super.key, required this.title, required this.content, required this.image});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +18,7 @@ class Discountcard extends StatelessWidget {
               alignment: Alignment.center,
               decoration: BoxDecoration(
                   image: DecorationImage(
-                      image: AssetImage(AppImage.card), fit: BoxFit.cover),
+                      image: CachedNetworkImageProvider(image), fit: BoxFit.cover),
                   boxShadow: [
                     BoxShadow(
                       color: Appcolor.shadow,
