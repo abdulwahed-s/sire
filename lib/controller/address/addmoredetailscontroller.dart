@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:sire/core/class/statusrequest.dart';
@@ -8,7 +9,12 @@ import 'package:sire/data/datasource/remote/address/addressdata.dart';
 import 'package:sire/view/screens/address/viewaddress.dart';
 import 'package:sire/view/screens/settings/settings.dart';
 
-abstract class AddMoreDetailsController extends GetxController {}
+abstract class AddMoreDetailsController extends GetxController {
+  double calculateDistance(double lat1, double lon1, double lat2, double lon2);
+  String estimateDeliveryTime(double distanceKm);
+  Future<String> getDeliveryEstimate();
+  sendData();
+}
 
 class AddMoreDetailsControllerImp extends AddMoreDetailsController {
   Services services = Get.find<Services>();
@@ -17,6 +23,7 @@ class AddMoreDetailsControllerImp extends AddMoreDetailsController {
   double? long;
   String? placeName;
   Set<Marker>? markers;
+  late String deliverytime;
 
   GlobalKey<FormState> formkey = GlobalKey<FormState>();
 
@@ -38,6 +45,7 @@ class AddMoreDetailsControllerImp extends AddMoreDetailsController {
     long = Get.arguments["longitude"];
     placeName = Get.arguments["placeName"];
     markers = Get.arguments["markers"];
+    getDeliveryEstimate();
 
     addressName = TextEditingController();
     buildingName = TextEditingController();
@@ -64,6 +72,7 @@ class AddMoreDetailsControllerImp extends AddMoreDetailsController {
     super.dispose();
   }
 
+  @override
   sendData() async {
     var fomrstate = formkey.currentState;
     if (fomrstate!.validate()) {
@@ -80,6 +89,7 @@ class AddMoreDetailsControllerImp extends AddMoreDetailsController {
         way?.text ?? "",
         additionalDetails?.text ?? "",
         placeName ?? "Unknown Location",
+        deliverytime,
         markers.toString(),
         lat!.toString(),
         long!.toString(),
@@ -95,6 +105,59 @@ class AddMoreDetailsControllerImp extends AddMoreDetailsController {
           statusRequest = StatusRequest.failure;
         }
       }
+    }
+  }
+
+  @override
+  double calculateDistance(double lat1, double lon1, double lat2, double lon2) {
+    return Geolocator.distanceBetween(lat1, lon1, lat2, lon2) / 1000;
+  }
+
+  @override
+  String estimateDeliveryTime(double distanceKm) {
+    const averageSpeedKmPerHour = 60.0;
+    const basePreparationTime = 120.0;
+
+    double travelTimeMinutes = (distanceKm / averageSpeedKmPerHour) * 60;
+    double totalTimeMinutes = basePreparationTime + travelTimeMinutes;
+
+    totalTimeMinutes = (totalTimeMinutes / 5).ceil() * 5;
+
+    if (totalTimeMinutes < 60) {
+      return '${totalTimeMinutes.toInt()} - ${(totalTimeMinutes + 10).toInt()} minutes';
+    } else if (totalTimeMinutes < 1440) {
+      int hours = (totalTimeMinutes / 60).floor();
+      int remainingMinutes = (totalTimeMinutes % 60).round();
+      if (remainingMinutes > 15) {
+        return '$hours - ${hours + 1} hours';
+      } else {
+        return '$hours hours';
+      }
+    } else {
+      int days = (totalTimeMinutes / 1440).floor();
+      int remainingHours = ((totalTimeMinutes % 1440) / 60).round();
+
+      if (remainingHours > 4) {
+        return '$days - ${days + 1} days';
+      } else {
+        return '$days days';
+      }
+    }
+  }
+
+  @override
+  Future<String> getDeliveryEstimate() async {
+    try {
+      const storeLat = 25.217831827869052;
+      const storeLng = 55.31375885009766;
+
+      double distance = calculateDistance(storeLat, storeLng, lat!, long!);
+
+      deliverytime = estimateDeliveryTime(distance);
+
+      return estimateDeliveryTime(distance);
+    } catch (e) {
+      return "Delivery time unavailable";
     }
   }
 }
