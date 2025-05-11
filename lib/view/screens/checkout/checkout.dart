@@ -73,110 +73,160 @@ class Checkout extends StatelessWidget {
               ),
             ),
             GetBuilder<CheckoutControllerImp>(
-              builder: (controller) => Card(
-                color: Appcolor.white,
-                elevation: 2,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(16),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
-                        "Shipping Address",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
+              builder: (controller) => controller.deliveryType == 1
+                  ? SizedBox.shrink()
+                  : Card(
+                      color: Appcolor.white,
+                      elevation: 2,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12),
                       ),
-                      const SizedBox(height: 12),
-                      if (controller.addresses.isEmpty &&
-                          controller.statusRequest == StatusRequest.loding)
-                        Shimmer.fromColors(
-                          baseColor: Colors.grey.shade300,
-                          highlightColor: Colors.grey.shade100,
-                          child: Container(
-                            padding: EdgeInsets.all(8),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8),
-                              color: Colors.white,
+                      child: Padding(
+                        padding: const EdgeInsets.all(16),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              "Shipping Address",
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                            child: Row(
-                              children: [
-                                Container(
-                                  width: 24,
-                                  height: 24,
-                                  color: Colors.white,
-                                ),
-                                SizedBox(width: 16),
-                                Expanded(
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                            const SizedBox(height: 12),
+                            if (controller.addresses.isEmpty &&
+                                controller.statusRequest ==
+                                    StatusRequest.loding)
+                              Shimmer.fromColors(
+                                baseColor: Colors.grey.shade300,
+                                highlightColor: Colors.grey.shade100,
+                                child: Container(
+                                  padding: EdgeInsets.all(8),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(8),
+                                    color: Colors.white,
+                                  ),
+                                  child: Row(
                                     children: [
                                       Container(
-                                        height: 16,
-                                        width: double.infinity,
+                                        width: 24,
+                                        height: 24,
                                         color: Colors.white,
                                       ),
-                                      SizedBox(height: 8),
-                                      Container(
-                                        height: 12,
-                                        width: double.infinity,
-                                        color: Colors.white,
+                                      SizedBox(width: 16),
+                                      Expanded(
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Container(
+                                                height: 16,
+                                                width: double.infinity,
+                                                color: Colors.white),
+                                            SizedBox(height: 8),
+                                            Container(
+                                                height: 12,
+                                                width: double.infinity,
+                                                color: Colors.white),
+                                            SizedBox(height: 4),
+                                            Container(
+                                                height: 12,
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    0.5,
+                                                color: Colors.white),
+                                          ],
+                                        ),
                                       ),
-                                      SizedBox(height: 4),
+                                      SizedBox(width: 16),
                                       Container(
-                                        height: 12,
-                                        width:
-                                            MediaQuery.of(context).size.width *
-                                                0.5,
+                                        width: 20,
+                                        height: 20,
                                         color: Colors.white,
                                       ),
                                     ],
                                   ),
                                 ),
-                                SizedBox(width: 16),
-                                Container(
-                                  width: 20,
-                                  height: 20,
-                                  color: Colors.white,
-                                ),
-                              ],
+                              ),
+                            ListView.builder(
+                              itemCount: controller.addresses.length,
+                              shrinkWrap: true,
+                              physics: NeverScrollableScrollPhysics(),
+                              itemBuilder: (context, index) {
+                                return Column(
+                                  children: [
+                                    ShippingAddress(
+                                      title: controller
+                                          .addresses[index].addressName!,
+                                      subTitle:
+                                          "Building: ${controller.addresses[index].addressBuilding!}, "
+                                          "Street: ${controller.addresses[index].addressStreet!}, "
+                                          "Block: ${controller.addresses[index].addressBlock!}, "
+                                          "Floor: ${controller.addresses[index].addressFloor!}.",
+                                      placeName: controller
+                                          .addresses[index].addressBymap!,
+                                      icon: Icons.home,
+                                      isSelected: controller.addressId ==
+                                          controller
+                                              .addresses[index].addressId!,
+                                      onTap: () {
+                                        controller.chooseAddressId(controller
+                                            .addresses[index].addressId!);
+                                      },
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          top: 8, left: 8),
+                                      child: Row(
+                                        children: [
+                                          Icon(
+                                            Icons.av_timer_rounded,
+                                            size: 16,
+                                            color: Appcolor.amaranthpink,
+                                          ),
+                                          SizedBox(width: 6),
+                                          Text.rich(
+                                            TextSpan(
+                                              children: [
+                                                TextSpan(
+                                                  text: 'Estimated delivery: ',
+                                                  style: TextStyle(
+                                                    fontFamily: "Sw",
+                                                    fontSize: 13,
+                                                    color: Colors.grey[600],
+                                                  ),
+                                                ),
+                                                TextSpan(
+                                                  text: controller
+                                                      .addresses[index]
+                                                      .addressDeliverytime!,
+                                                  style: TextStyle(
+                                                    fontFamily: "Sw",
+                                                    fontSize: 13,
+                                                    fontWeight: FontWeight.w600,
+                                                    color:
+                                                        Appcolor.amaranthpink,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    if (index !=
+                                        controller.addresses.length - 1)
+                                      Divider(height: 24, thickness: 1),
+                                  ],
+                                );
+                              },
                             ),
-                          ),
+                            const SizedBox(height: 8),
+                          ],
                         ),
-                      ListView.builder(
-                        itemCount: controller.addresses.length,
-                        shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        itemBuilder: (context, index) {
-                          return ShippingAddress(
-                            title: controller.addresses[index].addressName!,
-                            subTitle:
-                                " Building: ${controller.addresses[index].addressBuilding!}, "
-                                "Street: ${controller.addresses[index].addressStreet!}, "
-                                "Block: ${controller.addresses[index].addressBlock!}, "
-                                "Floor: ${controller.addresses[index].addressFloor!}.",
-                            placeName:
-                                controller.addresses[index].addressBymap!,
-                            icon: Icons.home,
-                            isSelected: controller.addressId ==
-                                controller.addresses[index].addressId!,
-                            onTap: () {
-                              controller.chooseAddressId(
-                                  controller.addresses[index].addressId!);
-                            },
-                          );
-                        },
                       ),
-                      const SizedBox(height: 8),
-                    ],
-                  ),
-                ),
-              ),
+                    ),
             ),
             GetBuilder<CheckoutControllerImp>(
               builder: (controller) => Card(
