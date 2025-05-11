@@ -20,6 +20,7 @@ class HomeControllerImp extends HomeController {
   HomeData homeData = HomeData(Get.find());
   List categories = [];
   List items = [];
+  List mainPage = [];
   TextEditingController? textEditingController;
 
   String? username;
@@ -49,6 +50,7 @@ class HomeControllerImp extends HomeController {
       if (response["status"] == "success") {
         categories.addAll(response['categories']);
         items.addAll(response['items']);
+        mainPage.addAll(response['mainpage']);
       } else if (response["status"] == "failure") {
         statusRequest = StatusRequest.failure;
       }

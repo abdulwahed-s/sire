@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:sire/apilink.dart';
 import 'package:sire/controller/home/homeController.dart';
 import 'package:sire/core/constant/color.dart';
 import 'package:sire/view/widgets/home/categorieslist.dart';
@@ -32,9 +33,12 @@ class Home extends StatelessWidget {
                       img:
                           "https://i.pinimg.com/736x/ac/76/4c/ac764cb8541c8d73e039fba4c3d4df40.jpg",
                     ),
-                    discountcard: Discountcard(
-                        title: "Uncover exciting products at fantastic prices!",
-                        content: "50% discount"),
+                    discountcard:  Discountcard(
+                            title: controller.mainPage[0]['mainpage_title'],
+                            content: controller.mainPage[0]['mainpage_body'],
+                            image: AppLink.homeimage +
+                                controller.mainPage[0]['mainpage_image'],
+                          ),
                     serchBar: SerchBar(
                         controller: controller.textEditingController,
                         onPressed: () async {
