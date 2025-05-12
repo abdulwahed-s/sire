@@ -76,6 +76,7 @@ class Cart extends StatelessWidget {
                     price:
                         controller.data.isNotEmpty ? controller.totalprice : 0,
                     shippingPrice: 100,
+                    isDisabled: controller.data.isEmpty,
                     onTap: () {
                       controller.placeOrder();
                     })),

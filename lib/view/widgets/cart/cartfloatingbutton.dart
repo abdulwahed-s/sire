@@ -7,13 +7,15 @@ class CartFloatingButton extends StatelessWidget {
   final int shippingPrice;
   final void Function()? onTap;
   final StatusRequest statusRequest;
-  
+  final bool isDisabled;
+
   const CartFloatingButton({
     super.key,
     required this.price,
     required this.shippingPrice,
     this.statusRequest = StatusRequest.none,
     this.onTap,
+    required this.isDisabled,
   });
 
   @override
@@ -88,21 +90,26 @@ class CartFloatingButton extends StatelessWidget {
               ),
               const SizedBox(height: 10),
               Material(
-                color: Appcolor.berry,
+                color: isDisabled
+                    ? Appcolor.berry.withValues(alpha: 0.4)
+                    : Appcolor.berry,
                 borderRadius: BorderRadius.circular(10),
-                child: InkWell(
-                  onTap: onTap,
-                  borderRadius: BorderRadius.circular(10),
-                  splashColor: Appcolor.shadowWhite,
-                  child: Container(
-                    width: double.infinity,
-                    padding: const EdgeInsets.symmetric(vertical: 12),
-                    alignment: Alignment.center,
-                    child: const Text(
-                      "Place Order",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
+                child: IgnorePointer(
+                  ignoring: isDisabled,
+                  child: InkWell(
+                    onTap: onTap,
+                    borderRadius: BorderRadius.circular(10),
+                    splashColor: Appcolor.shadowWhite,
+                    child: Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.symmetric(vertical: 12),
+                      alignment: Alignment.center,
+                      child: const Text(
+                        "Place Order",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
@@ -111,13 +118,13 @@ class CartFloatingButton extends StatelessWidget {
             ],
           ),
         ),
-        
+
         // Loading overlay
         if (statusRequest == StatusRequest.loding)
           Positioned.fill(
             child: Container(
               decoration: BoxDecoration(
-                color: Colors.black.withOpacity(0.5),
+                color: Colors.black.withValues(alpha: 0.5),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: const Center(
