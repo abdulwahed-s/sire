@@ -5,6 +5,7 @@ import 'package:sire/apilink.dart';
 import 'package:sire/controller/checkout/checkoutcontroller.dart';
 import 'package:sire/core/class/statusrequest.dart';
 import 'package:sire/core/constant/color.dart';
+import 'package:sire/view/screens/address/viewaddress.dart';
 import 'package:sire/view/widgets/checkout/couponsection.dart';
 import 'package:sire/view/widgets/checkout/deliverytype.dart';
 import 'package:sire/view/widgets/checkout/itemview.dart';
@@ -148,6 +149,61 @@ class Checkout extends StatelessWidget {
                                     ],
                                   ),
                                 ),
+                              ),
+                            if (controller.addresses.isEmpty &&
+                                controller.statusRequest !=
+                                    StatusRequest.loding)
+                              Column(
+                                children: [
+                                  SizedBox(height: 16),
+                                  Icon(
+                                    Icons.location_off_outlined,
+                                    size: 48,
+                                    color: Colors.grey.withOpacity(0.5),
+                                  ),
+                                  SizedBox(height: 12),
+                                  Text(
+                                    "No shipping address added",
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.grey[700],
+                                    ),
+                                  ),
+                                  SizedBox(height: 8),
+                                  Text(
+                                    "Please add an address to proceed with your order",
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      color: Colors.grey[600],
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                  SizedBox(height: 16),
+                                  ElevatedButton(
+                                    onPressed: () {
+                                      Get.to(
+                                        () => ViewAddress(),
+                                        transition: Transition.leftToRight,
+                                      );
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: Appcolor.amaranthpink,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal: 20, vertical: 10),
+                                    ),
+                                    child: Text(
+                                      "Add Address",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ListView.builder(
                               itemCount: controller.addresses.length,
