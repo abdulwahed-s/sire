@@ -7,7 +7,7 @@ import 'package:sire/core/functions/handlingdata.dart';
 import 'package:sire/core/services/services.dart';
 import 'package:sire/data/datasource/remote/address/addressdata.dart';
 import 'package:sire/view/screens/address/viewaddress.dart';
-import 'package:sire/view/screens/settings/settings.dart';
+import 'package:sire/view/screens/home/homescreen.dart';
 
 abstract class AddMoreDetailsController extends GetxController {
   double calculateDistance(double lat1, double lon1, double lat2, double lon2);
@@ -97,7 +97,8 @@ class AddMoreDetailsControllerImp extends AddMoreDetailsController {
       statusRequest = handlingdata(response);
       if (statusRequest == StatusRequest.success) {
         if (response["status"] == "success") {
-          Get.offAll(() => Settings(), transition: Transition.fade);
+          Get.offAll(() => HomeScreen(),
+              transition: Transition.fade, arguments: {'num': 3});
           Future.delayed(Duration(milliseconds: 100), () {
             Get.to(() => ViewAddress(), transition: Transition.fade);
           });
