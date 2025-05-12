@@ -11,7 +11,6 @@ abstract class CouponController extends GetxController {
 }
 
 class CouponControllerImp extends CouponController {
-
   StatusRequest statusRequest = StatusRequest.none;
   CouponData couponData = CouponData(Get.find());
   List<CouponModel> couponList = [];
@@ -83,8 +82,8 @@ class CouponControllerImp extends CouponController {
   @override
   void onInit() {
     couponTextEditingController = TextEditingController();
-    totalprice = Get.arguments["totalprice"];
-    subtotal = Get.arguments["totalprice"];
+    totalprice = Get.arguments?["totalprice"] ?? 0.0;
+    subtotal = Get.arguments?["totalprice"] ?? 0.0;
     super.onInit();
   }
 }

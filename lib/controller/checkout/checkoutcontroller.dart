@@ -77,7 +77,7 @@ class CheckoutControllerImp extends CheckoutController {
   @override
   void onInit() {
     getUserAddresses();
-    orderDetails = Get.arguments["orderDetails"];
+    orderDetails = Get.arguments?["orderDetails"] ?? [];
     super.onInit();
   }
 
