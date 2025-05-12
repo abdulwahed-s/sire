@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:sire/controller/favourites/ViewFavouritesController.dart';
 import 'package:sire/controller/home/homeController.dart';
@@ -66,5 +65,11 @@ class HomeScreenControllerImp extends HomeScreenController {
     currentpage = i;
     removeController(i);
     update();
+  }
+
+  @override
+  void onInit() {
+    currentpage = Get.arguments?['num'] ?? 0;
+    super.onInit();
   }
 }
