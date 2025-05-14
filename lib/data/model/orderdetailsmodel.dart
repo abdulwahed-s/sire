@@ -13,7 +13,7 @@ class OrderDetailsModel {
   String? itemImg;
   int? itemCount;
   int? itemActive;
-  int? itemPrice;
+  double? itemPrice;
   int? itemDiscount;
   String? itemDate;
   int? itemCat;
@@ -115,7 +115,7 @@ class OrderDetailsModel {
     itemImg = json['item_img'];
     itemCount = json['item_count'];
     itemActive = json['item_active'];
-    itemPrice = json['item_price'];
+    itemPrice = (json['item_price'] as num?)?.toDouble();;
     itemDiscount = json['item_discount'];
     itemDate = json['item_date'];
     itemCat = json['item_cat'];
