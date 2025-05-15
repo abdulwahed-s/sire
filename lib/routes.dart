@@ -2,6 +2,7 @@ import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:sire/core/constant/approutes.dart';
 import 'package:sire/core/middleware/myMiddleware.dart';
 import 'package:sire/view/screens/OnBoarding.dart';
+import 'package:sire/view/screens/delivery/deliveryrequests.dart';
 import 'package:sire/view/screens/home/homescreen.dart';
 import 'package:sire/view/screens/items/ItemsView.dart';
 import 'package:sire/view/screens/items/viewFavourite.dart';
@@ -33,5 +34,7 @@ List<GetPage<dynamic>>? route = [
   GetPage(name: Approutes.viewFavourite, page: () => ViewFavourite()),
   //setting
   GetPage(name: Approutes.settings, page: () => Settings()),
+  //delivery
+  GetPage(name: Approutes.deliveryRequests, page: ()=> DeliveryRequests()),
 
 ];
