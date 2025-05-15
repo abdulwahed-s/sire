@@ -56,6 +56,17 @@ static const String addRating = "$server/rating/add.php";
 static const String getRating = "$server/rating/get.php";
 static const String getIsOrdered = "$server/rating/isordered.php";
 static const String deleteRating = "$server/rating/delete.php";
+//delivery
+static const String undeliveredOrders = "$server/delivery/requests.php";
+static const String deliveryOrderDetails = "$server/delivery/orderdetails.php";
+static const String acceptorder = "$server/delivery/acceptorder.php";
+static const String viewAcceptedOrders = "$server/delivery/viewaccepted.php";
+static const String markAsDelivered = "$server/delivery/markasdelivered.php";
+
+
+
+
+
 
 
 
