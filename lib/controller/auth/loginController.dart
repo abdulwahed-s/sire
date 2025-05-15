@@ -6,17 +6,18 @@ import 'package:sire/core/functions/handlingdata.dart';
 import 'package:sire/core/services/services.dart';
 import 'package:sire/data/datasource/remote/auth/logindata.dart';
 import 'package:sire/view/screens/auth/signUp.dart';
+import 'package:sire/view/screens/delivery/deliveryrequests.dart';
 import 'package:sire/view/screens/home/homescreen.dart';
 import 'package:sire/view/screens/resetpassword/forgotpassword.dart';
 
-abstract class loginController extends GetxController {
+abstract class LoginController extends GetxController {
   login();
   goToSignUp();
   showPassword();
   goToForgotPassword();
 }
 
-class LogincontrollerImp extends loginController {
+class LogincontrollerImp extends LoginController {
   GlobalKey<FormState> formkey = GlobalKey<FormState>();
   bool obscureText = true;
   List data = [];
@@ -42,13 +43,25 @@ class LogincontrollerImp extends loginController {
             .setString("email", response["data"]["user_email"]);
         service.sharedPreferences
             .setString("phone", response["data"]["user_phone"]);
-        service.sharedPreferences.setString("step", "2");
-    FirebaseMessaging.instance.unsubscribeFromTopic("notAuthorized");
-    FirebaseMessaging.instance.subscribeToTopic("users");
-    FirebaseMessaging.instance.subscribeToTopic(response["data"]["user_id"].toString());
-        Get.off(() => HomeScreen(),
-            transition: Transition.rightToLeft,
-            duration: Duration(milliseconds: 800));
+        if (response["data"]["user_keyaccess"] == 0) {
+          service.sharedPreferences.setString("step", "2");
+          FirebaseMessaging.instance.unsubscribeFromTopic("notAuthorized");
+          FirebaseMessaging.instance.subscribeToTopic("users");
+          FirebaseMessaging.instance
+              .subscribeToTopic(response["data"]["user_id"].toString());
+          Get.off(() => HomeScreen(),
+              transition: Transition.rightToLeft,
+              duration: Duration(milliseconds: 800));
+        } else if (response["data"]["user_keyaccess"] == 1) {
+          service.sharedPreferences.setString("step", "3");
+          FirebaseMessaging.instance.unsubscribeFromTopic("notAuthorized");
+          FirebaseMessaging.instance.subscribeToTopic("delivery");
+          FirebaseMessaging.instance
+              .subscribeToTopic(response["data"]["user_id"].toString());
+          Get.off(() => DeliveryRequests(),
+              transition: Transition.rightToLeft,
+              duration: Duration(milliseconds: 800));
+        }
       } else if (response["status"] == "failure") {
         statusRequest = StatusRequest.failure;
         Get.defaultDialog(
