@@ -20,4 +20,7 @@ class Approutes {
   static const String settings = "/settings";
   //addresses
   static const String viewAddress = "/viewAddress";
+  //delivery
+  static const String deliveryRequests = '/deliveryRequests';
+  static const String deliveryHome = '/deliveryHome';
 }
