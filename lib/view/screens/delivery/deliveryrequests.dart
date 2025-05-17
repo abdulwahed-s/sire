@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:jiffy/jiffy.dart';
 import 'package:sire/controller/delivery/deliveryrequestscontroller.dart';
 import 'package:sire/core/constant/color.dart';
+import 'package:sire/view/widgets/delivery/buildInforow.dart';
+import 'package:sire/view/widgets/delivery/buildpricetag.dart';
 
 class DeliveryRequests extends StatelessWidget {
   const DeliveryRequests({super.key});
@@ -59,7 +61,7 @@ class DeliveryRequests extends StatelessWidget {
                               vertical: 4,
                             ),
                             decoration: BoxDecoration(
-                              color: Appcolor.berry.withOpacity(0.2),
+                              color: Appcolor.berry.withValues(alpha: 0.2),
                               borderRadius: BorderRadius.circular(8),
                             ),
                             child: Text(
@@ -74,42 +76,50 @@ class DeliveryRequests extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(height: 12),
-                      _buildInfoRow(
-                        Icons.person,
-                        controller.undeliveredOrders[index].userName ?? 'N/A',
+                      BuildInfoRow(
+                        icon: Icons.person,
+                        text: controller.undeliveredOrders[index].userName ??
+                            'N/A',
+                        maxLines: 1,
                       ),
                       const SizedBox(height: 8),
-                      _buildInfoRow(
-                        Icons.phone,
-                        controller.undeliveredOrders[index].userPhone ?? 'N/A',
-                      ),
+                      BuildInfoRow(
+                          icon: Icons.phone,
+                          text: controller.undeliveredOrders[index].userPhone ??
+                              'N/A',
+                          maxLines: 1),
                       const SizedBox(height: 8),
-                      _buildInfoRow(
-                        Icons.access_time,
-                        Jiffy.parse(controller
+                      BuildInfoRow(
+                        icon: Icons.access_time,
+                        text: Jiffy.parse(controller
                                     .undeliveredOrders[index].orderDatetime ??
                                 '')
                             .fromNow(),
+                        maxLines: 1,
                       ),
                       const SizedBox(height: 8),
-                      _buildInfoRow(
-                        Icons.location_on,
-                        controller.undeliveredOrders[index].addressBymap ??
-                            'N/A',
+                      BuildInfoRow(
+                        icon: Icons.location_on,
+                        text:
+                            controller.undeliveredOrders[index].addressBymap ??
+                                'N/A',
                         maxLines: 2,
                       ),
                       const SizedBox(height: 8),
-                      _buildInfoRow(
-                        Icons.directions_car,
-                        'Delivery time: ${controller.undeliveredOrders[index].addressDeliverytime ?? 'N/A'}',
+                      BuildInfoRow(
+                        icon: Icons.directions_car,
+                        text:
+                            'Delivery time: ${controller.undeliveredOrders[index].addressDeliverytime ?? 'N/A'}',
+                        maxLines: 1,
                       ),
                       const SizedBox(height: 16),
                       Row(
                         children: [
                           Expanded(
-                            child: _buildPriceTag(
-                              'Total',
-                              '${controller.undeliveredOrders[index].orderTotalprice ?? 0}',
+                            child: BuildPriceTag(
+                              value: 'Total',
+                              label:
+                                  '${controller.undeliveredOrders[index].orderTotalprice ?? 0}',
                             ),
                           ),
                         ],
@@ -164,53 +174,6 @@ class DeliveryRequests extends StatelessWidget {
             ),
           );
         },
-      ),
-    );
-  }
-
-  Widget _buildInfoRow(IconData icon, String text, {int maxLines = 1}) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Icon(icon, size: 20, color: Colors.grey[600]),
-        const SizedBox(width: 8),
-        Expanded(
-          child: Text(
-            text,
-            style: TextStyle(color: Colors.grey[700], fontSize: 15),
-            maxLines: maxLines,
-            overflow: TextOverflow.ellipsis,
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildPriceTag(String label, String value) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            label,
-            style: TextStyle(
-              color: Colors.grey[600],
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-          Text(
-            '\$$value',
-            style: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ],
       ),
     );
   }
