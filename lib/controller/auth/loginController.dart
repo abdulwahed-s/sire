@@ -5,6 +5,7 @@ import 'package:sire/core/class/statusrequest.dart';
 import 'package:sire/core/functions/handlingdata.dart';
 import 'package:sire/core/services/services.dart';
 import 'package:sire/data/datasource/remote/auth/logindata.dart';
+import 'package:sire/view/screens/admin/adminhome.dart';
 import 'package:sire/view/screens/auth/signUp.dart';
 import 'package:sire/view/screens/delivery/deliveryhome.dart';
 import 'package:sire/view/screens/home/homescreen.dart';
@@ -59,6 +60,15 @@ class LogincontrollerImp extends LoginController {
           FirebaseMessaging.instance
               .subscribeToTopic(response["data"]["user_id"].toString());
           Get.off(() => DeliveryHome(),
+              transition: Transition.rightToLeft,
+              duration: Duration(milliseconds: 800));
+        } else if (response["data"]["user_keyaccess"] == 2) {
+          service.sharedPreferences.setString("step", "4");
+          FirebaseMessaging.instance.unsubscribeFromTopic("notAuthorized");
+          FirebaseMessaging.instance.subscribeToTopic("admin");
+          FirebaseMessaging.instance
+              .subscribeToTopic(response["data"]["user_id"].toString());
+          Get.off(() => AdminHome(),
               transition: Transition.rightToLeft,
               duration: Duration(milliseconds: 800));
         }
