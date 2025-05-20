@@ -23,4 +23,7 @@ class Approutes {
   //delivery
   static const String deliveryRequests = '/deliveryRequests';
   static const String deliveryHome = '/deliveryHome';
+  //admin
+  static const String adminHome = '/adminHome';
+
 }

@@ -2,6 +2,7 @@ import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:sire/core/constant/approutes.dart';
 import 'package:sire/core/middleware/myMiddleware.dart';
 import 'package:sire/view/screens/OnBoarding.dart';
+import 'package:sire/view/screens/admin/adminhome.dart';
 import 'package:sire/view/screens/delivery/deliveryhome.dart';
 import 'package:sire/view/screens/delivery/deliveryrequests.dart';
 import 'package:sire/view/screens/home/homescreen.dart';
@@ -38,4 +39,5 @@ List<GetPage<dynamic>>? route = [
   //delivery
   GetPage(name: Approutes.deliveryRequests, page: () => DeliveryRequests()),
   GetPage(name: Approutes.deliveryHome, page: () => DeliveryHome()),
+  GetPage(name: Approutes.adminHome, page: ()=> AdminHome())
 ];
