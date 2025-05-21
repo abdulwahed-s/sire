@@ -62,6 +62,13 @@ static const String deliveryOrderDetails = "$server/delivery/orderdetails.php";
 static const String acceptorder = "$server/delivery/acceptorder.php";
 static const String viewAcceptedOrders = "$server/delivery/viewaccepted.php";
 static const String markAsDelivered = "$server/delivery/markasdelivered.php";
+//admin
+static const String getCategories = "$server/admin/categories/view.php";
+static const String addCategories = "$server/admin/categories/add.php";
+static const String updateCategories = "$server/admin/categories/update.php";
+static const String deleteCategories = "$server/admin/categories/delete.php";
+
+
 
 
 
