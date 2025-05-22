@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sire/controller/admin/admincategorycontroller.dart';
+import 'package:sire/controller/admin/category/admincategorycontroller.dart';
 import 'package:sire/core/constant/color.dart';
 import 'package:sire/view/screens/admin/categories/addcategory.dart';
 import 'package:sire/view/widgets/admin/categorycard.dart';

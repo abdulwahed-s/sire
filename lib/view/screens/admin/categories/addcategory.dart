@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:sire/controller/admin/addcategorycontroller.dart';
+import 'package:sire/controller/admin/category/addcategorycontroller.dart';
 import 'package:sire/core/constant/color.dart';
 import 'package:sire/view/widgets/admin/categorynamefield.dart';
 import 'package:sire/view/widgets/admin/header.dart';

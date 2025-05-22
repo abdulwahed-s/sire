@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:sire/apilink.dart';
 import 'package:sire/core/constant/color.dart';
 
-import '../../../controller/admin/admincategorycontroller.dart';
+import '../../../controller/admin/category/admincategorycontroller.dart';
 
 class CategoryCard extends StatelessWidget {
   final AdminCategoryControllerImp controller;
