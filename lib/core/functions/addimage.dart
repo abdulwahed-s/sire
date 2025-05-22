@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:file_picker/file_picker.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart';
 
@@ -25,4 +26,15 @@ Future<File?> uploadImage() async {
   }
 
   return null;
+}
+
+Future<File?> pickImageFromCamera() async {
+  final ImagePicker picker = ImagePicker();
+  final XFile? image = await picker.pickImage(source: ImageSource.camera);
+  
+  if (image != null) {
+    return File(image.path);
+  } else {
+    return null;
+  }
 }
