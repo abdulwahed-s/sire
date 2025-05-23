@@ -5,6 +5,7 @@ import 'package:drop_down_list/model/selected_list_item.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sire/controller/admin/items/viewitemscontroller.dart';
+import 'package:sire/core/class/selectmodel.dart';
 import 'package:sire/core/class/statusrequest.dart';
 import 'package:sire/core/constant/color.dart';
 import 'package:sire/core/functions/addimage.dart';
@@ -203,12 +204,3 @@ class AddItemControllerImp extends AddItemController {
   }
 }
 
-class SelectModel {
-  final String name;
-  final String code;
-
-  SelectModel({
-    required this.name,
-    required this.code,
-  });
-}
