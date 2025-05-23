@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:sire/controller/admin/items/additemcontroller.dart';
 
 class CategoryField extends StatelessWidget {
-  final AddItemControllerImp controller;
+  final dynamic controller;
   const CategoryField({super.key, required this.controller});
 
   @override

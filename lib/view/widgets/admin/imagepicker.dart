@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:sire/controller/admin/items/additemcontroller.dart';
 
 class ImagePicker extends StatelessWidget {
-  final AddItemControllerImp controller;
-  const ImagePicker({super.key, required this.controller});
+  final dynamic controller;
+  final bool? isUpdate;
+  final String? imageUrl;
+  const ImagePicker(
+      {super.key, required this.controller, this.isUpdate, this.imageUrl});
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +37,17 @@ class ImagePicker extends StatelessWidget {
           ],
         ),
         SizedBox(height: 16),
-        if (controller.image != null)
+        if (isUpdate == true && imageUrl != null)
+          ClipRRect(
+            borderRadius: BorderRadius.circular(8),
+            child: Image.network(
+              imageUrl!,
+              height: 150,
+              width: double.infinity,
+              fit: BoxFit.cover,
+            ),
+          )
+        else if (controller.image != null)
           Stack(
             children: [
               ClipRRect(
