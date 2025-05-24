@@ -73,6 +73,18 @@ static const String getItems = "$server/admin/items/view.php";
 static const String addItems = "$server/admin/items/add.php";
 static const String updateItems = "$server/admin/items/update.php";
 static const String deleteItems = "$server/admin/items/delete.php";
+//orders
+static const String getOrders = "$server/admin/orders/getorders.php";
+static const String adminOrderDetails = "$server/admin/orders/orderdetails.php";
+static const String approveOrder = "$server/admin/orders/aproveorder.php";
+static const String informdelivery = "$server/admin/orders/informdelivery.php";
+static const String readytopickup = "$server/admin/orders/readytopickup.php";
+static const String userpickedup = "$server/admin/orders/userpickedup.php";
+static const String cancelorder = "$server/admin/orders/cancelorder.php";
+static const String archiveOrder = "$server/admin/orders/archiveorder.php";
+
+
+
 
 
 
