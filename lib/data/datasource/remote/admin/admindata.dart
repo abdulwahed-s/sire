@@ -1,7 +1,9 @@
 import 'dart:io';
 
+import 'package:dartz/dartz.dart';
 import 'package:sire/apilink.dart';
 import 'package:sire/core/class/curd.dart';
+import 'package:sire/core/class/statusrequest.dart';
 
 class AdminData {
   Curd curd;
@@ -169,6 +171,64 @@ class AdminData {
           },
           file);
     }
+    return resp.fold((s) => s, (r) => r);
+  }
+
+  getOrders() async {
+    var resp = await curd.postData(AppLink.getOrders, {});
+    return resp.fold((s) => s, (r) => r);
+  }
+
+  getOrderDetails(String orderid) async {
+    var resp = await curd.postData(AppLink.adminOrderDetails, {
+      "orderid": orderid,
+    });
+    return resp.fold((s) => s, (r) => r);
+  }
+
+  approveOrder(String orderid, String userid) async {
+    var resp = await curd.postData(AppLink.approveOrder, {
+      "orderid": orderid,
+      "userid": userid,
+    });
+    return resp.fold((s) => s, (r) => r);
+  }
+
+  finishPreparing(String orderid, String userid, int orderType) async {
+    Either<StatusRequest, Map> resp;
+    orderType == 0
+        ? resp = await curd.postData(AppLink.informdelivery, {
+            "orderid": orderid,
+            "userid": userid,
+          })
+        : resp = await curd.postData(AppLink.readytopickup, {
+            "orderid": orderid,
+            "userid": userid,
+          });
+    return resp.fold((s) => s, (r) => r);
+  }
+
+  markAsPickedUp(String orderid, String userid) async {
+    var resp = await curd.postData(AppLink.userpickedup, {
+      "orderid": orderid,
+      "userid": userid,
+    });
+    return resp.fold((s) => s, (r) => r);
+  }
+
+  cancelOrder(String orderid, String userid) async {
+    var resp = await curd.postData(AppLink.cancelOrder, {
+      "orderid": orderid,
+      "userid": userid,
+    });
+    return resp.fold((s) => s, (r) => r);
+  }
+
+  archiveOrder(String orderid, String userid) async {
+    var resp = await curd.postData(AppLink.archiveOrder, {
+      "orderid": orderid,
+      "userid": userid,
+    });
     return resp.fold((s) => s, (r) => r);
   }
 }
