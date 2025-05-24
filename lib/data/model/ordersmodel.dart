@@ -34,7 +34,7 @@ class OrdersModel {
     orderTotalprice = json['order_totalprice'];
     orderPaymenttype = json['order_paymenttype'];
     orderCoupon = json['order_coupon'];
-    orderStatus = json['order_status'];
+    orderStatus = (json['order_status']as num?)?.toInt();
     orderDatetime = json['order_datetime'];
   }
 
