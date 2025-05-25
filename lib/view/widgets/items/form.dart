@@ -61,7 +61,7 @@ class AnimatedCommentFieldState extends State<AnimatedCommentField>
               boxShadow: _hasFocus
                   ? [
                       BoxShadow(
-                          color: Color(0xffa43068).withOpacity(0.3),
+                          color: Color(0xffa43068).withValues(alpha: 0.3),
                           blurRadius: 12,
                           spreadRadius: 2)
                     ]
@@ -90,7 +90,7 @@ class AnimatedCommentFieldState extends State<AnimatedCommentField>
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                   borderSide: BorderSide(
-                    color: Color(0xffa43068).withOpacity(0.7),
+                    color: Color(0xffa43068).withValues(alpha: 0.7),
                     width: 1.5,
                   ),
                 ),

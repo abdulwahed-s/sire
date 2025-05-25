@@ -28,7 +28,7 @@ class SortButton extends StatelessWidget {
         ),
         side: isActive
             ? BorderSide.none
-            : BorderSide(color: color.withOpacity(0.3)),
+            : BorderSide(color: color.withValues(alpha: 0.3)),
       ),
       onPressed: onPressed,
       child: Row(

@@ -159,7 +159,7 @@ class Checkout extends StatelessWidget {
                                   Icon(
                                     Icons.location_off_outlined,
                                     size: 48,
-                                    color: Colors.grey.withOpacity(0.5),
+                                    color: Colors.grey.withValues(alpha: 0.5),
                                   ),
                                   SizedBox(height: 12),
                                   Text(

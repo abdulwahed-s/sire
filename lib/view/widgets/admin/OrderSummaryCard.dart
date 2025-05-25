@@ -14,7 +14,7 @@ class OrderSummaryCard extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
       ),
-      color: Appcolor.berry.withOpacity(0.05),
+      color: Appcolor.berry.withValues(alpha: 0.05),
       child: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(

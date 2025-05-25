@@ -16,7 +16,7 @@ class AddressLinee extends StatelessWidget {
           Icon(
             icon,
             size: 20,
-            color: Appcolor.berry.withOpacity(0.7),
+            color: Appcolor.berry.withValues(alpha: 0.7),
           ),
           const SizedBox(width: 12),
           Expanded(

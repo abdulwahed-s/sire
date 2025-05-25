@@ -49,8 +49,8 @@ class FavouritesList extends StatelessWidget {
                                   color: Appcolor
                                       .white, // Match your container background
                                   child: InkWell(
-                                    splashColor: Colors.pink.withOpacity(
-                                        0.2), // Customize as needed
+                                    splashColor: Colors.pink.withValues(
+                                        alpha: 0.2), // Customize as needed
                                     onTap: () {
                                       controller.goToItemDetails(
                                           controller.fav[index]);

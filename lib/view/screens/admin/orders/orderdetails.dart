@@ -73,7 +73,7 @@ class AdminOrderDetails extends StatelessWidget {
                       borderRadius: BorderRadius.circular(12),
                       boxShadow: [
                         BoxShadow(
-                          color: Appcolor.berry.withOpacity(0.1),
+                          color: Appcolor.berry.withValues(alpha: 0.1),
                           blurRadius: 10,
                           offset: const Offset(0, 4),
                         ),
@@ -106,7 +106,7 @@ class AdminOrderDetails extends StatelessWidget {
                     padding:
                         const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                     decoration: BoxDecoration(
-                      color: Appcolor.berry.withOpacity(0.05),
+                      color: Appcolor.berry.withValues(alpha: 0.05),
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: Text(
@@ -147,7 +147,7 @@ class AdminOrderDetails extends StatelessWidget {
                           width: double.infinity,
                           padding: const EdgeInsets.all(12),
                           decoration: BoxDecoration(
-                            color: Appcolor.berry.withOpacity(0.05),
+                            color: Appcolor.berry.withValues(alpha: 0.05),
                             borderRadius: BorderRadius.circular(8),
                             border: Border.all(color: Colors.grey.shade200),
                           ),
