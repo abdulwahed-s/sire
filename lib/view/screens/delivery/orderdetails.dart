@@ -81,20 +81,37 @@ class DeliveryOrderDetails extends StatelessWidget {
                   ),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(12),
-                    child: GoogleMap(
-                      zoomControlsEnabled: false,
-                      zoomGesturesEnabled: false,
-                      scrollGesturesEnabled: false,
-                      mapToolbarEnabled: false,
-                      tiltGesturesEnabled: false,
-                      mapType: MapType.normal,
-                      markers: {marker},
-                      initialCameraPosition: cameraPosition,
-                      onMapCreated: (GoogleMapController googleMapController) {
-                        googleMapController.animateCamera(
-                          CameraUpdate.newCameraPosition(cameraPosition),
-                        );
-                      },
+                    child: Stack(
+                      children: [
+                        GoogleMap(
+                          zoomControlsEnabled: false,
+                          zoomGesturesEnabled: false,
+                          scrollGesturesEnabled: false,
+                          mapToolbarEnabled: false,
+                          tiltGesturesEnabled: false,
+                          mapType: MapType.normal,
+                          markers: {marker},
+                          initialCameraPosition: cameraPosition,
+                          onMapCreated:
+                              (GoogleMapController googleMapController) {
+                            googleMapController.animateCamera(
+                              CameraUpdate.newCameraPosition(cameraPosition),
+                            );
+                          },
+                        ),
+                        Positioned(
+                          bottom: 10,
+                          right: 10,
+                          child: FloatingActionButton.small(
+                            backgroundColor: Appcolor.berry,
+                            onPressed: () {
+                              controller.goToNavigation();
+                            },
+                            child: const Icon(Icons.navigation,
+                                color: Colors.white),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ),

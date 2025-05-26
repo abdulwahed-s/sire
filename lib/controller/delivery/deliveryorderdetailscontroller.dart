@@ -7,9 +7,11 @@ import 'package:sire/core/functions/handlingdata.dart';
 import 'package:sire/data/datasource/remote/delivery/deliverydata.dart';
 import 'package:sire/data/model/deliveryrequestmodel.dart';
 import 'package:sire/data/model/itemdeliverymodel.dart';
+import 'package:sire/view/screens/delivery/deliverynavigation.dart';
 
 abstract class DeliveryOrderDetailsController extends GetxController {
   getOrderDetails();
+  goToNavigation();
 }
 
 class DeliveryOrderDetailsControllerImp extends DeliveryOrderDetailsController {
@@ -18,7 +20,6 @@ class DeliveryOrderDetailsControllerImp extends DeliveryOrderDetailsController {
   List<ItemDeliveryModel> orderDetails = [];
   DeliveryRequestModel undeliveredOrders = DeliveryRequestModel();
   String? orderid;
-
 
   @override
   getOrderDetails() async {
@@ -84,5 +85,9 @@ class DeliveryOrderDetailsControllerImp extends DeliveryOrderDetailsController {
     }
   }
 
-
+  @override
+  goToNavigation() {
+    Get.to(() => DeliveryNavigation(),
+        arguments: {'orderid': orderid, 'undeliveredOrder': undeliveredOrders});
+  }
 }
