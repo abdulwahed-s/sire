@@ -81,4 +81,11 @@ class DeliveryNavigationControllerImp extends DeliveryNavigationController {
 
     super.onInit();
   }
+
+  @override
+  void onClose() {
+    positionStream?.cancel();
+    googleMapController?.dispose();
+    super.onClose();
+  }
 }
