@@ -6,6 +6,7 @@ import 'package:sire/core/services/services.dart';
 import 'package:sire/data/datasource/remote/orders/orderdata.dart';
 import 'package:sire/data/model/ordersmodel.dart';
 import 'package:sire/view/screens/orders/orderdetails.dart';
+import 'package:sire/view/screens/orders/trackorder.dart';
 
 abstract class PendingOrdersController extends GetxController {
   getPendingOrders();
@@ -15,6 +16,7 @@ abstract class PendingOrdersController extends GetxController {
   String getOrderType(int typeCode);
   getOrderDetails(String orderid);
   cancelorder(String orderid);
+  goToTrackOrder(String orderid);
 }
 
 class PendingOrdersControllerImp extends PendingOrdersController {
@@ -148,5 +150,10 @@ class PendingOrdersControllerImp extends PendingOrdersController {
     }
     getPendingOrders();
     update();
+  }
+
+  @override
+  goToTrackOrder(orderid) {
+    Get.to(() => TrackOrder(), arguments: {"orderid": orderid},);
   }
 }
