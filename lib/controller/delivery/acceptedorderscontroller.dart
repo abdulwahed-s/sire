@@ -1,3 +1,7 @@
+import 'dart:async';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:sire/core/class/statusrequest.dart';
 import 'package:sire/core/functions/handlingdata.dart';
@@ -11,6 +15,8 @@ abstract class AcceptedOrdersController extends GetxController {
   String getPaymentType(int paymentCode);
   goToOrderDetails(String orderid, int index);
   markAsDelivered(String userid, String orderid);
+  sendDeliveryLocation();
+  saveToFirestore(int index, double latitude, double longitude);
 }
 
 class AcceptedOrdersControllerImp extends AcceptedOrdersController {
@@ -43,8 +49,9 @@ class AcceptedOrdersControllerImp extends AcceptedOrdersController {
   }
 
   @override
-  void onInit() {
-    getAcceptedOrders();
+  void onInit() async {
+    await getAcceptedOrders();
+    sendDeliveryLocation();
     super.onInit();
   }
 
@@ -88,5 +95,35 @@ class AcceptedOrdersControllerImp extends AcceptedOrdersController {
     }
     loading = false;
     update();
+  }
+
+  @override
+  sendDeliveryLocation() {
+    if (acceptedOrders.isNotEmpty) {
+      Timer.periodic(
+        Duration(seconds: 10),
+        (timer) {
+          Geolocator.getPositionStream().listen(
+            (Position position) {
+              for (int i = 0; i < acceptedOrders.length; i++) {
+                saveToFirestore(i, position.latitude, position.longitude);
+              }
+            },
+          );
+        },
+      );
+    }
+  }
+
+  @override
+  saveToFirestore(int index, double latitude, double longitude) {
+    FirebaseFirestore.instance
+        .collection("delivery")
+        .doc(acceptedOrders[index].orderId.toString())
+        .set({
+      "lat": latitude,
+      "long": longitude,
+      "deliveryid": services.sharedPreferences.getString("id"),
+    });
   }
 }
