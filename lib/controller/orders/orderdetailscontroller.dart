@@ -10,7 +10,7 @@ import 'package:sire/data/datasource/remote/orders/orderdata.dart';
 import 'package:sire/data/model/orderdetailsmodel.dart';
 
 abstract class OrderDetailsController extends GetxController {
-  getOrderDetails();
+  getOrderDetails(orderid);
   getStatusColor(int status, int orderType);
   getStatusText(int statusCode, int orderType);
 }
@@ -27,7 +27,7 @@ class OrderDetailsControllerImp extends OrderDetailsController {
   Set<Marker>? markers;
 
   @override
-  getOrderDetails() async {
+  getOrderDetails(orderid) async {
     statusRequest = StatusRequest.loding;
     orderDetails.clear();
     var response = await orderData.getOrderDetails(
@@ -86,7 +86,7 @@ class OrderDetailsControllerImp extends OrderDetailsController {
   void onInit() {
     orderid = Get.arguments["orderid"];
 
-    getOrderDetails();
+    getOrderDetails(orderid);
     super.onInit();
   }
 

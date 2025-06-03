@@ -153,10 +153,47 @@ class PendingOrders extends StatelessWidget {
                                       ),
                                     ),
                                   ),
+                                  if (controller.pendingOrders[index]
+                                              .orderStatus! ==
+                                          0 ||
+                                      controller.pendingOrders[index]
+                                              .orderStatus! ==
+                                          2)
+                                    SizedBox(width: 12),
                                   if (controller
                                           .pendingOrders[index].orderStatus! ==
-                                      0)
-                                    SizedBox(width: 12),
+                                      2)
+                                    ElevatedButton(
+                                      onPressed: () {
+                                        controller.goToTrackOrder(
+                                          controller
+                                              .pendingOrders[index].orderId!
+                                              .toString(),
+                                        );
+                                      },
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: Appcolor.amaranthpink,
+                                        foregroundColor: Appcolor.white,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(8),
+                                          side: BorderSide(
+                                            color: Appcolor.amaranthpink,
+                                            width: 1.5,
+                                          ),
+                                        ),
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 16, vertical: 10),
+                                        elevation: 0,
+                                      ),
+                                      child: Text(
+                                        'Track Order',
+                                        style: TextStyle(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                    ),
                                   if (controller
                                           .pendingOrders[index].orderStatus! ==
                                       0)
