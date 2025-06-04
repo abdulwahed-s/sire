@@ -231,4 +231,9 @@ class AdminData {
     });
     return resp.fold((s) => s, (r) => r);
   }
+
+  getDashboardInfo()async {
+    var resp = await curd.postData(AppLink.dashboardInfo, {});
+    return resp.fold((s) => s, (r) => r);
+  }
 }

@@ -82,6 +82,9 @@ static const String readytopickup = "$server/admin/orders/readytopickup.php";
 static const String userpickedup = "$server/admin/orders/userpickedup.php";
 static const String cancelorder = "$server/admin/orders/cancelorder.php";
 static const String archiveOrder = "$server/admin/orders/archiveorder.php";
+//dashboard
+static const String dashboardInfo = "$server/admin/dashboard.php";
+
 
 
 
