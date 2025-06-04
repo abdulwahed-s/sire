@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
       initialBinding: InitialBindings(),
       translations: Translation(),
       theme: ThemeData(
-        fontFamily: 'Cairo',
+        fontFamily: 'Sw',
         textTheme: TextTheme(
           headlineLarge: TextStyle(fontWeight: FontWeight.w800, fontSize: 28),
           headlineMedium: TextStyle(fontWeight: FontWeight.w700, fontSize: 22),
