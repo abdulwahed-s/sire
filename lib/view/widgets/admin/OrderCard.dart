@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:jiffy/jiffy.dart';
 import 'package:sire/apilink.dart';
 import 'package:sire/controller/admin/orders/manageorderscontroller.dart';
+import 'package:sire/core/constant/color.dart';
 import 'package:sire/view/widgets/admin/ActionButtons.dart';
 
 class OrderCard extends StatelessWidget {
@@ -16,52 +17,72 @@ class OrderCard extends StatelessWidget {
     final statusText =
         controller.getStatusText(order.orderStatus!, order.orderType!);
     final statusColor = controller.getStatusColor(order.orderStatus!);
+    final theme = Theme.of(context);
+
     return Card(
-      margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-      elevation: 2,
+      color: Appcolor.white,
+      margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      elevation: 1,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
       child: InkWell(
         onTap: () {
           controller.goToOrderDetails(
               controller.orders[index].orderId.toString(), index);
         },
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(12),
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Order header
+              // Order header with ID and status
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    "Order #${order.orderId}",
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.receipt_long,
+                        color: theme.primaryColor,
+                        size: 20,
+                      ),
+                      const SizedBox(width: 8),
+                      Text(
+                        "Order #${order.orderId}",
+                        style: theme.textTheme.titleMedium?.copyWith(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
                   ),
                   Container(
                     padding:
-                        const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                        const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                     decoration: BoxDecoration(
-                      color: statusColor.withValues(alpha: 0.2),
-                      borderRadius: BorderRadius.circular(12),
-                      border: Border.all(color: statusColor),
+                      color: statusColor.withOpacity(0.1),
+                      borderRadius: BorderRadius.circular(16),
+                      border: Border.all(color: statusColor.withOpacity(0.3)),
                     ),
                     child: Text(
                       statusText,
-                      style: TextStyle(
+                      style: theme.textTheme.labelMedium?.copyWith(
                         color: statusColor,
-                        fontWeight: FontWeight.w500,
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
                   ),
                 ],
               ),
-              const SizedBox(height: 8),
+              const SizedBox(height: 12),
 
-              // Order details
+              // Divider
+              Divider(height: 1, color: Colors.grey[200]),
+
+              const SizedBox(height: 12),
+
+              // Order details row
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -70,25 +91,83 @@ class OrderCard extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          order.userName ?? 'No Name',
-                          style: const TextStyle(fontWeight: FontWeight.w500),
-                        ),
-                        const SizedBox(height: 4),
-                        Text(
-                          order.userEmail ?? 'No Email',
-                          style: TextStyle(color: Colors.grey[600]),
-                        ),
-                        const SizedBox(height: 4),
-                        Text(
-                          order.userPhone ?? 'No Phone',
-                          style: TextStyle(color: Colors.grey[600]),
+                        // User name with avatar icon
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.person_outline,
+                              size: 16,
+                              color: Colors.grey[600],
+                            ),
+                            const SizedBox(width: 6),
+                            Text(
+                              order.userName ?? 'No Name',
+                              style: theme.textTheme.bodyMedium?.copyWith(
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ],
                         ),
                         const SizedBox(height: 8),
-                        Text(
-                          "Placed ${Jiffy.parse(order.orderDatetime!).fromNow()}",
-                          style:
-                              TextStyle(color: Colors.grey[600], fontSize: 12),
+
+                        // Email
+                        if (order.userEmail != null) ...[
+                          Row(
+                            children: [
+                              Icon(
+                                Icons.email_outlined,
+                                size: 16,
+                                color: Colors.grey[600],
+                              ),
+                              const SizedBox(width: 6),
+                              Text(
+                                order.userEmail!,
+                                style: theme.textTheme.bodySmall?.copyWith(
+                                  color: Colors.grey[600],
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 6),
+                        ],
+
+                        // Phone
+                        if (order.userPhone != null) ...[
+                          Row(
+                            children: [
+                              Icon(
+                                Icons.phone_outlined,
+                                size: 16,
+                                color: Colors.grey[600],
+                              ),
+                              const SizedBox(width: 6),
+                              Text(
+                                order.userPhone!,
+                                style: theme.textTheme.bodySmall?.copyWith(
+                                  color: Colors.grey[600],
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 6),
+                        ],
+
+                        // Order date
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.access_time_outlined,
+                              size: 16,
+                              color: Colors.grey[600],
+                            ),
+                            const SizedBox(width: 6),
+                            Text(
+                              "Placed ${Jiffy.parse(order.orderDatetime!).fromNow()}",
+                              style: theme.textTheme.bodySmall?.copyWith(
+                                color: Colors.grey[600],
+                              ),
+                            ),
+                          ],
                         ),
                       ],
                     ),
@@ -107,92 +186,133 @@ class OrderCard extends StatelessWidget {
                           width: 48,
                           height: 48,
                           color: Colors.grey[200],
+                          child: const Icon(Icons.person_outline, size: 24),
                         ),
-                        errorWidget: (context, url, error) =>
-                            const Icon(Icons.person),
+                        errorWidget: (context, url, error) => Container(
+                          width: 48,
+                          height: 48,
+                          color: Colors.grey[200],
+                          child: const Icon(Icons.person_outline, size: 24),
+                        ),
                       ),
                     ),
                 ],
               ),
 
-              const SizedBox(height: 12),
+              const SizedBox(height: 16),
 
-              // Payment and delivery info
-              Row(
-                children: [
-                  Icon(
-                    order.orderPaymenttype == 0
-                        ? Icons.credit_card
-                        : Icons.money,
-                    size: 16,
-                    color: Colors.grey,
-                  ),
-                  const SizedBox(width: 4),
-                  Text(
-                    controller.getPaymentType(order.orderPaymenttype!),
-                    style: TextStyle(color: Colors.grey[600]),
-                  ),
-                  const SizedBox(width: 12),
-                  Icon(
-                    order.orderType == 0 ? Icons.delivery_dining : Icons.store,
-                    size: 16,
-                    color: Colors.grey,
-                  ),
-                  const SizedBox(width: 4),
-                  Text(
-                    controller.getOrderType(order.orderType!),
-                    style: TextStyle(color: Colors.grey[600]),
-                  ),
-                ],
+              // Payment and delivery info in a container
+              Container(
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  color: Colors.grey[50],
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Icon(
+                          order.orderPaymenttype == 0
+                              ? Icons.credit_card_outlined
+                              : Icons.money_outlined,
+                          size: 18,
+                          color: Colors.grey[700],
+                        ),
+                        const SizedBox(width: 8),
+                        Text(
+                          controller.getPaymentType(order.orderPaymenttype!),
+                          style: theme.textTheme.bodyMedium,
+                        ),
+                        const Spacer(),
+                        Icon(
+                          order.orderType == 0
+                              ? Icons.delivery_dining_outlined
+                              : Icons.store_outlined,
+                          size: 18,
+                          color: Colors.grey[700],
+                        ),
+                        const SizedBox(width: 8),
+                        Text(
+                          controller.getOrderType(order.orderType!),
+                          style: theme.textTheme.bodyMedium,
+                        ),
+                      ],
+                    ),
+
+                    // Address info
+                    if (order.addressBymap != null ||
+                        order.addressName != null) ...[
+                      const SizedBox(height: 8),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Icon(
+                            Icons.location_on_outlined,
+                            size: 18,
+                            color: Colors.grey[700],
+                          ),
+                          const SizedBox(width: 8),
+                          Expanded(
+                            child: Text(
+                              "${order.addressName ?? ''}${order.addressName != null && order.addressBymap != null ? ' - ' : ''}${order.addressBymap ?? ''}",
+                              style: theme.textTheme.bodySmall,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ],
+                ),
               ),
 
-              const SizedBox(height: 8),
+              const SizedBox(height: 16),
 
-              // Address info
-              if (order.addressBymap != null || order.addressName != null)
-                Row(
+              // Price summary with coupon info
+              Container(
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  color: theme.colorScheme.surfaceVariant.withOpacity(0.3),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Icon(Icons.location_on, size: 16, color: Colors.grey),
-                    const SizedBox(width: 4),
-                    Expanded(
-                      child: Text(
-                        "${order.addressName ?? ''}${order.addressName != null && order.addressBymap != null ? ' - ' : ''}${order.addressBymap ?? ''}",
-                        style: TextStyle(color: Colors.grey[600]),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
+                    if (order.couponCode != null)
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.discount_outlined,
+                            size: 18,
+                            color: Colors.green[700],
+                          ),
+                          const SizedBox(width: 6),
+                          Text(
+                            "${order.couponCode!} (-${order.couponDiscount ?? 0})",
+                            style: theme.textTheme.bodySmall?.copyWith(
+                              color: Colors.green[700],
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ],
+                      )
+                    else
+                      Icon(
+                        Icons.attach_money_outlined,
+                        color: Appcolor.berry ,
+                      ),
+                    Text(
+                      "Total: \$${order.orderTotalprice?.toStringAsFixed(2) ?? '0.00'}",
+                      style: theme.textTheme.titleSmall?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: theme.colorScheme.primary,
                       ),
                     ),
                   ],
                 ),
-
-              const SizedBox(height: 12),
-
-              // Price summary
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      if (order.couponCode != null)
-                        Text(
-                          "Coupon: ${order.couponCode!} (-${order.couponDiscount ?? 0})",
-                          style:
-                              TextStyle(color: Colors.green[700], fontSize: 12),
-                        ),
-                    ],
-                  ),
-                  Text(
-                    "Total: \$${order.orderTotalprice?.toStringAsFixed(2) ?? '0.00'}",
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16,
-                    ),
-                  ),
-                ],
               ),
 
-              const SizedBox(height: 12),
+              const SizedBox(height: 16),
 
               // Action buttons
               ActionButtons(
