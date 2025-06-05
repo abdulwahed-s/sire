@@ -84,6 +84,15 @@ static const String cancelorder = "$server/admin/orders/cancelorder.php";
 static const String archiveOrder = "$server/admin/orders/archiveorder.php";
 //dashboard
 static const String dashboardInfo = "$server/admin/dashboard.php";
+//coupon
+static const String getCoupons = "$server/admin/coupon/viewcoupons.php";
+static const String addCoupon = "$server/admin/coupon/addcoupon.php";
+static const String editCoupon = "$server/admin/coupon/editcoupon.php";
+static const String announceCoupon = "$server/admin/coupon/announcetousers.php";
+
+
+
+
 
 
 
