@@ -1,24 +1,110 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:jiffy/jiffy.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:sire/controller/notification/notificationcontroller.dart';
+import 'package:sire/core/class/statusrequest.dart';
 import 'package:sire/core/constant/color.dart';
 
 class ViewNotification extends StatelessWidget {
-  const ViewNotification({super.key});
+  final bool visableAppBar;
+  const ViewNotification({super.key, this.visableAppBar = true});
 
   @override
   Widget build(BuildContext context) {
     Get.put(NotificationControllerImp());
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Notifications',
-            style: TextStyle(fontWeight: FontWeight.bold)),
-        centerTitle: true,
-        elevation: 1,
-      ),
+      appBar: visableAppBar
+          ? AppBar(
+              title: Text('Notifications',
+                  style: TextStyle(fontWeight: FontWeight.bold)),
+              centerTitle: true,
+              elevation: 1,
+            )
+          : null,
       body: GetBuilder<NotificationControllerImp>(
         builder: (controller) {
+          if (controller.statusRequest == StatusRequest.loding) {
+            return RefreshIndicator(
+              onRefresh: () async {
+                controller.getNotification();
+              },
+              child: SingleChildScrollView(
+                  physics:
+                      AlwaysScrollableScrollPhysics(), // to allow pull-to-refresh
+                  child: Column(
+                    children: List.generate(
+                      5,
+                      (i) => Padding(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 8.0, horizontal: 16.0),
+                        child: Shimmer.fromColors(
+                          baseColor: Colors.grey[300]!,
+                          highlightColor: Colors.grey[100]!,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 12, horizontal: 12),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                // Shimmer for the icon
+                                Container(
+                                  margin: const EdgeInsets.only(right: 16),
+                                  padding: const EdgeInsets.all(12),
+                                  decoration: BoxDecoration(
+                                    color: Colors.grey, // Placeholder color
+                                    shape: BoxShape.circle,
+                                  ),
+                                  width: 48, // Match your icon container size
+                                  height: 48,
+                                ),
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      // Shimmer for title and time
+                                      Row(
+                                        children: [
+                                          Expanded(
+                                            child: Container(
+                                              height: 20,
+                                              color: Colors.grey,
+                                            ),
+                                          ),
+                                          const SizedBox(width: 8),
+                                          Container(
+                                            width: 50,
+                                            height: 12,
+                                            color: Colors.grey,
+                                          ),
+                                        ],
+                                      ),
+                                      const SizedBox(height: 12),
+                                      // Shimmer for content
+                                      Container(
+                                        height: 16,
+                                        color: Colors.grey,
+                                      ),
+                                      const SizedBox(height: 4),
+                                      Container(
+                                        height: 16,
+                                        width: double.infinity,
+                                        color: Colors.grey,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  )),
+            );
+          }
+
           if (controller.allNotification.isEmpty) {
             return RefreshIndicator(
               onRefresh: () async {

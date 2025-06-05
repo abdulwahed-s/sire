@@ -20,6 +20,7 @@ class NotificationControllerImp extends NotificationController {
   @override
   getNotification() async {
     statusRequest = StatusRequest.loding;
+    update();
     allNotification.clear();
     var response = await notificationData
         .getNotification(services.sharedPreferences.getString("id")!);
