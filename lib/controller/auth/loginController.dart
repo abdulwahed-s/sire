@@ -49,7 +49,7 @@ class LogincontrollerImp extends LoginController {
           FirebaseMessaging.instance.unsubscribeFromTopic("notAuthorized");
           FirebaseMessaging.instance.subscribeToTopic("users");
           FirebaseMessaging.instance
-              .subscribeToTopic(response["data"]["user_id"].toString());
+              .subscribeToTopic("user_${response["data"]["user_id"]}");
           Get.off(() => HomeScreen(),
               transition: Transition.rightToLeft,
               duration: Duration(milliseconds: 800));
@@ -58,7 +58,7 @@ class LogincontrollerImp extends LoginController {
           FirebaseMessaging.instance.unsubscribeFromTopic("notAuthorized");
           FirebaseMessaging.instance.subscribeToTopic("delivery");
           FirebaseMessaging.instance
-              .subscribeToTopic(response["data"]["user_id"].toString());
+              .subscribeToTopic("user_${response["data"]["user_id"]}");
           Get.off(() => DeliveryHome(),
               transition: Transition.rightToLeft,
               duration: Duration(milliseconds: 800));
@@ -67,7 +67,7 @@ class LogincontrollerImp extends LoginController {
           FirebaseMessaging.instance.unsubscribeFromTopic("notAuthorized");
           FirebaseMessaging.instance.subscribeToTopic("admin");
           FirebaseMessaging.instance
-              .subscribeToTopic(response["data"]["user_id"].toString());
+              .subscribeToTopic("user_${response["data"]["user_id"]}");
           Get.off(() => AdminHome(),
               transition: Transition.rightToLeft,
               duration: Duration(milliseconds: 800));

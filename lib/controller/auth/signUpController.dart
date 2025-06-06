@@ -51,7 +51,7 @@ class SignUpcontrollerImp extends SignupController {
         service.sharedPreferences.setString("step", "2");
         FirebaseMessaging.instance.unsubscribeFromTopic("notAuthorized");
         FirebaseMessaging.instance.subscribeToTopic("users");
-        FirebaseMessaging.instance.subscribeToTopic(response["data"]["user_id"].toString());
+        FirebaseMessaging.instance.subscribeToTopic("user_${response["data"]["user_id"]}");
           goToVerfiy();
         } else {
           statusRequest = StatusRequest.failure;
