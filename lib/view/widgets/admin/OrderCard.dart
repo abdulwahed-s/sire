@@ -61,9 +61,10 @@ class OrderCard extends StatelessWidget {
                     padding:
                         const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                     decoration: BoxDecoration(
-                      color: statusColor.withOpacity(0.1),
+                      color: statusColor.withValues(alpha: 0.1),
                       borderRadius: BorderRadius.circular(16),
-                      border: Border.all(color: statusColor.withOpacity(0.3)),
+                      border:
+                          Border.all(color: statusColor.withValues(alpha: 0.3)),
                     ),
                     child: Text(
                       statusText,
@@ -272,7 +273,8 @@ class OrderCard extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                  color: theme.colorScheme.surfaceVariant.withOpacity(0.3),
+                  color:
+                      theme.colorScheme.surfaceVariant.withValues(alpha: 0.3),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Row(
@@ -299,7 +301,7 @@ class OrderCard extends StatelessWidget {
                     else
                       Icon(
                         Icons.attach_money_outlined,
-                        color: Appcolor.berry ,
+                        color: Appcolor.berry,
                       ),
                     Text(
                       "Total: \$${order.orderTotalprice?.toStringAsFixed(2) ?? '0.00'}",
