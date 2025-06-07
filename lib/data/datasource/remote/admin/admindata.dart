@@ -232,8 +232,57 @@ class AdminData {
     return resp.fold((s) => s, (r) => r);
   }
 
-  getDashboardInfo()async {
+  getDashboardInfo() async {
     var resp = await curd.postData(AppLink.dashboardInfo, {});
+    return resp.fold((s) => s, (r) => r);
+  }
+
+  getCoupons() async {
+    var resp = await curd.postData(AppLink.getCoupons, {});
+    return resp.fold((s) => s, (r) => r);
+  }
+
+  addCoupon(
+    String code,
+    String count,
+    String discount,
+    String expirydate,
+  ) async {
+    var resp = await curd.postData(AppLink.addCoupon, {
+      "code": code,
+      "count": count,
+      "discount": discount,
+      "expirydate": expirydate,
+    });
+    return resp.fold((s) => s, (r) => r);
+  }
+
+  editCoupon(
+    String id,
+    String code,
+    String count,
+    String discount,
+    String expirydate,
+  ) async {
+    var resp = await curd.postData(AppLink.editCoupon, {
+      "id": id,
+      "code": code,
+      "count": count,
+      "discount": discount,
+      "expirydate": expirydate,
+    });
+    return resp.fold((s) => s, (r) => r);
+  }
+
+  announceCoupon(String title, String body, File file) async {
+    var resp = await curd.addRequestWithImageOne(
+      AppLink.announceCoupon,
+      {
+        "title": title,
+        "body": body,
+      },
+      file,
+    );
     return resp.fold((s) => s, (r) => r);
   }
 }
