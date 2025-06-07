@@ -14,18 +14,6 @@ class AdminCoupon extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.grey[50],
-        appBar: AppBar(
-          title: const Text(
-            'Coupon Management',
-            style: TextStyle(
-              fontWeight: FontWeight.w600,
-              color: Colors.white,
-            ),
-          ),
-          backgroundColor: Appcolor.berry,
-          elevation: 2,
-          shadowColor: Appcolor.berry.withValues(alpha: 0.3),
-        ),
         floatingActionButton: FloatingActionButton.extended(
           onPressed: () {
             Get.to(() => AddNewCoupon());
@@ -226,8 +214,9 @@ class AdminCoupon extends StatelessWidget {
                                 child: ElevatedButton.icon(
                                   onPressed: isExpired
                                       ? null
-                                      : () {
-                                          // Announce functionality
+                                      : () async {
+                                          controller.announceCouponDialog(
+                                              controller, index);
                                         },
                                   icon: const Icon(
                                     Icons.notifications_active_rounded,
