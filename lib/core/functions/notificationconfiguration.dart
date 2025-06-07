@@ -50,6 +50,8 @@ Future<void> notificationConfiguration() async {
 notificationListen() {
   FirebaseMessaging.onMessage.listen(
     (event) {
+      final imageUrl = event.notification?.android?.imageUrl ??
+          event.notification?.apple?.imageUrl;
       FlutterRingtonePlayer().play(
         android: AndroidSounds.ringtone,
         ios: IosSounds.glass,
@@ -79,8 +81,10 @@ notificationListen() {
               children: [
                 SizedBox(
                   height: 150,
-                  child: Lottie.asset("lottie/notification.json",
-                      fit: BoxFit.contain, frameRate: FrameRate(60)),
+                  child: imageUrl == null
+                      ? Lottie.asset("lottie/notification.json",
+                          fit: BoxFit.contain, frameRate: FrameRate(60))
+                      : Image.network(imageUrl),
                 ),
                 SizedBox(height: 20),
                 Text(
