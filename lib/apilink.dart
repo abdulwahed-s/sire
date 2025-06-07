@@ -20,6 +20,8 @@ static const String itemimage = "$image/items/";
 static const String categoriesimage = "$image/categories/";
 static const String pfpimage = "$image/pfp/";
 static const String homeimage = "$image/home/";
+static const String notificationimage = "$image/notification/";
+static const String notificationicon = "$image/notification/icons/";
 //items
 static const String items = "$server/items/items.php";
 //favourites
