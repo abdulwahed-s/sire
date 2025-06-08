@@ -91,6 +91,11 @@ static const String getCoupons = "$server/admin/coupon/viewcoupons.php";
 static const String addCoupon = "$server/admin/coupon/addcoupon.php";
 static const String editCoupon = "$server/admin/coupon/editcoupon.php";
 static const String announceCoupon = "$server/admin/coupon/announcetousers.php";
+//offer
+static const String getOfferMessage = "$server/admin/offermessage/getoffermessage.php";
+static const String editOfferMessage = "$server/admin/offermessage/editoffermessage.php";
+
+
 
 
 
