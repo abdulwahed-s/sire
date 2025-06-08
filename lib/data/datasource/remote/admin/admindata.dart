@@ -285,4 +285,29 @@ class AdminData {
     );
     return resp.fold((s) => s, (r) => r);
   }
+
+  getOfferMessage() async {
+    var resp = await curd.postData(AppLink.getOfferMessage, {});
+    return resp.fold((s) => s, (r) => r);
+  }
+
+  editOfferMessage(String title, String body, String oldimg, File? file) async {
+    Either<StatusRequest, Map> resp;
+    if (file == null) {
+      resp = await curd.postData(AppLink.editOfferMessage, {
+        "title": title,
+        "body": body,
+      });
+    } else {
+      resp = await curd.addRequestWithImageOne(
+          AppLink.editOfferMessage,
+          {
+            "title": title,
+            "body": body,
+            "oldimg": oldimg,
+          },
+          file);
+    }
+    return resp.fold((s) => s, (r) => r);
+  }
 }
