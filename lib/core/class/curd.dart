@@ -62,4 +62,49 @@ class Curd {
       return const Left(StatusRequest.serverfailure);
     }
   }
+
+  Future<Either<StatusRequest, Map>> addRequestWithTwoImages(
+      url, data, File? image1, File? image2,
+      [String? namerequest1, String? namerequest2]) async {
+    namerequest1 ??= "pfp";
+    namerequest2 ??= "banner";
+
+    var uri = Uri.parse(url);
+    var request = http.MultipartRequest("POST", uri);
+
+    if (image1 != null) {
+      var length = await image1.length();
+      var stream = http.ByteStream(image1.openRead());
+      stream.cast();
+      var multipartFile = http.MultipartFile(namerequest1, stream, length,
+          filename: basename(image1.path));
+      request.files.add(multipartFile);
+    }
+
+    if (image2 != null) {
+      var length = await image2.length();
+      var stream = http.ByteStream(image2.openRead());
+      stream.cast();
+      var multipartFile = http.MultipartFile(namerequest2, stream, length,
+          filename: basename(image2.path));
+      request.files.add(multipartFile);
+    }
+
+    // add Data to request
+    data.forEach((key, value) {
+      request.fields[key] = value;
+    });
+
+    // Send Request
+    var myrequest = await request.send();
+    // For get Response Body
+    var response = await http.Response.fromStream(myrequest);
+    if (response.statusCode == 200 || response.statusCode == 201) {
+      print(response.body);
+      Map responsebody = jsonDecode(response.body);
+      return Right(responsebody);
+    } else {
+      return const Left(StatusRequest.serverfailure);
+    }
+  }
 }
