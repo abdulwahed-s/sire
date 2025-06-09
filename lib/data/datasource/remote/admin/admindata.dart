@@ -310,4 +310,76 @@ class AdminData {
     }
     return resp.fold((s) => s, (r) => r);
   }
+
+  createNewDeliveryAccount(
+    String username,
+    String email,
+    String phoneNumber,
+    String password,
+  ) async {
+    var resp = await curd.postData(AppLink.createNewDeliveryAccount, {
+      "username": username,
+      "email": email,
+      "phonenumber": phoneNumber,
+      "password": password,
+    });
+    return resp.fold((s) => s, (r) => r);
+  }
+
+  createNewAdminAccount(
+    String username,
+    String email,
+    String phoneNumber,
+    String password,
+  ) async {
+    var resp = await curd.postData(AppLink.createNewAdminAccount, {
+      "username": username,
+      "email": email,
+      "phonenumber": phoneNumber,
+      "password": password,
+    });
+    return resp.fold((s) => s, (r) => r);
+  }
+
+  updateAccountInformation(
+    String id,
+    String username,
+    String email,
+    String phonenumber,
+    String password,
+    String oldpfp,
+    String oldbanner,
+    File? pfp,
+    File? banner,
+  ) async {
+    Either<StatusRequest, Map> resp;
+    if (pfp == null && banner == null) {
+      resp = await curd.postData(AppLink.updateAccountInformation, {
+        "id": id,
+        "username": username,
+        "email": email,
+        "phonenumber": phonenumber,
+        "password": password,
+        "oldpfp": oldpfp,
+        "oldbanner": oldbanner,
+      });
+    } else {
+      resp = await curd.addRequestWithTwoImages(
+        AppLink.updateAccountInformation,
+        {
+          "id": id,
+          "username": username,
+          "email": email,
+          "phonenumber": phonenumber,
+          "password": password,
+          "oldpfp": oldpfp,
+          "oldbanner": oldbanner,
+        },
+        pfp,
+        banner,
+      );
+    }
+
+    return resp.fold((s) => s, (r) => r);
+  }
 }
