@@ -94,6 +94,14 @@ static const String announceCoupon = "$server/admin/coupon/announcetousers.php";
 //offer
 static const String getOfferMessage = "$server/admin/offermessage/getoffermessage.php";
 static const String editOfferMessage = "$server/admin/offermessage/editoffermessage.php";
+//setting
+static const String createNewDeliveryAccount = "$server/admin/settings/createnewdeliveryaccount.php";
+static const String createNewAdminAccount = "$server/admin/settings/createnewadminaccount.php";
+static const String updateAccountInformation = "$server/admin/settings/editaccountinfor.php";
+
+
+
+
 
 
 
