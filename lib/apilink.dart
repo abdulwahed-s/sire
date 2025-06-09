@@ -19,6 +19,7 @@ static const String image = "http://10.0.2.2/ecommerce/upload";
 static const String itemimage = "$image/items/";
 static const String categoriesimage = "$image/categories/";
 static const String pfpimage = "$image/pfp/";
+static const String bannerimage = "$image/banner/";
 static const String homeimage = "$image/home/";
 static const String notificationimage = "$image/notification/";
 static const String notificationicon = "$image/notification/icons/";
