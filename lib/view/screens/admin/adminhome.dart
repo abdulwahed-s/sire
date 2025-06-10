@@ -1,0 +1,38 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:sire/controller/admin/adminhomecontroller.dart';
+import 'package:sire/core/functions/alertexitapp.dart';
+import 'package:sire/view/widgets/admin/adminbottomnavigationbar.dart';
+import 'package:sire/view/widgets/admin/admindrawer.dart';
+
+class AdminHome extends StatelessWidget {
+  const AdminHome({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    Get.put(AdminHomeControllerImp());
+    return GetBuilder<AdminHomeControllerImp>(
+      builder: (controller) {
+        return Scaffold(
+          appBar: AppBar(),
+          drawer: AdminDrawer(),
+          bottomNavigationBar: AdminBottomNavigationBar(),
+          extendBody: true,
+          body: PopScope(
+            canPop: false,
+            onPopInvokedWithResult: (didPop, result) {
+              alertExitApp();
+            },
+            child: AnimatedSwitcher(
+              duration: const Duration(milliseconds: 300),
+              transitionBuilder: (Widget child, Animation<double> animation) {
+                return FadeTransition(opacity: animation, child: child);
+              },
+              child: controller.listpages.elementAt(controller.currentpage),
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
