@@ -18,4 +18,19 @@ class NotificationData {
     });
     return resp.fold((s) => s, (r) => r);
   }
+
+  readNotification(String userid, String notificationid) async {
+    var resp = await curd.postData(AppLink.readNotification, {
+      "userid": userid,
+      "notificationid": notificationid,
+    });
+    return resp.fold((s) => s, (r) => r);
+  }
+
+    getNotificationCount(String userid) async {
+    var resp = await curd.postData(AppLink.newNotificationsCount, {
+      "id": userid,
+    });
+    return resp.fold((s) => s, (r) => r);
+  }
 }
