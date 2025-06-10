@@ -4,6 +4,7 @@ class NotificationModel {
   String? notificationBody;
   String? notificationImage;
   String? notificationIcon;
+  int? isRead;
   int? notificationUserid;
   String? notificationDatetime;
 
@@ -13,6 +14,7 @@ class NotificationModel {
       this.notificationBody,
       this.notificationImage,
       this.notificationIcon,
+      this.isRead,
       this.notificationUserid,
       this.notificationDatetime});
 
@@ -22,6 +24,7 @@ class NotificationModel {
     notificationBody = json['notification_body'];
     notificationImage = json['notification_image'];
     notificationIcon = json['notification_icon'];
+    isRead = json['is_read'];
     notificationUserid = json['notification_userid'];
     notificationDatetime = json['notification_datetime'];
   }
@@ -33,6 +36,7 @@ class NotificationModel {
     data['notification_body'] = notificationBody;
     data['notification_image'] = notificationImage;
     data['notification_icon'] = notificationIcon;
+    data['is_read'] = isRead;
     data['notification_userid'] = notificationUserid;
     data['notification_datetime'] = notificationDatetime;
     return data;
