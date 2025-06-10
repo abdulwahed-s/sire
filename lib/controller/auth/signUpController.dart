@@ -48,6 +48,10 @@ class SignUpcontrollerImp extends SignupController {
         service.sharedPreferences.setString("username", response["data"]["user_name"]);
         service.sharedPreferences.setString("email", response["data"]["user_email"]);
         service.sharedPreferences.setString("phone", response["data"]["user_phone"]);
+        service.sharedPreferences.setString("pfp", response["data"]["user_pfp"]);
+        service.sharedPreferences.setString("banner", response["data"]["user_banner"]);
+        service.sharedPreferences.setString("key", "0");
+        service.sharedPreferences.setBool("isNotificationEnabled", true);
         service.sharedPreferences.setString("step", "2");
         FirebaseMessaging.instance.unsubscribeFromTopic("notAuthorized");
         FirebaseMessaging.instance.subscribeToTopic("users");

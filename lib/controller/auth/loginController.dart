@@ -44,6 +44,13 @@ class LogincontrollerImp extends LoginController {
             .setString("email", response["data"]["user_email"]);
         service.sharedPreferences
             .setString("phone", response["data"]["user_phone"]);
+        service.sharedPreferences
+            .setString("pfp", response["data"]["user_pfp"]);
+        service.sharedPreferences
+            .setString("banner", response["data"]["user_banner"]);
+        service.sharedPreferences
+            .setString("key", response["data"]["user_keyaccess"].toString());
+        service.sharedPreferences.setBool("isNotificationEnabled", true);
         if (response["data"]["user_keyaccess"] == 0) {
           service.sharedPreferences.setString("step", "2");
           FirebaseMessaging.instance.unsubscribeFromTopic("notAuthorized");
