@@ -8,6 +8,7 @@ import 'package:sire/data/model/notificationmodel.dart';
 abstract class NotificationController extends GetxController {
   getNotification();
   deleteNotification(String notificationID, int index);
+  markNotificationAsRead();
 }
 
 class NotificationControllerImp extends NotificationController {
@@ -51,8 +52,38 @@ class NotificationControllerImp extends NotificationController {
   }
 
   @override
-  void onInit() {
-    getNotification();
+  void onInit() async {
+    await getNotification();
+    markNotificationAsRead();
     super.onInit();
+  }
+
+  @override
+  markNotificationAsRead() async {
+    for (int i = 0; i < allNotification.length; i++) {
+      // Check if notification is unread (isRead == 0)
+      if (allNotification[i].isRead == 0) {
+        var response = await notificationData.readNotification(
+          services.sharedPreferences.getString("id")!,
+          allNotification[i].notificationId.toString(),
+        );
+
+        statusRequest = handlingdata(response);
+
+        if (statusRequest == StatusRequest.success) {
+          if (response["status"] == "success") {
+          } else if (response["status"] == "failure") {
+            statusRequest = StatusRequest.failure;
+          }
+        }
+        update();
+      }
+    }
+  }
+
+  @override
+  void dispose() {
+    Get.delete<NotificationControllerImp>();
+    super.dispose();
   }
 }
