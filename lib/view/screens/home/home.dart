@@ -1,8 +1,11 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:sire/apilink.dart';
 import 'package:sire/controller/home/homeController.dart';
+import 'package:sire/core/class/statusrequest.dart';
 import 'package:sire/core/constant/color.dart';
 import 'package:sire/view/widgets/home/categorieslist.dart';
 import 'package:sire/view/widgets/home/discountcard.dart';
@@ -33,12 +36,27 @@ class Home extends StatelessWidget {
                       img:
                           "https://i.pinimg.com/736x/ac/76/4c/ac764cb8541c8d73e039fba4c3d4df40.jpg",
                     ),
-                    discountcard:  Discountcard(
+                    discountcard: controller.statusRequest ==
+                            StatusRequest.loding
+                        ? Shimmer.fromColors(
+                            baseColor: Colors.grey[300]!,
+                            highlightColor: Colors.grey[100]!,
+                            child: Container(
+                              margin: EdgeInsets.symmetric(horizontal: 20),
+                              width: double.infinity,
+                              height: 180,
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(30)),
+                            ),
+                          )
+                        : Discountcard(
                             title: controller.mainPage[0]['mainpage_title'],
                             content: controller.mainPage[0]['mainpage_body'],
-                            image: AppLink.homeimage +
-                                controller.mainPage[0]['mainpage_image'],
-                          ),
+                            image: CachedNetworkImageProvider(
+                              AppLink.homeimage +
+                                  controller.mainPage[0]['mainpage_image'],
+                            )),
                     serchBar: SerchBar(
                         controller: controller.textEditingController,
                         onPressed: () async {
