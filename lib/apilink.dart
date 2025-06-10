@@ -49,6 +49,8 @@ static const String checkout = "$server/checkout/checkout.php";
 //notification
 static const String viewNotification = "$server/notification/viewnotification.php";
 static const String deleteNotification = "$server/notification/deleteNotification.php";
+static const String readNotification = "$server/notification/readnotification.php";
+static const String newNotificationsCount = "$server/admin/home/getnewnotification.php";
 //orders
 static const String viewPendingOrders = "$server/orders/pending.php";
 static const String viewArchivedOrders = "$server/orders/archived.php";
@@ -99,6 +101,7 @@ static const String editOfferMessage = "$server/admin/offermessage/editoffermess
 static const String createNewDeliveryAccount = "$server/admin/settings/createnewdeliveryaccount.php";
 static const String createNewAdminAccount = "$server/admin/settings/createnewadminaccount.php";
 static const String updateAccountInformation = "$server/admin/settings/editaccountinfor.php";
+
 
 
 
