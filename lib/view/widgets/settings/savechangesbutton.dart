@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sire/controller/admin/settings/updateaccountinformationcontroller.dart';
+import 'package:sire/controller/setting/updateaccountinformationcontroller.dart';
 import 'package:sire/core/constant/color.dart';
 
 class SaveChangesButton extends StatelessWidget {

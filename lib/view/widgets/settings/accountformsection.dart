@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sire/controller/admin/settings/updateaccountinformationcontroller.dart';
+import 'package:sire/controller/setting/updateaccountinformationcontroller.dart';
 import 'package:sire/view/widgets/admin/accounttextfield.dart';
 
 class AccountFormSection extends StatelessWidget {

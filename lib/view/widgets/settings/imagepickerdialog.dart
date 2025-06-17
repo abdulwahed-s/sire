@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sire/controller/admin/settings/updateaccountinformationcontroller.dart';
+import 'package:sire/controller/setting/updateaccountinformationcontroller.dart';
 import 'package:sire/view/widgets/admin/imagesourcebutton.dart';
 
 class ImagePickerDialog extends StatelessWidget {

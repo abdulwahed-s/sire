@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:sire/controller/admin/settings/updateaccountinformationcontroller.dart';
-import 'package:sire/view/widgets/admin/bannerimagewidget.dart';
-import 'package:sire/view/widgets/admin/profilepicturewidget.dart';
+import 'package:sire/controller/setting/updateaccountinformationcontroller.dart';
+import 'package:sire/view/widgets/settings/bannerimagewidget.dart';
+import 'package:sire/view/widgets/settings/profilepicturewidget.dart';
 
 class ProfileHeaderSection extends StatelessWidget {
   final UpdateAccountInformationControllerImp controller;

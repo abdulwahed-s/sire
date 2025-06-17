@@ -3,12 +3,13 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sire/controller/admin/settings/adminsettingscontroller.dart';
+import 'package:sire/controller/delivery/deliverysettingscontroller.dart';
 import 'package:sire/core/class/statusrequest.dart';
 import 'package:sire/core/constant/color.dart';
 import 'package:sire/core/functions/addimage.dart';
 import 'package:sire/core/functions/handlingdata.dart';
 import 'package:sire/core/services/services.dart';
-import 'package:sire/data/datasource/remote/admin/admindata.dart';
+import 'package:sire/data/datasource/remote/settings/settingsdata.dart';
 
 abstract class UpdateAccountInformationController extends GetxController {
   updateAccountInformation();
@@ -18,7 +19,7 @@ class UpdateAccountInformationControllerImp
     extends UpdateAccountInformationController {
   GlobalKey<FormState> globalKey = GlobalKey();
   StatusRequest statusRequest = StatusRequest.none;
-  AdminData adminData = AdminData(Get.find());
+  SettingsData settingsData = SettingsData(Get.find());
 
   TextEditingController? username;
   TextEditingController? email;
@@ -26,6 +27,7 @@ class UpdateAccountInformationControllerImp
   TextEditingController? password;
   String? oldpfp;
   String? oldbanner;
+  String? key;
 
   Services services = Get.find();
 
@@ -52,6 +54,7 @@ class UpdateAccountInformationControllerImp
     password = TextEditingController();
     oldpfp = services.sharedPreferences.getString("pfp");
     oldbanner = services.sharedPreferences.getString("banner");
+    key = services.sharedPreferences.getString("key")!;
 
     username!.text = services.sharedPreferences.getString("username")!;
     email!.text = services.sharedPreferences.getString("email")!;
@@ -66,7 +69,7 @@ class UpdateAccountInformationControllerImp
     if (fomrstate!.validate()) {
       statusRequest = StatusRequest.loding;
       update();
-      var response = await adminData.updateAccountInformation(
+      var response = await settingsData.updateAccountInformation(
         services.sharedPreferences.getString("id")!,
         username!.text,
         email!.text,
@@ -94,7 +97,11 @@ class UpdateAccountInformationControllerImp
             services.sharedPreferences
                 .setString("banner", response["data"]["user_banner"]);
           }
-          Get.find<AdminSettingsControllerImp>().updateAccount();
+          switch(key){
+            case("0"):
+            case("1"):Get.find<DeliverySettingsControllerImp>().updateAccount();
+            case("2"):Get.find<AdminSettingsControllerImp>().updateAccount();
+          }
           Get.back();
           Get.snackbar(
             "Success",

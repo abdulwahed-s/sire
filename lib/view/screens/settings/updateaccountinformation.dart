@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sire/controller/admin/settings/updateaccountinformationcontroller.dart';
-import 'package:sire/view/widgets/admin/accountformsection.dart';
-import 'package:sire/view/widgets/admin/profileheadersection.dart';
-import 'package:sire/view/widgets/admin/savechangesbutton.dart';
+import 'package:sire/controller/setting/updateaccountinformationcontroller.dart';
+import 'package:sire/view/widgets/settings/accountformsection.dart';
+import 'package:sire/view/widgets/settings/profileheadersection.dart';
+import 'package:sire/view/widgets/settings/savechangesbutton.dart';
 import 'package:sire/view/widgets/admin/updateaccountappbar.dart';
 
 class UpdateAccountInformation extends StatelessWidget {

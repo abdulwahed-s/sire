@@ -2,8 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sire/apilink.dart';
-import 'package:sire/controller/admin/settings/updateaccountinformationcontroller.dart';
-import 'package:sire/view/widgets/admin/imagepickerdialog.dart';
+import 'package:sire/controller/setting/updateaccountinformationcontroller.dart';
+import 'package:sire/view/widgets/settings/imagepickerdialog.dart';
 
 class BannerImageWidget extends StatelessWidget {
   final UpdateAccountInformationControllerImp controller;
