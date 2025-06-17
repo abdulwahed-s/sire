@@ -3,7 +3,7 @@ import 'package:sire/view/screens/admin/settings/createnewadminaccount.dart';
 import 'package:sire/core/functions/disablenotification.dart';
 import 'package:sire/core/services/services.dart';
 import 'package:sire/view/screens/admin/settings/createnewdeliveryaccount.dart';
-import 'package:sire/view/screens/admin/settings/updateaccountinformation.dart';
+import 'package:sire/view/screens/settings/updateaccountinformation.dart';
 
 abstract class AdminSettingsController extends GetxController {
   disableNotification();
