@@ -37,6 +37,8 @@ static const String cartCount = "$server/cart/countcart.php";
 //search
 static const String search ="$server/search/search.php";
 static const String suggestion ="$server/search/suggestion.php";
+//setting
+static const String updateAccountInformation = "$server/settings/editaccountinfo.php";
 //addresses
 static const String addAddress    ="$server/address/add.php";
 static const String deleteAddress ="$server/address/delete.php";
@@ -67,6 +69,8 @@ static const String deliveryOrderDetails = "$server/delivery/orderdetails.php";
 static const String acceptorder = "$server/delivery/acceptorder.php";
 static const String viewAcceptedOrders = "$server/delivery/viewaccepted.php";
 static const String markAsDelivered = "$server/delivery/markasdelivered.php";
+static const String countDelivered = "$server/delivery/countdelivered.php";
+static const String delivered = "$server/delivery/delivered.php";
 //admin
 //categories
 static const String getCategories = "$server/admin/categories/view.php";
@@ -100,7 +104,6 @@ static const String editOfferMessage = "$server/admin/offermessage/editoffermess
 //setting
 static const String createNewDeliveryAccount = "$server/admin/settings/createnewdeliveryaccount.php";
 static const String createNewAdminAccount = "$server/admin/settings/createnewadminaccount.php";
-static const String updateAccountInformation = "$server/admin/settings/editaccountinfor.php";
 
 
 
