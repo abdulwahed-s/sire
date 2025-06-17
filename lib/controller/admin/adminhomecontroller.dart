@@ -87,9 +87,9 @@ class AdminHomeControllerImp extends AdminHomeController {
   @override
   logout() {
     FirebaseMessaging.instance.subscribeToTopic("notAuthorized");
-    FirebaseMessaging.instance.unsubscribeFromTopic("users");
-    FirebaseMessaging.instance
-        .unsubscribeFromTopic(services.sharedPreferences.getString("id")!);
+    FirebaseMessaging.instance.unsubscribeFromTopic("admin");
+    FirebaseMessaging.instance.unsubscribeFromTopic(
+        "user_${services.sharedPreferences.getString("id")!}");
     services.sharedPreferences.clear();
     services.sharedPreferences.setString("step", "1");
     Get.offAll(
