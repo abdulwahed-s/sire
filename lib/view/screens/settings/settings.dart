@@ -61,10 +61,14 @@ class Settings extends StatelessWidget {
                     SizedBox(
                       height: 20,
                     ),
-                    SwitchListTile(
-                      value: true,
-                      onChanged: (value) {},
-                      title: Text("Notification"),
+                    GetBuilder<SettingControllerImp>(
+                      builder: (controller) => SwitchListTile(
+                        value: controller.isNotificationEnabled ?? false,
+                        onChanged: (value) {
+                          controller.disableNotification();
+                        },
+                        title: Text("Notification"),
+                      ),
                     ),
                     SizedBox(
                       height: 5,
