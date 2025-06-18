@@ -9,7 +9,7 @@ class ViewFavourite extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(ViewFavouritesControllerImp());
+    Get.lazyPut(() => ViewFavouritesControllerImp());
     return Scaffold(
       backgroundColor: Appcolor.white,
       appBar: AppBar(
