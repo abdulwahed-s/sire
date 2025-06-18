@@ -1,5 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sire/controller/delivery/acceptedorderscontroller.dart';
 import 'package:sire/core/class/statusrequest.dart';
+import 'package:sire/core/constant/color.dart';
 import 'package:sire/core/functions/handlingdata.dart';
 import 'package:sire/core/services/services.dart';
 import 'package:sire/data/datasource/remote/delivery/deliverydata.dart';
@@ -23,6 +26,7 @@ class DeliveryRequestsControllerImp extends DeliveryRequestsController {
   @override
   getUndeliveredOrders() async {
     statusRequest = StatusRequest.loding;
+    update();
     undeliveredOrders.clear();
     var response = await deliveryData.getUndeliveredOrders();
     statusRequest = handlingdata(response);
@@ -76,13 +80,30 @@ class DeliveryRequestsControllerImp extends DeliveryRequestsController {
   @override
   acceptorder(userid, orderid) async {
     loading = true;
+    update();
     var response = await deliveryData.acceptOrder(
         userid, orderid, services.sharedPreferences.getString("id")!);
     statusRequest = handlingdata(response);
     if (statusRequest == StatusRequest.success) {
       getUndeliveredOrders();
       if (response["status"] == "success") {
+        await Get.find<AcceptedOrdersControllerImp>().getAcceptedOrders();
+        Get.find<AcceptedOrdersControllerImp>().sendDeliveryLocation();
+        Get.snackbar(
+          "Success",
+          "Order accepted successfully",
+          colorText: Appcolor.charcoalGray,
+          backgroundColor: Appcolor.rosePompadour,
+          icon: const Icon(Icons.check_circle),
+        );
       } else if (response["status"] == "failure") {
+        Get.snackbar(
+          "Error",
+          "an error occurred please try again later",
+          colorText: Appcolor.charcoalGray,
+          backgroundColor: Appcolor.rosePompadour,
+          icon: const Icon(Icons.check_circle),
+        );
         statusRequest = StatusRequest.failure;
       }
     }
