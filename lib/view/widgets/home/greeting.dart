@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sire/controller/home/homescreenController.dart';
 import 'package:sire/core/constant/color.dart';
 import 'package:sire/view/screens/items/viewFavourite.dart';
 import 'package:sire/view/screens/notification/viewnotification.dart';
@@ -15,6 +16,7 @@ class Greeting extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    HomeScreenControllerImp controller = Get.find();
     return Column(
       children: [
         Row(
@@ -23,8 +25,8 @@ class Greeting extends StatelessWidget {
             InkWell(
               onTap: () {
                 Get.to(() => ViewFavourite(),
-                    transition: Transition.circularReveal,
-                    duration: Duration(seconds: 1),
+                    transition: Transition.rightToLeft,
+                    duration: const Duration(milliseconds: 300),
                     fullscreenDialog: false);
               },
               child: Icon(
@@ -32,18 +34,55 @@ class Greeting extends StatelessWidget {
                 color: Appcolor.white,
               ),
             ),
-            InkWell(
-              onTap: () {
-                Get.to(() => ViewNotification(),
-                    transition: Transition.circularReveal,
-                    duration: Duration(seconds: 1),
-                    fullscreenDialog: false);
-              },
-              child: Container(
-                padding: EdgeInsets.only(right: 2),
-                child: Icon(
-                  Icons.notifications_rounded,
-                  color: Appcolor.white,
+            Material(
+              color: Colors.transparent,
+              child: InkWell(
+                onTap: () {
+                  Get.to(() => ViewNotification(),
+                      transition: Transition.rightToLeft,
+                      duration: const Duration(milliseconds: 300),
+                      fullscreenDialog: false);
+                },
+                borderRadius: BorderRadius.circular(20),
+                child: Container(
+                  padding: const EdgeInsets.all(8),
+                  child: Stack(
+                    clipBehavior: Clip.none,
+                    children: [
+                      Icon(
+                        Icons.notifications,
+                        color: Appcolor.white,
+                        size: 24,
+                      ),
+                      if (controller.getUnreadCount() > 0)
+                        Positioned(
+                          right: -2,
+                          top: -2,
+                          child: Container(
+                            constraints: BoxConstraints(minWidth: 16),
+                            height: 16,
+                            padding: const EdgeInsets.symmetric(horizontal: 4),
+                            decoration: BoxDecoration(
+                              color: Colors.red,
+                              borderRadius: BorderRadius.circular(8),
+                              border: Border.all(color: Colors.white, width: 1),
+                            ),
+                            child: Center(
+                              child: Text(
+                                controller.getUnreadCount() > 99
+                                    ? '99+'
+                                    : controller.getUnreadCount().toString(),
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -69,7 +108,7 @@ class Greeting extends StatelessWidget {
                 width: 10,
               ),
               Text(
-                "hello, ${name}",
+                "hello, $name",
                 style: Theme.of(context)
                     .textTheme
                     .bodyMedium!
