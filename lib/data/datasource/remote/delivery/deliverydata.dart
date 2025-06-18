@@ -36,4 +36,17 @@ class DeliveryData {
         AppLink.markAsDelivered, {"orderid": orderid, "userid": userid});
     return resp.fold((s) => s, (r) => r);
   }
+
+  getCountDelivered(String userid) async {
+    var resp = await curd.postData(
+        AppLink.countDelivered, {"id": userid});
+    return resp.fold((s) => s, (r) => r);
+  }
+
+    getDeliveredOrders(String workerid) async {
+    var resp =
+        await curd.postData(AppLink.delivered, {"workerid": workerid});
+    return resp.fold((s) => s, (r) => r);
+  }
+
 }
