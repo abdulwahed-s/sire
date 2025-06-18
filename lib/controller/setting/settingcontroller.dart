@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sire/core/constant/color.dart';
+import 'package:sire/core/functions/disablenotification.dart';
 import 'package:sire/core/services/services.dart';
 import 'package:sire/view/screens/address/viewaddress.dart';
 import 'package:sire/view/screens/auth/login.dart';
@@ -12,10 +13,13 @@ abstract class SettingController extends GetxController {
   logout();
   contactus(int type);
   goToAddress();
+  disableNotification();
 }
 
 class SettingControllerImp extends SettingController {
   Services services = Get.find<Services>();
+
+  bool? isNotificationEnabled;
 
   @override
   goToAddress() {
@@ -27,8 +31,8 @@ class SettingControllerImp extends SettingController {
   logout() {
     FirebaseMessaging.instance.subscribeToTopic("notAuthorized");
     FirebaseMessaging.instance.unsubscribeFromTopic("users");
-    FirebaseMessaging.instance
-        .unsubscribeFromTopic(services.sharedPreferences.getString("id")!);
+    FirebaseMessaging.instance.unsubscribeFromTopic(
+        "user_${services.sharedPreferences.getString("id")!}"); 
     services.sharedPreferences.clear();
     services.sharedPreferences.setString("step", "1");
     Get.offAll(
@@ -72,5 +76,20 @@ class SettingControllerImp extends SettingController {
         );
       }
     }
+  }
+
+  @override
+  void onInit() {
+    isNotificationEnabled =
+        services.sharedPreferences.getBool("isNotificationEnabled");
+    super.onInit();
+  }
+
+  @override
+  disableNotification() {
+    disableNotifications();
+    isNotificationEnabled =
+        services.sharedPreferences.getBool("isNotificationEnabled");
+    update();
   }
 }
