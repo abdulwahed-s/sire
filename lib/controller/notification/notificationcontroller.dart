@@ -1,4 +1,7 @@
 import 'package:get/get.dart';
+import 'package:sire/controller/admin/adminhomecontroller.dart';
+import 'package:sire/controller/delivery/deliveryhomecontroller.dart';
+import 'package:sire/controller/home/homescreenController.dart';
 import 'package:sire/core/class/statusrequest.dart';
 import 'package:sire/core/functions/handlingdata.dart';
 import 'package:sire/core/services/services.dart';
@@ -78,6 +81,14 @@ class NotificationControllerImp extends NotificationController {
         }
         update();
       }
+    }
+    String key = services.sharedPreferences.getString("key")!;
+    if (key == "0") {
+      Get.find<HomeScreenControllerImp>().getNotificationsCount();
+    } else if (key == "1") {
+      Get.find<DeliveryHomeControllerImp>().getNotificationsCount();
+    } else if (key == "2") {
+      Get.find<AdminHomeControllerImp>().getNotificationsCount();
     }
   }
 
