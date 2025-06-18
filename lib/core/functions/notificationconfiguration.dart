@@ -5,7 +5,12 @@ import 'package:flutter_ringtone_player/flutter_ringtone_player.dart';
 import 'package:get/get.dart';
 import 'package:app_settings/app_settings.dart';
 import 'package:lottie/lottie.dart';
+import 'package:sire/controller/admin/adminhomecontroller.dart';
+import 'package:sire/controller/delivery/deliveryhomecontroller.dart';
+import 'package:sire/controller/delivery/deliveryrequestscontroller.dart';
+import 'package:sire/controller/home/homescreenController.dart';
 import 'package:sire/core/constant/color.dart';
+import 'package:sire/core/services/services.dart';
 
 Future<void> notificationConfiguration() async {
   FirebaseMessaging messaging = FirebaseMessaging.instance;
@@ -50,6 +55,17 @@ Future<void> notificationConfiguration() async {
 notificationListen() {
   FirebaseMessaging.onMessage.listen(
     (event) {
+      Services services = Get.find();
+      String key = services.sharedPreferences.getString("key")!;
+      if (key == "0") {
+        Get.find<HomeScreenControllerImp>().getNotificationsCount();
+      } else if (key == "1") {
+        Get.find<DeliveryHomeControllerImp>().getNotificationsCount();
+        Get.find<DeliveryRequestsControllerImp>().getUndeliveredOrders();
+
+      } else if (key == "2") {
+        Get.find<AdminHomeControllerImp>().getNotificationsCount();
+      }
       final imageUrl = event.notification?.android?.imageUrl ??
           event.notification?.apple?.imageUrl;
       FlutterRingtonePlayer().play(
