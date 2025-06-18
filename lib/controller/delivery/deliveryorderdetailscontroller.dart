@@ -5,7 +5,6 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:sire/core/class/statusrequest.dart';
 import 'package:sire/core/functions/handlingdata.dart';
 import 'package:sire/data/datasource/remote/delivery/deliverydata.dart';
-import 'package:sire/data/model/deliveryrequestmodel.dart';
 import 'package:sire/data/model/itemdeliverymodel.dart';
 import 'package:sire/view/screens/delivery/deliverynavigation.dart';
 
@@ -18,8 +17,10 @@ class DeliveryOrderDetailsControllerImp extends DeliveryOrderDetailsController {
   late StatusRequest statusRequest;
   DeliveryData deliveryData = DeliveryData(Get.find());
   List<ItemDeliveryModel> orderDetails = [];
-  DeliveryRequestModel undeliveredOrders = DeliveryRequestModel();
+  dynamic undeliveredOrders;
   String? orderid;
+
+  bool? isDelivered = false;
 
   @override
   getOrderDetails() async {
@@ -47,6 +48,7 @@ class DeliveryOrderDetailsControllerImp extends DeliveryOrderDetailsController {
   void onInit() {
     orderid = Get.arguments['orderid'];
     undeliveredOrders = Get.arguments['undeliveredOrder'];
+    isDelivered = Get.arguments['isDelivered'];
     getOrderDetails();
     super.onInit();
   }

@@ -99,18 +99,19 @@ class DeliveryOrderDetails extends StatelessWidget {
                             );
                           },
                         ),
-                        Positioned(
-                          bottom: 10,
-                          right: 10,
-                          child: FloatingActionButton.small(
-                            backgroundColor: Appcolor.berry,
-                            onPressed: () {
-                              controller.goToNavigation();
-                            },
-                            child: const Icon(Icons.navigation,
-                                color: Colors.white),
+                        if (!controller.isDelivered!)
+                          Positioned(
+                            bottom: 10,
+                            right: 10,
+                            child: FloatingActionButton.small(
+                              backgroundColor: Appcolor.berry,
+                              onPressed: () {
+                                controller.goToNavigation();
+                              },
+                              child: const Icon(Icons.navigation,
+                                  color: Colors.white),
+                            ),
                           ),
-                        ),
                       ],
                     ),
                   ),
