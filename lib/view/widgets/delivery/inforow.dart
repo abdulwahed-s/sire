@@ -4,23 +4,42 @@ class InfoRow extends StatelessWidget {
   final IconData icon;
   final String text;
   final int maxLines;
-  const InfoRow(
-      {super.key,
-      required this.icon,
-      required this.text,
-      required this.maxLines});
+  final Color iconColor;
+
+  const InfoRow({
+    super.key,
+    required this.icon,
+    required this.text,
+    required this.maxLines,
+    this.iconColor = Colors.grey,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Icon(icon, size: 20, color: Colors.grey[600]),
-        const SizedBox(width: 8),
+        Container(
+          padding: const EdgeInsets.all(6),
+          decoration: BoxDecoration(
+            color: iconColor.withValues(alpha: 0.1),
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: Icon(
+            icon,
+            size: 16,
+            color: iconColor,
+          ),
+        ),
+        const SizedBox(width: 12),
         Expanded(
           child: Text(
             text,
-            style: TextStyle(color: Colors.grey[700], fontSize: 14),
+            style: const TextStyle(
+              color: Colors.black87,
+              fontSize: 14,
+              fontWeight: FontWeight.w500,
+            ),
             maxLines: maxLines,
             overflow: TextOverflow.ellipsis,
           ),
@@ -29,3 +48,4 @@ class InfoRow extends StatelessWidget {
     );
   }
 }
+
