@@ -1,9 +1,11 @@
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:sire/core/class/statusrequest.dart';
+import 'package:sire/core/constant/color.dart';
 import 'package:sire/core/functions/handlingdata.dart';
 import 'package:sire/core/services/services.dart';
 import 'package:sire/data/datasource/remote/delivery/deliverydata.dart';
@@ -29,6 +31,7 @@ class AcceptedOrdersControllerImp extends AcceptedOrdersController {
   @override
   getAcceptedOrders() async {
     statusRequest = StatusRequest.loding;
+    update();
     acceptedOrders.clear();
     var response = await deliveryData
         .getAcceptedOrders(services.sharedPreferences.getString("id")!);
@@ -84,11 +87,19 @@ class AcceptedOrdersControllerImp extends AcceptedOrdersController {
   @override
   markAsDelivered(userid, orderid) async {
     loading = true;
+    update();
     var response = await deliveryData.markAsDelivered(orderid, userid);
     statusRequest = handlingdata(response);
     if (statusRequest == StatusRequest.success) {
       getAcceptedOrders();
       if (response["status"] == "success") {
+        Get.snackbar(
+          "Success",
+          "Order delivered successfully",
+          colorText: Appcolor.charcoalGray,
+          backgroundColor: Appcolor.rosePompadour,
+          icon: const Icon(Icons.check_circle),
+        );
       } else if (response["status"] == "failure") {
         statusRequest = StatusRequest.failure;
       }
