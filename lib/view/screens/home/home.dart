@@ -32,10 +32,7 @@ class Home extends StatelessWidget {
                 children: [
                   UpperView(
                     greeting: Greeting(
-                      name: controller.username!,
-                      img:
-                          "https://i.pinimg.com/736x/ac/76/4c/ac764cb8541c8d73e039fba4c3d4df40.jpg",
-                    ),
+                        name: controller.username!, img: controller.pfp),
                     discountcard: controller.statusRequest ==
                             StatusRequest.loding
                         ? Shimmer.fromColors(

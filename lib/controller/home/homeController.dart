@@ -25,10 +25,12 @@ class HomeControllerImp extends HomeController {
 
   String? username;
   String? id;
+  String? pfp;
 
   @override
   intiialiData() {
     username = services.sharedPreferences.getString("username");
+    pfp = services.sharedPreferences.getString("pfp");
     id = services.sharedPreferences.getString("id");
   }
 
