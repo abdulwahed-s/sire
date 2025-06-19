@@ -36,4 +36,11 @@ class RatingData {
     });
     return resp.fold((s) => s, (r) => r);
   }
+
+  viewAllRating(String userId) async {
+    var resp = await curd.postData(AppLink.viewAllRating, {
+      "userId": userId,
+    });
+    return resp.fold((s) => s, (r) => r);
+  }
 }
