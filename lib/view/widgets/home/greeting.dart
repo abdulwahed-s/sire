@@ -1,5 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sire/apilink.dart';
 import 'package:sire/controller/home/homescreenController.dart';
 import 'package:sire/core/constant/color.dart';
 import 'package:sire/view/screens/items/viewFavourite.dart';
@@ -7,7 +9,7 @@ import 'package:sire/view/screens/notification/viewnotification.dart';
 
 class Greeting extends StatelessWidget {
   final String name;
-  final String img;
+  final String? img;
   const Greeting({
     super.key,
     required this.name,
@@ -97,12 +99,28 @@ class Greeting extends StatelessWidget {
                 height: 30,
                 width: 30,
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(160),
-                    image: DecorationImage(
-                        image: NetworkImage(
-                          img,
+                  color: Colors.black,
+                  borderRadius: BorderRadius.circular(160),
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(50),
+                  child: CachedNetworkImage(
+                    imageUrl: "${AppLink.pfpimage}$img",
+                    fit: BoxFit.cover,
+                    placeholder: (context, url) => Container(
+                      color: Colors.black,
+                      child: const Center(
+                        child: CircularProgressIndicator(
+                          color: Colors.white,
                         ),
-                        fit: BoxFit.cover)),
+                      ),
+                    ),
+                    errorWidget: (context, url, error) => Container(
+                      color: Colors.grey[200],
+                      child: const Icon(Icons.person),
+                    ),
+                  ),
+                ),
               ),
               SizedBox(
                 width: 10,
