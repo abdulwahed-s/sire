@@ -1,12 +1,16 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sire/core/constant/color.dart';
 import 'package:sire/core/functions/disablenotification.dart';
+import 'package:sire/core/localization/changelocale.dart';
 import 'package:sire/core/services/services.dart';
 import 'package:sire/view/screens/address/viewaddress.dart';
 import 'package:sire/view/screens/auth/login.dart';
+import 'package:sire/view/screens/auth/verifycodesignup.dart';
+import 'package:sire/view/screens/settings/updateaccountinformation.dart';
+import 'package:sire/view/screens/settings/viewallrating.dart';
+import 'package:sire/view/widgets/settings/language.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 abstract class SettingController extends GetxController {
@@ -14,10 +18,19 @@ abstract class SettingController extends GetxController {
   contactus(int type);
   goToAddress();
   disableNotification();
+  changeLanguages();
+  goToUpdateAccountInformation();
+  goToAllRating();
+  goToVerify();
 }
 
 class SettingControllerImp extends SettingController {
   Services services = Get.find<Services>();
+
+  String? username;
+  String? email;
+  String? pfp;
+  bool? isApprove;
 
   bool? isNotificationEnabled;
 
@@ -32,7 +45,7 @@ class SettingControllerImp extends SettingController {
     FirebaseMessaging.instance.subscribeToTopic("notAuthorized");
     FirebaseMessaging.instance.unsubscribeFromTopic("users");
     FirebaseMessaging.instance.unsubscribeFromTopic(
-        "user_${services.sharedPreferences.getString("id")!}"); 
+        "user_${services.sharedPreferences.getString("id")!}");
     services.sharedPreferences.clear();
     services.sharedPreferences.setString("step", "1");
     Get.offAll(
@@ -82,6 +95,11 @@ class SettingControllerImp extends SettingController {
   void onInit() {
     isNotificationEnabled =
         services.sharedPreferences.getBool("isNotificationEnabled");
+    username = services.sharedPreferences.getString("username");
+    email = services.sharedPreferences.getString("email");
+    pfp = services.sharedPreferences.getString("pfp");
+    isApprove = services.sharedPreferences.getString("approve") == "1";
+
     super.onInit();
   }
 
@@ -91,5 +109,128 @@ class SettingControllerImp extends SettingController {
     isNotificationEnabled =
         services.sharedPreferences.getBool("isNotificationEnabled");
     update();
+  }
+
+  @override
+  changeLanguages() {
+    Get.bottomSheet(
+      Container(
+        decoration: const BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            // Handle bar
+            Container(
+              margin: const EdgeInsets.only(top: 12),
+              width: 40,
+              height: 4,
+              decoration: BoxDecoration(
+                color: Colors.grey.shade300,
+                borderRadius: BorderRadius.circular(2),
+              ),
+            ),
+
+            // Header
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: Row(
+                children: [
+                  Icon(
+                    Icons.language,
+                    color: Appcolor.rosePompadour,
+                  ),
+                  const SizedBox(width: 12),
+                  Text(
+                    "2".tr,
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            // Language options
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Column(
+                children: buildLanguageOptions(),
+              ),
+            ),
+
+            const SizedBox(height: 20),
+          ],
+        ),
+      ),
+      isDismissible: true,
+      enableDrag: true,
+    );
+  }
+
+  List<Widget> buildLanguageOptions() {
+    final languages = [
+      LanguageOption(
+        code: "en",
+        name: "English",
+        nativeName: "English",
+        flag: "🇺🇸",
+      ),
+      LanguageOption(
+        code: "es",
+        name: "Spanish",
+        nativeName: "Español",
+        flag: "🇪🇸",
+      ),
+      LanguageOption(
+        code: "ar",
+        name: "Arabic",
+        nativeName: "العربية",
+        flag: "🇸🇦",
+      ),
+    ];
+
+    return languages
+        .map(
+          (lang) => LanguageButton(
+            language: lang,
+            onPressed: () {
+              Localecontroller().changelocale(lang.code);
+              Get.back();
+            },
+          ),
+        )
+        .toList();
+  }
+
+  @override
+  goToUpdateAccountInformation() {
+    Get.to(
+      () => UpdateAccountInformation(),
+      transition: Transition.leftToRight,
+    );
+  }
+
+  @override
+  goToAllRating() {
+    Get.to(
+      () => ViewAllRating(),
+      transition: Transition.leftToRight,
+    );
+  }
+
+  @override
+  goToVerify() {
+    Get.to(
+      () => VerifyCodeSignUp(),
+      arguments: {
+        "email": email,
+        "setting": true,
+      },
+      transition: Transition.leftToRight,
+    );
   }
 }
