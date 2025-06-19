@@ -50,6 +50,7 @@ class SignUpcontrollerImp extends SignupController {
         service.sharedPreferences.setString("phone", response["data"]["user_phone"]);
         service.sharedPreferences.setString("pfp", response["data"]["user_pfp"]);
         service.sharedPreferences.setString("banner", response["data"]["user_banner"]);
+        service.sharedPreferences.setString("approve", response["data"]["user_approve"].toString());
         service.sharedPreferences.setString("key", "0");
         service.sharedPreferences.setBool("isNotificationEnabled", true);
         service.sharedPreferences.setString("step", "2");

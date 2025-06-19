@@ -50,6 +50,8 @@ class LogincontrollerImp extends LoginController {
             .setString("banner", response["data"]["user_banner"]);
         service.sharedPreferences
             .setString("key", response["data"]["user_keyaccess"].toString());
+        service.sharedPreferences
+            .setString("approve", response["data"]["user_approve"].toString());
         service.sharedPreferences.setBool("isNotificationEnabled", true);
         if (response["data"]["user_keyaccess"] == 0) {
           service.sharedPreferences.setString("step", "2");
