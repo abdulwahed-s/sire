@@ -63,6 +63,7 @@ static const String addRating = "$server/rating/add.php";
 static const String getRating = "$server/rating/get.php";
 static const String getIsOrdered = "$server/rating/isordered.php";
 static const String deleteRating = "$server/rating/delete.php";
+static const String viewAllRating = "$server/rating/viewrating.php";
 //delivery
 static const String undeliveredOrders = "$server/delivery/requests.php";
 static const String deliveryOrderDetails = "$server/delivery/orderdetails.php";
