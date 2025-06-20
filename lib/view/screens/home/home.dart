@@ -9,7 +9,6 @@ import 'package:sire/core/class/statusrequest.dart';
 import 'package:sire/core/constant/color.dart';
 import 'package:sire/view/widgets/home/categorieslist.dart';
 import 'package:sire/view/widgets/home/discountcard.dart';
-import 'package:sire/view/widgets/home/divider.dart';
 import 'package:sire/view/widgets/home/greeting.dart';
 import 'package:sire/view/widgets/home/itemslist.dart';
 import 'package:sire/view/widgets/home/serch.dart';
@@ -61,10 +60,6 @@ class Home extends StatelessWidget {
                         },
                         hint: "Search Product"),
                     categorieslist: Categorieslist(),
-                  ),
-                  HomeDivider(leftText: "Products Promo", rightText: "See All"),
-                  SizedBox(
-                    height: 10,
                   ),
                   ItemsList()
                 ],
