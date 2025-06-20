@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sire/core/class/statusrequest.dart';
+import 'package:sire/core/constant/color.dart';
 import 'package:sire/core/functions/handlingdata.dart';
 import 'package:sire/core/services/services.dart';
 import 'package:sire/data/datasource/remote/home/homedata.dart';
 import 'package:sire/view/screens/items/ItemsView.dart';
+import 'package:sire/view/screens/items/itemdetails.dart';
 import 'package:sire/view/screens/search/search.dart';
 
 abstract class HomeController extends GetxController {
@@ -12,6 +14,7 @@ abstract class HomeController extends GetxController {
   getData();
   goToItem(List categories, int selected, String catId);
   goToSearch();
+  goToItemDetails(model);
 }
 
 class HomeControllerImp extends HomeController {
@@ -81,4 +84,34 @@ class HomeControllerImp extends HomeController {
           "input": textEditingController!.text,
         });
   }
+
+  @override
+  goToItemDetails(model) {
+    Get.to(
+      () => ItemDetails(),
+      arguments: {"itemsModel": model},
+    );
+  }
+
+  List<Color> gradientColors = [
+  Appcolor.hotPink,
+  Appcolor.pink,
+  Appcolor.purple,
+  Appcolor.deepPurple,
+  Appcolor.indigo,
+  Appcolor.blue,
+  Appcolor.cyan,
+  Appcolor.teal,
+  Appcolor.green,
+  Appcolor.lightGreen,
+  Appcolor.deepOrange,
+  Appcolor.amber,
+  Appcolor.yellow,
+  Appcolor.brown,
+  Appcolor.greyShade,
+  Appcolor.charcoalGray,
+  Appcolor.indigoBlue,
+  Appcolor.skyBlue,
+  Appcolor.blueGray,
+];
 }
