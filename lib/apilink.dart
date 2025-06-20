@@ -106,7 +106,8 @@ static const String editOfferMessage = "$server/admin/offermessage/editoffermess
 static const String createNewDeliveryAccount = "$server/admin/settings/createnewdeliveryaccount.php";
 static const String createNewAdminAccount = "$server/admin/settings/createnewadminaccount.php";
 
-
+//profile
+static const String getTotalOrders = "$server/profile/orderscount.php";
 
 
 
