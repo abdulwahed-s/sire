@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:sire/controller/favourites/ViewFavouritesController.dart';
 import 'package:sire/controller/home/homeController.dart';
-import 'package:sire/controller/setting/settingcontroller.dart';
 import 'package:sire/core/class/statusrequest.dart';
 import 'package:sire/core/functions/handlingdata.dart';
 import 'package:sire/core/services/services.dart';
 import 'package:sire/data/datasource/remote/notification/notificationdata.dart';
 import 'package:sire/view/screens/home/home.dart';
 import 'package:sire/view/screens/items/viewFavourite.dart';
+import 'package:sire/view/screens/profile/profile.dart';
 import 'package:sire/view/screens/settings/settings.dart';
 
 abstract class HomeScreenController extends GetxController {
@@ -27,10 +26,8 @@ class HomeScreenControllerImp extends HomeScreenController {
   List<Widget> listpages = [
     Home(),
     ViewFavourite(),
-    Center(
-      child: Text("Setton"),
-    ),
-    Settings()
+    Profile(),
+    Settings(),
   ];
   List<String> namepages = [
     "Home",
@@ -43,13 +40,6 @@ class HomeScreenControllerImp extends HomeScreenController {
     Icons.favorite_outline,
     Icons.person_outline,
     Icons.settings_outlined,
-  ];
-
-  List<Type> controllerPages = [
-    HomeControllerImp,
-    ViewFavouritesControllerImp,
-    // ProfileControllerImp,
-    SettingControllerImp,
   ];
 
   @override
