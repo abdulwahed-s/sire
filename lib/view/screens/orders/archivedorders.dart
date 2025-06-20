@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:jiffy/jiffy.dart';
+import 'package:sire/controller/home/homescreenController.dart';
 import 'package:sire/controller/orders/ArchivedOrdersController.dart';
 import 'package:sire/core/class/statusrequest.dart';
 import 'package:sire/core/constant/approutes.dart';
@@ -27,12 +28,13 @@ class ArchivedOrders extends StatelessWidget {
                 controller.archivedOrders.isEmpty
             ? SkeletonLoading()
             : controller.archivedOrders.isEmpty
-                ?Empty(
+                ? Empty(
                     title: 'No Archived Orders',
                     subtitle:
                         'You currently have no archived orders. When an order is archived, it will appear here.',
                     onPressedOrder: () {
                       Get.toNamed(Approutes.homescreen);
+                      Get.find<HomeScreenControllerImp>().changePage(0);
                     },
                     onPressedRefresh: () {
                       controller.getArchivedOrders();
