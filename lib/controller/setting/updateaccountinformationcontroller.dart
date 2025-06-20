@@ -98,7 +98,6 @@ class UpdateAccountInformationControllerImp
                 .setString("banner", response["data"]["user_banner"]);
           }
           switch(key){
-            case("0"):
             case("1"):Get.find<DeliverySettingsControllerImp>().updateAccount();
             case("2"):Get.find<AdminSettingsControllerImp>().updateAccount();
           }
