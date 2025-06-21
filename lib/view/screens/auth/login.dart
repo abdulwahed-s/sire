@@ -80,6 +80,10 @@ class Login extends StatelessWidget {
                           onTap: () {
                             controller.goToForgotPassword();
                           },
+                          rememberMe: controller.rememberMe,
+                          onChanged: (bool? value) {
+                            controller.changeLoginRemember(value!);
+                          },
                         ),
                         AUTHButton(
                           text: "Continue",
