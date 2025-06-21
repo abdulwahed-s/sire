@@ -3,8 +3,14 @@ import 'package:sire/core/constant/color.dart';
 
 class Restremember extends StatelessWidget {
   final void Function()? onTap;
+  final bool rememberMe;
+  final void Function(bool? value)? onChanged;
 
-  const Restremember({super.key, required this.onTap});
+  const Restremember(
+      {super.key,
+      required this.onTap,
+      required this.rememberMe,
+      required this.onChanged});
 
   @override
   Widget build(BuildContext context) {
@@ -16,9 +22,13 @@ class Restremember extends StatelessWidget {
             child: CheckboxListTile(
               controlAffinity: ListTileControlAffinity.leading,
               activeColor: Appcolor.rosePompadour,
-              title: Text("Remember me"),
-              value: true,
-              onChanged: (value) {},
+              title: FittedBox(
+                fit: BoxFit.scaleDown,
+                alignment: Alignment.centerLeft,
+                child: Text("Remember me"),
+              ),
+              value: rememberMe,
+              onChanged: onChanged,
             ),
           ),
         ),
