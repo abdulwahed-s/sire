@@ -26,6 +26,7 @@ class ManageOrdersControllerImp extends ManageOrdersController {
   List<AdminDetails> ordersDefault = [];
   List<AdminDetails> orders = [];
   int? currentFilter; // This tracks the current filter status
+  int? activeSortType; // 0 = status, 1 = date ascending, 2 = date descending
   bool loading = false;
   bool cLoading = false;
 
@@ -48,7 +49,8 @@ class ManageOrdersControllerImp extends ManageOrdersController {
       if (response["status"] == "success") {
         List data = response['data'];
         ordersDefault.addAll(data.map((e) => AdminDetails.fromJson(e)));
-        applyFilter(); // Apply current filter after loading
+
+        applyFilterAndSort();
       } else if (response["status"] == "failure") {
         statusRequest = StatusRequest.failure;
       }
@@ -58,13 +60,13 @@ class ManageOrdersControllerImp extends ManageOrdersController {
 
   void setFilter(int? status) {
     currentFilter = status;
-    applyFilter();
+    applyFilterAndSort();
     update();
   }
 
   void applyFilter() {
     if (currentFilter == null) {
-      orders = List.from(ordersDefault); // Show all if no filter
+      orders = List.from(ordersDefault); 
     } else {
       orders = ordersDefault
           .where((order) => order.orderStatus == currentFilter)
@@ -72,13 +74,28 @@ class ManageOrdersControllerImp extends ManageOrdersController {
     }
   }
 
-// Add this to your controller to track active sort
-  int? activeSortType; // 0 = status, 1 = date ascending, 2 = date descending
+  void applyFilterAndSort() {
+    applyFilter();
 
-// Then modify your sort methods:
+    if (activeSortType != null) {
+      switch (activeSortType) {
+        case 0:
+          orders.sort(
+              (a, b) => (a.orderStatus ?? 0).compareTo(b.orderStatus ?? 0));
+          break;
+        case 1:
+          orders.sort((a, b) => a.orderDatetime!.compareTo(b.orderDatetime!));
+          break;
+        case 2:
+          orders.sort((a, b) => b.orderDatetime!.compareTo(a.orderDatetime!));
+          break;
+      }
+    }
+  }
+
   void sortByStatus() {
-    activeSortType == 0 ? activeSortType = null : activeSortType = 0;
-    orders.sort((a, b) => (a.orderStatus ?? 0).compareTo(b.orderStatus ?? 0));
+    activeSortType = activeSortType == 0 ? null : 0;
+    applyFilterAndSort();
     update();
   }
 
@@ -90,10 +107,12 @@ class ManageOrdersControllerImp extends ManageOrdersController {
             : ascending
                 ? 1
                 : 2;
-    orders.sort((a, b) => ascending
-        ? a.orderDatetime!.compareTo(b.orderDatetime!)
-        : b.orderDatetime!.compareTo(a.orderDatetime!));
+    applyFilterAndSort();
     update();
+  }
+
+  Future<void> refreshOrders() async {
+    await getOrders();
   }
 
   @override
@@ -128,8 +147,9 @@ class ManageOrdersControllerImp extends ManageOrdersController {
 
   @override
   goToOrderDetails(orderid, index) {
+    AdminDetails orderDetail = orders[index];
     Get.to(() => AdminOrderDetails(),
-        arguments: {'orderid': orderid, 'orderDetail': ordersDefault[index]});
+        arguments: {'orderid': orderid, 'orderDetail': orderDetail});
   }
 
   Color getStatusColor(double statusCode) {
@@ -193,7 +213,7 @@ class ManageOrdersControllerImp extends ManageOrdersController {
     var response = await adminData.approveOrder(orderid, userid);
     statusRequest = handlingdata(response);
     if (statusRequest == StatusRequest.success) {
-      getOrders();
+      await refreshOrders(); // Use refreshOrders instead of getOrders
       if (response["status"] == "success") {
       } else if (response["status"] == "failure") {
         statusRequest = StatusRequest.failure;
@@ -210,7 +230,7 @@ class ManageOrdersControllerImp extends ManageOrdersController {
     var response = await adminData.finishPreparing(orderid, userid, orderType);
     statusRequest = handlingdata(response);
     if (statusRequest == StatusRequest.success) {
-      getOrders();
+      await refreshOrders(); // Use refreshOrders instead of getOrders
       if (response["status"] == "success") {
       } else if (response["status"] == "failure") {
         statusRequest = StatusRequest.failure;
@@ -227,7 +247,7 @@ class ManageOrdersControllerImp extends ManageOrdersController {
     var response = await adminData.markAsPickedUp(orderid, userid);
     statusRequest = handlingdata(response);
     if (statusRequest == StatusRequest.success) {
-      getOrders();
+      await refreshOrders(); // Use refreshOrders instead of getOrders
       if (response["status"] == "success") {
       } else if (response["status"] == "failure") {
         statusRequest = StatusRequest.failure;
@@ -244,7 +264,7 @@ class ManageOrdersControllerImp extends ManageOrdersController {
     var response = await adminData.cancelOrder(orderid, userid);
     statusRequest = handlingdata(response);
     if (statusRequest == StatusRequest.success) {
-      getOrders();
+      await refreshOrders(); // Use refreshOrders instead of getOrders
       if (response["status"] == "success") {
       } else if (response["status"] == "failure") {
         statusRequest = StatusRequest.failure;
@@ -261,7 +281,7 @@ class ManageOrdersControllerImp extends ManageOrdersController {
     var response = await adminData.archiveOrder(orderid, userid);
     statusRequest = handlingdata(response);
     if (statusRequest == StatusRequest.success) {
-      getOrders();
+      await refreshOrders(); // Use refreshOrders instead of getOrders
       if (response["status"] == "success") {
       } else if (response["status"] == "failure") {
         statusRequest = StatusRequest.failure;
