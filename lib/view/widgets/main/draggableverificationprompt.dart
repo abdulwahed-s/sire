@@ -27,6 +27,12 @@ class _DraggableVerificationPromptState
   late Animation<double> _shimmerAnimation;
   late Animation<double> _glowAnimation;
 
+  static const Color primaryColor = Color(0xffa43068);
+  static const Color primaryLight = Color(0xffb84c7a);
+  static const Color backgroundDark = Color(0xff1a0f14);
+  static const Color backgroundMedium = Color(0xff2d1a23);
+  static const Color backgroundLight = Color(0xff3d2430);
+
   @override
   void initState() {
     super.initState();
@@ -204,15 +210,15 @@ class _DraggableVerificationPromptState
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
-            const Color(0xFF1A1A2E),
-            const Color(0xFF16213E),
-            const Color(0xFF0F3460),
+            backgroundDark,
+            backgroundMedium,
+            backgroundLight,
           ],
           stops: const [0.0, 0.5, 1.0],
         ),
         borderRadius: BorderRadius.circular(24),
         border: Border.all(
-          color: Colors.white.withValues(alpha: 0.1),
+          color: primaryColor.withValues(alpha: 0.2),
           width: 1,
         ),
         boxShadow: [
@@ -223,14 +229,13 @@ class _DraggableVerificationPromptState
             spreadRadius: 0,
           ),
           BoxShadow(
-            color: const Color(0xFF00F5FF)
-                .withValues(alpha: 0.1 * _glowAnimation.value),
+            color: primaryColor.withValues(alpha: 0.15 * _glowAnimation.value),
             blurRadius: 40,
             offset: const Offset(0, 0),
             spreadRadius: 4,
           ),
           BoxShadow(
-            color: Colors.white.withValues(alpha: 0.05),
+            color: primaryColor.withValues(alpha: 0.1),
             blurRadius: 1,
             offset: const Offset(0, 1),
             spreadRadius: 0,
@@ -248,8 +253,8 @@ class _DraggableVerificationPromptState
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                     colors: [
-                      Colors.white.withValues(alpha: 0.08),
-                      Colors.white.withValues(alpha: 0.02),
+                      primaryColor.withValues(alpha: 0.08),
+                      primaryColor.withValues(alpha: 0.02),
                     ],
                   ),
                 ),
@@ -267,7 +272,7 @@ class _DraggableVerificationPromptState
                       end: Alignment(1.0 + _shimmerAnimation.value, 1.0),
                       colors: [
                         Colors.transparent,
-                        const Color(0xFF00F5FF).withValues(alpha: 0.1),
+                        primaryColor.withValues(alpha: 0.15),
                         Colors.transparent,
                       ],
                       stops: const [0.0, 0.5, 1.0],
@@ -284,16 +289,16 @@ class _DraggableVerificationPromptState
                   Container(
                     padding: const EdgeInsets.all(6),
                     decoration: BoxDecoration(
-                      color: Colors.white.withValues(alpha: 0.05),
+                      color: primaryColor.withValues(alpha: 0.1),
                       borderRadius: BorderRadius.circular(10),
                       border: Border.all(
-                        color: Colors.white.withValues(alpha: 0.1),
+                        color: primaryColor.withValues(alpha: 0.2),
                         width: 1,
                       ),
                     ),
                     child: Icon(
                       Icons.drag_indicator_rounded,
-                      color: Colors.white.withValues(alpha: 0.4),
+                      color: primaryColor.withValues(alpha: 0.6),
                       size: 14,
                     ),
                   ),
@@ -301,18 +306,18 @@ class _DraggableVerificationPromptState
                   Container(
                     padding: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
-                      gradient: const LinearGradient(
+                      gradient: LinearGradient(
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                         colors: [
-                          Color(0xFF00F5FF),
-                          Color(0xFF0099CC),
+                          primaryColor,
+                          primaryLight,
                         ],
                       ),
                       borderRadius: BorderRadius.circular(12),
                       boxShadow: [
                         BoxShadow(
-                          color: const Color(0xFF00F5FF).withValues(alpha: 0.3),
+                          color: primaryColor.withValues(alpha: 0.4),
                           blurRadius: 12,
                           offset: const Offset(0, 4),
                         ),
@@ -391,10 +396,10 @@ class _DraggableVerificationPromptState
                   Container(
                     padding: const EdgeInsets.all(6),
                     decoration: BoxDecoration(
-                      color: Colors.white.withValues(alpha: 0.05),
+                      color: primaryColor.withValues(alpha: 0.1),
                       borderRadius: BorderRadius.circular(8),
                       border: Border.all(
-                        color: Colors.white.withValues(alpha: 0.1),
+                        color: primaryColor.withValues(alpha: 0.2),
                         width: 1,
                       ),
                     ),
@@ -404,7 +409,7 @@ class _DraggableVerificationPromptState
                       curve: Curves.easeOutCubic,
                       child: Icon(
                         Icons.keyboard_arrow_down_rounded,
-                        color: Colors.white.withValues(alpha: 0.6),
+                        color: primaryColor.withValues(alpha: 0.8),
                         size: 16,
                       ),
                     ),
@@ -427,19 +432,18 @@ class _DraggableVerificationPromptState
                           child: Container(
                             height: 44,
                             decoration: BoxDecoration(
-                              gradient: const LinearGradient(
+                              gradient: LinearGradient(
                                 begin: Alignment.topLeft,
                                 end: Alignment.bottomRight,
                                 colors: [
-                                  Color(0xFF00F5FF),
-                                  Color(0xFF0099CC),
+                                  primaryColor,
+                                  primaryLight,
                                 ],
                               ),
                               borderRadius: BorderRadius.circular(22),
                               boxShadow: [
                                 BoxShadow(
-                                  color: const Color(0xFF00F5FF)
-                                      .withValues(alpha: 0.4),
+                                  color: primaryColor.withValues(alpha: 0.4),
                                   blurRadius: 16,
                                   offset: const Offset(0, 6),
                                 ),
@@ -489,10 +493,10 @@ class _DraggableVerificationPromptState
                           child: Container(
                             height: 44,
                             decoration: BoxDecoration(
-                              color: Colors.white.withValues(alpha: 0.05),
+                              color: primaryColor.withValues(alpha: 0.1),
                               borderRadius: BorderRadius.circular(22),
                               border: Border.all(
-                                color: Colors.white.withValues(alpha: 0.15),
+                                color: primaryColor.withValues(alpha: 0.25),
                                 width: 1,
                               ),
                             ),
@@ -512,7 +516,7 @@ class _DraggableVerificationPromptState
                               child: Text(
                                 'Later',
                                 style: TextStyle(
-                                  color: Colors.white.withValues(alpha: 0.7),
+                                  color: primaryColor.withValues(alpha: 0.8),
                                   fontSize: 12,
                                   fontWeight: FontWeight.w600,
                                   letterSpacing: 0.2,
