@@ -6,6 +6,7 @@ import 'package:sire/controller/checkout/checkoutcontroller.dart';
 import 'package:sire/core/class/statusrequest.dart';
 import 'package:sire/core/constant/color.dart';
 import 'package:sire/view/screens/address/viewaddress.dart';
+import 'package:sire/view/widgets/address/gradientprogressindicator.dart';
 import 'package:sire/view/widgets/checkout/couponsection.dart';
 import 'package:sire/view/widgets/checkout/deliverytype.dart';
 import 'package:sire/view/widgets/checkout/itemview.dart';
@@ -51,7 +52,7 @@ class Checkout extends StatelessWidget {
                                   controller.orderDetails![index].itemImg!,
                               itemprice: controller
                                   .orderDetails![index].itemFinalPrice!
-                                  .toStringAsFixed(3),
+                                  .toStringAsFixed(2),
                               itmeQuantity: controller
                                   .orderDetails![index].countitems!
                                   .toString());
@@ -308,10 +309,10 @@ class Checkout extends StatelessWidget {
                         paymentName: "Cash",
                         paymentImg:
                             "https://cdn-icons-png.flaticon.com/256/745/745640.png",
-                        value: 1,
+                        value: 4,
                         groupValue: controller.paymentType,
                         onTap: () {
-                          controller.changePaymentType(1);
+                          controller.changePaymentType(4);
                         },
                       ),
                       const SizedBox(height: 8),
@@ -323,6 +324,39 @@ class Checkout extends StatelessWidget {
                         groupValue: controller.paymentType,
                         onTap: () {
                           controller.changePaymentType(0);
+                        },
+                      ),
+                      const SizedBox(height: 8),
+                      PaymentMethod(
+                        paymentName: "mastercard",
+                        paymentImg:
+                            "https://brandlogos.net/wp-content/uploads/2021/11/mastercard-logo.png",
+                        value: 1,
+                        groupValue: controller.paymentType,
+                        onTap: () {
+                          controller.changePaymentType(1);
+                        },
+                      ),
+                      const SizedBox(height: 8),
+                      PaymentMethod(
+                        paymentName: "American Express",
+                        paymentImg:
+                            "https://www.americanexpress.com/content/dam/amex/us/merchant/supplies-uplift/product/images/img-WEBLOGO1-01.jpg",
+                        value: 2,
+                        groupValue: controller.paymentType,
+                        onTap: () {
+                          controller.changePaymentType(2);
+                        },
+                      ),
+                      const SizedBox(height: 8),
+                      PaymentMethod(
+                        paymentName: "PayPal",
+                        paymentImg:
+                            "https://upload.wikimedia.org/wikipedia/commons/a/a4/Paypal_2014_logo.png",
+                        value: 3,
+                        groupValue: controller.paymentType,
+                        onTap: () {
+                          controller.changePaymentType(3);
                         },
                       ),
                     ],
@@ -378,7 +412,8 @@ class Checkout extends StatelessWidget {
                     GetBuilder<CheckoutControllerImp>(
                       builder: (controller) => SummaryRow(
                         label: "Subtotal",
-                        value: "\$${controller.couponController.subtotal}",
+                        value:
+                            "\$${controller.couponController.subtotal!.toStringAsFixed(2)}",
                         isTotal: false,
                       ),
                     ),
@@ -406,7 +441,7 @@ class Checkout extends StatelessWidget {
                       builder: (controller) => SummaryRow(
                         label: "Total amount",
                         value:
-                            "\$${controller.couponController.totalprice! + controller.shippingFee}",
+                            "\$${(controller.couponController.totalprice! + controller.shippingFee).toStringAsFixed(2)}",
                         isTotal: true,
                       ),
                     )
@@ -419,9 +454,11 @@ class Checkout extends StatelessWidget {
                 width: double.infinity,
                 margin: EdgeInsets.only(bottom: 10, top: 10),
                 child: ElevatedButton(
-                  onPressed: () async {
-                    await controller.placeOrder();
-                  },
+                  onPressed: controller.isLoading
+                      ? null
+                      : () async {
+                          await controller.placeOrder();
+                        },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Appcolor.deepPink,
                     padding: const EdgeInsets.symmetric(vertical: 16),
@@ -430,14 +467,18 @@ class Checkout extends StatelessWidget {
                     ),
                     elevation: 2,
                   ),
-                  child: const Text(
-                    "Complete Order",
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
+                  child: controller.isLoading
+                      ? SizedBox(
+                          height: 25,
+                          child: GradientProgressIndicator(strokeWidth: 2))
+                      : Text(
+                          "Complete Order",
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
                 ),
               ),
             )
