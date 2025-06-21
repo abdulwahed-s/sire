@@ -48,11 +48,13 @@ class SettingControllerImp extends SettingController {
         "user_${services.sharedPreferences.getString("id")!}");
     services.sharedPreferences.clear();
     services.sharedPreferences.setString("step", "1");
+    Get.find<Localecontroller>().geIsVerified();
     Get.offAll(
       () => Login(),
       transition: Transition.size,
       duration: Duration(seconds: 1),
     );
+    update();
   }
 
   @override

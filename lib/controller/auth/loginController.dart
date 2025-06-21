@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sire/core/class/statusrequest.dart';
 import 'package:sire/core/functions/handlingdata.dart';
+import 'package:sire/core/localization/changelocale.dart';
 import 'package:sire/core/services/services.dart';
 import 'package:sire/data/datasource/remote/auth/logindata.dart';
 import 'package:sire/view/screens/admin/adminhome.dart';
@@ -53,6 +54,7 @@ class LogincontrollerImp extends LoginController {
         } else if (response["data"]["user_keyaccess"] == 2) {
           adminHome();
         }
+        Get.find<Localecontroller>().geIsVerified();
       } else if (response["status"] == "failure") {
         statusRequest = StatusRequest.failure;
         Get.defaultDialog(

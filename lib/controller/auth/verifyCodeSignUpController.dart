@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:sire/core/class/statusrequest.dart';
 import 'package:sire/core/constant/color.dart';
 import 'package:sire/core/functions/handlingdata.dart';
+import 'package:sire/core/localization/changelocale.dart';
 import 'package:sire/core/services/services.dart';
 import 'package:sire/data/datasource/remote/auth/verifycodedata.dart';
 import 'package:sire/view/screens/home/homescreen.dart';
@@ -29,9 +30,11 @@ class VerifyCodeSignUpControllerImp extends VerifyCodeSignUpController {
       if (response["status"] == "success") {
         // data.addAll(response['data']);
         services.sharedPreferences.setString("approve", "1");
+        Get.find<Localecontroller>().geIsVerified();
         Get.offAll(() => HomeScreen(),
             transition: Transition.rightToLeft,
             duration: Duration(milliseconds: 800));
+        update();
       } else if (response["status"] == "failure") {
         statusRequest = StatusRequest.failure;
         Get.defaultDialog(

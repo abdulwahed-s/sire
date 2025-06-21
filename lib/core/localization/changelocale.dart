@@ -13,6 +13,14 @@ class Localecontroller extends GetxController {
     Get.updateLocale(locale);
   }
 
+  bool? isNotVerfied;
+
+  bool geIsVerified() {
+    isNotVerfied = service.sharedPreferences.getString("approve") == "0";
+    update();
+    return isNotVerfied!;
+  }
+
   @override
   void onInit() {
     notificationConfiguration();
