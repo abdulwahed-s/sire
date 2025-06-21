@@ -111,7 +111,7 @@ class FavouritesList extends StatelessWidget {
                                                   Text(
                                                       "${controller.fav[index].itemName}"),
                                                   Text(
-                                                    "\$${(controller.fav[index].itemPrice! + 0.00).toStringAsFixed(2)}",
+                                                    "\$${(controller.fav[index].itemFinalPrice! + 0.00).toStringAsFixed(2)}",
                                                     style: TextStyle(
                                                       fontFamily: "Sw",
                                                     ),
@@ -127,7 +127,16 @@ class FavouritesList extends StatelessWidget {
                                                           size: 15,
                                                         ),
                                                       ),
-                                                      Text("4.9"),
+                                                      Text(
+                                                        (double.parse(controller
+                                                                .fav[index]
+                                                                .itemAvgRating!))
+                                                            .toStringAsFixed(2),
+                                                        style: TextStyle(
+                                                          fontFamily: "Sw",
+                                                          color: Appcolor.pink,
+                                                        ),
+                                                      ),
                                                     ],
                                                   ),
                                                 ],
