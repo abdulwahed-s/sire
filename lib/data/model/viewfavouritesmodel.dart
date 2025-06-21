@@ -16,14 +16,14 @@ class ViewFavouritesModel {
   int? itemDiscount;
   String? itemDate;
   int? itemCat;
-  int? userId;
-  String? userEmail;
-  String? userName;
-  String? userPassword;
-  String? userPhone;
-  int? userVerifycode;
-  int? userApprove;
-  String? userCreate;
+  int? categoryId;
+  String? categoryName;
+  String? categoryNameAr;
+  String? categoryNameEs;
+  String? categoryImg;
+  String? categoryDate;
+  double? itemFinalPrice;
+  String? itemAvgRating;
 
   ViewFavouritesModel(
       {this.favouriteId,
@@ -43,14 +43,14 @@ class ViewFavouritesModel {
       this.itemDiscount,
       this.itemDate,
       this.itemCat,
-      this.userId,
-      this.userEmail,
-      this.userName,
-      this.userPassword,
-      this.userPhone,
-      this.userVerifycode,
-      this.userApprove,
-      this.userCreate});
+      this.categoryId,
+      this.categoryName,
+      this.categoryNameAr,
+      this.categoryNameEs,
+      this.categoryImg,
+      this.categoryDate,
+      this.itemFinalPrice,
+      this.itemAvgRating});
 
   ViewFavouritesModel.fromJson(Map<String, dynamic> json) {
     favouriteId = json['favourite_id'];
@@ -70,18 +70,18 @@ class ViewFavouritesModel {
     itemDiscount = json['item_discount'];
     itemDate = json['item_date'];
     itemCat = json['item_cat'];
-    userId = json['user_id'];
-    userEmail = json['user_email'];
-    userName = json['user_name'];
-    userPassword = json['user_password'];
-    userPhone = json['user_phone'];
-    userVerifycode = json['user_verifycode'];
-    userApprove = json['user_approve'];
-    userCreate = json['user_create'];
+    categoryId = json['category_id'];
+    categoryName = json['category_name'];
+    categoryNameAr = json['category_name_ar'];
+    categoryNameEs = json['category_name_es'];
+    categoryImg = json['category_img'];
+    categoryDate = json['category_date'];
+    itemFinalPrice = json['item_final_price'].toDouble();
+    itemAvgRating = json['item_avg_rating'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data ={};
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['favourite_id'] = favouriteId;
     data['favourite_userid'] = favouriteUserid;
     data['favourite_itemid'] = favouriteItemid;
@@ -99,14 +99,14 @@ class ViewFavouritesModel {
     data['item_discount'] = itemDiscount;
     data['item_date'] = itemDate;
     data['item_cat'] = itemCat;
-    data['user_id'] = userId;
-    data['user_email'] = userEmail;
-    data['user_name'] = userName;
-    data['user_password'] = userPassword;
-    data['user_phone'] = userPhone;
-    data['user_verifycode'] = userVerifycode;
-    data['user_approve'] = userApprove;
-    data['user_create'] = userCreate;
+    data['category_id'] = categoryId;
+    data['category_name'] = categoryName;
+    data['category_name_ar'] = categoryNameAr;
+    data['category_name_es'] = categoryNameEs;
+    data['category_img'] = categoryImg;
+    data['category_date'] = categoryDate;
+    data['item_final_price'] = itemFinalPrice;
+    data['item_avg_rating'] = itemAvgRating;
     return data;
   }
 }
