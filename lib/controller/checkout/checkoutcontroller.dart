@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:sire/controller/checkout/couponcontroller.dart';
+import 'package:sire/controller/home/homeController.dart';
+import 'package:sire/controller/home/homescreenController.dart';
 import 'package:sire/core/class/statusrequest.dart';
 import 'package:sire/core/constant/color.dart';
 import 'package:sire/core/functions/handlingdata.dart';
@@ -36,6 +38,7 @@ class CheckoutControllerImp extends CheckoutController {
   List<AddressModel> addresses = [];
   late StatusRequest statusRequest;
   List<CartModel>? orderDetails;
+  bool get isLoading => statusRequest == StatusRequest.loding;
 
   @override
   getUserAddresses() async {
@@ -107,6 +110,7 @@ class CheckoutControllerImp extends CheckoutController {
       return;
     } else {
       statusRequest = StatusRequest.loding;
+      update();
       var response = await checkoutData.placeOrder(
         services.sharedPreferences.getString("id")!,
         addressId.toString(),
@@ -118,11 +122,12 @@ class CheckoutControllerImp extends CheckoutController {
             ? couponController.couponList[0].couponId!.toString()
             : "0",
       );
-      print(response);
       statusRequest = handlingdata(response);
       if (statusRequest == StatusRequest.success) {
         if (response["status"] == "success") {
           Get.offAll(() => HomeScreen());
+          Get.put(HomeScreenControllerImp());
+          Get.put(HomeControllerImp());
           Get.dialog(
             Dialog(
               shape: RoundedRectangleBorder(
