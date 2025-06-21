@@ -35,8 +35,8 @@ class Cart extends StatelessWidget {
                               itemName: controller.data[index].itemName!,
                               itemCategory:
                                   controller.data[index].categoryName!,
-                              itemPrice: controller.data[index].itemFinalPrice
-                                  .toString(),
+                              itemPrice: controller.data[index].itemFinalPrice!
+                                  .toStringAsFixed(2),
                               itemCount:
                                   controller.data[index].countitems.toString(),
                               onAdd: () => controller.add(
@@ -71,15 +71,22 @@ class Cart extends StatelessWidget {
                 bottom: 20,
                 left: 20,
                 right: 20,
-                child: CartFloatingButton(
-                    statusRequest: controller.statusRequest,
-                    price:
-                        controller.data.isNotEmpty ? controller.totalprice : 0,
-                    shippingPrice: 100,
-                    isDisabled: controller.data.isEmpty,
-                    onTap: () {
-                      controller.placeOrder();
-                    })),
+                child: Tooltip(
+                  message: controller.isNotVerified
+                      ? "Please verify your account to place an order"
+                      : "Place Order",
+                  child: CartFloatingButton(
+                      statusRequest: controller.statusRequest,
+                      price: controller.data.isNotEmpty
+                          ? controller.totalprice
+                          : 0,
+                      shippingPrice: 100,
+                      isDisabled:
+                          controller.data.isEmpty || controller.isNotVerified,
+                      onTap: () {
+                        controller.placeOrder();
+                      }),
+                )),
           ],
         ),
       ),
