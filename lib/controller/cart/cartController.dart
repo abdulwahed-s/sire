@@ -26,6 +26,7 @@ class CartControllerImp extends CartController {
   double totalprice = 0.0;
   int countitem = 0;
   int counter = 0;
+  bool get isNotVerified =>  services.sharedPreferences.getString("approve") == "0";
 
   @override
   void onInit() async {
