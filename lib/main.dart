@@ -7,12 +7,13 @@ import 'package:sire/core/localization/changelocale.dart';
 import 'package:sire/core/localization/translation.dart';
 import 'package:sire/core/services/services.dart';
 import 'package:sire/routes.dart';
+import 'package:sire/view/widgets/main/draggableverificationprompt.dart';
 
 void main() async {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-  statusBarColor: Appcolor.black,
-  statusBarIconBrightness: Brightness.light,
-)); 
+    statusBarColor: Appcolor.black,
+    statusBarIconBrightness: Brightness.light,
+  ));
   WidgetsFlutterBinding.ensureInitialized();
   await InitialServices();
   runApp(const MyApp());
@@ -46,6 +47,18 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Appcolor.rosePompadour),
         useMaterial3: true,
       ),
+      builder: (context, child) {
+        return Stack(
+          children: [
+            child!,
+            GetBuilder<Localecontroller>(builder: (services) {
+              return services.geIsVerified()
+                  ? DraggableVerificationPrompt()
+                  : const SizedBox.shrink();
+            })
+          ],
+        );
+      },
       getPages: route,
     );
   }
