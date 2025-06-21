@@ -43,7 +43,7 @@ class CartFloatingButton extends StatelessWidget {
                 children: [
                   const Text("Amount Price"),
                   Text(
-                    "$price\$",
+                    "${price.toStringAsFixed(2)}\$",
                     style: TextStyle(
                       fontFamily: "Sw",
                       color: Appcolor.black,
@@ -79,7 +79,7 @@ class CartFloatingButton extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    "${price + shippingPrice}\$",
+                    "${(price + shippingPrice).toStringAsFixed(2)}\$",
                     style: TextStyle(
                       fontFamily: "Sw",
                       color: Appcolor.berry,
