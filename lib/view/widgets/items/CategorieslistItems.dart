@@ -10,13 +10,13 @@ class CategorieslistItems extends GetView<ItemscontrollerImp> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 40,
+    return Container(
+      height: 60,
+      padding: const EdgeInsets.symmetric(vertical: 8),
       child: ListView.separated(
+        controller: controller.categoryScrollController,
         itemCount: controller.categories.length,
-        separatorBuilder: (context, index) => SizedBox(
-          width: 17,
-        ),
+        separatorBuilder: (context, index) => const SizedBox(width: 12),
         itemBuilder: (context, index) {
           return Categories(
             selected: index,
@@ -25,6 +25,7 @@ class CategorieslistItems extends GetView<ItemscontrollerImp> {
           );
         },
         scrollDirection: Axis.horizontal,
+        padding: const EdgeInsets.symmetric(horizontal: 16),
       ),
     );
   }
@@ -42,24 +43,68 @@ class Categories extends GetView<ItemscontrollerImp> {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<ItemscontrollerImp>(builder: (controller) {
-      return InkWell(
-        onTap: () {
-          controller.changeCategory(
-              selected, (categoriesmodel.categoryId!.toString()));
-        },
-        child: Text(
-          databaseTranslation(categoriesmodel.categoryName!,
-              categoriesmodel.categoryNameAr!, categoriesmodel.categoryNameEs!),
-          textAlign: TextAlign.center,
-          style: controller.selected == selected
-              ? Theme.of(context).textTheme.bodySmall!.copyWith(
-                  color: Appcolor.rosePompadour,
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold)
-              : Theme.of(context)
-                  .textTheme
-                  .bodySmall!
-                  .copyWith(color: Appcolor.black, fontSize: 15),
+      final isSelected = controller.selected == selected;
+      return AnimatedContainer(
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+        child: Material(
+          color: Colors.transparent,
+          child: InkWell(
+            onTap: () {
+              controller.changeCategory(
+                  selected, (categoriesmodel.categoryId!.toString()));
+            },
+            borderRadius: BorderRadius.circular(25),
+            child: AnimatedContainer(
+              duration: const Duration(milliseconds: 300),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+              decoration: BoxDecoration(
+                gradient: isSelected
+                    ? LinearGradient(
+                        colors: [
+                          Appcolor.rosePompadour,
+                          Appcolor.deepPurple,
+                        ],
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                      )
+                    : null,
+                color: isSelected ? null : Colors.white,
+                borderRadius: BorderRadius.circular(25),
+                boxShadow: [
+                  BoxShadow(
+                    color: isSelected
+                        ? Appcolor.rosePompadour.withValues(alpha: 0.3)
+                        : Colors.black.withValues(alpha: 0.05),
+                    blurRadius: isSelected ? 8 : 4,
+                    offset: Offset(0, isSelected ? 4 : 2),
+                  ),
+                ],
+                border: isSelected
+                    ? null
+                    : Border.all(color: Colors.grey[300]!, width: 1),
+              ),
+              child: AnimatedDefaultTextStyle(
+                duration: const Duration(milliseconds: 300),
+                style: isSelected
+                    ? Theme.of(context).textTheme.bodyMedium!.copyWith(
+                        color: Colors.white,
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold)
+                    : Theme.of(context).textTheme.bodyMedium!.copyWith(
+                        color: Colors.grey[700],
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500),
+                child: Text(
+                  databaseTranslation(
+                      categoriesmodel.categoryName!,
+                      categoriesmodel.categoryNameAr!,
+                      categoriesmodel.categoryNameEs!),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            ),
+          ),
         ),
       );
     });
