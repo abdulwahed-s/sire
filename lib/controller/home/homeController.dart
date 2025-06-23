@@ -35,6 +35,7 @@ class HomeControllerImp extends HomeController {
     username = services.sharedPreferences.getString("username");
     pfp = services.sharedPreferences.getString("pfp");
     id = services.sharedPreferences.getString("id");
+    update();
   }
 
   @override
@@ -56,6 +57,7 @@ class HomeControllerImp extends HomeController {
         categories.addAll(response['categories']);
         items.addAll(response['items']);
         mainPage.addAll(response['mainpage']);
+        update();
       } else if (response["status"] == "failure") {
         statusRequest = StatusRequest.failure;
       }
