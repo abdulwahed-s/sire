@@ -89,29 +89,31 @@ class HomeControllerImp extends HomeController {
   goToItemDetails(model) {
     Get.to(
       () => ItemDetails(),
+      transition: Transition.rightToLeftWithFade,
+      duration: Duration(milliseconds: 500),
       arguments: {"itemsModel": model},
     );
   }
 
   List<Color> gradientColors = [
-  Appcolor.hotPink,
-  Appcolor.pink,
-  Appcolor.purple,
-  Appcolor.deepPurple,
-  Appcolor.indigo,
-  Appcolor.blue,
-  Appcolor.cyan,
-  Appcolor.teal,
-  Appcolor.green,
-  Appcolor.lightGreen,
-  Appcolor.deepOrange,
-  Appcolor.amber,
-  Appcolor.yellow,
-  Appcolor.brown,
-  Appcolor.greyShade,
-  Appcolor.charcoalGray,
-  Appcolor.indigoBlue,
-  Appcolor.skyBlue,
-  Appcolor.blueGray,
-];
+    Appcolor.hotPink,
+    Appcolor.pink,
+    Appcolor.purple,
+    Appcolor.deepPurple,
+    Appcolor.indigo,
+    Appcolor.blue,
+    Appcolor.cyan,
+    Appcolor.teal,
+    Appcolor.green,
+    Appcolor.lightGreen,
+    Appcolor.deepOrange,
+    Appcolor.amber,
+    Appcolor.yellow,
+    Appcolor.brown,
+    Appcolor.greyShade,
+    Appcolor.charcoalGray,
+    Appcolor.indigoBlue,
+    Appcolor.skyBlue,
+    Appcolor.blueGray,
+  ];
 }
