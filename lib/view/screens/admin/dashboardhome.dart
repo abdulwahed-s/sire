@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sire/controller/admin/admindashboardcontroller.dart';
+import 'package:sire/view/widgets/admin/admingraph.dart';
 import 'package:sire/view/widgets/admin/recentorders.dart';
 import 'package:sire/view/widgets/admin/statsrow.dart';
 import 'package:sire/view/widgets/admin/topproducts.dart';
@@ -16,6 +17,7 @@ class DashboardHome extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          AdminGraph(),
           const Text(
             'Overview',
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
@@ -39,7 +41,4 @@ class DashboardHome extends StatelessWidget {
       ),
     );
   }
-
-
-
 }
