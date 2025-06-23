@@ -34,14 +34,24 @@ class UpdateAccountInformationControllerImp
   File? pfp;
   File? banner;
 
-  Future<File?> getImageByGallery(File? file) async {
+  Future<File?> getImageByGallery(File? file, bool pfp) async {
     file = await uploadImage();
+    if (file != null) {
+      file = pfp
+          ? await cropImageWithRatio(file, 1, 1, "Crop Profile Picture")
+          : await cropImageWithRatio(file, 3, 1, "Crop Banner");
+    }
     update();
     return file;
   }
 
-  Future<File?> getImageByCamera(File? file) async {
+  Future<File?> getImageByCamera(File? file, bool pfp) async {
     file = await pickImageFromCamera();
+    if (file != null) {
+      file = pfp
+          ? await cropImageWithRatio(file, 1, 1, "Crop Profile Picture")
+          : await cropImageWithRatio(file, 3, 1, "Crop Banner");
+    }
     update();
     return file;
   }
@@ -97,9 +107,11 @@ class UpdateAccountInformationControllerImp
             services.sharedPreferences
                 .setString("banner", response["data"]["user_banner"]);
           }
-          switch(key){
-            case("1"):Get.find<DeliverySettingsControllerImp>().updateAccount();
-            case("2"):Get.find<AdminSettingsControllerImp>().updateAccount();
+          switch (key) {
+            case ("1"):
+              Get.find<DeliverySettingsControllerImp>().updateAccount();
+            case ("2"):
+              Get.find<AdminSettingsControllerImp>().updateAccount();
           }
           Get.back();
           Get.snackbar(

@@ -41,10 +41,10 @@ class ImagePickerDialog extends StatelessWidget {
                       Get.back();
                       if (imageType == 'banner') {
                         controller.banner = await controller
-                            .getImageByGallery(controller.banner);
+                            .getImageByGallery(controller.banner,false);
                       } else {
                         controller.pfp =
-                            await controller.getImageByGallery(controller.pfp);
+                            await controller.getImageByGallery(controller.pfp,true);
                       }
                     },
                   ),
@@ -58,10 +58,10 @@ class ImagePickerDialog extends StatelessWidget {
                       Get.back();
                       if (imageType == 'banner') {
                         controller.banner = await controller
-                            .getImageByCamera(controller.banner);
+                            .getImageByCamera(controller.banner,false);
                       } else {
                         controller.pfp =
-                            await controller.getImageByCamera(controller.pfp);
+                            await controller.getImageByCamera(controller.pfp,true);
                       }
                     },
                   ),
