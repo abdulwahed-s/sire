@@ -6,6 +6,7 @@ import 'package:sire/apilink.dart';
 import 'package:sire/controller/search/searchcontroller.dart';
 import 'package:sire/core/class/handlingdataview.dart';
 import 'package:sire/core/constant/color.dart';
+import 'package:sire/view/widgets/address/gradientprogressindicator.dart';
 
 class Search extends StatelessWidget {
   const Search({super.key});
@@ -135,19 +136,16 @@ class Search extends StatelessWidget {
                           Divider(endIndent: 20, indent: 20),
                           SizedBox(height: 10),
                           Material(
-                            color: Appcolor
-                                .white, 
+                            color: Appcolor.white,
                             child: InkWell(
                               onTap: () {
                                 controller
                                     .goToItemDetails(controller.results[index]);
                               },
-                              splashColor: Colors.pink.withValues(
-                                  alpha: 0.2), 
+                              splashColor: Colors.pink.withValues(alpha: 0.2),
                               child: Container(
                                 width: double.infinity,
-                                padding: EdgeInsets.symmetric(
-                                    vertical: 8), 
+                                padding: EdgeInsets.symmetric(vertical: 8),
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
@@ -185,6 +183,20 @@ class Search extends StatelessWidget {
                                                     controller.results[index]
                                                         .itemImg!,
                                                 height: 85,
+                                                placeholder: (context, url) =>
+                                                    SizedBox(
+                                                  height: 30,
+                                                  width: 30,
+                                                  child:
+                                                      GradientProgressIndicator(
+                                                          strokeWidth: 2),
+                                                ),
+                                                errorWidget: (context, url,
+                                                        error) =>
+                                                    Icon(Icons.shopping_bag,
+                                                        size: 20,
+                                                        color:
+                                                            Colors.grey[400]),
                                               ),
                                             ),
                                           ),
@@ -204,7 +216,7 @@ class Search extends StatelessWidget {
                                             Container(
                                               margin: EdgeInsets.only(top: 2),
                                               child: Text(
-                                                '\$${controller.results[index].itemPrice!.toStringAsFixed(2)}',
+                                                '\$${controller.results[index].itemFinalPrice!.toStringAsFixed(2)}',
                                                 style: TextStyle(
                                                   fontFamily: "Sw",
                                                   color: Appcolor.pink,
