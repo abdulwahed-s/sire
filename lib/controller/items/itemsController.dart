@@ -15,6 +15,8 @@ abstract class ItemsController extends GetxController {
   changeCategory(int val, String catVal);
   goToItemDetails(ItemsModel itemModel);
   addToCart(String itemId);
+  onPageChanged(int index);
+  refreshCurrentCategory();
 }
 
 class ItemscontrollerImp extends ItemsController {
@@ -28,22 +30,76 @@ class ItemscontrollerImp extends ItemsController {
   final Set<int> loadingItemIds = {};
 
   List data = [];
-
   late StatusRequest statusRequest;
+
+  late PageController pageController;
+  late ScrollController categoryScrollController;
+
+  final Map<String, List> categoryDataCache = {};
+  final Map<String, StatusRequest> categoryStatusCache = {};
+
+  @override
+  void onInit() {
+    super.onInit();
+    pageController = PageController();
+    categoryScrollController = ScrollController();
+    initiateData();
+  }
+
+  @override
+  void onClose() {
+    pageController.dispose();
+    categoryScrollController.dispose();
+    super.onClose();
+  }
 
   @override
   getData(catId) async {
-    data.clear();
-    statusRequest = StatusRequest.loding;
-    update();
+    await _loadCategoryData(catId);
+  }
+
+  Future<void> _loadCategoryData(String catId) async {
+    if (categoryDataCache.containsKey(catId)) {
+      if (this.catId == catId) {
+        data = List.from(categoryDataCache[catId]!);
+        statusRequest = categoryStatusCache[catId] ?? StatusRequest.success;
+        update();
+      }
+      return;
+    }
+
+    categoryStatusCache[catId] = StatusRequest.loding;
+
+    if (this.catId == catId) {
+      data.clear();
+      statusRequest = StatusRequest.loding;
+      update();
+    }
+
     var response = await itemsdata.postData(
         catId, services.sharedPreferences.getString("id")!);
-    statusRequest = handlingdata(response);
-    if (statusRequest == StatusRequest.success) {
+    var status = handlingdata(response);
+
+    if (status == StatusRequest.success) {
       if (response["status"] == "success") {
-        data.addAll(response['data']);
+        List categoryData = response['data'];
+        categoryDataCache[catId] = List.from(categoryData);
+        categoryStatusCache[catId] = StatusRequest.success;
+
+        if (this.catId == catId) {
+          data = List.from(categoryData);
+          statusRequest = StatusRequest.success;
+        }
       } else if (response["status"] == "failure") {
-        statusRequest = StatusRequest.failure;
+        categoryStatusCache[catId] = StatusRequest.failure;
+        if (this.catId == catId) {
+          statusRequest = StatusRequest.failure;
+        }
+      }
+    } else {
+      categoryStatusCache[catId] = status;
+      if (this.catId == catId) {
+        statusRequest = status;
       }
     }
     update();
@@ -54,15 +110,94 @@ class ItemscontrollerImp extends ItemsController {
     categories = Get.arguments['categories'];
     selected = Get.arguments['selected'];
     catId = Get.arguments['catId'];
-    getData(catId!);
+
+    pageController = PageController(initialPage: selected ?? 0);
+
+    _loadCategoryData(catId!);
+    _preloadAdjacentCategories();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _scrollToSelectedCategory();
+    });
+  }
+
+  void _preloadAdjacentCategories() {
+    if (selected != null && categories.isNotEmpty) {
+      if (selected! > 0) {
+        String prevCatId = categories[selected! - 1]['category_id'].toString();
+        _loadCategoryData(prevCatId);
+      }
+
+      if (selected! < categories.length - 1) {
+        String nextCatId = categories[selected! + 1]['category_id'].toString();
+        _loadCategoryData(nextCatId);
+      }
+    }
   }
 
   @override
   changeCategory(val, catVal) {
+    if (selected == val) return;
+
     selected = val;
     catId = catVal;
-    getData(catId!);
-    update();
+
+    pageController.animateToPage(
+      val,
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeInOut,
+    );
+
+    _scrollToSelectedCategory();
+
+    _loadCategoryData(catId!);
+    _preloadAdjacentCategories();
+  }
+
+  @override
+  onPageChanged(int index) {
+    if (selected == index) return;
+
+    selected = index;
+    if (index < categories.length) {
+      catId = categories[index]['category_id'].toString();
+
+      _scrollToSelectedCategory();
+
+      _loadCategoryData(catId!);
+      _preloadAdjacentCategories();
+    }
+  }
+
+  List getCategoryData(String categoryId) {
+    return categoryDataCache[categoryId] ?? [];
+  }
+
+  bool isCategoryLoading(String categoryId) {
+    return categoryStatusCache[categoryId] == StatusRequest.loding;
+  }
+
+  Future<void> refreshCategory(String categoryId) async {
+    categoryDataCache.remove(categoryId);
+    categoryStatusCache.remove(categoryId);
+    await _loadCategoryData(categoryId);
+  }
+
+  void _scrollToSelectedCategory() {
+    if (selected != null && categoryScrollController.hasClients) {
+      double itemWidth = 120.0;
+      double targetScroll =
+          (selected! * itemWidth) - (Get.width / 2) + (itemWidth / 2);
+
+      targetScroll = targetScroll.clamp(
+          0.0, categoryScrollController.position.maxScrollExtent);
+
+      categoryScrollController.animateTo(
+        targetScroll,
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+      );
+    }
   }
 
   @override
@@ -71,22 +206,18 @@ class ItemscontrollerImp extends ItemsController {
   }
 
   @override
-  void onInit() {
-    super.onInit();
-    initiateData();
-  }
-
-  @override
   addToCart(itemId) async {
     final id = int.parse(itemId);
     loadingItemIds.add(id);
     statusRequestAdd = StatusRequest.loding;
     update();
+
     try {
       dynamic response;
       response = await cartData.cartAdd(
           services.sharedPreferences.getString("id")!, itemId);
       statusRequestAdd = handlingdata(response);
+
       if (statusRequestAdd == StatusRequest.success) {
         if (response["status"] == "success") {
           Get.snackbar(
@@ -112,6 +243,13 @@ class ItemscontrollerImp extends ItemsController {
     } finally {
       loadingItemIds.remove(id);
       update();
+    }
+  }
+
+  @override
+  Future<void> refreshCurrentCategory() async {
+    if (catId != null) {
+      await refreshCategory(catId!);
     }
   }
 
