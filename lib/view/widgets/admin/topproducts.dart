@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
@@ -45,14 +46,19 @@ class TopProducts extends StatelessWidget {
                       Expanded(
                         child: Container(
                           decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: NetworkImage(
-                                  AppLink.itemimage + product.itemImg!),
-                              fit: BoxFit.contain,
-                            ),
                             borderRadius: const BorderRadius.vertical(
                               top: Radius.circular(4),
                             ),
+                          ),
+                          child: Center(
+                            child: CachedNetworkImage(
+                                imageUrl: AppLink.itemimage + product.itemImg!,
+                                fit: BoxFit.cover,
+                                placeholder: (context, url) => const Center(
+                                      child: CircularProgressIndicator(),
+                                    ),
+                                errorWidget: (context, url, error) =>
+                                    const Icon(Icons.error)),
                           ),
                         ),
                       ),
