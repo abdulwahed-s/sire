@@ -3,31 +3,41 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:sire/apilink.dart';
 import 'package:sire/controller/home/homeController.dart';
+import 'package:sire/core/class/statusrequest.dart';
 import 'package:sire/core/constant/color.dart';
 import 'package:sire/core/functions/databasetranslation.dart';
 import 'package:sire/data/model/categoriesmodel.dart';
+import 'package:sire/view/widgets/home/loadingstate.dart';
 
-class Categorieslist extends GetView<HomeControllerImp> {
+class Categorieslist extends StatelessWidget {
   const Categorieslist({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 100,
-      child: ListView.separated(
-        itemCount: controller.categories.length,
-        separatorBuilder: (context, index) => const SizedBox(
-          width: 12,
-        ),
-        itemBuilder: (context, index) {
-          return Categories(
-            selected: index,
-            categoriesmodel:
-                CategoriesModel.fromJson(controller.categories[index]),
-          );
-        },
-        scrollDirection: Axis.horizontal,
-      ),
+    return GetBuilder<HomeControllerImp>(
+      builder: (controller) {
+        return SizedBox(
+          height: 100,
+          child: ListView.separated(
+            itemCount: controller.statusRequest == StatusRequest.loding
+                ? 10
+                : controller.categories.length,
+            separatorBuilder: (context, index) => const SizedBox(
+              width: 12,
+            ),
+            itemBuilder: (context, index) {
+              return controller.statusRequest == StatusRequest.loding
+                  ? const LoadingState()
+                  : Categories(
+                      selected: index,
+                      categoriesmodel: CategoriesModel.fromJson(
+                          controller.categories[index]),
+                    );
+            },
+            scrollDirection: Axis.horizontal,
+          ),
+        );
+      },
     );
   }
 }
@@ -60,9 +70,7 @@ class Categories extends GetView<HomeControllerImp> {
                   AppLink.categoriesimage + categoriesmodel.categoryImg!),
             ),
           ),
-          const SizedBox(
-            height: 5,
-          ),
+          const SizedBox(height: 5),
           Text(
             databaseTranslation(
                 categoriesmodel.categoryName!,
