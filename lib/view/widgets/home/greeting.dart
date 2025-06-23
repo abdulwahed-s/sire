@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:sire/apilink.dart';
 import 'package:sire/controller/home/homescreenController.dart';
 import 'package:sire/core/constant/color.dart';
-import 'package:sire/view/screens/items/viewFavourite.dart';
 import 'package:sire/view/screens/notification/viewnotification.dart';
 
 class Greeting extends StatelessWidget {
@@ -24,18 +23,6 @@ class Greeting extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            InkWell(
-              onTap: () {
-                Get.to(() => ViewFavourite(),
-                    transition: Transition.rightToLeft,
-                    duration: const Duration(milliseconds: 300),
-                    fullscreenDialog: false);
-              },
-              child: Icon(
-                Icons.favorite,
-                color: Appcolor.white,
-              ),
-            ),
             Material(
               color: Colors.transparent,
               child: InkWell(
