@@ -1,7 +1,9 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax_flutter/iconsax_flutter.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:sire/apilink.dart';
 import 'package:sire/controller/admin/admindashboardcontroller.dart';
 import 'package:sire/controller/admin/adminhomecontroller.dart';
 import 'package:sire/core/class/statusrequest.dart';
@@ -44,7 +46,18 @@ class RecentOrders extends StatelessWidget {
                               color: Colors.grey[200],
                               shape: BoxShape.circle,
                             ),
-                            child: const Icon(Iconsax.shopping_cart),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(20),
+                              child: CachedNetworkImage(
+                                fit: BoxFit.cover,
+                                imageUrl: AppLink.pfpimage + order.userPfp!,
+                                placeholder: (context, url) => const Center(
+                                  child: CircularProgressIndicator(),
+                                ),
+                                errorWidget: (context, url, error) =>
+                                    const Icon(Iconsax.shop),
+                              ),
+                            ),
                           ),
                           title: Text("#${order.orderId}"),
                           subtitle: Text(order.userName ?? ''),
