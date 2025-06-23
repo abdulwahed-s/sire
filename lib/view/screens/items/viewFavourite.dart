@@ -14,7 +14,7 @@ class ViewFavourite extends StatelessWidget {
       backgroundColor: Appcolor.white,
       appBar: AppBar(
         backgroundColor: Appcolor.white,
-        title: Text(
+        title: const Text(
           "Favourites",
           style: TextStyle(
             fontSize: 20,

@@ -48,7 +48,7 @@ class DeliveryStatsCard extends StatelessWidget {
                     color: Appcolor.berry.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  child: Icon(
+                  child: const Icon(
                     Icons.delivery_dining,
                     color: Appcolor.berry,
                     size: 24,

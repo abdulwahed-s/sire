@@ -30,7 +30,7 @@ class ImageSourceButton extends StatelessWidget {
             const SizedBox(height: 8),
             Text(
               label,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Appcolor.berry,
                 fontWeight: FontWeight.w500,
               ),

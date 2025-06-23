@@ -88,7 +88,7 @@ class CouponImageGenerator {
       '${couponModel.couponDiscount ?? 0}% OFF',
       Offset(width / 2, height / 2),
       const TextStyle(
-        color: Color(0xFFB3FFFFFF), // Colors.white70 approximation
+        color: Color(0xffb3ffffff), // Colors.white70 approximation
         fontSize: 16,
         fontWeight: FontWeight.w600,
       ),
@@ -146,8 +146,8 @@ class CouponImageGenerator {
             backgroundColor: Colors.red,
             colorText: Colors.white,
             snackPosition: SnackPosition.TOP,
-            icon: Icon(Icons.error, color: Colors.white),
-            duration: Duration(seconds: 4),
+            icon: const Icon(Icons.error, color: Colors.white),
+            duration: const Duration(seconds: 4),
           );
         }
       }

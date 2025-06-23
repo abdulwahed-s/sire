@@ -25,7 +25,7 @@ class AdminSearchBar extends StatelessWidget {
           decoration: InputDecoration(
             hintText: 'Search products...',
             hintStyle: TextStyle(color: Colors.grey[500]),
-            prefixIcon: Icon(Icons.search, color: Appcolor.berry),
+            prefixIcon: const Icon(Icons.search, color: Appcolor.berry),
             filled: true,
             fillColor: Colors.white,
             contentPadding:

@@ -149,9 +149,9 @@ class UpdateAddressControllerImp extends UpdateAddressController {
 
         if (statusRequest == StatusRequest.success) {
           if (response["status"] == "success") {
-            Get.offAll(() => Settings(), transition: Transition.fade);
+            Get.offAll(() => const Settings(), transition: Transition.fade);
             Future.delayed(const Duration(milliseconds: 100), () {
-              Get.to(() => ViewAddress(), transition: Transition.fade);
+              Get.to(() => const ViewAddress(), transition: Transition.fade);
             });
           } else {
             Get.snackbar(
@@ -225,7 +225,7 @@ class UpdateAddressControllerImp extends UpdateAddressController {
 
   @override
   goToMap() {
-    Get.to(() => UpdateAddressMap(), arguments: {
+    Get.to(() => const UpdateAddressMap(), arguments: {
       "oldlat": lat ?? addressMode?.addressLat,
       "oldlong": long ?? addressMode?.addressLong,
       "oldmarker": markers ?? {},

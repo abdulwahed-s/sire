@@ -89,7 +89,7 @@ class ReviewSectionSkeleton extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 16),
-                  FeaturedReviewSkeleton(),
+                  const FeaturedReviewSkeleton(),
                 ],
               ),
             ),

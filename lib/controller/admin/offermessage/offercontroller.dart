@@ -40,7 +40,7 @@ class OfferControllerImp extends OfferController {
   @override
   goToEditMessage() {
     Get.to(
-      () => EditOffer(),
+      () => const EditOffer(),
       arguments: {"data": data},
     );
   }

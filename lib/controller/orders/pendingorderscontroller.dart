@@ -131,7 +131,7 @@ class PendingOrdersControllerImp extends PendingOrdersController {
   @override
   getOrderDetails(orderid) {
     Get.to(
-      () => OrderDetails(),
+      () => const OrderDetails(),
       arguments: {"orderid": orderid},
     );
   }
@@ -154,6 +154,6 @@ class PendingOrdersControllerImp extends PendingOrdersController {
 
   @override
   goToTrackOrder(orderid) {
-    Get.to(() => TrackOrder(), arguments: {"orderid": orderid},);
+    Get.to(() => const TrackOrder(), arguments: {"orderid": orderid},);
   }
 }

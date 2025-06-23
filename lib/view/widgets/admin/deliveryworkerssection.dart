@@ -18,7 +18,7 @@ class DeliveryWorkersSection extends StatelessWidget {
   Widget build(BuildContext context) {
     if (controller.dashboardInfo.deliveryWorkers == null ||
         controller.dashboardInfo.deliveryWorkers!.isEmpty) {
-      return EmptyChart(title: 'Delivery Workers Performance');
+      return const EmptyChart(title: 'Delivery Workers Performance');
     }
 
     final workerData = controller.dashboardInfo.deliveryWorkers!
@@ -37,7 +37,7 @@ class DeliveryWorkersSection extends StatelessWidget {
           SizedBox(
             height: 250,
             child: SfCartesianChart(
-              primaryXAxis: CategoryAxis(
+              primaryXAxis: const CategoryAxis(
                 isVisible: false,
               ),
               primaryYAxis: NumericAxis(

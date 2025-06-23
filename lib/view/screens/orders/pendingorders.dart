@@ -25,7 +25,7 @@ class PendingOrders extends StatelessWidget {
         builder: (controller) => controller.statusRequest ==
                     StatusRequest.loding &&
                 controller.pendingOrders.isEmpty
-            ? SkeletonLoading()
+            ? const SkeletonLoading()
             : controller.pendingOrders.isEmpty
                 ? Empty(
                     title: 'No Pending Orders',
@@ -136,16 +136,16 @@ class PendingOrders extends StatelessWidget {
                                       foregroundColor: Appcolor.amaranthpink,
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(8),
-                                        side: BorderSide(
+                                        side: const BorderSide(
                                           color: Appcolor.amaranthpink,
                                           width: 1.5,
                                         ),
                                       ),
-                                      padding: EdgeInsets.symmetric(
+                                      padding: const EdgeInsets.symmetric(
                                           horizontal: 16, vertical: 10),
                                       elevation: 0,
                                     ),
-                                    child: Text(
+                                    child: const Text(
                                       'Order Details',
                                       style: TextStyle(
                                         fontSize: 14,
@@ -159,7 +159,7 @@ class PendingOrders extends StatelessWidget {
                                       controller.pendingOrders[index]
                                               .orderStatus! ==
                                           2)
-                                    SizedBox(width: 12),
+                                    const SizedBox(width: 12),
                                   if (controller
                                           .pendingOrders[index].orderStatus! ==
                                       2)
@@ -177,16 +177,16 @@ class PendingOrders extends StatelessWidget {
                                         shape: RoundedRectangleBorder(
                                           borderRadius:
                                               BorderRadius.circular(8),
-                                          side: BorderSide(
+                                          side: const BorderSide(
                                             color: Appcolor.amaranthpink,
                                             width: 1.5,
                                           ),
                                         ),
-                                        padding: EdgeInsets.symmetric(
+                                        padding: const EdgeInsets.symmetric(
                                             horizontal: 16, vertical: 10),
                                         elevation: 0,
                                       ),
-                                      child: Text(
+                                      child: const Text(
                                         'Track Order',
                                         style: TextStyle(
                                           fontSize: 14,
@@ -209,10 +209,10 @@ class PendingOrders extends StatelessWidget {
                                           middleText:
                                               "Are you sure you want to cancel this order?",
                                           middleTextStyle:
-                                              TextStyle(fontSize: 14),
+                                              const TextStyle(fontSize: 14),
                                           backgroundColor: Colors.white,
                                           radius: 12,
-                                          contentPadding: EdgeInsets.all(20),
+                                          contentPadding: const EdgeInsets.all(20),
                                           actions: [
                                             // Cancel Button (No action - just closes dialog)
                                             ElevatedButton(
@@ -223,11 +223,11 @@ class PendingOrders extends StatelessWidget {
                                                   borderRadius:
                                                       BorderRadius.circular(8),
                                                 ),
-                                                padding: EdgeInsets.symmetric(
+                                                padding: const EdgeInsets.symmetric(
                                                     horizontal: 16,
                                                     vertical: 8),
                                               ),
-                                              child: Text(
+                                              child: const Text(
                                                 "No, Keep It",
                                                 style: TextStyle(
                                                   color: Appcolor.white,
@@ -253,11 +253,11 @@ class PendingOrders extends StatelessWidget {
                                                   borderRadius:
                                                       BorderRadius.circular(8),
                                                 ),
-                                                padding: EdgeInsets.symmetric(
+                                                padding: const EdgeInsets.symmetric(
                                                     horizontal: 16,
                                                     vertical: 8),
                                               ),
-                                              child: Text(
+                                              child: const Text(
                                                 "Yes, Cancel",
                                                 style: TextStyle(
                                                   color: Colors.white,
@@ -275,11 +275,11 @@ class PendingOrders extends StatelessWidget {
                                           borderRadius:
                                               BorderRadius.circular(8),
                                         ),
-                                        padding: EdgeInsets.symmetric(
+                                        padding: const EdgeInsets.symmetric(
                                             horizontal: 12,
                                             vertical: 8), // Smaller padding
                                       ),
-                                      child: Text(
+                                      child: const Text(
                                         'Cancel Order',
                                         style: TextStyle(
                                           fontSize: 13, // Slightly smaller text

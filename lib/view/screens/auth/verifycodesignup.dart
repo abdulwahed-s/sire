@@ -14,13 +14,12 @@ class VerifyCodeSignUp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Color accentPurpleColor = Color(0xFF6A53A1);
-    Color accentPinkColor = Color(0xFFF99BBD);
-    Color accentDarkGreenColor = Color(0xFF115C49);
-    Color accentYellowColor = Color(0xFFFFB612);
-    Color accentOrangeColor = Color(0xFFEA7A3B);
+    Color accentPurpleColor = const Color(0xFF6A53A1);
+    Color accentPinkColor = const Color(0xFFF99BBD);
+    Color accentDarkGreenColor = const Color(0xFF115C49);
+    Color accentYellowColor = const Color(0xFFFFB612);
+    Color accentOrangeColor = const Color(0xFFEA7A3B);
 
-    ;
 
     TextStyle? createStyle(Color color) {
       ThemeData theme = Theme.of(context);
@@ -41,15 +40,15 @@ class VerifyCodeSignUp extends StatelessWidget {
             builder: (controller) => HandlingDataRequest(
                   statusRequest: controller.statusRequest,
                   widget: Container(
-                    padding: EdgeInsets.symmetric(
+                    padding: const EdgeInsets.symmetric(
                       horizontal: 10,
                     ),
                     child: ListView(
                       shrinkWrap: true,
                       children: [
-                        SizedBox(height: 10),
-                        AUTHTText(text: 'Enter verification code'),
-                        SizedBox(height: 50),
+                        const SizedBox(height: 10),
+                        const AUTHTText(text: 'Enter verification code'),
+                        const SizedBox(height: 50),
                         OtpTextField(
                           numberOfFields: 6,
                           borderColor: accentPurpleColor,
@@ -73,7 +72,7 @@ class VerifyCodeSignUp extends StatelessWidget {
                             controller.checkCode(verificationCode);
                           },
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
                         AUTHButton(

@@ -16,8 +16,8 @@ class FavouritesList extends StatelessWidget {
         statusRequest: controller.statusRequest,
         widget: controller.fav.isEmpty
             ? Container(
-                margin: EdgeInsets.only(top: 50),
-                child: Center(
+                margin: const EdgeInsets.only(top: 50),
+                child: const Center(
                   child: Text(
                     "No Favourites",
                     style: TextStyle(
@@ -34,17 +34,17 @@ class FavouritesList extends StatelessWidget {
                   final itemId = controller.fav[index].itemId.toString();
                   final isDeleting = controller.isDeleting(itemId);
                   return AnimatedSwitcher(
-                    duration: Duration(milliseconds: 300),
+                    duration: const Duration(milliseconds: 300),
                     child: isDeleting
-                        ? SizedBox.shrink()
+                        ? const SizedBox.shrink()
                         : Column(
                             key: ValueKey(itemId),
                             children: [
-                              Divider(endIndent: 20, indent: 20),
-                              SizedBox(height: 10),
+                              const Divider(endIndent: 20, indent: 20),
+                              const SizedBox(height: 10),
                               AnimatedOpacity(
                                 opacity: isDeleting ? 0 : 1,
-                                duration: Duration(milliseconds: 250),
+                                duration: const Duration(milliseconds: 250),
                                 child: Material(
                                   color: Appcolor
                                       .white, // Match your container background
@@ -58,7 +58,7 @@ class FavouritesList extends StatelessWidget {
                                     child: Container(
                                       width: double.infinity,
                                       padding:
-                                          EdgeInsets.symmetric(vertical: 8),
+                                          const EdgeInsets.symmetric(vertical: 8),
                                       child: Row(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
@@ -66,13 +66,13 @@ class FavouritesList extends StatelessWidget {
                                           Row(
                                             children: [
                                               Container(
-                                                margin: EdgeInsets.only(
+                                                margin: const EdgeInsets.only(
                                                     left: 10,
                                                     bottom: 40,
                                                     right: 4),
                                                 child: Text(
                                                     (index + 1).toString(),
-                                                    style: TextStyle(
+                                                    style: const TextStyle(
                                                         color: Appcolor.black,
                                                         fontFamily: 'Sw',
                                                         fontSize: 20,
@@ -81,7 +81,7 @@ class FavouritesList extends StatelessWidget {
                                               ),
                                               Container(
                                                 margin:
-                                                    EdgeInsets.only(right: 10),
+                                                    const EdgeInsets.only(right: 10),
                                                 height: 92,
                                                 width: 100,
                                                 decoration: BoxDecoration(
@@ -112,16 +112,16 @@ class FavouritesList extends StatelessWidget {
                                                       "${controller.fav[index].itemName}"),
                                                   Text(
                                                     "\$${(controller.fav[index].itemFinalPrice! + 0.00).toStringAsFixed(2)}",
-                                                    style: TextStyle(
+                                                    style: const TextStyle(
                                                       fontFamily: "Sw",
                                                     ),
                                                   ),
                                                   Row(
                                                     children: [
                                                       Container(
-                                                        margin: EdgeInsets.only(
+                                                        margin: const EdgeInsets.only(
                                                             top: 2),
-                                                        child: Icon(
+                                                        child: const Icon(
                                                           Icons.star,
                                                           color: Appcolor.pink,
                                                           size: 15,
@@ -132,7 +132,7 @@ class FavouritesList extends StatelessWidget {
                                                                 .fav[index]
                                                                 .itemAvgRating!))
                                                             .toStringAsFixed(2),
-                                                        style: TextStyle(
+                                                        style: const TextStyle(
                                                           fontFamily: "Sw",
                                                           color: Appcolor.pink,
                                                         ),
@@ -149,7 +149,7 @@ class FavouritesList extends StatelessWidget {
                                                   .deleteFavourites(itemId);
                                             },
                                             child: Container(
-                                              margin: EdgeInsets.only(right: 5),
+                                              margin: const EdgeInsets.only(right: 5),
                                               height: 30,
                                               width: 30,
                                               decoration: BoxDecoration(
@@ -157,7 +157,7 @@ class FavouritesList extends StatelessWidget {
                                                 borderRadius:
                                                     BorderRadius.circular(8),
                                               ),
-                                              child: Icon(
+                                              child: const Icon(
                                                 Icons.remove,
                                                 size: 29,
                                               ),
@@ -169,8 +169,8 @@ class FavouritesList extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              SizedBox(height: 10),
-                              Divider(endIndent: 20, indent: 20),
+                              const SizedBox(height: 10),
+                              const Divider(endIndent: 20, indent: 20),
                             ],
                           ),
                   );

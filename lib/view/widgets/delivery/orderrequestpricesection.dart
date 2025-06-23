@@ -37,7 +37,7 @@ class OrderRequestPriceSection extends StatelessWidget {
           ),
           Text(
             '\$${order.orderTotalprice ?? 0}',
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
               color: Appcolor.berry,

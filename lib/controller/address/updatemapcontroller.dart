@@ -35,7 +35,7 @@ class UpdateMapControllerImp extends UpdateMapController {
     loding = true;
     update();
     await Geolocator.getCurrentPosition(
-      locationSettings: LocationSettings(
+      locationSettings: const LocationSettings(
         accuracy: LocationAccuracy.high,
         distanceFilter: 10,
       ),

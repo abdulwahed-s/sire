@@ -22,7 +22,7 @@ class ImagePickerDialog extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text(
+            const Text(
               'Select Image Source',
               style: TextStyle(
                 fontSize: 18,

@@ -24,7 +24,7 @@ class Checkout extends StatelessWidget {
       backgroundColor: Appcolor.white,
       appBar: AppBar(),
       body: Container(
-        margin: EdgeInsets.symmetric(horizontal: 10),
+        margin: const EdgeInsets.symmetric(horizontal: 10),
         child: ListView(
           children: [
             Column(
@@ -76,7 +76,7 @@ class Checkout extends StatelessWidget {
             ),
             GetBuilder<CheckoutControllerImp>(
               builder: (controller) => controller.deliveryType == 1
-                  ? SizedBox.shrink()
+                  ? const SizedBox.shrink()
                   : Card(
                       color: Appcolor.white,
                       elevation: 2,
@@ -103,7 +103,7 @@ class Checkout extends StatelessWidget {
                                 baseColor: Colors.grey.shade300,
                                 highlightColor: Colors.grey.shade100,
                                 child: Container(
-                                  padding: EdgeInsets.all(8),
+                                  padding: const EdgeInsets.all(8),
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(8),
                                     color: Colors.white,
@@ -115,7 +115,7 @@ class Checkout extends StatelessWidget {
                                         height: 24,
                                         color: Colors.white,
                                       ),
-                                      SizedBox(width: 16),
+                                      const SizedBox(width: 16),
                                       Expanded(
                                         child: Column(
                                           crossAxisAlignment:
@@ -125,12 +125,12 @@ class Checkout extends StatelessWidget {
                                                 height: 16,
                                                 width: double.infinity,
                                                 color: Colors.white),
-                                            SizedBox(height: 8),
+                                            const SizedBox(height: 8),
                                             Container(
                                                 height: 12,
                                                 width: double.infinity,
                                                 color: Colors.white),
-                                            SizedBox(height: 4),
+                                            const SizedBox(height: 4),
                                             Container(
                                                 height: 12,
                                                 width: MediaQuery.of(context)
@@ -141,7 +141,7 @@ class Checkout extends StatelessWidget {
                                           ],
                                         ),
                                       ),
-                                      SizedBox(width: 16),
+                                      const SizedBox(width: 16),
                                       Container(
                                         width: 20,
                                         height: 20,
@@ -156,13 +156,13 @@ class Checkout extends StatelessWidget {
                                     StatusRequest.loding)
                               Column(
                                 children: [
-                                  SizedBox(height: 16),
+                                  const SizedBox(height: 16),
                                   Icon(
                                     Icons.location_off_outlined,
                                     size: 48,
                                     color: Colors.grey.withValues(alpha: 0.5),
                                   ),
-                                  SizedBox(height: 12),
+                                  const SizedBox(height: 12),
                                   Text(
                                     "No shipping address added",
                                     style: TextStyle(
@@ -171,7 +171,7 @@ class Checkout extends StatelessWidget {
                                       color: Colors.grey[700],
                                     ),
                                   ),
-                                  SizedBox(height: 8),
+                                  const SizedBox(height: 8),
                                   Text(
                                     "Please add an address to proceed with your order",
                                     style: TextStyle(
@@ -180,11 +180,11 @@ class Checkout extends StatelessWidget {
                                     ),
                                     textAlign: TextAlign.center,
                                   ),
-                                  SizedBox(height: 16),
+                                  const SizedBox(height: 16),
                                   ElevatedButton(
                                     onPressed: () {
                                       Get.to(
-                                        () => ViewAddress(),
+                                        () => const ViewAddress(),
                                         transition: Transition.leftToRight,
                                       );
                                     },
@@ -193,10 +193,10 @@ class Checkout extends StatelessWidget {
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(8),
                                       ),
-                                      padding: EdgeInsets.symmetric(
+                                      padding: const EdgeInsets.symmetric(
                                           horizontal: 20, vertical: 10),
                                     ),
-                                    child: Text(
+                                    child: const Text(
                                       "Add Address",
                                       style: TextStyle(
                                         color: Colors.white,
@@ -209,7 +209,7 @@ class Checkout extends StatelessWidget {
                             ListView.builder(
                               itemCount: controller.addresses.length,
                               shrinkWrap: true,
-                              physics: NeverScrollableScrollPhysics(),
+                              physics: const NeverScrollableScrollPhysics(),
                               itemBuilder: (context, index) {
                                 return Column(
                                   children: [
@@ -237,12 +237,12 @@ class Checkout extends StatelessWidget {
                                           top: 8, left: 8),
                                       child: Row(
                                         children: [
-                                          Icon(
+                                          const Icon(
                                             Icons.av_timer_rounded,
                                             size: 16,
                                             color: Appcolor.amaranthpink,
                                           ),
-                                          SizedBox(width: 6),
+                                          const SizedBox(width: 6),
                                           Text.rich(
                                             TextSpan(
                                               children: [
@@ -258,7 +258,7 @@ class Checkout extends StatelessWidget {
                                                   text: controller
                                                       .addresses[index]
                                                       .addressDeliverytime!,
-                                                  style: TextStyle(
+                                                  style: const TextStyle(
                                                     fontFamily: "Sw",
                                                     fontSize: 13,
                                                     fontWeight: FontWeight.w600,
@@ -274,7 +274,7 @@ class Checkout extends StatelessWidget {
                                     ),
                                     if (index !=
                                         controller.addresses.length - 1)
-                                      Divider(height: 24, thickness: 1),
+                                      const Divider(height: 24, thickness: 1),
                                   ],
                                 );
                               },
@@ -370,19 +370,19 @@ class Checkout extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12),
               ),
               color: Appcolor.white,
-              child: Padding(
-                padding: const EdgeInsets.all(12),
+              child: const Padding(
+                padding: EdgeInsets.all(12),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
+                    Text(
                       'Have a coupon?',
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    const SizedBox(height: 8),
+                    SizedBox(height: 8),
                     CouponSection(),
                   ],
                 ),
@@ -427,7 +427,7 @@ class Checkout extends StatelessWidget {
                                         "-%${controller.couponController.couponList[0].couponDiscount}",
                                     isTotal: false,
                                   )
-                                : SizedBox()),
+                                : const SizedBox()),
                     const SizedBox(height: 8),
                     GetBuilder<CheckoutControllerImp>(
                       builder: (controller) => SummaryRow(
@@ -452,7 +452,7 @@ class Checkout extends StatelessWidget {
             GetBuilder<CheckoutControllerImp>(
               builder: (controller) => Container(
                 width: double.infinity,
-                margin: EdgeInsets.only(bottom: 10, top: 10),
+                margin: const EdgeInsets.only(bottom: 10, top: 10),
                 child: ElevatedButton(
                   onPressed: controller.isLoading
                       ? null
@@ -468,10 +468,10 @@ class Checkout extends StatelessWidget {
                     elevation: 2,
                   ),
                   child: controller.isLoading
-                      ? SizedBox(
+                      ? const SizedBox(
                           height: 25,
                           child: GradientProgressIndicator(strokeWidth: 2))
-                      : Text(
+                      : const Text(
                           "Complete Order",
                           style: TextStyle(
                             fontSize: 18,

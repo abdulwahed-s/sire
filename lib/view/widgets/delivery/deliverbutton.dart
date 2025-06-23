@@ -52,12 +52,12 @@ class DeliverButton extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 loading
-                    ? SizedBox(
+                    ? const SizedBox(
                         height: 20,
                         width: 20,
                         child: GradientProgressIndicator(strokeWidth: 2),
                       )
-                    : Icon(
+                    : const Icon(
                         Icons.check_circle_outline,
                         size: 18,
                         color: Colors.white,

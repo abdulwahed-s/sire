@@ -11,7 +11,7 @@ class LoadingRatingsState extends StatelessWidget {
         baseColor: Colors.grey[300]!,
         highlightColor: Colors.grey[100]!,
         child: Container(
-          margin: EdgeInsets.all(12),
+          margin: const EdgeInsets.all(12),
           width: double.infinity,
           height: 200,
           decoration: BoxDecoration(

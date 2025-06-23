@@ -14,7 +14,7 @@ class TopCategoriesChart extends StatelessWidget {
   Widget build(BuildContext context) {
     if (controller.dashboardInfo.topCategories == null ||
         controller.dashboardInfo.topCategories!.isEmpty) {
-      return EmptyChart(title: 'Top Selling Categories');
+      return const EmptyChart(title: 'Top Selling Categories');
     }
 
     final categoryData = controller.dashboardInfo.topCategories!
@@ -30,10 +30,10 @@ class TopCategoriesChart extends StatelessWidget {
       chart: SizedBox(
         height: 300,
         child: SfCircularChart(
-          legend: Legend(
+          legend: const Legend(
             isVisible: true,
             position: LegendPosition.bottom,
-            textStyle: const TextStyle(fontSize: 12),
+            textStyle: TextStyle(fontSize: 12),
             overflowMode: LegendItemOverflowMode.wrap,
           ),
           series: <PieSeries<CategorySales, String>>[

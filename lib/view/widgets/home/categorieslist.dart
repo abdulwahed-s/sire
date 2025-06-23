@@ -16,7 +16,7 @@ class Categorieslist extends GetView<HomeControllerImp> {
       height: 100,
       child: ListView.separated(
         itemCount: controller.categories.length,
-        separatorBuilder: (context, index) => SizedBox(
+        separatorBuilder: (context, index) => const SizedBox(
           width: 12,
         ),
         itemBuilder: (context, index) {
@@ -60,7 +60,7 @@ class Categories extends GetView<HomeControllerImp> {
                   AppLink.categoriesimage + categoriesmodel.categoryImg!),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 5,
           ),
           Text(

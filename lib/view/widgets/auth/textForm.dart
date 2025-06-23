@@ -23,18 +23,18 @@ class AUTHForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: 20),
+      margin: const EdgeInsets.only(bottom: 20),
       child: TextFormField(
         keyboardType: type == "phone"
-            ? TextInputType.numberWithOptions(decimal: true)
+            ? const TextInputType.numberWithOptions(decimal: true)
             : TextInputType.text,
         obscureText: obscureText == null || obscureText == false ? false : true,
         validator: validator,
         controller: controller,
         decoration: InputDecoration(
-            contentPadding: EdgeInsets.symmetric(horizontal: 30, vertical: 16),
+            contentPadding: const EdgeInsets.symmetric(horizontal: 30, vertical: 16),
             label: Container(
-                margin: EdgeInsets.symmetric(horizontal: 8),
+                margin: const EdgeInsets.symmetric(horizontal: 8),
                 child: Text(
                   label,
                   style: Theme.of(context).textTheme.bodySmall,

@@ -78,7 +78,7 @@ class AcceptedOrdersControllerImp extends AcceptedOrdersController {
 
   @override
   goToOrderDetails(orderid, index) {
-    Get.to(() => DeliveryOrderDetails(), arguments: {
+    Get.to(() => const DeliveryOrderDetails(), arguments: {
       'orderid': orderid,
       'undeliveredOrder': acceptedOrders[index]
     });
@@ -112,7 +112,7 @@ class AcceptedOrdersControllerImp extends AcceptedOrdersController {
   sendDeliveryLocation() {
     if (acceptedOrders.isNotEmpty) {
       Timer.periodic(
-        Duration(seconds: 10),
+        const Duration(seconds: 10),
         (timer) {
           Geolocator.getPositionStream().listen(
             (Position position) {

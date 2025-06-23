@@ -65,9 +65,9 @@ class HomeControllerImp extends HomeController {
 
   @override
   goToItem(categories, selected, catId) {
-    Get.to(() => ItemsView(),
+    Get.to(() => const ItemsView(),
         transition: Transition.native,
-        duration: Duration(seconds: 1),
+        duration: const Duration(seconds: 1),
         arguments: {
           "categories": categories,
           "selected": selected,
@@ -77,9 +77,9 @@ class HomeControllerImp extends HomeController {
 
   @override
   goToSearch() {
-    Get.to(Search(),
+    Get.to(const Search(),
         transition: Transition.native,
-        duration: Duration(seconds: 1),
+        duration: const Duration(seconds: 1),
         arguments: {
           "input": textEditingController!.text,
         });
@@ -88,9 +88,9 @@ class HomeControllerImp extends HomeController {
   @override
   goToItemDetails(model) {
     Get.to(
-      () => ItemDetails(),
+      () => const ItemDetails(),
       transition: Transition.rightToLeftWithFade,
-      duration: Duration(milliseconds: 500),
+      duration: const Duration(milliseconds: 500),
       arguments: {"itemsModel": model},
     );
   }

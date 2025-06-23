@@ -75,7 +75,7 @@ class CustomItemsList extends GetView<ItemscontrollerImp> {
                               borderRadius: const BorderRadius.vertical(
                                   top: Radius.circular(20)),
                             ),
-                            child: Center(
+                            child: const Center(
                               child: CircularProgressIndicator(
                                 strokeWidth: 2,
                                 valueColor: AlwaysStoppedAnimation<Color>(
@@ -273,7 +273,7 @@ class CustomItemsList extends GetView<ItemscontrollerImp> {
                         ),
                         Container(
                           decoration: BoxDecoration(
-                            gradient: LinearGradient(
+                            gradient: const LinearGradient(
                               colors: [
                                 Appcolor.deepPurple,
                                 Appcolor.rosePompadour,

@@ -67,14 +67,14 @@ class AddNewCoupon extends StatelessWidget {
                             color: Appcolor.berry.withValues(alpha: 0.1),
                             shape: BoxShape.circle,
                           ),
-                          child: Icon(
+                          child: const Icon(
                             Icons.local_offer,
                             size: 32,
                             color: Appcolor.berry,
                           ),
                         ),
                         const SizedBox(height: 12),
-                        Text(
+                        const Text(
                           'Create New Coupon',
                           style: TextStyle(
                             fontSize: 20,
@@ -98,7 +98,7 @@ class AddNewCoupon extends StatelessWidget {
                   const SizedBox(height: 32),
 
                   // Form Fields
-                  SectionTitle(title: 'Coupon Details'),
+                  const SectionTitle(title: 'Coupon Details'),
                   const SizedBox(height: 16),
 
                   // Coupon Code Field

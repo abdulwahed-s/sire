@@ -24,10 +24,10 @@ class HomeScreenControllerImp extends HomeScreenController {
   int currentpage = 0;
 
   List<Widget> listpages = [
-    Home(),
-    ViewFavourite(),
-    Profile(),
-    Settings(),
+    const Home(),
+    const ViewFavourite(),
+    const Profile(),
+    const Settings(),
   ];
   List<String> namepages = [
     "Home",

@@ -27,7 +27,7 @@ class HeaderSectionWidget extends StatelessWidget {
               color: Appcolor.berry.withValues(alpha: 0.1),
               shape: BoxShape.circle,
             ),
-            child: Icon(
+            child: const Icon(
               Icons.admin_panel_settings,
               size: 40,
               color: Appcolor.berry,

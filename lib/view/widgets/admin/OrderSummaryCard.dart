@@ -35,7 +35,7 @@ class OrderSummaryCard extends StatelessWidget {
                     controller.getStatusText(
                         controller.adminDetailsModel.orderStatus!,
                         controller.adminDetailsModel.orderType!),
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Appcolor.berry,
                       fontWeight: FontWeight.w500,
                     ),

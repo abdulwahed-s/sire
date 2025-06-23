@@ -26,7 +26,7 @@ class ForgotPassword extends StatelessWidget {
             builder: (controller) => HandlingDataRequest(
                   statusRequest: controller.statusRequest,
                   widget: Container(
-                    padding: EdgeInsets.symmetric(
+                    padding: const EdgeInsets.symmetric(
                       horizontal: 10,
                     ),
                     child: Form(
@@ -38,9 +38,9 @@ class ForgotPassword extends StatelessWidget {
                             AppImage.authforgotpassword,
                             height: 200,
                           ),
-                          SizedBox(height: 10),
-                          AUTHTText(text: 'Enter Email Address'),
-                          SizedBox(height: 50),
+                          const SizedBox(height: 10),
+                          const AUTHTText(text: 'Enter Email Address'),
+                          const SizedBox(height: 50),
                           AUTHForm(
                             type: "email",
                             validator: (p0) {

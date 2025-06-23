@@ -13,7 +13,7 @@ class InfoRow extends StatelessWidget {
     return Row(
       children: [
         Container(
-          padding: EdgeInsets.all(6),
+          padding: const EdgeInsets.all(6),
           decoration: BoxDecoration(
             color: Appcolor.amaranthpink.withValues(alpha: 0.1),
             shape: BoxShape.circle,
@@ -24,19 +24,19 @@ class InfoRow extends StatelessWidget {
             size: 18,
           ),
         ),
-        SizedBox(width: 12),
+        const SizedBox(width: 12),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               title,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w500,
               ),
             ),
             if (subtitle != null) ...[
-              SizedBox(height: 2),
+              const SizedBox(height: 2),
               Text(
                 subtitle!,
                 style: TextStyle(

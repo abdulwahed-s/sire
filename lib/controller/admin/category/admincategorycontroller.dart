@@ -51,7 +51,7 @@ class AdminCategoryControllerImp extends AdminCategoryController {
   @override
   goToEditCategory(CategoriesModel categoriesModel) {
     Get.to(
-      () => UpdateCategory(),
+      () => const UpdateCategory(),
       arguments: {
         "categoriesModel": categoriesModel,
       },

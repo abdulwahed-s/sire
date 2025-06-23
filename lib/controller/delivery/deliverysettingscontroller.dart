@@ -59,7 +59,7 @@ class DeliverySettingsControllerImp extends DeliverySettingsController {
   @override
   goToUpdateAccountInformation() {
     Get.to(
-      () => UpdateAccountInformation(),
+      () => const UpdateAccountInformation(),
       transition: Transition.leftToRight,
     );
   }
@@ -67,7 +67,7 @@ class DeliverySettingsControllerImp extends DeliverySettingsController {
   @override
   goToDeliveredOrders() {
     Get.to(
-      () => ViewDelivered(),
+      () => const ViewDelivered(),
       transition: Transition.leftToRight,
     );
   }
@@ -90,9 +90,9 @@ class DeliverySettingsControllerImp extends DeliverySettingsController {
     services.sharedPreferences.clear();
     services.sharedPreferences.setString("step", "1");
     Get.offAll(
-      () => Login(),
+      () => const Login(),
       transition: Transition.size,
-      duration: Duration(seconds: 1),
+      duration: const Duration(seconds: 1),
     );
   }
 

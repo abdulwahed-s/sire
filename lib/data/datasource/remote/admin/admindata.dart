@@ -47,7 +47,7 @@ class AdminData {
     File? file,
     String oldimg,
   ) async {
-    var resp;
+    Either<StatusRequest, Map> resp;
     if (file == null) {
       resp = await curd.postData(AppLink.updateCategories, {
         "id": id,
@@ -135,7 +135,7 @@ class AdminData {
     File? file,
     String oldimg,
   ) async {
-    var resp;
+    Either<StatusRequest, Map> resp;
     if (file == null) {
       resp = await curd.postData(AppLink.updateItems, {
         "id": id,

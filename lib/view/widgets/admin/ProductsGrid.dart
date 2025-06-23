@@ -25,7 +25,7 @@ class ProductsGrid extends StatelessWidget {
             crossAxisCount: 2,
             mainAxisSpacing: 12,
             crossAxisSpacing: 12,
-            physics: NeverScrollableScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             itemCount: controller.filteredItems.length,
             itemBuilder: (context, index) => ProductCard(

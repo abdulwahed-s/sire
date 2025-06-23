@@ -30,7 +30,7 @@ class UpdateCategory extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Header(
+                const Header(
                   title: 'Update Category',
                   subtitle:
                       'Update the details below to modify the product category',

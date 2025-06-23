@@ -22,7 +22,7 @@ class Home extends StatelessWidget {
     Get.put(HomeControllerImp());
 
     return AnnotatedRegion<SystemUiOverlayStyle>(
-      value: SystemUiOverlayStyle(statusBarColor: Appcolor.black),
+      value: const SystemUiOverlayStyle(statusBarColor: Appcolor.black),
       child: Scaffold(
           backgroundColor: Appcolor.white,
           body: GetBuilder<HomeControllerImp>(
@@ -38,7 +38,7 @@ class Home extends StatelessWidget {
                             baseColor: Colors.grey[300]!,
                             highlightColor: Colors.grey[100]!,
                             child: Container(
-                              margin: EdgeInsets.symmetric(horizontal: 20),
+                              margin: const EdgeInsets.symmetric(horizontal: 20),
                               width: double.infinity,
                               height: 180,
                               decoration: BoxDecoration(
@@ -59,9 +59,9 @@ class Home extends StatelessWidget {
                           controller.goToSearch();
                         },
                         hint: "Search Product"),
-                    categorieslist: Categorieslist(),
+                    categorieslist: const Categorieslist(),
                   ),
-                  ItemsList()
+                  const ItemsList()
                 ],
               );
             },

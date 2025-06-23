@@ -23,7 +23,7 @@ class LogoutButton extends StatelessWidget {
           BoxShadow(
             color: Appcolor.deepPink.withValues(alpha: 0.3),
             blurRadius: 15,
-            offset: Offset(0, 5),
+            offset: const Offset(0, 5),
           ),
         ],
       ),
@@ -32,7 +32,7 @@ class LogoutButton extends StatelessWidget {
         child: InkWell(
           borderRadius: BorderRadius.circular(15),
           onTap: () => controller.logout(),
-          child: Row(
+          child: const Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Icon(

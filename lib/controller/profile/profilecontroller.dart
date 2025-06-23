@@ -60,18 +60,18 @@ class ProfileControllerImp extends ProfileController {
   @override
   goToUnDeliverdOrders() {
     Get.to(
-      () => PendingOrders(),
+      () => const PendingOrders(),
       transition: Transition.downToUp,
-      duration: Duration(milliseconds: 800),
+      duration: const Duration(milliseconds: 800),
     );
   }
 
   @override
   goToArchivedOrder() {
     Get.to(
-      () => ArchivedOrders(),
+      () => const ArchivedOrders(),
       transition: Transition.downToUp,
-      duration: Duration(milliseconds: 800),
+      duration: const Duration(milliseconds: 800),
     );
   }
 }

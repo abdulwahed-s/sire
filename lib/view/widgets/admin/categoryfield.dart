@@ -11,7 +11,7 @@ class CategoryField extends StatelessWidget {
       child: IgnorePointer(
         child: TextFormField(
           controller: controller.itemCategory,
-          decoration: InputDecoration(
+          decoration: const InputDecoration(
             labelText: "Item Category",
             border: OutlineInputBorder(),
             suffixIcon: Icon(Icons.arrow_drop_down),

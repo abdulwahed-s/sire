@@ -34,7 +34,7 @@ class SignUp extends StatelessWidget {
               builder: (controller) => HandlingDataRequest(
                     statusRequest: controller.statusRequest,
                     widget: Container(
-                      padding: EdgeInsets.symmetric(
+                      padding: const EdgeInsets.symmetric(
                         horizontal: 10,
                       ),
                       child: Form(
@@ -42,14 +42,14 @@ class SignUp extends StatelessWidget {
                         child: ListView(
                           shrinkWrap: true,
                           children: [
-                            SizedBox(height: 10),
-                            AUTHTText(text: 'Welcome Back'),
-                            SizedBox(height: 10),
-                            AUTHBText(
+                            const SizedBox(height: 10),
+                            const AUTHTText(text: 'Welcome Back'),
+                            const SizedBox(height: 10),
+                            const AUTHBText(
                               text:
                                   'sign up with your email and password or continue with social media',
                             ),
-                            SizedBox(height: 50),
+                            const SizedBox(height: 50),
                             AUTHForm(
                               type: "usernam",
                               validator: (p0) {
@@ -103,7 +103,7 @@ class SignUp extends StatelessWidget {
                                 controller.signUp();
                               },
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             dodont(

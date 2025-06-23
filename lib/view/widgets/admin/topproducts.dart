@@ -26,13 +26,13 @@ class TopProducts extends StatelessWidget {
                 Shimmer.fromColors(
                     baseColor: Colors.grey[300]!,
                     highlightColor: Colors.grey[100]!,
-                    child: Card(
+                    child: const Card(
                       elevation: 2,
                     )),
                 Shimmer.fromColors(
                     baseColor: Colors.grey[300]!,
                     highlightColor: Colors.grey[100]!,
-                    child: Card(
+                    child: const Card(
                       elevation: 2,
                     ))
               ]
@@ -45,8 +45,8 @@ class TopProducts extends StatelessWidget {
                     children: [
                       Expanded(
                         child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: const BorderRadius.vertical(
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.vertical(
                               top: Radius.circular(4),
                             ),
                           ),

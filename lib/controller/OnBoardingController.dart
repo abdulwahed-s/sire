@@ -20,12 +20,12 @@ class OnBoardingControllerImp extends OnBoardinggController {
   next() {
     if (currentPage >= OnBoardingList.length - 1) {
       services.sharedPreferences.setString("step", "1");
-      Get.offAll(() =>Login(),
+      Get.offAll(() =>const Login(),
           transition: Transition.rightToLeft,
-          duration: Duration(milliseconds: 800));
+          duration: const Duration(milliseconds: 800));
     } else {
       pageController.animateToPage(currentPage + 1, // Increment after using
-          duration: Duration(milliseconds: 900),
+          duration: const Duration(milliseconds: 900),
           curve: Curves.easeIn);
     }
   }
@@ -45,6 +45,6 @@ class OnBoardingControllerImp extends OnBoardinggController {
   @override
   skip() {
     pageController.animateToPage(3,
-        duration: Duration(milliseconds: 900), curve: Curves.easeIn);
+        duration: const Duration(milliseconds: 900), curve: Curves.easeIn);
   }
 }

@@ -25,7 +25,7 @@ class PriceSection extends StatelessWidget {
             animatedTexts: [
               ColorizeAnimatedText(
                 "\$${itemsModel.itemFinalPrice}",
-                textStyle: TextStyle(
+                textStyle: const TextStyle(
                   fontSize: 20.0,
                   fontWeight: FontWeight.bold,
                   fontFamily: "Sw",
@@ -36,7 +36,7 @@ class PriceSection extends StatelessWidget {
                       (colorIndex + 1) %
                           Get.find<HomeControllerImp>().gradientColors.length],
                 ],
-                speed: Duration(seconds: 3),
+                speed: const Duration(seconds: 3),
               ),
             ],
             isRepeatingAnimation: true,

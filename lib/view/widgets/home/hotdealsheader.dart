@@ -9,9 +9,9 @@ class HotDealsHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: EdgeInsets.symmetric(vertical: 20, horizontal: 16),
+      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
       decoration: BoxDecoration(
-        gradient: LinearGradient(
+        gradient: const LinearGradient(
           colors: [Appcolor.amaranthpink, Appcolor.berry],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
@@ -19,10 +19,10 @@ class HotDealsHeader extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: Color(0xFF667eea).withValues(alpha: 0.3),
+            color: const Color(0xFF667eea).withValues(alpha: 0.3),
             spreadRadius: 0,
             blurRadius: 20,
-            offset: Offset(0, 10),
+            offset: const Offset(0, 10),
           ),
         ],
       ),
@@ -31,35 +31,35 @@ class HotDealsHeader extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(
+              const Icon(
                 Icons.local_fire_department,
                 color: Colors.white,
                 size: 28,
               ),
-              SizedBox(width: 8),
+              const SizedBox(width: 8),
               Expanded(
                 child: AnimatedTextKit(
                   animatedTexts: [
                     TypewriterAnimatedText(
                       'HOT DEALS & OFFERS',
-                      textStyle: TextStyle(
+                      textStyle: const TextStyle(
                         fontSize: 24.0,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
                         fontFamily: "Sw",
                       ),
-                      speed: Duration(milliseconds: 100),
+                      speed: const Duration(milliseconds: 100),
                     ),
                   ],
                   isRepeatingAnimation: true,
                   repeatForever: true,
-                  pause: Duration(seconds: 3),
+                  pause: const Duration(seconds: 3),
                 ),
               ),
             ],
           ),
-          SizedBox(height: 8),
-          Text(
+          const SizedBox(height: 8),
+          const Text(
             'Limited time offers - Don\'t miss out!',
             style: TextStyle(
               color: Colors.white70,

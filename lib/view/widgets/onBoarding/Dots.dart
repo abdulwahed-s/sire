@@ -18,8 +18,8 @@ class OBDots extends StatelessWidget {
                       onBoardingList.length,
                       (index) {
                         return AnimatedContainer(
-                          margin: EdgeInsets.only(right: 5),
-                          duration: Duration(
+                          margin: const EdgeInsets.only(right: 5),
+                          duration: const Duration(
                             milliseconds: 940,
                           ),
                           width: controller.currentPage==index?20:5,

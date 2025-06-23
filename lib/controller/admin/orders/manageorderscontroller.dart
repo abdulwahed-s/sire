@@ -1,4 +1,3 @@
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -148,7 +147,7 @@ class ManageOrdersControllerImp extends ManageOrdersController {
   @override
   goToOrderDetails(orderid, index) {
     AdminDetails orderDetail = orders[index];
-    Get.to(() => AdminOrderDetails(),
+    Get.to(() => const AdminOrderDetails(),
         arguments: {'orderid': orderid, 'orderDetail': orderDetail});
   }
 

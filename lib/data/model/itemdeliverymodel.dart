@@ -41,7 +41,7 @@ class ItemDeliveryModel {
     itemImg = json['item_img'];
     itemCount = json['item_count'];
     itemActive = json['item_active'];
-    itemPrice = (json['item_price']as num?)?.toDouble();;
+    itemPrice = (json['item_price']as num?)?.toDouble();
     itemDiscount = json['item_discount'];
     itemDate = json['item_date'];
     itemCat = json['item_cat'];

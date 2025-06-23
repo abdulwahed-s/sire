@@ -65,7 +65,7 @@ class EditCoupon extends StatelessWidget {
                                 color: Appcolor.berry.withValues(alpha: 0.1),
                                 shape: BoxShape.circle,
                               ),
-                              child: Icon(
+                              child: const Icon(
                                 Icons.edit,
                                 size: 24,
                                 color: Appcolor.berry,
@@ -76,7 +76,7 @@ class EditCoupon extends StatelessWidget {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
+                                  const Text(
                                     'Edit Coupon Details',
                                     style: TextStyle(
                                       fontSize: 18,
@@ -133,7 +133,7 @@ class EditCoupon extends StatelessWidget {
                 const SizedBox(height: 32),
 
                 // Form Fields
-                SectionHeader(title: 'Coupon Information'),
+                const SectionHeader(title: 'Coupon Information'),
                 const SizedBox(height: 16),
 
                 // Coupon Code Field

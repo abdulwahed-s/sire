@@ -32,7 +32,7 @@ class AddAddressControllerImp extends AddAddressController {
     loding = true;
     update();
     await Geolocator.getCurrentPosition(
-      locationSettings: LocationSettings(
+      locationSettings: const LocationSettings(
         accuracy: LocationAccuracy.high,
         distanceFilter: 10,
       ),
@@ -60,7 +60,7 @@ class AddAddressControllerImp extends AddAddressController {
     update();
   }
 
-  CameraPosition initialCameraPosition = CameraPosition(
+  CameraPosition initialCameraPosition = const CameraPosition(
     target: LatLng(23.5880, 58.3829),
     zoom: 14.4746,
   );
@@ -92,7 +92,7 @@ class AddAddressControllerImp extends AddAddressController {
     currentPosition = position;
     markers.add(
       Marker(
-        markerId: MarkerId("1"),
+        markerId: const MarkerId("1"),
         position: position,
         icon: BitmapDescriptor.defaultMarkerWithHue(310),
       ),
@@ -109,7 +109,7 @@ class AddAddressControllerImp extends AddAddressController {
     update();
     await _getPlaceName(currentPosition!);
     Get.to(
-      () => AddMoreDetails(),
+      () => const AddMoreDetails(),
       arguments: {
         "latitude": latitude,
         "longitude": longitude,

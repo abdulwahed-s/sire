@@ -31,9 +31,9 @@ class VerifyCodeSignUpControllerImp extends VerifyCodeSignUpController {
         // data.addAll(response['data']);
         services.sharedPreferences.setString("approve", "1");
         Get.find<Localecontroller>().geIsVerified();
-        Get.offAll(() => HomeScreen(),
+        Get.offAll(() => const HomeScreen(),
             transition: Transition.rightToLeft,
-            duration: Duration(milliseconds: 800));
+            duration: const Duration(milliseconds: 800));
         update();
       } else if (response["status"] == "failure") {
         statusRequest = StatusRequest.failure;

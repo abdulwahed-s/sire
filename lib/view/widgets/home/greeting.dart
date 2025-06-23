@@ -27,7 +27,7 @@ class Greeting extends StatelessWidget {
               color: Colors.transparent,
               child: InkWell(
                 onTap: () {
-                  Get.to(() => ViewNotification(),
+                  Get.to(() => const ViewNotification(),
                       transition: Transition.rightToLeft,
                       duration: const Duration(milliseconds: 300),
                       fullscreenDialog: false);
@@ -38,7 +38,7 @@ class Greeting extends StatelessWidget {
                   child: Stack(
                     clipBehavior: Clip.none,
                     children: [
-                      Icon(
+                      const Icon(
                         Icons.notifications,
                         color: Appcolor.white,
                         size: 24,
@@ -48,7 +48,7 @@ class Greeting extends StatelessWidget {
                           right: -2,
                           top: -2,
                           child: Container(
-                            constraints: BoxConstraints(minWidth: 16),
+                            constraints: const BoxConstraints(minWidth: 16),
                             height: 16,
                             padding: const EdgeInsets.symmetric(horizontal: 4),
                             decoration: BoxDecoration(
@@ -77,9 +77,9 @@ class Greeting extends StatelessWidget {
             ),
           ],
         ),
-        SizedBox(height: 3),
+        const SizedBox(height: 3),
         Container(
-          padding: EdgeInsets.symmetric(horizontal: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Row(
             children: [
               Container(
@@ -109,7 +109,7 @@ class Greeting extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 10,
               ),
               Text(

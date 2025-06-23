@@ -23,9 +23,9 @@ class DeliveryLogoutButton extends StatelessWidget {
           ),
           elevation: 0,
         ),
-        child: Row(
+        child: const Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
+          children: [
             Icon(
               Icons.logout,
               size: 20,

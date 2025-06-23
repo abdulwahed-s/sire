@@ -30,7 +30,7 @@ class ViewRating extends StatelessWidget {
       body: GetBuilder<RatingControllerImp>(
         builder: (controller) => controller.allRating.isEmpty
             ? Container(
-                margin: EdgeInsets.only(bottom: 140),
+                margin: const EdgeInsets.only(bottom: 140),
                 child: Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -39,7 +39,7 @@ class ViewRating extends StatelessWidget {
                       Lottie.asset(
                         "lottie/review.json",
                         fit: BoxFit.contain,
-                        frameRate: FrameRate(60),
+                        frameRate: const FrameRate(60),
                         height: 180,
                       ),
                       const SizedBox(height: 16),
@@ -53,7 +53,7 @@ class ViewRating extends StatelessWidget {
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            Icon(
+                            const Icon(
                               Icons.star_outline,
                               color: Appcolor.amaranthpink,
                               size: 24,
@@ -285,7 +285,7 @@ class ViewRating extends StatelessWidget {
                                   child: RatingBarIndicator(
                                     rating: double.parse(controller
                                         .allRating[index].ratingStars!),
-                                    itemBuilder: (context, index) => Icon(
+                                    itemBuilder: (context, index) => const Icon(
                                         Icons.star_rounded,
                                         color: Appcolor.amaranthpink),
                                     itemCount: 5,

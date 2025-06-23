@@ -123,7 +123,7 @@ class ProductCard extends StatelessWidget {
                     ),
                     child: Text(
                       item.categoryName ?? 'No Category',
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 10,
                         color: Appcolor.berry,
                         fontWeight: FontWeight.w500,

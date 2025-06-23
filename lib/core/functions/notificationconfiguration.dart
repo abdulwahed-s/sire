@@ -80,11 +80,11 @@ notificationListen() {
           elevation: 0,
           backgroundColor: Colors.transparent,
           child: Container(
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(20),
-              boxShadow: [
+              boxShadow: const [
                 BoxShadow(
                   color: Colors.black12,
                   blurRadius: 10,
@@ -99,20 +99,20 @@ notificationListen() {
                   height: 150,
                   child: imageUrl == null
                       ? Lottie.asset("lottie/notification.json",
-                          fit: BoxFit.contain, frameRate: FrameRate(60))
+                          fit: BoxFit.contain, frameRate: const FrameRate(60))
                       : Image.network(imageUrl),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Text(
                   event.notification!.title!,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                     fontFamily: "Sw",
                     color: Appcolor.amaranthpink,
                   ),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Text(
                   event.notification!.body!,
                   style: TextStyle(
@@ -121,20 +121,20 @@ notificationListen() {
                   ),
                   textAlign: TextAlign.center,
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Appcolor.amaranthpink,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    padding: EdgeInsets.symmetric(horizontal: 30, vertical: 12),
+                    padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 12),
                   ),
                   onPressed: () {
                     Get.back();
                     FlutterRingtonePlayer().stop();
                   },
-                  child: Text(
+                  child: const Text(
                     "Continue",
                     style: TextStyle(
                       fontSize: 16,

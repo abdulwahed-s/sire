@@ -17,7 +17,7 @@ class UpperView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
           image: DecorationImage(
               image: AssetImage(
                 "images/test.png",
@@ -32,13 +32,13 @@ class UpperView extends StatelessWidget {
       child: Column(
         children: [
           greeting,
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           discountcard,
-          SizedBox(height: 30),
+          const SizedBox(height: 30),
           serchBar,
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           categorieslist,
-          SizedBox(
+          const SizedBox(
             height: 30,
           ),
         ],

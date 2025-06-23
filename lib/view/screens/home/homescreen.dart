@@ -18,16 +18,16 @@ class HomeScreen extends StatelessWidget {
             shape: const CircleBorder(),
             onPressed: () {
               Get.to(
-                () => Cart(),
+                () => const Cart(),
                 transition: Transition.fade,
-                duration: Duration(seconds: 1),
+                duration: const Duration(seconds: 1),
               );
             },
             child: const Icon(Icons.shopping_basket_outlined),
           ),
           floatingActionButtonLocation:
               FloatingActionButtonLocation.centerDocked,
-          bottomNavigationBar: CustomBottomNavigationBar(),
+          bottomNavigationBar: const CustomBottomNavigationBar(),
           extendBody: true,
           body: PopScope(
             canPop: false,

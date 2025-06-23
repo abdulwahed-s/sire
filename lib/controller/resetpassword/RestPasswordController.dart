@@ -57,9 +57,9 @@ class RestPasswordControllerImp extends RestPasswordController {
             service.sharedPreferences
                 .setString("phone", response["data"]["user_phone"]);
             service.sharedPreferences.setString("step", "2");
-            Get.to(() => Home(),
+            Get.to(() => const Home(),
                 transition: Transition.rightToLeft,
-                duration: Duration(milliseconds: 800));
+                duration: const Duration(milliseconds: 800));
           } else if (response["status"] == "failure") {
             statusRequest = StatusRequest.failure;
           }

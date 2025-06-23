@@ -22,7 +22,7 @@ class Settings extends StatelessWidget {
         body: CustomScrollView(
           slivers: [
             // App Bar
-            SliverAppBar(
+            const SliverAppBar(
               expandedHeight: 120,
               floating: false,
               pinned: true,
@@ -44,22 +44,22 @@ class Settings extends StatelessWidget {
             // Settings Content
             SliverToBoxAdapter(
               child: Container(
-                margin: EdgeInsets.only(top: 20),
-                decoration: BoxDecoration(
-                  color: const Color.fromARGB(245, 245, 245, 245),
+                margin: const EdgeInsets.only(top: 20),
+                decoration: const BoxDecoration(
+                  color: Color.fromARGB(245, 245, 245, 245),
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(30),
                     topRight: Radius.circular(30),
                   ),
                 ),
                 child: Padding(
-                  padding: EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(20),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       // Preferences Section
-                      SectionHeader(title: 'Preferences'),
-                      SizedBox(height: 15),
+                      const SectionHeader(title: 'Preferences'),
+                      const SizedBox(height: 15),
 
                       // Notification Toggle
                       GetBuilder<SettingControllerImp>(
@@ -67,7 +67,7 @@ class Settings extends StatelessWidget {
                             NotificationTile(controller: controller),
                       ),
 
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       SettingsTile(
                         title: "Languages",
                         icon: Icons.language,
@@ -75,11 +75,11 @@ class Settings extends StatelessWidget {
                         onTap: () => controller.changeLanguages(),
                       ),
 
-                      SizedBox(height: 25),
+                      const SizedBox(height: 25),
 
                       // Account Section
-                      SectionHeader(title: 'Account'),
-                      SizedBox(height: 15),
+                      const SectionHeader(title: 'Account'),
+                      const SizedBox(height: 15),
 
                       SettingsTile(
                         title: "Your Ratings",
@@ -88,7 +88,7 @@ class Settings extends StatelessWidget {
                         onTap: () => controller.goToAllRating(),
                       ),
 
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
 
                       if (!controller.isApprove!) ...[
                         SettingsTile(
@@ -100,7 +100,7 @@ class Settings extends StatelessWidget {
                           showBadge: true,
                           onTap: () => controller.goToVerify(),
                         ),
-                        SizedBox(height: 10),
+                        const SizedBox(height: 10),
                       ],
 
                       SettingsTile(
@@ -110,7 +110,7 @@ class Settings extends StatelessWidget {
                         onTap: () => controller.goToAddress(),
                       ),
 
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       SettingsTile(
                         title: "Edit Account Information",
                         icon: Icons.edit,
@@ -118,11 +118,11 @@ class Settings extends StatelessWidget {
                         onTap: () => controller.goToUpdateAccountInformation(),
                       ),
 
-                      SizedBox(height: 25),
+                      const SizedBox(height: 25),
 
                       // Support Section
-                      SectionHeader(title: 'Support'),
-                      SizedBox(height: 15),
+                      const SectionHeader(title: 'Support'),
+                      const SizedBox(height: 15),
 
                       SettingsTile(
                         title: "About Us",
@@ -131,7 +131,7 @@ class Settings extends StatelessWidget {
                         onTap: () {},
                       ),
 
-                      SizedBox(height: 10),
+                      const SizedBox(height: 10),
                       SettingsTile(
                         title: "Contact Us",
                         subtitle: "Get help and support",
@@ -140,12 +140,12 @@ class Settings extends StatelessWidget {
                         onTap: () => ContactDialog.show(controller),
                       ),
 
-                      SizedBox(height: 25),
+                      const SizedBox(height: 25),
 
                       // Logout Button
                       LogoutButton(controller: controller),
 
-                      SizedBox(height: 30),
+                      const SizedBox(height: 30),
                     ],
                   ),
                 ),

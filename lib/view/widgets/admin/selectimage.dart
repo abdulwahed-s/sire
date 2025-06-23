@@ -51,7 +51,7 @@ class SelectImage extends StatelessWidget {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8),
               ),
-              side: BorderSide(color: Appcolor.pink),
+              side: const BorderSide(color: Appcolor.pink),
             ),
             onPressed: () async {
               await controller.getImage();

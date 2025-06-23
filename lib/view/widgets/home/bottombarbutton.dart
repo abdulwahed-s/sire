@@ -16,7 +16,7 @@ class BottomBarButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 18),
+      margin: const EdgeInsets.symmetric(horizontal: 18),
       child: InkWell(
       highlightColor:  Appcolor.shadowPink,
       splashColor: Appcolor.shadowPink,

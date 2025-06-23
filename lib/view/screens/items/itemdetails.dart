@@ -27,7 +27,7 @@ class ItemDetails extends StatelessWidget {
         iconTheme: const IconThemeData(color: Colors.white),
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: ProductDetailsAppBarTitle(),
+        title: const ProductDetailsAppBarTitle(),
         centerTitle: true,
         actions: [ShareButton(controller: controller)],
       ),

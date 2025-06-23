@@ -24,13 +24,13 @@ class ActionButtons extends StatelessWidget {
                   ? IgnorePointer(
                       ignoring: true,
                       child: OutlinedButton.icon(
-                        label: SizedBox(
+                        label: const SizedBox(
                             height: 20,
-                            child: const GradientProgressIndicator(
+                            child: GradientProgressIndicator(
                                 strokeWidth: 3)),
                         style: OutlinedButton.styleFrom(
                           foregroundColor: Appcolor.berry,
-                          side: BorderSide(color: Appcolor.berry),
+                          side: const BorderSide(color: Appcolor.berry),
                         ),
                         onPressed: () {},
                       ),
@@ -42,7 +42,7 @@ class ActionButtons extends StatelessWidget {
                       ),
                       style: OutlinedButton.styleFrom(
                         foregroundColor: Appcolor.berry,
-                        side: BorderSide(color: Appcolor.berry),
+                        side: const BorderSide(color: Appcolor.berry),
                       ),
                       onPressed: () {
                         controller.approveOrder(
@@ -56,13 +56,13 @@ class ActionButtons extends StatelessWidget {
                   ? IgnorePointer(
                       ignoring: true,
                       child: OutlinedButton.icon(
-                        label: SizedBox(
+                        label: const SizedBox(
                             height: 20,
-                            child: const GradientProgressIndicator(
+                            child: GradientProgressIndicator(
                                 strokeWidth: 3)),
                         style: OutlinedButton.styleFrom(
                           foregroundColor: Appcolor.berry,
-                          side: BorderSide(color: Appcolor.berry),
+                          side: const BorderSide(color: Appcolor.berry),
                         ),
                         onPressed: () {},
                       ),
@@ -78,7 +78,7 @@ class ActionButtons extends StatelessWidget {
                       ),
                       style: OutlinedButton.styleFrom(
                         foregroundColor: Appcolor.red,
-                        side: BorderSide(color: Appcolor.red),
+                        side: const BorderSide(color: Appcolor.red),
                       ),
                       onPressed: () {
                         controller.cancelOrder(
@@ -95,12 +95,12 @@ class ActionButtons extends StatelessWidget {
               ? IgnorePointer(
                   ignoring: true,
                   child: OutlinedButton.icon(
-                    label: SizedBox(
+                    label: const SizedBox(
                         height: 20,
-                        child: const GradientProgressIndicator(strokeWidth: 3)),
+                        child: GradientProgressIndicator(strokeWidth: 3)),
                     style: OutlinedButton.styleFrom(
                       foregroundColor: Appcolor.berry,
-                      side: BorderSide(color: Appcolor.berry),
+                      side: const BorderSide(color: Appcolor.berry),
                     ),
                     onPressed: () {},
                   ),
@@ -130,12 +130,12 @@ class ActionButtons extends StatelessWidget {
               ? IgnorePointer(
                   ignoring: true,
                   child: OutlinedButton.icon(
-                    label: SizedBox(
+                    label: const SizedBox(
                         height: 20,
-                        child: const GradientProgressIndicator(strokeWidth: 3)),
+                        child: GradientProgressIndicator(strokeWidth: 3)),
                     style: OutlinedButton.styleFrom(
                       foregroundColor: Appcolor.berry,
-                      side: BorderSide(color: Appcolor.berry),
+                      side: const BorderSide(color: Appcolor.berry),
                     ),
                     onPressed: () {},
                   ),
@@ -167,12 +167,12 @@ class ActionButtons extends StatelessWidget {
               ? IgnorePointer(
                   ignoring: true,
                   child: OutlinedButton.icon(
-                    label: SizedBox(
+                    label: const SizedBox(
                         height: 20,
-                        child: const GradientProgressIndicator(strokeWidth: 3)),
+                        child: GradientProgressIndicator(strokeWidth: 3)),
                     style: OutlinedButton.styleFrom(
                       foregroundColor: Appcolor.berry,
-                      side: BorderSide(color: Appcolor.berry),
+                      side: const BorderSide(color: Appcolor.berry),
                     ),
                     onPressed: () {},
                   ),

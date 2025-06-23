@@ -39,7 +39,7 @@ class DeliveryNavigationControllerImp extends DeliveryNavigationController {
     undeliveredOrders = Get.arguments['undeliveredOrder'];
 
     markers.add(Marker(
-      markerId: MarkerId("Destination"),
+      markerId: const MarkerId("Destination"),
       position:
           LatLng(undeliveredOrders.addressLat!, undeliveredOrders.addressLong!),
       icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRose),
@@ -53,7 +53,7 @@ class DeliveryNavigationControllerImp extends DeliveryNavigationController {
           .removeWhere((marker) => marker.markerId.value == "DeliveryLocation");
       markers.add(Marker(
         markerId: const MarkerId("DeliveryLocation"),
-        infoWindow: InfoWindow(
+        infoWindow: const InfoWindow(
           title: "Delivery Location",
           snippet: "Your current delivery location",
         ),

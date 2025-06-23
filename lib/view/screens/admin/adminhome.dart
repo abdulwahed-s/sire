@@ -15,8 +15,8 @@ class AdminHome extends StatelessWidget {
       builder: (controller) {
         return Scaffold(
           appBar: AppBar(),
-          drawer: AdminDrawer(),
-          bottomNavigationBar: AdminBottomNavigationBar(),
+          drawer: const AdminDrawer(),
+          bottomNavigationBar: const AdminBottomNavigationBar(),
           extendBody: true,
           body: PopScope(
             canPop: false,

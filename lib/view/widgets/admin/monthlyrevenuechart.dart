@@ -16,7 +16,7 @@ class MonthlyRevenueChart extends StatelessWidget {
   Widget build(BuildContext context) {
     if (controller.dashboardInfo.salesOverMonth == null ||
         controller.dashboardInfo.salesOverMonth!.isEmpty) {
-      return EmptyChart(title: 'Monthly Revenue');
+      return const EmptyChart(title: 'Monthly Revenue');
     }
 
     final revenueData = controller.dashboardInfo.salesOverMonth!

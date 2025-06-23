@@ -26,7 +26,7 @@ class ArchivedOrders extends StatelessWidget {
         builder: (controller) => controller.statusRequest ==
                     StatusRequest.loding &&
                 controller.archivedOrders.isEmpty
-            ? SkeletonLoading()
+            ? const SkeletonLoading()
             : controller.archivedOrders.isEmpty
                 ? Empty(
                     title: 'No Archived Orders',
@@ -60,9 +60,9 @@ class ArchivedOrders extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Chip(
-                                  label: Text(
+                                  label: const Text(
                                     'Archived',
-                                    style: const TextStyle(
+                                    style: TextStyle(
                                         color: Colors.white, fontSize: 12),
                                   ),
                                   backgroundColor: Colors.grey.shade600,
@@ -132,7 +132,7 @@ class ArchivedOrders extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(8),
                                   ),
                                 ),
-                                child: Text(
+                                child: const Text(
                                   'Order Details',
                                   style: TextStyle(
                                       fontSize: 14,

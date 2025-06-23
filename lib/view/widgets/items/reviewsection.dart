@@ -14,7 +14,7 @@ class ReviewSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (controller.ratingStatusRequest == StatusRequest.loding) {
-      return ReviewSectionSkeleton();
+      return const ReviewSectionSkeleton();
     } else if (controller.allRating.isEmpty) {
       return const SizedBox.shrink();
     }

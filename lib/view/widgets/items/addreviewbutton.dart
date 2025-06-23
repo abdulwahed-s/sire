@@ -41,22 +41,22 @@ class MovingGradientReviewButtonState extends State<MovingGradientReviewButton>
 
     _gradientController = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 3),
+      duration: const Duration(seconds: 3),
     )..repeat();
 
     _tapController = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 300),
+      duration: const Duration(milliseconds: 300),
     );
 
     _starController = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 600),
+      duration: const Duration(milliseconds: 600),
     );
 
     _sparkleFadeController = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 400),
+      duration: const Duration(milliseconds: 400),
     );
 
     _gradientPosition = Tween<double>(begin: -1.0, end: 1.0).animate(
@@ -117,11 +117,11 @@ class MovingGradientReviewButtonState extends State<MovingGradientReviewButton>
               width: renderBox.size.width + 40,
               onTapAnimation: false,
               particleColor: Colors.white.withAlpha(200),
-              awayAnimationDuration: Duration(milliseconds: 300),
+              awayAnimationDuration: const Duration(milliseconds: 300),
               maxParticleSize: 4,
               isRandSize: true,
               isRandomColor: true,
-              randColorList: [
+              randColorList: const [
                 Color(0xffD98BA6),
                 Color(0xffB56C86),
                 Color(0xffF0D4D8),
@@ -141,7 +141,7 @@ class MovingGradientReviewButtonState extends State<MovingGradientReviewButton>
 
     _sparkleFadeController.forward();
 
-    Future.delayed(Duration(milliseconds: 800), () async {
+    Future.delayed(const Duration(milliseconds: 800), () async {
       await _sparkleFadeController.reverse();
       _sparkleOverlay?.remove();
       _sparkleOverlay = null;
@@ -172,17 +172,17 @@ class MovingGradientReviewButtonState extends State<MovingGradientReviewButton>
             child: Container(
               height: widget.height,
               width: widget.width,
-              padding: EdgeInsets.symmetric(horizontal: 26, vertical: 16),
+              padding: const EdgeInsets.symmetric(horizontal: 26, vertical: 16),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16),
                 gradient: LinearGradient(
-                  colors: [
+                  colors: const [
                     Color(0xffC94C77),
                     Color(0xffB44568),
                     Color(0xff9E3A5B),
                     Color(0xff7A2E45),
                   ],
-                  stops: [0.0, 0.4, 0.7, 1.0],
+                  stops: const [0.0, 0.4, 0.7, 1.0],
                   begin: Alignment(_gradientPosition.value, 0),
                   end: Alignment(_gradientPosition.value + 1, 0),
                   tileMode: TileMode.mirror,
@@ -192,7 +192,7 @@ class MovingGradientReviewButtonState extends State<MovingGradientReviewButton>
                     color: Appcolor.berry.withValues(alpha: 0.8),
                     blurRadius: 20,
                     spreadRadius: 1,
-                    offset: Offset(0, 6),
+                    offset: const Offset(0, 6),
                   ),
                 ],
               ),
@@ -204,11 +204,11 @@ class MovingGradientReviewButtonState extends State<MovingGradientReviewButton>
                     offset: Offset(0, _starBounce.value),
                     child: Transform.rotate(
                       angle: _starRotation.value * 2 * 3.1416,
-                      child: Icon(Icons.star_rounded,
+                      child: const Icon(Icons.star_rounded,
                           color: Colors.white, size: 24),
                     ),
                   ),
-                  SizedBox(width: 10),
+                  const SizedBox(width: 10),
                   Text(
                     'Add Review',
                     style: TextStyle(
@@ -220,7 +220,7 @@ class MovingGradientReviewButtonState extends State<MovingGradientReviewButton>
                         Shadow(
                           color: Colors.black.withValues(alpha: 0.3),
                           blurRadius: 4,
-                          offset: Offset(1, 2),
+                          offset: const Offset(1, 2),
                         ),
                       ],
                     ),

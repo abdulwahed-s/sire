@@ -13,14 +13,14 @@ class OfferLoadingState extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          OfferSectionHeader(
+          const OfferSectionHeader(
             title: 'Current Offer',
             isLoading: true,
           ),
           const SizedBox(height: 16),
           _buildShimmerCard(),
           const SizedBox(height: 32),
-          InfoSection(isLoading: true),
+          const InfoSection(isLoading: true),
         ],
       ),
     );

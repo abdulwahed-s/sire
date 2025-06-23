@@ -32,7 +32,7 @@ class TrackOrder extends StatelessWidget {
         body: GetBuilder<TrackOrderControllerImp>(
           builder: (controller) =>
               controller.statusRequest == StatusRequest.loding
-                  ? Center(
+                  ? const Center(
                       child: GradientProgressIndicator(strokeWidth: 6),
                     )
                   : GoogleMap(

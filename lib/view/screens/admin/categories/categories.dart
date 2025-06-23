@@ -32,7 +32,7 @@ class Categories extends StatelessWidget {
         floatingActionButton: FloatingActionButton(
           tooltip: "Add New Category",
           onPressed: () {
-            Get.to(() => AddCategory());
+            Get.to(() => const AddCategory());
           },
           backgroundColor: Appcolor.pink,
           child: const Icon(Icons.add, color: Colors.white),

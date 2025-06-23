@@ -25,7 +25,7 @@ class PaymentTypeBadge extends StatelessWidget {
       ),
       child: Text(
         paymentType,
-        style: TextStyle(
+        style: const TextStyle(
           color: Appcolor.berry,
           fontWeight: FontWeight.w600,
           fontSize: 12,

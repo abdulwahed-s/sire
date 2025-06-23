@@ -32,7 +32,7 @@ class ImageButton extends StatelessWidget {
             const SizedBox(width: 8),
             Text(
               label,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Appcolor.berry,
                 fontWeight: FontWeight.w500,
                 fontSize: 14,

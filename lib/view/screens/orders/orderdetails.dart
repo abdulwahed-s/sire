@@ -22,20 +22,20 @@ class OrderDetails extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.grey[50],
       appBar: AppBar(
-        title: Text('Order Details',
+        title: const Text('Order Details',
             style: TextStyle(
                 color: Appcolor.amaranthpink,
                 fontWeight: FontWeight.bold,
                 fontSize: 18)),
         centerTitle: true,
-        iconTheme: IconThemeData(
+        iconTheme: const IconThemeData(
           color: Appcolor.amaranthpink,
         ),
         elevation: 0,
       ),
       body: GetBuilder<OrderDetailsControllerImp>(builder: (controller) {
         if (controller.orderDetails.isEmpty) {
-          return Center(
+          return const Center(
               child: CircularProgressIndicator(
             color: Appcolor.amaranthpink,
           ));
@@ -109,14 +109,14 @@ class OrderDetails extends StatelessWidget {
                         children: [
                           Text(
                             "ORDER #${controller.orderDetails[0].orderId!}",
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
                               color: Appcolor.amaranthpink,
                             ),
                           ),
                           Container(
-                            padding: EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                                 horizontal: 12, vertical: 6),
                             decoration: BoxDecoration(
                               color: controller
@@ -146,7 +146,7 @@ class OrderDetails extends StatelessWidget {
                           ),
                         ],
                       ),
-                      SizedBox(height: 16),
+                      const SizedBox(height: 16),
                       InfoRow(
                         icon: Icons.calendar_today,
                         title: Jiffy.parse(
@@ -156,7 +156,7 @@ class OrderDetails extends StatelessWidget {
                                 controller.orderDetails[0].orderDatetime!)
                             .fromNow(),
                       ),
-                      SizedBox(height: 12),
+                      const SizedBox(height: 12),
                       InfoRow(
                         icon: orderType == 0
                             ? Icons.delivery_dining
@@ -170,9 +170,9 @@ class OrderDetails extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 20),
-              SectionHeader(title: "Order Items"),
-              SizedBox(height: 12),
+              const SizedBox(height: 20),
+              const SectionHeader(title: "Order Items"),
+              const SizedBox(height: 12),
               Card(
                 elevation: 2,
                 shape: RoundedRectangleBorder(
@@ -184,7 +184,7 @@ class OrderDetails extends StatelessWidget {
                   child: Column(
                     children: [
                       ListView.separated(
-                        physics: NeverScrollableScrollPhysics(),
+                        physics: const NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
                         itemCount: controller.orderDetails.length,
                         separatorBuilder: (context, index) => Divider(
@@ -202,7 +202,7 @@ class OrderDetails extends StatelessWidget {
                                   BoxShadow(
                                     color: Colors.black.withValues(alpha: 0.1),
                                     blurRadius: 4,
-                                    offset: Offset(0, 2),
+                                    offset: const Offset(0, 2),
                                   )
                                 ],
                               ),
@@ -227,19 +227,19 @@ class OrderDetails extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            SizedBox(width: 16),
+                            const SizedBox(width: 16),
                             Expanded(
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
                                     controller.orderDetails[index].itemName!,
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
-                                  SizedBox(height: 6),
+                                  const SizedBox(height: 6),
                                   Text(
                                     controller.orderDetails[index].itemDesc!,
                                     style: TextStyle(
@@ -250,13 +250,13 @@ class OrderDetails extends StatelessWidget {
                                     maxLines: 2,
                                     overflow: TextOverflow.ellipsis,
                                   ),
-                                  SizedBox(height: 10),
+                                  const SizedBox(height: 10),
                                   Wrap(
                                     spacing: 8,
                                     runSpacing: 8,
                                     children: [
                                       Container(
-                                        padding: EdgeInsets.symmetric(
+                                        padding: const EdgeInsets.symmetric(
                                             horizontal: 8, vertical: 4),
                                         decoration: BoxDecoration(
                                           color: Appcolor.amaranthpink
@@ -272,7 +272,7 @@ class OrderDetails extends StatelessWidget {
                                         child: Text(
                                           controller.orderDetails[index]
                                               .categoryName!,
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                             fontSize: 12,
                                             fontWeight: FontWeight.w500,
                                             color: Appcolor.amaranthpink,
@@ -281,7 +281,7 @@ class OrderDetails extends StatelessWidget {
                                       ),
                                     ],
                                   ),
-                                  SizedBox(height: 12),
+                                  const SizedBox(height: 12),
                                   Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceBetween,
@@ -296,7 +296,7 @@ class OrderDetails extends StatelessWidget {
                                       ),
                                       Text(
                                         "${controller.orderDetails[index].itemFinalPrice}\$",
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           fontSize: 16,
                                           fontWeight: FontWeight.bold,
                                           color: Appcolor.amaranthpink,
@@ -310,9 +310,9 @@ class OrderDetails extends StatelessWidget {
                           ],
                         ),
                       ),
-                      SizedBox(height: 16),
+                      const SizedBox(height: 16),
                       Divider(height: 1, color: Colors.grey[200]),
-                      SizedBox(height: 16),
+                      const SizedBox(height: 16),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -326,7 +326,7 @@ class OrderDetails extends StatelessWidget {
                           ),
                           Text(
                             "${controller.orderDetails[0].orderTotalprice}\$",
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
                               color: Appcolor.amaranthpink,
@@ -338,10 +338,10 @@ class OrderDetails extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               if (orderType == 0) ...[
-                SectionHeader(title: "Delivery Address"),
-                SizedBox(height: 12),
+                const SectionHeader(title: "Delivery Address"),
+                const SizedBox(height: 12),
                 Card(
                   elevation: 2,
                   shape: RoundedRectangleBorder(
@@ -356,36 +356,36 @@ class OrderDetails extends StatelessWidget {
                         Row(
                           children: [
                             Container(
-                              padding: EdgeInsets.all(6),
+                              padding: const EdgeInsets.all(6),
                               decoration: BoxDecoration(
                                 color: Appcolor.amaranthpink
                                     .withValues(alpha: 0.1),
                                 shape: BoxShape.circle,
                               ),
-                              child: Icon(
+                              child: const Icon(
                                 Icons.location_on,
                                 color: Appcolor.amaranthpink,
                                 size: 20,
                               ),
                             ),
-                            SizedBox(width: 12),
+                            const SizedBox(width: 12),
                             Text(
                               controller.orderDetails[0].addressName!,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
                           ],
                         ),
-                        SizedBox(height: 16),
+                        const SizedBox(height: 16),
                         Padding(
                           padding: const EdgeInsets.only(left: 8.0),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Container(
-                                padding: EdgeInsets.all(12),
+                                padding: const EdgeInsets.all(12),
                                 decoration: BoxDecoration(
                                   color: Colors.grey[50],
                                   borderRadius: BorderRadius.circular(8),
@@ -396,13 +396,13 @@ class OrderDetails extends StatelessWidget {
                                 ),
                                 child: Text(
                                   controller.orderDetails[0].addressBymap!,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontSize: 14,
                                     height: 1.4,
                                   ),
                                 ),
                               ),
-                              SizedBox(height: 16),
+                              const SizedBox(height: 16),
                               DetailRow(
                                 label: "Building",
                                 value:
@@ -424,7 +424,7 @@ class OrderDetails extends StatelessWidget {
                             ],
                           ),
                         ),
-                        SizedBox(height: 16),
+                        const SizedBox(height: 16),
                         Container(
                           height: 180,
                           decoration: BoxDecoration(
@@ -458,11 +458,11 @@ class OrderDetails extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
               ],
               if (orderType == 1) ...[
-                SectionHeader(title: "Pickup Information"),
-                SizedBox(height: 12),
+                const SectionHeader(title: "Pickup Information"),
+                const SizedBox(height: 12),
                 Card(
                   elevation: 2,
                   shape: RoundedRectangleBorder(
@@ -477,20 +477,20 @@ class OrderDetails extends StatelessWidget {
                         Row(
                           children: [
                             Container(
-                              padding: EdgeInsets.all(6),
+                              padding: const EdgeInsets.all(6),
                               decoration: BoxDecoration(
                                 color: Appcolor.amaranthpink
                                     .withValues(alpha: 0.1),
                                 shape: BoxShape.circle,
                               ),
-                              child: Icon(
+                              child: const Icon(
                                 Icons.store,
                                 color: Appcolor.amaranthpink,
                                 size: 20,
                               ),
                             ),
-                            SizedBox(width: 12),
-                            Text(
+                            const SizedBox(width: 12),
+                            const Text(
                               "Store Pickup",
                               style: TextStyle(
                                 fontSize: 16,
@@ -499,14 +499,14 @@ class OrderDetails extends StatelessWidget {
                             ),
                           ],
                         ),
-                        SizedBox(height: 16),
+                        const SizedBox(height: 16),
                         Padding(
                           padding: const EdgeInsets.only(left: 8.0),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Container(
-                                padding: EdgeInsets.all(12),
+                                padding: const EdgeInsets.all(12),
                                 decoration: BoxDecoration(
                                   color: Colors.grey[50],
                                   borderRadius: BorderRadius.circular(8),
@@ -515,7 +515,7 @@ class OrderDetails extends StatelessWidget {
                                     width: 1,
                                   ),
                                 ),
-                                child: Text(
+                                child: const Text(
                                   "Please come to our store to pick up your order when it's ready",
                                   style: TextStyle(
                                     fontSize: 14,
@@ -523,15 +523,15 @@ class OrderDetails extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                              SizedBox(height: 16),
-                              DetailRow(
+                              const SizedBox(height: 16),
+                              const DetailRow(
                                   label: "Pickup Time",
                                   value:
                                       "When order status is 'Ready for Pickup'"),
-                              DetailRow(
+                              const DetailRow(
                                   label: "Location",
                                   value: "123 Main Street, City Center"),
-                              DetailRow(
+                              const DetailRow(
                                   label: "Contact", value: "+123 456 7890"),
                             ],
                           ),
@@ -540,10 +540,10 @@ class OrderDetails extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
               ],
-              SectionHeader(title: "Order Status"),
-              SizedBox(height: 12),
+              const SectionHeader(title: "Order Status"),
+              const SizedBox(height: 12),
               Card(
                 elevation: 2,
                 shape: RoundedRectangleBorder(
@@ -600,10 +600,10 @@ class OrderDetails extends StatelessWidget {
                                           ),
                                         ),
                                         child: isCancelled
-                                            ? Icon(Icons.close,
+                                            ? const Icon(Icons.close,
                                                 size: 20, color: Colors.white)
                                             : isArchived
-                                                ? Icon(Icons.archive,
+                                                ? const Icon(Icons.archive,
                                                     size: 20,
                                                     color: Colors.white)
                                                 : Icon(step['icon'],
@@ -629,7 +629,7 @@ class OrderDetails extends StatelessWidget {
                                         ),
                                     ],
                                   ),
-                                  SizedBox(height: 12),
+                                  const SizedBox(height: 12),
                                   Text(
                                     step['title']!,
                                     textAlign: TextAlign.center,
@@ -645,7 +645,7 @@ class OrderDetails extends StatelessWidget {
                                                   : Colors.grey[600],
                                     ),
                                   ),
-                                  SizedBox(height: 6),
+                                  const SizedBox(height: 6),
                                   Text(
                                     (isCancelled
                                         ? "Cancelled"
@@ -698,7 +698,7 @@ class OrderDetails extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Card(
                 elevation: 2,
                 shape: RoundedRectangleBorder(
@@ -710,14 +710,14 @@ class OrderDetails extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         "Need Help?",
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(height: 12),
+                      const SizedBox(height: 12),
                       HelpOption(
                         icon: Icons.headset_mic,
                         title: "Contact Support",
@@ -735,7 +735,7 @@ class OrderDetails extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 24),
+              const SizedBox(height: 24),
             ],
           ),
         );

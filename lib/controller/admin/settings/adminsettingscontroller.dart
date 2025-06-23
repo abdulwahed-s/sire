@@ -46,7 +46,7 @@ class AdminSettingsControllerImp extends AdminSettingsController {
   @override
   goToCreateNewDeliveryAccount() {
     Get.to(
-      () => CreateNewDeliveryAccount(),
+      () => const CreateNewDeliveryAccount(),
       transition: Transition.leftToRight,
     );
   }
@@ -54,7 +54,7 @@ class AdminSettingsControllerImp extends AdminSettingsController {
   @override
   goToCreateNewAdminAccount() {
     Get.to(
-      () => CreateNewAdminAccount(),
+      () => const CreateNewAdminAccount(),
       transition: Transition.leftToRight,
     );
   }
@@ -62,7 +62,7 @@ class AdminSettingsControllerImp extends AdminSettingsController {
   @override
   goToUpdateAccountInformation() {
     Get.to(
-      () => UpdateAccountInformation(),
+      () => const UpdateAccountInformation(),
       transition: Transition.leftToRight,
     );
   }

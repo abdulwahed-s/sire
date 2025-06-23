@@ -62,7 +62,7 @@ class WorkerAvatar extends StatelessWidget {
             ),
             child: Text(
               '${worker.numberOfOrders} orders',
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 10,
                 color: Appcolor.berry,
                 fontWeight: FontWeight.w500,

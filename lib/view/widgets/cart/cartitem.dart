@@ -49,20 +49,20 @@ class CartItem extends StatelessWidget {
                       children: [
                         Text(
                           itemName,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         Text(
                           itemCategory,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 14,
                           ),
                         ),
                         Text(
                           itemPrice,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
                           ),
@@ -99,7 +99,7 @@ class CartItem extends StatelessWidget {
                               decoration: const BoxDecoration(),
                               child: Text(
                                 itemCount,
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontFamily: "Sw",
                                     fontWeight: FontWeight.bold,
                                     color: Appcolor.berry),

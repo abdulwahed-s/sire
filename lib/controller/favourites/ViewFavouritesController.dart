@@ -49,7 +49,7 @@ class ViewFavouritesControllerImp extends ViewFavouritesController {
     update();
 
     // Wait for the animation to complete
-    await Future.delayed(Duration(milliseconds: 300));
+    await Future.delayed(const Duration(milliseconds: 300));
 
     // Perform the actual deletion
     await favouritesData.favouritesDelete(

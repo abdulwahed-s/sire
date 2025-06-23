@@ -75,9 +75,9 @@ class SignUpcontrollerImp extends SignupController {
 
   @override
   goToLogin() {
-    Get.offAll(() =>Login(),
+    Get.offAll(() =>const Login(),
         transition: Transition.leftToRight,
-        duration: Duration(milliseconds: 800));
+        duration: const Duration(milliseconds: 800));
   }
 
   @override
@@ -100,9 +100,9 @@ class SignUpcontrollerImp extends SignupController {
 
   @override
   goToVerfiy() {
-    Get.off(() =>VerifyCodeSignUp(),
+    Get.off(() =>const VerifyCodeSignUp(),
         arguments: {"email": email.text},
         transition: Transition.rightToLeft,
-        duration: Duration(milliseconds: 800));
+        duration: const Duration(milliseconds: 800));
   }
 }

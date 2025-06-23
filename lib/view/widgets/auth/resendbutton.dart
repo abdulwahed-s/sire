@@ -24,7 +24,7 @@ class ResendButton extends StatelessWidget {
                   color: Appcolor.rosePompadour,
                   fontWeight: FontWeight.bold,
                   shadows: [
-                    Shadow(
+                    const Shadow(
                         color: Colors.black12,
                         offset: Offset(2, 2),
                         blurRadius: 3)

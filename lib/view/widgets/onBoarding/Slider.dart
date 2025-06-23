@@ -22,18 +22,18 @@ class OBSlider extends GetView<OnBoardingControllerImp> {
               OnBoardingList[index].title,
               style: Theme.of(context).textTheme.headlineMedium,
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Image.asset(
               OnBoardingList[index].image,
               height: 350,
             ),
-            SizedBox(
+            const SizedBox(
               height: 25,
             ),
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 20),
+              margin: const EdgeInsets.symmetric(horizontal: 20),
               child: Text(OnBoardingList[index].content,
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.bodyMedium),

@@ -41,21 +41,21 @@ class ShippingAddress extends StatelessWidget {
               ),
               title: Text(
                 title,
-                style: TextStyle(fontWeight: FontWeight.bold),
+                style: const TextStyle(fontWeight: FontWeight.bold),
               ),
               subtitle: Text.rich(
                 TextSpan(
                   children: [
                     TextSpan(
                       text: placeName,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     TextSpan(
                       text: subTitle,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.normal,
                       ),
@@ -74,7 +74,7 @@ class ShippingAddress extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         )
       ],

@@ -13,7 +13,7 @@ class RatingStars extends StatelessWidget {
       children: [
         RatingBarIndicator(
           rating: double.parse(stars),
-          itemBuilder: (context, index) => Icon(
+          itemBuilder: (context, index) => const Icon(
             Icons.star_rounded,
             color: Appcolor.amaranthpink,
           ),
@@ -33,7 +33,7 @@ class RatingStars extends StatelessWidget {
           ),
           child: Text(
             stars,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 12,
               fontWeight: FontWeight.w600,
               color: Appcolor.berry,

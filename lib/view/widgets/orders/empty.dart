@@ -17,7 +17,7 @@ class Empty extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: 150),
+      margin: const EdgeInsets.only(bottom: 150),
       child: AnimatedSwitcher(
         duration: const Duration(milliseconds: 500),
         child: Padding(
@@ -33,7 +33,7 @@ class Empty extends StatelessWidget {
                   fit: BoxFit.contain,
                   repeat: true,
                   animate: true,
-                  frameRate: FrameRate(60),
+                  frameRate: const FrameRate(60),
                 ),
                 const SizedBox(height: 24),
                 AnimatedOpacity(

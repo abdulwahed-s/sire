@@ -25,7 +25,7 @@ class InfoSection extends StatelessWidget {
                     color: Appcolor.berry.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(8),
                   ),
-                  child: Icon(
+                  child: const Icon(
                     Icons.info_outline,
                     color: Appcolor.berry,
                     size: 20,

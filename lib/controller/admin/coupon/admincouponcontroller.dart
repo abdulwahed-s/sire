@@ -33,7 +33,7 @@ class AdminCouponControllerImp extends AdminCouponController {
   TextEditingController? title;
   TextEditingController? body;
   GlobalKey<FormState> formKey = GlobalKey();
-  Rx<Color> backgroundColor = Color(0xffEA9AB2).obs;
+  Rx<Color> backgroundColor = const Color(0xffEA9AB2).obs;
 
   @override
   getCoupons() async {
@@ -64,7 +64,7 @@ class AdminCouponControllerImp extends AdminCouponController {
   @override
   goToEditCoupon(couponModel) {
     Get.to(
-      () => EditCoupon(),
+      () => const EditCoupon(),
       arguments: {"couponModel": couponModel},
     );
   }
@@ -136,11 +136,11 @@ class AdminCouponControllerImp extends AdminCouponController {
       Dialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         child: Container(
-          padding: EdgeInsets.all(24),
+          padding: const EdgeInsets.all(24),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text(
+              const Text(
                 "Choose Background Color",
                 style: TextStyle(
                   fontSize: 20,
@@ -148,7 +148,7 @@ class AdminCouponControllerImp extends AdminCouponController {
                   color: Appcolor.amaranthpink,
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ColorPicker(
                 enableAlpha: false,
                 pickerColor: pickerColor,
@@ -156,7 +156,7 @@ class AdminCouponControllerImp extends AdminCouponController {
                   backgroundColor.value = newColor;
                 },
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -167,7 +167,7 @@ class AdminCouponControllerImp extends AdminCouponController {
                       style: TextStyle(color: Colors.grey[600]),
                     ),
                   ),
-                  SizedBox(width: 12),
+                  const SizedBox(width: 12),
                   ElevatedButton(
                     onPressed: () => Get.back(),
                     style: ElevatedButton.styleFrom(
@@ -176,7 +176,7 @@ class AdminCouponControllerImp extends AdminCouponController {
                         borderRadius: BorderRadius.circular(12),
                       ),
                     ),
-                    child: Text("Done", style: TextStyle(color: Colors.white)),
+                    child: const Text("Done", style: TextStyle(color: Colors.white)),
                   ),
                 ],
               ),
@@ -216,8 +216,8 @@ class AdminCouponControllerImp extends AdminCouponController {
           colorText: Appcolor.charcoalGray,
           backgroundColor: Appcolor.rosePompadour,
           snackPosition: SnackPosition.TOP,
-          icon: Icon(Icons.check_circle, color: Colors.white),
-          duration: Duration(seconds: 3),
+          icon: const Icon(Icons.check_circle, color: Colors.white),
+          duration: const Duration(seconds: 3),
         );
       } else {
         throw Exception("Failed to generate coupon image");
@@ -229,8 +229,8 @@ class AdminCouponControllerImp extends AdminCouponController {
         backgroundColor: Colors.red,
         colorText: Colors.white,
         snackPosition: SnackPosition.TOP,
-        icon: Icon(Icons.error, color: Colors.white),
-        duration: Duration(seconds: 4),
+        icon: const Icon(Icons.error, color: Colors.white),
+        duration: const Duration(seconds: 4),
       );
     } finally {
       controller.setLoading(false);
@@ -241,16 +241,16 @@ class AdminCouponControllerImp extends AdminCouponController {
   announceCouponDialog(controller, int index) {
     Get.defaultDialog(
       title: "Create Coupon Announcement",
-      titleStyle: TextStyle(
+      titleStyle: const TextStyle(
         fontSize: 22,
         fontWeight: FontWeight.bold,
         color: Appcolor.amaranthpink,
         letterSpacing: 0.5,
       ),
-      contentPadding: EdgeInsets.all(24),
+      contentPadding: const EdgeInsets.all(24),
       radius: 20,
       backgroundColor: Colors.white,
-      content: Container(
+      content: SizedBox(
         width: Get.width * 0.85,
         child: Form(
           key: formKey,
@@ -260,7 +260,7 @@ class AdminCouponControllerImp extends AdminCouponController {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Container(
-                  padding: EdgeInsets.all(16),
+                  padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
                     color: Appcolor.amaranthpink.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(12),
@@ -269,7 +269,7 @@ class AdminCouponControllerImp extends AdminCouponController {
                       width: 1,
                     ),
                   ),
-                  child: Row(
+                  child: const Row(
                     children: [
                       Icon(
                         Icons.info_outline,
@@ -290,7 +290,7 @@ class AdminCouponControllerImp extends AdminCouponController {
                     ],
                   ),
                 ),
-                SizedBox(height: 24),
+                const SizedBox(height: 24),
                 buildFormField(
                   controller: title!,
                   label: "Notification Title",
@@ -307,7 +307,7 @@ class AdminCouponControllerImp extends AdminCouponController {
                     return null;
                   },
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 buildFormField(
                   controller: body!,
                   label: "Notification Message",
@@ -325,9 +325,9 @@ class AdminCouponControllerImp extends AdminCouponController {
                     return null;
                   },
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 ColorPickerField(),
-                SizedBox(height: 32),
+                const SizedBox(height: 32),
                 Row(
                   children: [
                     Expanded(
@@ -342,10 +342,10 @@ class AdminCouponControllerImp extends AdminCouponController {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(16),
                           ),
-                          padding: EdgeInsets.symmetric(vertical: 16),
+                          padding: const EdgeInsets.symmetric(vertical: 16),
                           foregroundColor: Colors.grey[600],
                         ),
-                        child: Row(
+                        child: const Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Icon(Icons.close_rounded, size: 18),
@@ -361,7 +361,7 @@ class AdminCouponControllerImp extends AdminCouponController {
                         ),
                       ),
                     ),
-                    SizedBox(width: 16),
+                    const SizedBox(width: 16),
                     Expanded(
                       child: Obx(() => ElevatedButton(
                             onPressed: isLoading.value
@@ -373,13 +373,13 @@ class AdminCouponControllerImp extends AdminCouponController {
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(16),
                               ),
-                              padding: EdgeInsets.symmetric(vertical: 16),
+                              padding: const EdgeInsets.symmetric(vertical: 16),
                               elevation: 3,
                               shadowColor:
                                   Appcolor.amaranthpink.withValues(alpha: 0.3),
                             ),
                             child: isLoading.value
-                                ? SizedBox(
+                                ? const SizedBox(
                                     height: 20,
                                     width: 20,
                                     child: CircularProgressIndicator(
@@ -388,7 +388,7 @@ class AdminCouponControllerImp extends AdminCouponController {
                                           Colors.white),
                                     ),
                                   )
-                                : Row(
+                                : const Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Icon(Icons.campaign_rounded, size: 18),
@@ -435,13 +435,13 @@ class AdminCouponControllerImp extends AdminCouponController {
             letterSpacing: 0.3,
           ),
         ),
-        SizedBox(height: 8),
+        const SizedBox(height: 8),
         TextFormField(
           controller: controller,
           validator: validator,
           maxLength: maxLength,
           maxLines: maxLines,
-          style: TextStyle(fontSize: 16),
+          style: const TextStyle(fontSize: 16),
           decoration: InputDecoration(
             hintText: hint,
             hintStyle: TextStyle(
@@ -449,8 +449,8 @@ class AdminCouponControllerImp extends AdminCouponController {
               fontSize: 15,
             ),
             prefixIcon: Container(
-              margin: EdgeInsets.all(12),
-              padding: EdgeInsets.all(8),
+              margin: const EdgeInsets.all(12),
+              padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
                 color: Appcolor.amaranthpink.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(8),
@@ -471,19 +471,19 @@ class AdminCouponControllerImp extends AdminCouponController {
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(16),
-              borderSide: BorderSide(color: Appcolor.amaranthpink, width: 2),
+              borderSide: const BorderSide(color: Appcolor.amaranthpink, width: 2),
             ),
             errorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(16),
-              borderSide: BorderSide(color: Colors.red, width: 1.5),
+              borderSide: const BorderSide(color: Colors.red, width: 1.5),
             ),
             focusedErrorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(16),
-              borderSide: BorderSide(color: Colors.red, width: 2),
+              borderSide: const BorderSide(color: Colors.red, width: 2),
             ),
             filled: true,
             fillColor: Colors.grey[50],
-            contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+            contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
             counterText: "",
           ),
         ),
@@ -504,7 +504,7 @@ class AdminCouponControllerImp extends AdminCouponController {
             letterSpacing: 0.3,
           ),
         ),
-        SizedBox(height: 8),
+        const SizedBox(height: 8),
         Obx(() => InkWell(
               onTap: () => showColorPicker(
                 backgroundColor.value,
@@ -514,7 +514,7 @@ class AdminCouponControllerImp extends AdminCouponController {
               ),
               borderRadius: BorderRadius.circular(16),
               child: Container(
-                padding: EdgeInsets.all(16),
+                padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
                   color: Colors.grey[50],
                   borderRadius: BorderRadius.circular(16),
@@ -523,13 +523,13 @@ class AdminCouponControllerImp extends AdminCouponController {
                 child: Row(
                   children: [
                     Container(
-                      margin: EdgeInsets.only(right: 16),
-                      padding: EdgeInsets.all(8),
+                      margin: const EdgeInsets.only(right: 16),
+                      padding: const EdgeInsets.all(8),
                       decoration: BoxDecoration(
                         color: Appcolor.amaranthpink.withValues(alpha: 0.1),
                         borderRadius: BorderRadius.circular(8),
                       ),
-                      child: Icon(
+                      child: const Icon(
                         Icons.palette_rounded,
                         color: Appcolor.amaranthpink,
                         size: 20,
@@ -546,7 +546,7 @@ class AdminCouponControllerImp extends AdminCouponController {
                               color: Colors.grey[600],
                             ),
                           ),
-                          SizedBox(height: 4),
+                          const SizedBox(height: 4),
                           Text(
                             "Selected: ${backgroundColor.value.toString()}",
                             style: TextStyle(

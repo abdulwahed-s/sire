@@ -30,14 +30,14 @@ class HandlingDataView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Lottie.asset(AppImage.nodata),
-              Text(
+              const Text(
                 "No Data",
                 style: TextStyle(
                   fontFamily: 'Sw',
                   fontSize: 20,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 200,
               ),
             ],

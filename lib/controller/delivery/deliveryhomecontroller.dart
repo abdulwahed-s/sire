@@ -28,10 +28,10 @@ class DeliveryHomeControllerImp extends DeliveryHomeController {
 
   int currentpage = 0;
   List<Widget> listpages = [
-    DeliveryRequests(),
-    AcceptedOrders(),
-    ViewNotification(),
-    DeliverySettings()
+    const DeliveryRequests(),
+    const AcceptedOrders(),
+    const ViewNotification(),
+    const DeliverySettings()
   ];
   List<String> namepages = [
     "Pending",

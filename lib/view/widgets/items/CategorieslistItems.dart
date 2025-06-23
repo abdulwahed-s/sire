@@ -60,7 +60,7 @@ class Categories extends GetView<ItemscontrollerImp> {
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
               decoration: BoxDecoration(
                 gradient: isSelected
-                    ? LinearGradient(
+                    ? const LinearGradient(
                         colors: [
                           Appcolor.rosePompadour,
                           Appcolor.deepPurple,

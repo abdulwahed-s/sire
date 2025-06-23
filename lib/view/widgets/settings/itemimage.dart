@@ -34,7 +34,7 @@ class ItemImage extends StatelessWidget {
               width: 90,
               height: 90,
               color: Colors.grey[100],
-              child: Center(
+              child: const Center(
                 child: CircularProgressIndicator(
                   strokeWidth: 2,
                   color: Appcolor.berry,

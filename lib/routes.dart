@@ -19,25 +19,25 @@ import 'package:sire/view/screens/items/itemdetails.dart';
 import 'package:sire/view/screens/settings/settings.dart';
 
 List<GetPage<dynamic>>? route = [
-  GetPage(name: "/", page: () => OnBoarding(), middlewares: [MyMiddleware()]),
+  GetPage(name: "/", page: () => const OnBoarding(), middlewares: [MyMiddleware()]),
 
   //auth
-  GetPage(name: Approutes.login, page: () => Login()),
-  GetPage(name: Approutes.signUp, page: () => SignUp()),
-  GetPage(name: Approutes.forgot, page: () => ForgotPassword()),
-  GetPage(name: Approutes.verify, page: () => VerifyCode()),
-  GetPage(name: Approutes.rest, page: () => RestPassword()),
-  GetPage(name: Approutes.verifyCodeSignUp, page: () => VerifyCodeSignUp()),
+  GetPage(name: Approutes.login, page: () => const Login()),
+  GetPage(name: Approutes.signUp, page: () => const SignUp()),
+  GetPage(name: Approutes.forgot, page: () => const ForgotPassword()),
+  GetPage(name: Approutes.verify, page: () => const VerifyCode()),
+  GetPage(name: Approutes.rest, page: () => const RestPassword()),
+  GetPage(name: Approutes.verifyCodeSignUp, page: () => const VerifyCodeSignUp()),
   //home
-  GetPage(name: Approutes.home, page: () => Home()),
-  GetPage(name: Approutes.homescreen, page: () => HomeScreen()),
-  GetPage(name: Approutes.item, page: () => ItemsView()),
-  GetPage(name: Approutes.itemDetails, page: () => ItemDetails()),
-  GetPage(name: Approutes.viewFavourite, page: () => ViewFavourite()),
+  GetPage(name: Approutes.home, page: () => const Home()),
+  GetPage(name: Approutes.homescreen, page: () => const HomeScreen()),
+  GetPage(name: Approutes.item, page: () => const ItemsView()),
+  GetPage(name: Approutes.itemDetails, page: () => const ItemDetails()),
+  GetPage(name: Approutes.viewFavourite, page: () => const ViewFavourite()),
   //setting
-  GetPage(name: Approutes.settings, page: () => Settings()),
+  GetPage(name: Approutes.settings, page: () => const Settings()),
   //delivery
-  GetPage(name: Approutes.deliveryRequests, page: () => DeliveryRequests()),
-  GetPage(name: Approutes.deliveryHome, page: () => DeliveryHome()),
-  GetPage(name: Approutes.adminHome, page: ()=> AdminHome())
+  GetPage(name: Approutes.deliveryRequests, page: () => const DeliveryRequests()),
+  GetPage(name: Approutes.deliveryHome, page: () => const DeliveryHome()),
+  GetPage(name: Approutes.adminHome, page: ()=> const AdminHome())
 ];

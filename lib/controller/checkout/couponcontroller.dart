@@ -36,7 +36,7 @@ class CouponControllerImp extends CouponController {
         "Discount Applied! 🎉",
         "Your coupon saved you ${couponList[0].couponDiscount}% on this order!",
         colorText: Appcolor.charcoalGray,
-        titleText: Text(
+        titleText: const Text(
           "Discount Applied! 🎉",
           style: TextStyle(
             fontWeight: FontWeight.bold,
@@ -47,7 +47,7 @@ class CouponControllerImp extends CouponController {
         ),
         messageText: Text(
           "Your coupon saved you ${couponList[0].couponDiscount}% on this order!",
-          style: TextStyle(
+          style: const TextStyle(
             fontWeight: FontWeight.w300,
             fontFamily: "Sw",
             fontSize: 14,

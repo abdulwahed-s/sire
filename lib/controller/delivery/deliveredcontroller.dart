@@ -85,7 +85,7 @@ class DeliveredControllerImp extends DeliveredController {
 
   @override
   goToOrderDetails(orderid, index) {
-    Get.to(() => DeliveryOrderDetails(), arguments: {
+    Get.to(() => const DeliveryOrderDetails(), arguments: {
       'orderid': orderid,
       'undeliveredOrder': delivered[index],
       'isDelivered': true,

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:sire/core/class/statusrequest.dart';
 import 'package:sire/core/constant/color.dart';
@@ -26,10 +25,10 @@ class VerifyCodeControllerImp extends VerifyCodeController {
     if (statusRequest == StatusRequest.success) {
       if (response["status"] == "success") {
         // data.addAll(response['data']);
-        Get.to(() => RestPassword(),
+        Get.to(() => const RestPassword(),
             arguments: {"email": email, "code": code},
             transition: Transition.rightToLeft,
-            duration: Duration(milliseconds: 800));
+            duration: const Duration(milliseconds: 800));
       } else if (response["status"] == "failure") {
         statusRequest = StatusRequest.failure;
         Get.defaultDialog(

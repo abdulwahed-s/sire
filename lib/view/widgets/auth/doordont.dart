@@ -23,7 +23,7 @@ class dodont extends StatelessWidget {
                 .copyWith(color: Appcolor.rosePompadour),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           width: 10,
         )
       ],

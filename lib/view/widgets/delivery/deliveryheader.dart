@@ -31,7 +31,7 @@ class DeliveryHeader extends StatelessWidget {
               color: Appcolor.berry.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(12),
             ),
-            child: Icon(
+            child: const Icon(
               Icons.history,
               color: Appcolor.berry,
               size: 24,

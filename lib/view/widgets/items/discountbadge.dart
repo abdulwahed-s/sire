@@ -10,7 +10,7 @@ class DiscountBadge extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
       decoration: BoxDecoration(
-        gradient: LinearGradient(
+        gradient: const LinearGradient(
           colors: [Colors.red, Colors.deepOrange],
         ),
         borderRadius: BorderRadius.circular(20),

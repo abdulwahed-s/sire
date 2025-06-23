@@ -18,13 +18,13 @@ class OnBoarding extends GetView<Localecontroller> {
     Get.put(OnBoardingControllerImp());
     return Scaffold(
       backgroundColor: Appcolor.white,
-      appBar: LCAppBar(),
+      appBar: const LCAppBar(),
       body: PopScope(
         canPop: false,
         onPopInvokedWithResult: (didPop, result) {
           alertExitApp();
         },
-        child: SafeArea(
+        child: const SafeArea(
             child: Column(
           children: [
             Expanded(flex: 4, child: OBSlider()),
@@ -32,7 +32,7 @@ class OnBoarding extends GetView<Localecontroller> {
               flex: 2,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
+                children: [
                   OBDots(),
                   Column(
                     children: [

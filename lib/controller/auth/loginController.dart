@@ -67,16 +67,16 @@ class LogincontrollerImp extends LoginController {
 
   @override
   goToSignUp() {
-    Get.off(() => SignUp(),
+    Get.off(() => const SignUp(),
         transition: Transition.rightToLeft,
-        duration: Duration(milliseconds: 800));
+        duration: const Duration(milliseconds: 800));
   }
 
   @override
   goToForgotPassword() {
-    Get.to(() => ForgotPassword(),
+    Get.to(() => const ForgotPassword(),
         transition: Transition.rightToLeft,
-        duration: Duration(milliseconds: 800));
+        duration: const Duration(milliseconds: 800));
   }
 
   @override
@@ -128,9 +128,9 @@ class LogincontrollerImp extends LoginController {
       service.sharedPreferences.setString("step", "4");
     }
     FirebaseMessaging.instance.subscribeToTopic("admin");
-    Get.off(() => AdminHome(),
+    Get.off(() => const AdminHome(),
         transition: Transition.rightToLeft,
-        duration: Duration(milliseconds: 800));
+        duration: const Duration(milliseconds: 800));
   }
 
   @override
@@ -139,9 +139,9 @@ class LogincontrollerImp extends LoginController {
       service.sharedPreferences.setString("step", "3");
     }
     FirebaseMessaging.instance.subscribeToTopic("delivery");
-    Get.off(() => DeliveryHome(),
+    Get.off(() => const DeliveryHome(),
         transition: Transition.rightToLeft,
-        duration: Duration(milliseconds: 800));
+        duration: const Duration(milliseconds: 800));
   }
 
   @override
@@ -150,9 +150,9 @@ class LogincontrollerImp extends LoginController {
       service.sharedPreferences.setString("step", "2");
     }
     FirebaseMessaging.instance.subscribeToTopic("users");
-    Get.off(() => HomeScreen(),
+    Get.off(() => const HomeScreen(),
         transition: Transition.rightToLeft,
-        duration: Duration(milliseconds: 800));
+        duration: const Duration(milliseconds: 800));
   }
 
   @override

@@ -15,7 +15,7 @@ class SalesOverTimeChart extends StatelessWidget {
   Widget build(BuildContext context) {
     if (controller.dashboardInfo.salesOverWeek == null ||
         controller.dashboardInfo.salesOverWeek!.isEmpty) {
-      return EmptyChart(title: 'Sales Over Time');
+      return const EmptyChart(title: 'Sales Over Time');
     }
 
     final salesData = controller.dashboardInfo.salesOverWeek!
@@ -58,7 +58,7 @@ class SalesOverTimeChart extends StatelessWidget {
               yValueMapper: (SalesData data, _) => data.sales,
               color: Appcolor.berry,
               width: 3,
-              markerSettings: MarkerSettings(
+              markerSettings: const MarkerSettings(
                 isVisible: true,
                 color: Appcolor.berry,
                 borderColor: Colors.white,

@@ -63,7 +63,7 @@ class EmptyDeliveryRequestsState extends StatelessWidget {
                     color: Appcolor.berry.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(25),
                   ),
-                  child: Text(
+                  child: const Text(
                     'Pull to refresh',
                     style: TextStyle(
                       color: Appcolor.berry,

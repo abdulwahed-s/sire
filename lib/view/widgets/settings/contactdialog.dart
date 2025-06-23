@@ -24,17 +24,17 @@ class ContactDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(25),
+      padding: const EdgeInsets.all(25),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(
+          const Icon(
             Icons.support_agent,
             size: 50,
             color: Appcolor.indigoBlue,
           ),
-          SizedBox(height: 20),
-          Text(
+          const SizedBox(height: 20),
+          const Text(
             "Contact Us",
             style: TextStyle(
               fontSize: 22,
@@ -42,7 +42,7 @@ class ContactDialog extends StatelessWidget {
               color: Appcolor.indigoBlue,
             ),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Text(
             "How would you like to contact us?",
             style: TextStyle(
@@ -51,7 +51,7 @@ class ContactDialog extends StatelessWidget {
             ),
             textAlign: TextAlign.center,
           ),
-          SizedBox(height: 25),
+          const SizedBox(height: 25),
           Row(
             children: [
               Expanded(
@@ -59,42 +59,42 @@ class ContactDialog extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.green,
                     foregroundColor: Colors.white,
-                    padding: EdgeInsets.symmetric(vertical: 12),
+                    padding: const EdgeInsets.symmetric(vertical: 12),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
                     elevation: 2,
                   ),
-                  icon: FaIcon(
+                  icon: const FaIcon(
                     FontAwesomeIcons.whatsapp,
                     size: 18,
                     color: Colors.white,
                   ),
-                  label: Text("WhatsApp"),
+                  label: const Text("WhatsApp"),
                   onPressed: () {
                     Get.back();
                     controller.contactus(0);
                   },
                 ),
               ),
-              SizedBox(width: 15),
+              const SizedBox(width: 15),
               Expanded(
                 child: ElevatedButton.icon(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Appcolor.indigoBlue,
                     foregroundColor: Colors.white,
-                    padding: EdgeInsets.symmetric(vertical: 12),
+                    padding: const EdgeInsets.symmetric(vertical: 12),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
                     elevation: 2,
                   ),
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.sms,
                     size: 18,
                     color: Colors.white,
                   ),
-                  label: Text("SMS"),
+                  label: const Text("SMS"),
                   onPressed: () {
                     Get.back();
                     controller.contactus(1);
@@ -103,7 +103,7 @@ class ContactDialog extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 15),
+          const SizedBox(height: 15),
           TextButton(
             child: Text(
               "Cancel",

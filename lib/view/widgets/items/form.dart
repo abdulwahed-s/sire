@@ -26,7 +26,7 @@ class AnimatedCommentFieldState extends State<AnimatedCommentField>
     });
 
     _shakeController = AnimationController(
-      duration: Duration(milliseconds: 500),
+      duration: const Duration(milliseconds: 500),
       vsync: this,
     );
 
@@ -56,12 +56,12 @@ class AnimatedCommentFieldState extends State<AnimatedCommentField>
               _shakeAnimation.value * (_shakeController.isCompleted ? 0 : 1),
               0),
           child: AnimatedContainer(
-            duration: Duration(milliseconds: 300),
+            duration: const Duration(milliseconds: 300),
             decoration: BoxDecoration(
               boxShadow: _hasFocus
                   ? [
                       BoxShadow(
-                          color: Color(0xffa43068).withValues(alpha: 0.3),
+                          color: const Color(0xffa43068).withValues(alpha: 0.3),
                           blurRadius: 12,
                           spreadRadius: 2)
                     ]
@@ -72,11 +72,11 @@ class AnimatedCommentFieldState extends State<AnimatedCommentField>
               controller: widget.controller,
               focusNode: _focusNode,
               maxLines: 4,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.black87,
                 fontSize: 14,
               ),
-              cursorColor: Color(0xffa43068),
+              cursorColor: const Color(0xffa43068),
               decoration: InputDecoration(
                 hintText: 'What did you like or dislike?',
                 hintStyle: TextStyle(
@@ -85,25 +85,25 @@ class AnimatedCommentFieldState extends State<AnimatedCommentField>
                 ),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
-                  borderSide: BorderSide(color: Color(0xffa43068), width: 1.5),
+                  borderSide: const BorderSide(color: Color(0xffa43068), width: 1.5),
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                   borderSide: BorderSide(
-                    color: Color(0xffa43068).withValues(alpha: 0.7),
+                    color: const Color(0xffa43068).withValues(alpha: 0.7),
                     width: 1.5,
                   ),
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
-                  borderSide: BorderSide(
+                  borderSide: const BorderSide(
                     color: Color(0xffa43068),
                     width: 2,
                   ),
                 ),
                 filled: true,
                 fillColor: Colors.grey[50],
-                contentPadding: EdgeInsets.all(16),
+                contentPadding: const EdgeInsets.all(16),
               ),
               onChanged: (text) {},
             ),

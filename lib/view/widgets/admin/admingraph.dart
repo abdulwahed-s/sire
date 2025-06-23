@@ -13,7 +13,7 @@ class AdminGraph extends StatelessWidget {
     return GetBuilder<AdminDashboardControllerImp>(
       builder: (controller) {
         return controller.statusRequest == StatusRequest.loding
-            ? LoadingState()
+            ? const LoadingState()
             : GraphsContent(controller: controller);
       },
     );

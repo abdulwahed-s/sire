@@ -33,11 +33,11 @@ class Offer extends StatelessWidget {
         body: GetBuilder<OfferControllerImp>(builder: (controller) {
           switch (controller.statusRequest) {
             case StatusRequest.loding:
-              return OfferLoadingState();
+              return const OfferLoadingState();
             case StatusRequest.success:
               return OfferSuccessState(controller: controller);
             default:
-              return SizedBox.shrink();
+              return const SizedBox.shrink();
           }
         }),
       ),

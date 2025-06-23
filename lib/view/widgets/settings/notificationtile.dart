@@ -17,15 +17,15 @@ class NotificationTile extends StatelessWidget {
           BoxShadow(
             color: Colors.black.withValues(alpha: 0.05),
             blurRadius: 10,
-            offset: Offset(0, 2),
+            offset: const Offset(0, 2),
           ),
         ],
       ),
       child: SwitchListTile(
-        contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
         value: controller.isNotificationEnabled ?? false,
         onChanged: (value) => controller.disableNotification(),
-        title: Text(
+        title: const Text(
           "Notifications",
           style: TextStyle(
             fontSize: 16,
@@ -41,12 +41,12 @@ class NotificationTile extends StatelessWidget {
           ),
         ),
         secondary: Container(
-          padding: EdgeInsets.all(8),
+          padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
             color: Appcolor.deepPurple.withValues(alpha: 0.1),
             borderRadius: BorderRadius.circular(10),
           ),
-          child: Icon(
+          child: const Icon(
             Icons.notifications_outlined,
             color: Appcolor.deepPurple,
             size: 20,

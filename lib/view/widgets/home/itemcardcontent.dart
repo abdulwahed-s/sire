@@ -68,7 +68,7 @@ class ItemCardContent extends StatelessWidget {
                           .gradientColors[colorIndex],
                     ),
                   ),
-                  errorWidget: (context, url, error) => Icon(
+                  errorWidget: (context, url, error) => const Icon(
                     Icons.image_not_supported,
                     color: Colors.grey,
                     size: 50,
@@ -84,7 +84,7 @@ class ItemCardContent extends StatelessWidget {
             ],
           ),
           Padding(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -103,7 +103,7 @@ class ItemCardContent extends StatelessWidget {
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
-                SizedBox(height: 12),
+                const SizedBox(height: 12),
                 PriceSection(
                   itemsModel: itemsModel,
                   colorIndex: colorIndex,

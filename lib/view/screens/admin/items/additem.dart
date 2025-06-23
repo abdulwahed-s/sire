@@ -14,7 +14,7 @@ class AddItem extends StatelessWidget {
     Get.put(AddItemControllerImp());
     return Scaffold(
       appBar: AppBar(
-        title: Text('Add New Item'),
+        title: const Text('Add New Item'),
         centerTitle: true,
         elevation: 0,
       ),
@@ -27,7 +27,7 @@ class AddItem extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  AddHeader(title: 'Basic Information'),
+                  const AddHeader(title: 'Basic Information'),
                   ItemFiled(
                     controller: controller.itemName!,
                     label: "Item Name (English)",
@@ -48,7 +48,7 @@ class AddItem extends StatelessWidget {
                         ? "Please enter item name in spanish"
                         : null,
                   ),
-                  AddHeader(title: 'Descriptions'),
+                  const AddHeader(title: 'Descriptions'),
                   ItemFiled(
                     controller: controller.itemDescription!,
                     label: "Description (English)",
@@ -72,7 +72,7 @@ class AddItem extends StatelessWidget {
                         ? "Please enter item description in spanish"
                         : null,
                   ),
-                  AddHeader(title: 'Pricing & Inventory'),
+                  const AddHeader(title: 'Pricing & Inventory'),
                   Row(
                     children: [
                       Expanded(
@@ -80,12 +80,12 @@ class AddItem extends StatelessWidget {
                           controller: controller.itemPrice!,
                           label: "Price",
                           keyboardType:
-                              TextInputType.numberWithOptions(decimal: true),
+                              const TextInputType.numberWithOptions(decimal: true),
                           validator: (val) =>
                               val!.isEmpty ? "Please enter item price" : null,
                         ),
                       ),
-                      SizedBox(width: 16),
+                      const SizedBox(width: 16),
                       Expanded(
                         child: ItemFiled(
                           controller: controller.itemDiscount!,
@@ -105,9 +105,9 @@ class AddItem extends StatelessWidget {
                     validator: (val) =>
                         val!.isEmpty ? "Please enter item quantity" : null,
                   ),
-                  AddHeader(title: 'Additional Information'),
+                  const AddHeader(title: 'Additional Information'),
                   CategoryField(controller: controller),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   Card(
                     child: InkWell(
                       onTap: () => controller.changeActive(),
@@ -119,7 +119,7 @@ class AddItem extends StatelessWidget {
                           children: [
                             Text("Active Item",
                                 style: Theme.of(context).textTheme.bodyLarge),
-                            Spacer(),
+                            const Spacer(),
                             Switch(
                               value: controller.active == "1",
                               onChanged: (value) => controller.changeActive(),
@@ -129,18 +129,18 @@ class AddItem extends StatelessWidget {
                       ),
                     ),
                   ),
-                  AddHeader(title: 'Item Image'),
+                  const AddHeader(title: 'Item Image'),
                   ImagePicker(controller: controller),
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
                   ElevatedButton(
                     onPressed: () => controller.addItem(),
                     style: ElevatedButton.styleFrom(
-                      padding: EdgeInsets.symmetric(vertical: 16),
+                      padding: const EdgeInsets.symmetric(vertical: 16),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),
                       ),
                     ),
-                    child: Text("Add Item", style: TextStyle(fontSize: 16)),
+                    child: const Text("Add Item", style: TextStyle(fontSize: 16)),
                   ),
                 ],
               ),

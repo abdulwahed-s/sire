@@ -27,10 +27,10 @@ class ForgotPasswordcontrollerImp extends ForgotPasswordcontroller {
       if (statusRequest == StatusRequest.success) {
         if (response["status"] == "success") {
           // data.addAll(response['data']);
-          Get.to(() =>VerifyCode(),
+          Get.to(() =>const VerifyCode(),
               arguments: {"email": email.text},
               transition: Transition.rightToLeft,
-              duration: Duration(milliseconds: 800));
+              duration: const Duration(milliseconds: 800));
         } else if (response["status"] == "failure") {
           statusRequest = StatusRequest.failure;
           Get.defaultDialog(

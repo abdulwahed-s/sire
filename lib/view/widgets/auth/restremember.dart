@@ -22,7 +22,7 @@ class Restremember extends StatelessWidget {
             child: CheckboxListTile(
               controlAffinity: ListTileControlAffinity.leading,
               activeColor: Appcolor.rosePompadour,
-              title: FittedBox(
+              title: const FittedBox(
                 fit: BoxFit.scaleDown,
                 alignment: Alignment.centerLeft,
                 child: Text("Remember me"),
@@ -32,7 +32,7 @@ class Restremember extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           width: 55,
         ),
         InkWell(
@@ -41,7 +41,7 @@ class Restremember extends StatelessWidget {
               "Forgot Password",
               style: Theme.of(context).textTheme.bodyMedium,
             )),
-        SizedBox(
+        const SizedBox(
           width: 10,
         ),
       ],

@@ -10,7 +10,7 @@ final void Function() ontap;
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         MaterialButton(

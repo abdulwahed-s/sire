@@ -21,7 +21,7 @@ class ViewDetailsButton extends StatelessWidget {
           onTap: onPressed,
           child: Container(
             alignment: Alignment.center,
-            child: Row(
+            child: const Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(
@@ -29,7 +29,7 @@ class ViewDetailsButton extends StatelessWidget {
                   size: 18,
                   color: Appcolor.berry,
                 ),
-                const SizedBox(width: 8),
+                SizedBox(width: 8),
                 Text(
                   'View Details',
                   style: TextStyle(

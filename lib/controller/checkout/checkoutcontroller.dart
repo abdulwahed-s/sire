@@ -43,7 +43,7 @@ class CheckoutControllerImp extends CheckoutController {
   @override
   getUserAddresses() async {
     statusRequest = StatusRequest.loding;
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2));
 
     var response = await addressData
         .getAddress(services.sharedPreferences.getString("id")!);
@@ -125,7 +125,7 @@ class CheckoutControllerImp extends CheckoutController {
       statusRequest = handlingdata(response);
       if (statusRequest == StatusRequest.success) {
         if (response["status"] == "success") {
-          Get.offAll(() => HomeScreen());
+          Get.offAll(() => const HomeScreen());
           Get.put(HomeScreenControllerImp());
           Get.put(HomeControllerImp());
           Get.dialog(
@@ -136,11 +136,11 @@ class CheckoutControllerImp extends CheckoutController {
               elevation: 0,
               backgroundColor: Colors.transparent,
               child: Container(
-                padding: EdgeInsets.all(20),
+                padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(20),
-                  boxShadow: [
+                  boxShadow: const [
                     BoxShadow(
                       color: Colors.black12,
                       blurRadius: 10,
@@ -158,8 +158,8 @@ class CheckoutControllerImp extends CheckoutController {
                         fit: BoxFit.contain,
                       ),
                     ),
-                    SizedBox(height: 20),
-                    Text(
+                    const SizedBox(height: 20),
+                    const Text(
                       "Order Placed Successfully!",
                       style: TextStyle(
                         fontSize: 20,
@@ -168,7 +168,7 @@ class CheckoutControllerImp extends CheckoutController {
                         color: Appcolor.amaranthpink,
                       ),
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     Text(
                       "Thank you for your purchase!",
                       style: TextStyle(
@@ -177,7 +177,7 @@ class CheckoutControllerImp extends CheckoutController {
                       ),
                       textAlign: TextAlign.center,
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Appcolor.amaranthpink,
@@ -185,10 +185,10 @@ class CheckoutControllerImp extends CheckoutController {
                           borderRadius: BorderRadius.circular(10),
                         ),
                         padding:
-                            EdgeInsets.symmetric(horizontal: 30, vertical: 12),
+                            const EdgeInsets.symmetric(horizontal: 30, vertical: 12),
                       ),
                       onPressed: () => Get.back(),
-                      child: Text(
+                      child: const Text(
                         "Continue Shopping",
                         style: TextStyle(
                           fontSize: 16,

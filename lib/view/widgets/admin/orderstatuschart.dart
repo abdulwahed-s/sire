@@ -15,7 +15,7 @@ class OrderStatusChart extends StatelessWidget {
   Widget build(BuildContext context) {
     if (controller.dashboardInfo.ordersNumber == null ||
         controller.dashboardInfo.ordersNumber!.isEmpty) {
-      return EmptyChart(title: 'Order Status');
+      return const EmptyChart(title: 'Order Status');
     }
 
     final orderStatusData = controller.dashboardInfo.ordersNumber!
@@ -31,10 +31,10 @@ class OrderStatusChart extends StatelessWidget {
       chart: SizedBox(
         height: 300,
         child: SfCircularChart(
-          legend: Legend(
+          legend: const Legend(
             isVisible: true,
             position: LegendPosition.bottom,
-            textStyle: const TextStyle(fontSize: 12),
+            textStyle: TextStyle(fontSize: 12),
             overflowMode: LegendItemOverflowMode.wrap,
           ),
           series: <DoughnutSeries<OrderStatusData, String>>[

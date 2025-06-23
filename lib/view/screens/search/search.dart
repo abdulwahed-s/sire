@@ -22,9 +22,9 @@ class Search extends StatelessWidget {
               decorationBuilder: (context, child) {
                 return Container(
                   height: 200,
-                  padding: EdgeInsets.only(bottom: 8, top: 4),
-                  decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 255, 241, 245),
+                  padding: const EdgeInsets.only(bottom: 8, top: 4),
+                  decoration: const BoxDecoration(
+                      color: Color.fromARGB(255, 255, 241, 245),
                       borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(12),
                         bottomRight: Radius.circular(12),
@@ -39,8 +39,8 @@ class Search extends StatelessWidget {
                 return TextField(
                   controller: controller,
                   focusNode: focusNode,
-                  style: TextStyle(fontSize: 18),
-                  decoration: InputDecoration(
+                  style: const TextStyle(fontSize: 18),
+                  decoration: const InputDecoration(
                     hintText: "Search",
                     border: InputBorder.none,
                     hintStyle: TextStyle(color: Colors.grey),
@@ -62,7 +62,7 @@ class Search extends StatelessWidget {
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(12),
-                          boxShadow: [
+                          boxShadow: const [
                             BoxShadow(
                               color: Colors.black12,
                               blurRadius: 6,
@@ -78,7 +78,7 @@ class Search extends StatelessWidget {
                                 shape: BoxShape.circle,
                               ),
                               padding: const EdgeInsets.all(8),
-                              child: Icon(Icons.search,
+                              child: const Icon(Icons.search,
                                   color: Colors.blueAccent, size: 20),
                             ),
                             const SizedBox(width: 12),
@@ -115,7 +115,7 @@ class Search extends StatelessWidget {
               widget: ListView(
                 children: [
                   Container(
-                    margin: EdgeInsets.symmetric(horizontal: 12),
+                    margin: const EdgeInsets.symmetric(horizontal: 12),
                     child: Text(
                       '${controller.results.length} items found',
                       textAlign: TextAlign.start,
@@ -126,15 +126,15 @@ class Search extends StatelessWidget {
                     ),
                   ),
                   ListView.builder(
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemCount: controller.results.length,
                     itemBuilder: (context, index) {
                       return Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Divider(endIndent: 20, indent: 20),
-                          SizedBox(height: 10),
+                          const Divider(endIndent: 20, indent: 20),
+                          const SizedBox(height: 10),
                           Material(
                             color: Appcolor.white,
                             child: InkWell(
@@ -145,7 +145,7 @@ class Search extends StatelessWidget {
                               splashColor: Colors.pink.withValues(alpha: 0.2),
                               child: Container(
                                 width: double.infinity,
-                                padding: EdgeInsets.symmetric(vertical: 8),
+                                padding: const EdgeInsets.symmetric(vertical: 8),
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
@@ -153,11 +153,11 @@ class Search extends StatelessWidget {
                                     Row(
                                       children: [
                                         Container(
-                                          margin: EdgeInsets.only(
+                                          margin: const EdgeInsets.only(
                                               left: 10, bottom: 40, right: 4),
                                           child: Text(
                                             (index + 1).toString(),
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                               color: Appcolor.black,
                                               fontFamily: 'Sw',
                                               fontSize: 20,
@@ -166,7 +166,7 @@ class Search extends StatelessWidget {
                                           ),
                                         ),
                                         Container(
-                                          margin: EdgeInsets.only(right: 10),
+                                          margin: const EdgeInsets.only(right: 10),
                                           height: 92,
                                           width: 100,
                                           decoration: BoxDecoration(
@@ -184,7 +184,7 @@ class Search extends StatelessWidget {
                                                         .itemImg!,
                                                 height: 85,
                                                 placeholder: (context, url) =>
-                                                    SizedBox(
+                                                    const SizedBox(
                                                   height: 30,
                                                   width: 30,
                                                   child:
@@ -209,15 +209,15 @@ class Search extends StatelessWidget {
                                                 "${controller.results[index].itemName}"),
                                             Text(
                                               "${controller.results[index].categoryName}",
-                                              style: TextStyle(
+                                              style: const TextStyle(
                                                   fontFamily: "Sw",
                                                   fontSize: 14),
                                             ),
                                             Container(
-                                              margin: EdgeInsets.only(top: 2),
+                                              margin: const EdgeInsets.only(top: 2),
                                               child: Text(
                                                 '\$${controller.results[index].itemFinalPrice!.toStringAsFixed(2)}',
-                                                style: TextStyle(
+                                                style: const TextStyle(
                                                   fontFamily: "Sw",
                                                   color: Appcolor.pink,
                                                 ),
@@ -232,8 +232,8 @@ class Search extends StatelessWidget {
                               ),
                             ),
                           ),
-                          SizedBox(height: 10),
-                          Divider(endIndent: 20, indent: 20),
+                          const SizedBox(height: 10),
+                          const Divider(endIndent: 20, indent: 20),
                         ],
                       );
                     },

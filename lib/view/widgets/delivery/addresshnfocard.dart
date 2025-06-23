@@ -26,7 +26,7 @@ class AddressInfoCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Color.fromARGB(255, 251, 249, 255),
+        color: const Color.fromARGB(255, 251, 249, 255),
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
           color: Colors.grey.shade200,

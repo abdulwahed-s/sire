@@ -10,7 +10,7 @@ class OBButton extends GetView<OnBoardingControllerImp> {
   Widget build(BuildContext context) {
     return  ElevatedButton(
       style: ElevatedButton.styleFrom(
-          padding: EdgeInsets.symmetric(
+          padding: const EdgeInsets.symmetric(
             horizontal: 120,
           ),
           foregroundColor: Appcolor.white,

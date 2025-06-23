@@ -15,7 +15,7 @@ class Discountcard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Stack(
         children: [
           Container(
@@ -24,7 +24,7 @@ class Discountcard extends StatelessWidget {
                   image: DecorationImage(
                       image: image,
                       fit: BoxFit.cover),
-                  boxShadow: [
+                  boxShadow: const [
                     BoxShadow(
                       color: Appcolor.shadow,
                       blurRadius: 10,
@@ -45,7 +45,7 @@ class Discountcard extends StatelessWidget {
                           .headlineMedium!
                           .copyWith(color: Appcolor.white),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 5,
                     )
                   ],

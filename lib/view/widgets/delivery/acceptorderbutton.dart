@@ -17,7 +17,7 @@ class AcceptOrderButton extends StatelessWidget {
     return ElevatedButton.icon(
       onPressed: onPressed,
       icon: loading
-          ? SizedBox(
+          ? const SizedBox(
               height: 20,
               width: 20,
               child: GradientProgressIndicator(strokeWidth: 2))

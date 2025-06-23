@@ -158,7 +158,7 @@ class ItemsDetailsControllerImp extends ItemsDetailsController {
   @override
   goToAllRating() {
     Get.to(
-      () => ViewRating(),
+      () => const ViewRating(),
       arguments: {"allRating": allRating},
     );
   }
@@ -175,7 +175,7 @@ class ItemsDetailsControllerImp extends ItemsDetailsController {
                 color: Appcolor.amaranthpink.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(12),
               ),
-              child: Icon(
+              child: const Icon(
                 Icons.star_rounded,
                 color: Appcolor.amaranthpink,
                 size: 24,

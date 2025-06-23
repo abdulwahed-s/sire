@@ -79,7 +79,7 @@ class ViewAddressControllerImp extends ViewAddressController {
       margin: const EdgeInsets.all(10),
       duration: const Duration(seconds: 4),
       isDismissible: true,
-      icon: Icon(Icons.location_off, color: Appcolor.rosePompadour),
+      icon: const Icon(Icons.location_off, color: Appcolor.rosePompadour),
       mainButton: TextButton(
         style: TextButton.styleFrom(
           backgroundColor: Appcolor.rosePompadour,
@@ -92,11 +92,11 @@ class ViewAddressControllerImp extends ViewAddressController {
           await Geolocator.openLocationSettings();
           Get.back();
         },
-        child: Row(
+        child: const Row(
           mainAxisSize: MainAxisSize.min,
           children: [
             Icon(Icons.settings, color: Colors.white, size: 18),
-            const SizedBox(width: 4),
+            SizedBox(width: 4),
             Text(
               'SETTINGS',
               style: TextStyle(
@@ -122,7 +122,7 @@ class ViewAddressControllerImp extends ViewAddressController {
       margin: const EdgeInsets.all(10),
       duration: const Duration(seconds: 4),
       isDismissible: true,
-      icon: Icon(Icons.lock_outline, color: Appcolor.rosePompadour),
+      icon: const Icon(Icons.lock_outline, color: Appcolor.rosePompadour),
       mainButton: TextButton(
         style: TextButton.styleFrom(
           backgroundColor: Appcolor.amaranthpink,
@@ -135,11 +135,11 @@ class ViewAddressControllerImp extends ViewAddressController {
           await Geolocator.openAppSettings();
           Get.back();
         },
-        child: Row(
+        child: const Row(
           mainAxisSize: MainAxisSize.min,
           children: [
             Icon(Icons.lock_open, color: Colors.white, size: 18),
-            const SizedBox(width: 4),
+            SizedBox(width: 4),
             Text(
               'ALLOW',
               style: TextStyle(
@@ -165,7 +165,7 @@ class ViewAddressControllerImp extends ViewAddressController {
       margin: const EdgeInsets.all(10),
       duration: const Duration(seconds: 5),
       isDismissible: true,
-      icon: Icon(Icons.warning, color: Appcolor.rosePompadour),
+      icon: const Icon(Icons.warning, color: Appcolor.rosePompadour),
       mainButton: TextButton(
         style: TextButton.styleFrom(
           backgroundColor: Appcolor.rosePompadour,
@@ -178,11 +178,11 @@ class ViewAddressControllerImp extends ViewAddressController {
           await Geolocator.openAppSettings();
           Get.back();
         },
-        child: Row(
+        child: const Row(
           mainAxisSize: MainAxisSize.min,
           children: [
             Icon(Icons.settings, color: Colors.white, size: 18),
-            const SizedBox(width: 4),
+            SizedBox(width: 4),
             Text(
               'FIX NOW',
               style: TextStyle(
@@ -208,7 +208,7 @@ class ViewAddressControllerImp extends ViewAddressController {
 
   @override
   goToUpdate(addressMode) {
-    Get.to(() => UpdateAdress(), arguments: {"addressMode": addressMode});
+    Get.to(() => const UpdateAdress(), arguments: {"addressMode": addressMode});
   }
 
   @override
@@ -220,6 +220,6 @@ class ViewAddressControllerImp extends ViewAddressController {
 
   @override
   goToAddAddress() {
-    Get.to(() => AddAdress());
+    Get.to(() => const AddAdress());
   }
 }

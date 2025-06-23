@@ -45,7 +45,7 @@ class TrackOrderControllerImp extends TrackOrderController {
     update();
 
     markers.add(Marker(
-      markerId: MarkerId("Destination"),
+      markerId: const MarkerId("Destination"),
       position:
           LatLng(orderDetailsModel.addressLat!, orderDetailsModel.addressLong!),
       icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRose),
@@ -67,7 +67,7 @@ class TrackOrderControllerImp extends TrackOrderController {
               (marker) => marker.markerId.value == "DeliveryLocation");
           markers.add(Marker(
             markerId: const MarkerId("DeliveryLocation"),
-            infoWindow: InfoWindow(
+            infoWindow: const InfoWindow(
               title: "Delivery Location",
               snippet: "Current delivery location",
             ),

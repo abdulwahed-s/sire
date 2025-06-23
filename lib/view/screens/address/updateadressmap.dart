@@ -14,31 +14,31 @@ class UpdateAddressMap extends StatelessWidget {
     Get.put(UpdateMapControllerImp());
     return Scaffold(
       appBar: AppBar(
-        title: SearchMap(),
+        title: const SearchMap(),
       ),
       floatingActionButton: GetBuilder<UpdateMapControllerImp>(
         builder: (controller) => IgnorePointer(
           ignoring: !controller.isUserLocationMarked,
           child: AnimatedScale(
             scale: controller.isUserLocationMarked ? 1.0 : 0.0,
-            duration: Duration(milliseconds: 500),
+            duration: const Duration(milliseconds: 500),
             curve: Curves.easeOutBack,
             child: AnimatedOpacity(
               opacity: controller.isUserLocationMarked ? 1.0 : 0.0,
-              duration: Duration(milliseconds: 300),
+              duration: const Duration(milliseconds: 300),
               child: FloatingActionButton(
                 onPressed: () {
                   controller.goToEditMap();
                 },
                 tooltip: "proceed",
                 child: controller.isDone
-                    ? SizedBox(
+                    ? const SizedBox(
                         height: 40,
                         width: 40,
                         child: GradientProgressIndicator(
                           strokeWidth: 5,
                         ))
-                    : Icon(
+                    : const Icon(
                         Icons.add_location_alt,
                         size: 32,
                       ),
@@ -79,7 +79,7 @@ class UpdateAddressMap extends StatelessWidget {
                   backgroundColor: Colors.white,
                   elevation: 2,
                   child: controller.loding
-                      ? SizedBox(
+                      ? const SizedBox(
                           height: 30,
                           width: 30,
                           child: GradientProgressIndicator(
@@ -90,7 +90,7 @@ class UpdateAddressMap extends StatelessWidget {
                           color: Colors.pink[700],
                         ),
                 ),
-                SizedBox(height: 12),
+                const SizedBox(height: 12),
                 FloatingActionButton.small(
                   heroTag: 'maptype_fab',
                   onPressed: () {

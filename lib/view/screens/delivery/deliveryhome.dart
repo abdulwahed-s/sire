@@ -13,7 +13,7 @@ class DeliveryHome extends StatelessWidget {
     return GetBuilder<DeliveryHomeControllerImp>(
       builder: (controller) {
         return Scaffold(
-          bottomNavigationBar: DeliveryBottomNavigationBar(),
+          bottomNavigationBar: const DeliveryBottomNavigationBar(),
           extendBody: true,
           body: PopScope(
             canPop: false,

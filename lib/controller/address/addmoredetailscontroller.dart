@@ -97,10 +97,10 @@ class AddMoreDetailsControllerImp extends AddMoreDetailsController {
       statusRequest = handlingdata(response);
       if (statusRequest == StatusRequest.success) {
         if (response["status"] == "success") {
-          Get.offAll(() => HomeScreen(),
+          Get.offAll(() => const HomeScreen(),
               transition: Transition.fade, arguments: {'num': 3});
-          Future.delayed(Duration(milliseconds: 100), () {
-            Get.to(() => ViewAddress(), transition: Transition.fade);
+          Future.delayed(const Duration(milliseconds: 100), () {
+            Get.to(() => const ViewAddress(), transition: Transition.fade);
           });
         } else if (response["status"] == "failure") {
           statusRequest = StatusRequest.failure;

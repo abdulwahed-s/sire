@@ -60,7 +60,7 @@ class ViewRatingControllerImp extends ViewRatingController {
   @override
   goToItemDetails(model) {
     Get.to(
-      () => ItemDetails(),
+      () => const ItemDetails(),
       arguments: {"itemsModel": model},
     );
   }

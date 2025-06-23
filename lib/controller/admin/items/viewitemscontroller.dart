@@ -52,7 +52,7 @@ class ViewItemsControllerImp extends ViewItemsController {
 
   @override
   goToAddItem() {
-    Get.to(() => AddItem());
+    Get.to(() => const AddItem());
   }
 
   @override
@@ -212,7 +212,7 @@ class ViewItemsControllerImp extends ViewItemsController {
 
   @override
   goToEditItem(ItemsModel itemsModel) {
-    Get.to(() => UpdateItem(), arguments: {
+    Get.to(() => const UpdateItem(), arguments: {
       "itemsModel": itemsModel,
     });
   }

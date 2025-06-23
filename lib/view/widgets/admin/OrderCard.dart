@@ -274,7 +274,7 @@ class OrderCard extends StatelessWidget {
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
                   color:
-                      theme.colorScheme.surfaceVariant.withValues(alpha: 0.3),
+                      theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.3),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Row(
@@ -299,7 +299,7 @@ class OrderCard extends StatelessWidget {
                         ],
                       )
                     else
-                      Icon(
+                      const Icon(
                         Icons.attach_money_outlined,
                         color: Appcolor.berry,
                       ),

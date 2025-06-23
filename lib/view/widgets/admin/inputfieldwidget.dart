@@ -50,7 +50,7 @@ class InputFieldWidget extends StatelessWidget {
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
-              borderSide: BorderSide(color: Appcolor.berry, width: 2),
+              borderSide: const BorderSide(color: Appcolor.berry, width: 2),
             ),
             errorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),

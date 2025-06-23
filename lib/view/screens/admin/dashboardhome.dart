@@ -12,30 +12,30 @@ class DashboardHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Get.put(AdminDashboardControllerImp());
-    return SingleChildScrollView(
-      padding: const EdgeInsets.all(16),
+    return const SingleChildScrollView(
+      padding: EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           AdminGraph(),
-          const Text(
+          Text(
             'Overview',
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
-          const SizedBox(height: 16),
+          SizedBox(height: 16),
           StatsRow(),
-          const Text(
+          Text(
             'Recent Orders',
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
-          const SizedBox(height: 16),
+          SizedBox(height: 16),
           RecentOrders(),
-          const SizedBox(height: 24),
-          const Text(
+          SizedBox(height: 24),
+          Text(
             'Top Products',
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
-          const SizedBox(height: 16),
+          SizedBox(height: 16),
           TopProducts(),
         ],
       ),

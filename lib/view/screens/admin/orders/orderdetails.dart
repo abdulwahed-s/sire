@@ -46,7 +46,7 @@ class AdminOrderDetails extends StatelessWidget {
                 const SizedBox(height: 20),
 
                 // Order Items Section
-                SectionHeader(title: 'Order Items'),
+                const SectionHeader(title: 'Order Items'),
                 const SizedBox(height: 12),
                 ListView.separated(
                   physics: const NeverScrollableScrollPhysics(),
@@ -65,7 +65,7 @@ class AdminOrderDetails extends StatelessWidget {
                 const SizedBox(height: 24),
                 if (controller.adminDetailsModel.orderType == 0) ...[
                   // Delivery Location Map
-                  SectionHeader(title: 'Delivery Location'),
+                  const SectionHeader(title: 'Delivery Location'),
                   const SizedBox(height: 12),
                   Container(
                     height: 200,
@@ -121,7 +121,7 @@ class AdminOrderDetails extends StatelessWidget {
                   const SizedBox(height: 24),
 
                   // Delivery Address Details
-                  SectionHeader(title: 'Address Details'),
+                  const SectionHeader(title: 'Address Details'),
                   const SizedBox(height: 12),
                   AddressInfoCard(
                     addressName: controller.adminDetailsModel.addressName,
@@ -141,7 +141,7 @@ class AdminOrderDetails extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SectionHeader(title: 'Additional Information'),
+                        const SectionHeader(title: 'Additional Information'),
                         const SizedBox(height: 12),
                         Container(
                           width: double.infinity,

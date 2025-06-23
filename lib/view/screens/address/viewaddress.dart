@@ -14,7 +14,7 @@ class ViewAddress extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Appcolor.white,
-          title: Text(
+          title: const Text(
             "Delevery Address",
             style: TextStyle(color: Appcolor.pink),
           ),
@@ -29,8 +29,8 @@ class ViewAddress extends StatelessWidget {
             child: Container(
               height: 60,
               alignment: Alignment.center,
-              decoration: BoxDecoration(),
-              child: Text(
+              decoration: const BoxDecoration(),
+              child: const Text(
                 "Add New Address",
                 style: TextStyle(
                     // color: Appcolor.white,
@@ -49,7 +49,7 @@ class ViewAddress extends StatelessWidget {
                           itemBuilder: (context, index) {
                             return Column(
                               children: [
-                                SizedBox(
+                                const SizedBox(
                                   height: 5,
                                 ),
                                 Divider(
@@ -60,7 +60,7 @@ class ViewAddress extends StatelessWidget {
                                 ),
                                 Slidable(
                                     endActionPane: ActionPane(
-                                        motion: ScrollMotion(),
+                                        motion: const ScrollMotion(),
                                         children: [
                                           SlidableAction(
                                             flex: 2,
@@ -97,7 +97,7 @@ class ViewAddress extends StatelessWidget {
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.center,
                                               children: [
-                                                Icon(
+                                                const Icon(
                                                   Icons
                                                       .local_shipping_rounded, // More appropriate delivery icon
                                                   color: Appcolor.amaranthpink,
@@ -124,7 +124,7 @@ class ViewAddress extends StatelessWidget {
                                                   text: controller
                                                       .addresses[index]
                                                       .addressBymap!,
-                                                  style: TextStyle(
+                                                  style: const TextStyle(
                                                     fontSize: 18,
                                                     fontWeight: FontWeight.bold,
                                                   ),
@@ -135,7 +135,7 @@ class ViewAddress extends StatelessWidget {
                                                       "Street: ${controller.addresses[index].addressStreet!}, "
                                                       "Block: ${controller.addresses[index].addressBlock!}, "
                                                       "Floor: ${controller.addresses[index].addressFloor!}.",
-                                                  style: TextStyle(
+                                                  style: const TextStyle(
                                                     fontSize: 18,
                                                     fontWeight:
                                                         FontWeight.normal,
@@ -161,7 +161,7 @@ class ViewAddress extends StatelessWidget {
                         )
                       : Container(
                           alignment: Alignment.center,
-                          child: Column(
+                          child: const Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Icon(

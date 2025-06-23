@@ -30,7 +30,7 @@ class AddCategory extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Header(
+                const Header(
                   title: 'Create New Category',
                   subtitle:
                       'Fill in the details below to add a new product category',

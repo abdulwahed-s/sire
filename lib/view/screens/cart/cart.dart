@@ -52,8 +52,8 @@ class Cart extends StatelessWidget {
                               height: 300,
                               // width: 300,
                               alignment: Alignment.bottomCenter,
-                              padding: EdgeInsets.symmetric(horizontal: 20),
-                              child: Text(
+                              padding: const EdgeInsets.symmetric(horizontal: 20),
+                              child: const Text(
                                 textAlign: TextAlign.justify,
                                 "Your cart is empty 🛒",
                                 style: TextStyle(

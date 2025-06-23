@@ -206,7 +206,7 @@ class _DraggableVerificationPromptState
       width: maxWidth,
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        gradient: LinearGradient(
+        gradient: const LinearGradient(
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
           colors: [
@@ -214,7 +214,7 @@ class _DraggableVerificationPromptState
             backgroundMedium,
             backgroundLight,
           ],
-          stops: const [0.0, 0.5, 1.0],
+          stops: [0.0, 0.5, 1.0],
         ),
         borderRadius: BorderRadius.circular(24),
         border: Border.all(
@@ -306,7 +306,7 @@ class _DraggableVerificationPromptState
                   Container(
                     padding: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
-                      gradient: LinearGradient(
+                      gradient: const LinearGradient(
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                         colors: [
@@ -334,7 +334,7 @@ class _DraggableVerificationPromptState
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
+                        const Text(
                           'Account Verification',
                           style: TextStyle(
                             fontSize: 14,
@@ -364,12 +364,12 @@ class _DraggableVerificationPromptState
                               width: 0.5,
                             ),
                           ),
-                          child: Text(
+                          child: const Text(
                             'REQUIRED',
                             style: TextStyle(
                               fontSize: 9,
                               fontWeight: FontWeight.w800,
-                              color: const Color(0xFFFF6B6B),
+                              color: Color(0xFFFF6B6B),
                               letterSpacing: 0.5,
                               decoration: TextDecoration.none,
                             ),
@@ -432,7 +432,7 @@ class _DraggableVerificationPromptState
                           child: Container(
                             height: 44,
                             decoration: BoxDecoration(
-                              gradient: LinearGradient(
+                              gradient: const LinearGradient(
                                 begin: Alignment.topLeft,
                                 end: Alignment.bottomRight,
                                 colors: [

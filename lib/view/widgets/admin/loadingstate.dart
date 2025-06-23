@@ -11,7 +11,7 @@ class LoadingState extends StatelessWidget {
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       itemCount: 4,
-      itemBuilder: (context, index) => ShimmerCard(),
+      itemBuilder: (context, index) => const ShimmerCard(),
     );
   }
 }

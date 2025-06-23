@@ -28,11 +28,11 @@ class Localecontroller extends GetxController {
     FirebaseMessaging.instance.subscribeToTopic("notAuthorized");
     String? locale = service.sharedPreferences.getString('langcode');
     if (locale == "en") {
-      languge = Locale("en");
+      languge = const Locale("en");
     } else if (locale == "ar") {
-      languge = Locale("ar");
+      languge = const Locale("ar");
     } else if (locale == "es") {
-      languge = Locale("es");
+      languge = const Locale("es");
     } else {
       languge = Locale(Get.deviceLocale!.languageCode);
     }

@@ -27,7 +27,7 @@ class DeliveryHeaderSectionWidget extends StatelessWidget {
               color: Appcolor.berry.withValues(alpha: 0.1),
               shape: BoxShape.circle,
             ),
-            child: Icon(
+            child: const Icon(
               Icons.delivery_dining,
               size: 40,
               color: Appcolor.berry,

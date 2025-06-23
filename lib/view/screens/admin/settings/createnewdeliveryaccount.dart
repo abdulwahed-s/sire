@@ -27,25 +27,25 @@ class CreateNewDeliveryAccount extends StatelessWidget {
           foregroundColor: Colors.black87,
           centerTitle: true,
         ),
-        body: SingleChildScrollView(
-          padding: const EdgeInsets.all(20),
+        body: const SingleChildScrollView(
+          padding: EdgeInsets.all(20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Header Section
-              const DeliveryHeaderSectionWidget(),
+              DeliveryHeaderSectionWidget(),
 
-              const SizedBox(height: 30),
+              SizedBox(height: 30),
 
               // Form Section
               DeliveryFormSectionWidget(),
 
-              const SizedBox(height: 30),
+              SizedBox(height: 30),
 
               // Create Account Button
               DeliveryCreateAccountButtonWidget(),
 
-              const SizedBox(height: 20),
+              SizedBox(height: 20),
             ],
           ),
         ),

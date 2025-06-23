@@ -25,7 +25,7 @@ class RestPassword extends StatelessWidget {
             builder: (controller) => HandlingDataRequest(
                   statusRequest: controller.statusRequest,
                   widget: Container(
-                    padding: EdgeInsets.symmetric(
+                    padding: const EdgeInsets.symmetric(
                       horizontal: 10,
                     ),
                     child: Form(
@@ -33,9 +33,9 @@ class RestPassword extends StatelessWidget {
                       child: ListView(
                         shrinkWrap: true,
                         children: [
-                          SizedBox(height: 10),
-                          AUTHTText(text: 'Welcome Back'),
-                          SizedBox(height: 50),
+                          const SizedBox(height: 10),
+                          const AUTHTText(text: 'Welcome Back'),
+                          const SizedBox(height: 50),
                           GetBuilder<RestPasswordControllerImp>(
                               builder: (controller) => AUTHForm(
                                     obscureText: controller.obscureText,
@@ -72,7 +72,7 @@ class RestPassword extends StatelessWidget {
                               controller.restPassword();
                             },
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                         ],

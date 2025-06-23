@@ -10,7 +10,7 @@ import 'package:sire/routes.dart';
 import 'package:sire/view/widgets/main/draggableverificationprompt.dart';
 
 void main() async {
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: Appcolor.black,
     statusBarIconBrightness: Brightness.light,
   ));
@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
       translations: Translation(),
       theme: ThemeData(
         fontFamily: 'Sw',
-        textTheme: TextTheme(
+        textTheme: const TextTheme(
           headlineLarge: TextStyle(fontWeight: FontWeight.w800, fontSize: 28),
           headlineMedium: TextStyle(fontWeight: FontWeight.w700, fontSize: 22),
           headlineSmall: TextStyle(fontWeight: FontWeight.w600, fontSize: 20),
@@ -53,7 +53,7 @@ class MyApp extends StatelessWidget {
             child!,
             GetBuilder<Localecontroller>(builder: (services) {
               return services.geIsVerified()
-                  ? DraggableVerificationPrompt()
+                  ? const DraggableVerificationPrompt()
                   : const SizedBox.shrink();
             })
           ],

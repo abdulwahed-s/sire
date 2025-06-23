@@ -12,19 +12,19 @@ class ItemsList extends GetView<HomeControllerImp> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // Enhanced Header Section
-          HotDealsHeader(),
-          SizedBox(height: 20),
+          const HotDealsHeader(),
+          const SizedBox(height: 20),
 
           // Enhanced Grid with Staggered Layout
           MasonryGridView.count(
             itemCount: controller.items.length,
             shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             crossAxisCount: 2,
             mainAxisSpacing: 16,
             crossAxisSpacing: 16,

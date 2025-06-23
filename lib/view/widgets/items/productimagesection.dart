@@ -38,9 +38,9 @@ class ProductImageSection extends StatelessWidget {
                   imageUrl: AppLink.itemimage + controller.data.itemImg!,
                   fit: BoxFit.contain,
                   height: 280,
-                  placeholder: (context, url) => Container(
+                  placeholder: (context, url) => const SizedBox(
                     height: 280,
-                    child: const Center(
+                    child: Center(
                       child: CircularProgressIndicator(
                         color: Appcolor.amaranthpink,
                       ),

@@ -29,7 +29,7 @@ class BannerImageWidget extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(12),
-            child: Container(
+            child: SizedBox(
               width: double.infinity,
               height: 120,
               child: controller.banner == null

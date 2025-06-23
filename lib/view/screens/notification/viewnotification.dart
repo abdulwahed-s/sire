@@ -35,7 +35,7 @@ class ViewNotification extends StatelessWidget {
         body: GetBuilder<NotificationControllerImp>(
           builder: (controller) {
             if (controller.statusRequest == StatusRequest.loding) {
-              return NotificationShimmerLoading();
+              return const NotificationShimmerLoading();
             }
 
             if (controller.allNotification.isEmpty) {

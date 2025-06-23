@@ -81,7 +81,7 @@ class ArchivedOrdersControllerImp extends ArchivedOrdersController {
   @override
   getOrderDetails(orderid) {
     Get.to(
-      () => OrderDetails(),
+      () => const OrderDetails(),
       arguments: {"orderid": orderid},
     );
   }

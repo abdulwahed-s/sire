@@ -47,7 +47,7 @@ class DeliveryOrderDetails extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // Order Items Section
-                SectionHeader(title: 'Order Items'),
+                const SectionHeader(title: 'Order Items'),
                 const SizedBox(height: 8),
                 ListView.separated(
                   physics: const NeverScrollableScrollPhysics(),
@@ -65,7 +65,7 @@ class DeliveryOrderDetails extends StatelessWidget {
                 ),
                 const SizedBox(height: 24),
                 // Delivery Location Map
-                SectionHeader(title: 'Delivery Location'),
+                const SectionHeader(title: 'Delivery Location'),
                 const SizedBox(height: 8),
                 Container(
                   height: 200,
@@ -128,7 +128,7 @@ class DeliveryOrderDetails extends StatelessWidget {
                 const SizedBox(height: 24),
 
                 // Delivery Address Details
-                SectionHeader(title: 'Address Details'),
+                const SectionHeader(title: 'Address Details'),
                 const SizedBox(height: 8),
                 AddressInfoCard(
                   addressName: controller.undeliveredOrders.addressName,
@@ -148,7 +148,7 @@ class DeliveryOrderDetails extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SectionHeader(title: 'Additional Information'),
+                      const SectionHeader(title: 'Additional Information'),
                       const SizedBox(height: 8),
                       Container(
                         width: double.infinity,

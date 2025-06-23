@@ -16,7 +16,7 @@ class AdminCoupon extends StatelessWidget {
         backgroundColor: Colors.grey[50],
         floatingActionButton: FloatingActionButton.extended(
           onPressed: () {
-            Get.to(() => AddNewCoupon());
+            Get.to(() => const AddNewCoupon());
           },
           backgroundColor: Appcolor.berry,
           foregroundColor: Colors.white,
@@ -202,7 +202,7 @@ class AdminCoupon extends StatelessWidget {
                                   label: const Text('Edit'),
                                   style: OutlinedButton.styleFrom(
                                     foregroundColor: Appcolor.berry,
-                                    side: BorderSide(color: Appcolor.berry),
+                                    side: const BorderSide(color: Appcolor.berry),
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(8),
                                     ),

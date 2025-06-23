@@ -13,7 +13,7 @@ class SaveButton extends StatelessWidget {
     return IgnorePointer(
       ignoring: statusRequest == StatusRequest.loding,
       child: AnimatedContainer(
-        duration: Duration(milliseconds: 300),
+        duration: const Duration(milliseconds: 300),
         curve: Curves.easeInOut,
         decoration: BoxDecoration(
           color: statusRequest == StatusRequest.loding
@@ -35,8 +35,8 @@ class SaveButton extends StatelessWidget {
           child: SizedBox(
             height: 28,
             child: statusRequest == StatusRequest.loding
-                ? GradientProgressIndicator(strokeWidth: 2)
-                : Text(
+                ? const GradientProgressIndicator(strokeWidth: 2)
+                : const Text(
                     'Save Category',
                     style: TextStyle(
                       fontSize: 16,

@@ -27,7 +27,7 @@ List<Widget> lcList() {
       text: "English language",
     ),
     Container(
-      margin: EdgeInsets.only(bottom: 18),
+      margin: const EdgeInsets.only(bottom: 18),
     ),
   ];
 }

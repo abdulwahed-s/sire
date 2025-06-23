@@ -23,7 +23,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
                 (index) {
                   int m = index > 2 ? index - 1 : index;
                   return index == 2
-                      ? Spacer()
+                      ? const Spacer()
                       : BottomBarButton(
                           isActive:
                               controller.currentpage == (m) ? true : false,

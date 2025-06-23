@@ -36,8 +36,8 @@ class SettingControllerImp extends SettingController {
 
   @override
   goToAddress() {
-    Get.to(() => ViewAddress(),
-        transition: Transition.native, duration: Duration(seconds: 1));
+    Get.to(() => const ViewAddress(),
+        transition: Transition.native, duration: const Duration(seconds: 1));
   }
 
   @override
@@ -50,9 +50,9 @@ class SettingControllerImp extends SettingController {
     services.sharedPreferences.setString("step", "1");
     Get.find<Localecontroller>().geIsVerified();
     Get.offAll(
-      () => Login(),
+      () => const Login(),
       transition: Transition.size,
-      duration: Duration(seconds: 1),
+      duration: const Duration(seconds: 1),
     );
     update();
   }
@@ -140,7 +140,7 @@ class SettingControllerImp extends SettingController {
               padding: const EdgeInsets.all(20),
               child: Row(
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.language,
                     color: Appcolor.rosePompadour,
                   ),
@@ -211,7 +211,7 @@ class SettingControllerImp extends SettingController {
   @override
   goToUpdateAccountInformation() {
     Get.to(
-      () => UpdateAccountInformation(),
+      () => const UpdateAccountInformation(),
       transition: Transition.leftToRight,
     );
   }
@@ -219,7 +219,7 @@ class SettingControllerImp extends SettingController {
   @override
   goToAllRating() {
     Get.to(
-      () => ViewAllRating(),
+      () => const ViewAllRating(),
       transition: Transition.leftToRight,
     );
   }
@@ -227,7 +227,7 @@ class SettingControllerImp extends SettingController {
   @override
   goToVerify() {
     Get.to(
-      () => VerifyCodeSignUp(),
+      () => const VerifyCodeSignUp(),
       arguments: {
         "email": email,
         "setting": true,

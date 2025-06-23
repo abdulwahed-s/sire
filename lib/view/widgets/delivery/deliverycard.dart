@@ -161,9 +161,9 @@ class DeliveryCard extends StatelessWidget {
                       ),
                       elevation: 0,
                     ),
-                    child: Row(
+                    child: const Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
+                      children: [
                         Icon(Icons.visibility_outlined, size: 18),
                         SizedBox(width: 8),
                         Text(

@@ -163,7 +163,7 @@ class CartControllerImp extends CartController {
 
   @override
   placeOrder() {
-    Get.to(() => Checkout(), arguments: {
+    Get.to(() => const Checkout(), arguments: {
       "orderDetails": data,
       "totalprice": totalprice,
     });

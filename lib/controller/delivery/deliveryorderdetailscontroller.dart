@@ -89,7 +89,7 @@ class DeliveryOrderDetailsControllerImp extends DeliveryOrderDetailsController {
 
   @override
   goToNavigation() {
-    Get.to(() => DeliveryNavigation(),
+    Get.to(() => const DeliveryNavigation(),
         arguments: {'orderid': orderid, 'undeliveredOrder': undeliveredOrders});
   }
 }

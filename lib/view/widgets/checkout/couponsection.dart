@@ -43,7 +43,7 @@ class CouponSection extends StatelessWidget {
                   width: 81,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
-                    gradient: LinearGradient(
+                    gradient: const LinearGradient(
                       colors: [
                         Appcolor.deepPink,
                         Appcolor.berry,
@@ -61,20 +61,20 @@ class CouponSection extends StatelessWidget {
                           controller.checkCoupon();
                         },
                         child: Padding(
-                          padding: EdgeInsets.symmetric(
+                          padding: const EdgeInsets.symmetric(
                             horizontal: 20,
                             vertical: 14,
                           ),
                           child:
                               controller.statusRequest == StatusRequest.loding
-                                  ? GradientProgressIndicator(strokeWidth: 3)
+                                  ? const GradientProgressIndicator(strokeWidth: 3)
                                   : controller.statusRequest ==
                                           StatusRequest.success
-                                      ? Icon(
+                                      ? const Icon(
                                           Icons.check_outlined,
                                           color: Appcolor.amaranthpink,
                                         )
-                                      : Text(
+                                      : const Text(
                                           "Apply",
                                           style: TextStyle(
                                             fontWeight: FontWeight.bold,

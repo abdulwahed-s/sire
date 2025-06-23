@@ -16,7 +16,7 @@ class AddMoreDetails extends StatelessWidget {
             children: [
               Container(
                 height: 150,
-                margin: EdgeInsets.only(bottom: 10, left: 5, right: 5),
+                margin: const EdgeInsets.only(bottom: 10, left: 5, right: 5),
                 decoration:
                     BoxDecoration(borderRadius: BorderRadius.circular(20)),
                 clipBehavior: Clip.antiAlias,
@@ -38,10 +38,10 @@ class AddMoreDetails extends StatelessWidget {
                   key: controller.formkey,
                   child: ListView(
                     shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     children: [
                       Container(
-                        margin: EdgeInsets.symmetric(horizontal: 8),
+                        margin: const EdgeInsets.symmetric(horizontal: 8),
                         child: TextFormField(
                           controller: controller.addressName,
                           validator: (value) {
@@ -51,13 +51,13 @@ class AddMoreDetails extends StatelessWidget {
                             return null;
                           },
                           decoration: InputDecoration(
-                              focusedBorder: OutlineInputBorder(
+                              focusedBorder: const OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color: Appcolor.deepRed,
                                 ),
                               ),
-                              contentPadding: EdgeInsets.all(15),
-                              label: Text(
+                              contentPadding: const EdgeInsets.all(15),
+                              label: const Text(
                                 "Address name",
                                 style: TextStyle(
                                   fontSize: 18,
@@ -69,11 +69,11 @@ class AddMoreDetails extends StatelessWidget {
                               )),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Container(
-                        margin: EdgeInsets.symmetric(horizontal: 8),
+                        margin: const EdgeInsets.symmetric(horizontal: 8),
                         child: TextFormField(
                           controller: controller.buildingName,
                           validator: (value) {
@@ -83,13 +83,13 @@ class AddMoreDetails extends StatelessWidget {
                             return null;
                           },
                           decoration: InputDecoration(
-                              focusedBorder: OutlineInputBorder(
+                              focusedBorder: const OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color: Appcolor.deepRed,
                                 ),
                               ),
-                              contentPadding: EdgeInsets.all(15),
-                              label: Text(
+                              contentPadding: const EdgeInsets.all(15),
+                              label: const Text(
                                 "Building name",
                                 style: TextStyle(
                                   fontSize: 18,
@@ -101,14 +101,14 @@ class AddMoreDetails extends StatelessWidget {
                               )),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Row(
                         children: [
                           Expanded(
                             child: Container(
-                              margin: EdgeInsets.symmetric(horizontal: 8),
+                              margin: const EdgeInsets.symmetric(horizontal: 8),
                               child: TextFormField(
                                 controller: controller.aptNumber,
                                 validator: (value) {
@@ -118,13 +118,13 @@ class AddMoreDetails extends StatelessWidget {
                                   return null;
                                 },
                                 decoration: InputDecoration(
-                                    focusedBorder: OutlineInputBorder(
+                                    focusedBorder: const OutlineInputBorder(
                                       borderSide: BorderSide(
                                         color: Appcolor.deepRed,
                                       ),
                                     ),
-                                    contentPadding: EdgeInsets.all(15),
-                                    label: Text(
+                                    contentPadding: const EdgeInsets.all(15),
+                                    label: const Text(
                                       "Apt. number",
                                       style: TextStyle(
                                         fontSize: 18,
@@ -139,7 +139,7 @@ class AddMoreDetails extends StatelessWidget {
                           ),
                           Expanded(
                             child: Container(
-                              margin: EdgeInsets.symmetric(horizontal: 8),
+                              margin: const EdgeInsets.symmetric(horizontal: 8),
                               child: TextFormField(
                                 controller: controller.floor,
                                 validator: (value) {
@@ -149,13 +149,13 @@ class AddMoreDetails extends StatelessWidget {
                                   return null;
                                 },
                                 decoration: InputDecoration(
-                                    focusedBorder: OutlineInputBorder(
+                                    focusedBorder: const OutlineInputBorder(
                                       borderSide: BorderSide(
                                         color: Appcolor.deepRed,
                                       ),
                                     ),
-                                    contentPadding: EdgeInsets.all(15),
-                                    label: Text(
+                                    contentPadding: const EdgeInsets.all(15),
+                                    label: const Text(
                                       "Floor",
                                       style: TextStyle(
                                         fontSize: 18,
@@ -170,11 +170,11 @@ class AddMoreDetails extends StatelessWidget {
                           )
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Container(
-                        margin: EdgeInsets.symmetric(horizontal: 8),
+                        margin: const EdgeInsets.symmetric(horizontal: 8),
                         child: TextFormField(
                           controller: controller.street,
                           validator: (value) {
@@ -184,13 +184,13 @@ class AddMoreDetails extends StatelessWidget {
                             return null;
                           },
                           decoration: InputDecoration(
-                              focusedBorder: OutlineInputBorder(
+                              focusedBorder: const OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color: Appcolor.deepRed,
                                 ),
                               ),
-                              contentPadding: EdgeInsets.all(15),
-                              label: Text(
+                              contentPadding: const EdgeInsets.all(15),
+                              label: const Text(
                                 "Street",
                                 style: TextStyle(
                                   fontSize: 18,
@@ -202,14 +202,14 @@ class AddMoreDetails extends StatelessWidget {
                               )),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Row(
                         children: [
                           Expanded(
                             child: Container(
-                              margin: EdgeInsets.symmetric(horizontal: 8),
+                              margin: const EdgeInsets.symmetric(horizontal: 8),
                               child: TextFormField(
                                 controller: controller.block,
                                 validator: (value) {
@@ -219,13 +219,13 @@ class AddMoreDetails extends StatelessWidget {
                                   return null;
                                 },
                                 decoration: InputDecoration(
-                                    focusedBorder: OutlineInputBorder(
+                                    focusedBorder: const OutlineInputBorder(
                                       borderSide: BorderSide(
                                         color: Appcolor.deepRed,
                                       ),
                                     ),
-                                    contentPadding: EdgeInsets.all(15),
-                                    label: Text(
+                                    contentPadding: const EdgeInsets.all(15),
+                                    label: const Text(
                                       "Block",
                                       style: TextStyle(
                                         fontSize: 18,
@@ -240,17 +240,17 @@ class AddMoreDetails extends StatelessWidget {
                           ),
                           Expanded(
                             child: Container(
-                              margin: EdgeInsets.symmetric(horizontal: 8),
+                              margin: const EdgeInsets.symmetric(horizontal: 8),
                               child: TextFormField(
                                 controller: controller.way,
                                 decoration: InputDecoration(
-                                  focusedBorder: OutlineInputBorder(
+                                  focusedBorder: const OutlineInputBorder(
                                     borderSide: BorderSide(
                                       color: Appcolor.deepRed,
                                     ),
                                   ),
-                                  contentPadding: EdgeInsets.all(15),
-                                  label: Text(
+                                  contentPadding: const EdgeInsets.all(15),
+                                  label: const Text(
                                     "Way (optional)",
                                     style: TextStyle(
                                       fontSize: 18,
@@ -268,11 +268,11 @@ class AddMoreDetails extends StatelessWidget {
                       ),
                     ],
                   )),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 8),
+                margin: const EdgeInsets.symmetric(horizontal: 8),
                 child: TextFormField(
                   controller: controller.additionalDetails,
                   validator: (value) {
@@ -282,13 +282,13 @@ class AddMoreDetails extends StatelessWidget {
                     return null;
                   },
                   decoration: InputDecoration(
-                    focusedBorder: OutlineInputBorder(
+                    focusedBorder: const OutlineInputBorder(
                       borderSide: BorderSide(
                         color: Appcolor.deepRed,
                       ),
                     ),
-                    contentPadding: EdgeInsets.all(15),
-                    label: Text(
+                    contentPadding: const EdgeInsets.all(15),
+                    label: const Text(
                       "Additional directions (optional)",
                       style: TextStyle(
                         fontSize: 18,
@@ -301,13 +301,13 @@ class AddMoreDetails extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Container(
                 height: 50,
                 width: double.infinity,
-                margin: EdgeInsets.symmetric(horizontal: 6),
+                margin: const EdgeInsets.symmetric(horizontal: 6),
                 child: Material(
                   borderRadius: BorderRadius.circular(10),
                   color: Appcolor.deepRed,
@@ -317,7 +317,7 @@ class AddMoreDetails extends StatelessWidget {
                     onTap: () {
                       controller.sendData();
                     },
-                    child: Center(
+                    child: const Center(
                       child: Text(
                         "Add address",
                         style: TextStyle(

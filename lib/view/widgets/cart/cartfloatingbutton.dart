@@ -28,11 +28,11 @@ class CartFloatingButton extends StatelessWidget {
           decoration: BoxDecoration(
             color: Appcolor.dustyPink,
             borderRadius: BorderRadius.circular(10),
-            boxShadow: [
+            boxShadow: const [
               BoxShadow(
                 color: Appcolor.blackShadow,
                 blurRadius: 10,
-                offset: const Offset(0, -5),
+                offset: Offset(0, -5),
               ),
             ],
           ),
@@ -44,7 +44,7 @@ class CartFloatingButton extends StatelessWidget {
                   const Text("Amount Price"),
                   Text(
                     "${price.toStringAsFixed(2)}\$",
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontFamily: "Sw",
                       color: Appcolor.black,
                     ),
@@ -58,7 +58,7 @@ class CartFloatingButton extends StatelessWidget {
                   const Text("Shipping Price"),
                   Text(
                     "$shippingPrice\$",
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontFamily: "Sw",
                       color: Appcolor.black,
                     ),
@@ -80,7 +80,7 @@ class CartFloatingButton extends StatelessWidget {
                   ),
                   Text(
                     "${(price + shippingPrice).toStringAsFixed(2)}\$",
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontFamily: "Sw",
                       color: Appcolor.berry,
                       fontWeight: FontWeight.bold,

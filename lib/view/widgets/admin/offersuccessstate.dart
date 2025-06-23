@@ -20,14 +20,14 @@ class OfferSuccessState extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            OfferSectionHeader(
+            const OfferSectionHeader(
               title: 'Current Offer',
               isLoading: false,
             ),
             const SizedBox(height: 16),
             OfferCard(controller: controller),
             const SizedBox(height: 32),
-            InfoSection(
+            const InfoSection(
               isLoading: false,
             ),
             const SizedBox(height: 32),

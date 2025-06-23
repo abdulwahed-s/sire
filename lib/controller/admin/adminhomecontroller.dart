@@ -35,14 +35,14 @@ class AdminHomeControllerImp extends AdminHomeController {
 
   int currentpage = 0;
   List<Widget> listpages = [
-    DashboardHome(),
-    AdminItemsView(),
-    Categories(),
-    ViewOrders(),
-    AdminCoupon(),
-    Offer(),
-    ViewNotification(visableAppBar: false),
-    AdminSetting(),
+    const DashboardHome(),
+    const AdminItemsView(),
+    const Categories(),
+    const ViewOrders(),
+    const AdminCoupon(),
+    const Offer(),
+    const ViewNotification(visableAppBar: false),
+    const AdminSetting(),
   ];
 
   List<String> namepages = [
@@ -93,9 +93,9 @@ class AdminHomeControllerImp extends AdminHomeController {
     services.sharedPreferences.clear();
     services.sharedPreferences.setString("step", "1");
     Get.offAll(
-      () => Login(),
+      () => const Login(),
       transition: Transition.size,
-      duration: Duration(seconds: 1),
+      duration: const Duration(seconds: 1),
     );
   }
 

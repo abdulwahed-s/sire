@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:sire/view/widgets/locale/List.dart';
 
 class LCAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const LCAppBar({super.key});
+
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -15,12 +17,12 @@ class LCAppBar extends StatelessWidget implements PreferredSizeWidget {
               Get.defaultDialog(
                   actions: lcList(),
                   title: "2".tr,
-                  content: SizedBox(
+                  content: const SizedBox(
                     height: 0,
                     width: 0,
                   ));
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.language,
             ))
       ],

@@ -15,28 +15,28 @@ class ImagePicker extends StatelessWidget {
           children: [
             Expanded(
               child: OutlinedButton.icon(
-                icon: Icon(Icons.photo_library),
-                label: Text("Gallery"),
+                icon: const Icon(Icons.photo_library),
+                label: const Text("Gallery"),
                 onPressed: () => controller.getImageByGallery(),
                 style: OutlinedButton.styleFrom(
-                  padding: EdgeInsets.symmetric(vertical: 12),
+                  padding: const EdgeInsets.symmetric(vertical: 12),
                 ),
               ),
             ),
-            SizedBox(width: 16),
+            const SizedBox(width: 16),
             Expanded(
               child: OutlinedButton.icon(
-                icon: Icon(Icons.camera_alt),
-                label: Text("Camera"),
+                icon: const Icon(Icons.camera_alt),
+                label: const Text("Camera"),
                 onPressed: () => controller.getImageByCamera(),
                 style: OutlinedButton.styleFrom(
-                  padding: EdgeInsets.symmetric(vertical: 12),
+                  padding: const EdgeInsets.symmetric(vertical: 12),
                 ),
               ),
             ),
           ],
         ),
-        SizedBox(height: 16),
+        const SizedBox(height: 16),
         if (isUpdate == true && imageUrl != null)
           ClipRRect(
             borderRadius: BorderRadius.circular(8),
@@ -65,7 +65,7 @@ class ImagePicker extends StatelessWidget {
                 child: CircleAvatar(
                   backgroundColor: Colors.red,
                   child: IconButton(
-                      icon: Icon(Icons.close, color: Colors.white),
+                      icon: const Icon(Icons.close, color: Colors.white),
                       onPressed: () {
                         controller.image = null;
                         controller.update();
@@ -81,7 +81,7 @@ class ImagePicker extends StatelessWidget {
               border: Border.all(color: Colors.grey),
               borderRadius: BorderRadius.circular(8),
             ),
-            child: Center(
+            child: const Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
