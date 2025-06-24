@@ -99,7 +99,7 @@ class DeliveryOrderDetails extends StatelessWidget {
                             );
                           },
                         ),
-                        if (!controller.isDelivered!)
+                        if (!controller.isDelivered)
                           Positioned(
                             bottom: 10,
                             right: 10,

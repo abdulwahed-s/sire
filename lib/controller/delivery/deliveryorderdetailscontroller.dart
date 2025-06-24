@@ -20,7 +20,7 @@ class DeliveryOrderDetailsControllerImp extends DeliveryOrderDetailsController {
   dynamic undeliveredOrders;
   String? orderid;
 
-  bool? isDelivered = false;
+  bool isDelivered = false;
 
   @override
   getOrderDetails() async {
@@ -48,7 +48,7 @@ class DeliveryOrderDetailsControllerImp extends DeliveryOrderDetailsController {
   void onInit() {
     orderid = Get.arguments['orderid'];
     undeliveredOrders = Get.arguments['undeliveredOrder'];
-    isDelivered = Get.arguments['isDelivered'];
+    isDelivered = Get.arguments?['isDelivered'] ?? false;
     getOrderDetails();
     super.onInit();
   }
