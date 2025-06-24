@@ -36,10 +36,15 @@ class DeliveryOrderDetails extends StatelessWidget {
             zoom: 14.4746,
           );
 
-          final marker = controller.parseMarkerFromString(
-            controller.undeliveredOrders.addressMarker
-                    ?.replaceAll(RegExp(r'^{|}$'), '') ??
-                '',
+          final marker = Marker(
+            markerId: const MarkerId('deliveryLocation'),
+            position: LatLng(
+              controller.undeliveredOrders.addressLat ?? 0,
+              controller.undeliveredOrders.addressLong ?? 0,
+            ),
+            infoWindow: InfoWindow(
+              title: controller.undeliveredOrders.addressName ?? 'Delivery Location',
+            ),
           );
           return SingleChildScrollView(
             padding: const EdgeInsets.all(16),

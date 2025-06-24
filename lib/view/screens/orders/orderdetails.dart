@@ -83,9 +83,14 @@ class OrderDetails extends StatelessWidget {
                 controller.orderDetails[0].addressLong ?? 0),
             zoom: 14.4746,
           );
-          marker = controller.parseMarkerFromString(controller
-              .orderDetails[0].addressMarker!
-              .replaceAll(RegExp(r'^{|}$'), ''));
+          marker = Marker(
+            markerId: const MarkerId('1'),
+            position: LatLng(
+                controller.orderDetails[0].addressLat ?? 0,
+                controller.orderDetails[0].addressLong ?? 0),
+            alpha: 1.0,
+            anchor: const Offset(0.5, 1.0),
+          );
         }
 
         return SingleChildScrollView(

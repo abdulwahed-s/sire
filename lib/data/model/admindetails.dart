@@ -26,7 +26,6 @@ class AdminDetails {
   String? addressAdditional;
   String? addressBymap;
   String? addressDeliverytime;
-  String? addressMarker;
   double? addressLat;
   double? addressLong;
 
@@ -58,7 +57,6 @@ class AdminDetails {
       this.addressAdditional,
       this.addressBymap,
       this.addressDeliverytime,
-      this.addressMarker,
       this.addressLat,
       this.addressLong});
 
@@ -69,11 +67,11 @@ class AdminDetails {
     orderPricedelivery = json['order_pricedelivery'];
     orderTotalprice = json['order_totalprice'];
     orderPaymenttype = json['order_paymenttype'];
-    orderStatus = (json['order_status']as num?)?.toDouble();
+    orderStatus = (json['order_status'] as num?)?.toDouble();
     orderDatetime = json['order_datetime'];
     couponCode = json['coupon_code'];
     couponDiscount = json['coupon_discount'];
-      userId = json['user_id'];
+    userId = json['user_id'];
     userName = json['user_name'];
     userEmail = json['user_email'];
     userPhone = json['user_phone'];
@@ -90,7 +88,6 @@ class AdminDetails {
     addressAdditional = json['address_additional'];
     addressBymap = json['address_bymap'];
     addressDeliverytime = json['address_deliverytime'];
-    addressMarker = json['address_marker'];
     addressLat = json['address_lat'];
     addressLong = json['address_long'];
   }
@@ -124,7 +121,6 @@ class AdminDetails {
     data['address_additional'] = addressAdditional;
     data['address_bymap'] = addressBymap;
     data['address_deliverytime'] = addressDeliverytime;
-    data['address_marker'] = addressMarker;
     data['address_lat'] = addressLat;
     data['address_long'] = addressLong;
     return data;

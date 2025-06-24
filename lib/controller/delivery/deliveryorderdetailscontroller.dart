@@ -1,7 +1,4 @@
-import 'dart:ui';
-
 import 'package:get/get.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:sire/core/class/statusrequest.dart';
 import 'package:sire/core/functions/handlingdata.dart';
 import 'package:sire/data/datasource/remote/delivery/deliverydata.dart';
@@ -53,39 +50,6 @@ class DeliveryOrderDetailsControllerImp extends DeliveryOrderDetailsController {
     super.onInit();
   }
 
-  Marker parseMarkerFromString(String markerString) {
-    try {
-      final latLngMatch =
-          RegExp(r'LatLng\(([0-9.]+), ([0-9.]+)\)').firstMatch(markerString);
-      if (latLngMatch == null) {
-        throw const FormatException("Invalid LatLng in marker string");
-      }
-
-      final double lat = double.parse(latLngMatch.group(1)!);
-      final double lng = double.parse(latLngMatch.group(2)!);
-      final LatLng position = LatLng(lat, lng);
-
-      final markerIdMatch =
-          RegExp(r'MarkerId\(([0-9]+)\)').firstMatch(markerString);
-      final String markerId = markerIdMatch?.group(1) ?? '1';
-
-      return Marker(
-        markerId: MarkerId(markerId),
-        position: position,
-        alpha: 1.0,
-        anchor: const Offset(0.5, 1.0),
-        consumeTapEvents: false,
-        draggable: false,
-        infoWindow: const InfoWindow(title: null, snippet: null),
-        visible: true,
-      );
-    } catch (e) {
-      return const Marker(
-        markerId: MarkerId('1'),
-        position: LatLng(0, 0),
-      );
-    }
-  }
 
   @override
   goToNavigation() {
