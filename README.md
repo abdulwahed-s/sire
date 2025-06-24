@@ -1,4 +1,4 @@
-# Sire &nbsp; ![Flutter](https://img.shields.io/badge/Flutter-3.0%2B-blue?logo=flutter) ![PHP](https://img.shields.io/badge/PHP-7.4%2B-777bb4?logo=php) ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+# Sire &nbsp; ![Flutter](https://img.shields.io/badge/Flutter-3.6.2%2B-blue?logo=flutter) ![PHP](https://img.shields.io/badge/PHP-8.2%2B-777bb4?logo=php) ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
 > **A modern, full-stack, multi-role e-commerce platform built with Flutter and PHP.**
 
@@ -12,18 +12,31 @@
 
 ## ✨ Features
 
-- **User Authentication:** Sign up, login, password reset, and email verification.
-- **Product Browsing & Search:** Explore products by category, search, and view details.
-- **Favorites & Cart:** Add products to favorites and manage your shopping cart.
-- **Checkout & Orders:** Place orders, apply coupons, and track order status.
-- **Address Management:** Add, update, and select delivery addresses.
-- **Notifications:** Real-time updates for orders, offers, and system messages.
-- **Ratings & Reviews:** Rate products and view community feedback.
-- **Admin Dashboard:** Manage products, categories, orders, coupons, and users.
-- **Delivery Panel:** Accept and manage deliveries, update order status.
-- **Multi-language Support:** Localized for a global audience.
-- **Push Notifications:** Integrated with Firebase Cloud Messaging.
-- **Modern UI/UX:** Material 3 design, responsive layouts, and smooth animations.
+### **Customer Features**
+- **User Authentication:** Sign up, login, password reset, and email verification
+- **Product Browsing & Search:** Explore products by category, search, and view details
+- **Favorites & Cart:** Add products to favorites and manage your shopping cart
+- **Checkout & Orders:** Place orders, apply coupons, and track order status
+- **Address Management:** Add, update, and select delivery addresses with GPS coordinates
+- **Notifications:** Real-time updates for orders, offers, and system messages
+- **Ratings & Reviews:** Rate products and view community feedback
+- **Multi-language Support:** Localized for Arabic, English, and Spanish
+
+### **Delivery Features**
+- **Order Management:** Accept and manage deliveries, update order status
+- **GPS Navigation:** Integrated Google Maps for route optimization
+- **Real-time Tracking:** Live order tracking and status updates
+- **Delivery History:** Complete delivery history and earnings tracking
+
+### **Admin Features**
+- **Dashboard Analytics:** Comprehensive sales and performance metrics
+- **Product Management:** Add, edit, and manage products with multi-language support
+- **Category Management:** Organize products with hierarchical categories
+- **Order Management:** Process orders, manage inventory, and track deliveries
+- **User Management:** Manage customer accounts and delivery personnel
+- **Coupon System:** Create and manage discount coupons
+- **Notification System:** Send push notifications to users and delivery personnel
+- **Reports & Analytics:** Detailed sales reports and business insights
 
 ---
 
@@ -56,60 +69,60 @@
 
 ## 🛠️ Technologies Used
 
-### **Frontend**
-- [Flutter](https://flutter.dev/) (Dart)
+### **Frontend (Flutter)**
+- [Flutter 3.6.2+](https://flutter.dev/) (Dart)
 - [GetX](https://pub.dev/packages/get) (state management, routing)
 - [Material Design 3](https://m3.material.io/)
-- [Firebase Messaging](https://pub.dev/packages/firebase_messaging)
-- [Lottie](https://pub.dev/packages/lottie)
-- [Responsive Builder](https://pub.dev/packages/responsive_builder)
-- [Various Flutter packages](#flutter-dependencies)
+- [Firebase Messaging](https://pub.dev/packages/firebase_messaging) (push notifications)
+- [Google Maps Flutter](https://pub.dev/packages/google_maps_flutter) (location services)
+- [Lottie](https://pub.dev/packages/lottie) (animations)
+- [Cached Network Image](https://pub.dev/packages/cached_network_image) (image caching)
+- [Shared Preferences](https://pub.dev/packages/shared_preferences) (local storage)
+- [HTTP](https://pub.dev/packages/http) (API communication)
+- [Image Picker](https://pub.dev/packages/image_picker) (file uploads)
+- [Geolocator](https://pub.dev/packages/geolocator) (GPS services)
+- [Flutter Local Notifications](https://pub.dev/packages/flutter_local_notifications) (local notifications)
+- [Cloud Firestore](https://pub.dev/packages/cloud_firestore) (real-time database)
+- [Syncfusion Charts](https://pub.dev/packages/syncfusion_flutter_charts) (analytics charts)
+- [Shimmer](https://pub.dev/packages/shimmer) (loading effects)
+- [Permission Handler](https://pub.dev/packages/permission_handler) (device permissions)
 
-### **Backend**
-- [PHP 7.4+](https://www.php.net/)
-- [Composer](https://getcomposer.org/)
-- [MySQL](https://www.mysql.com/)
-- [firebase/php-jwt](https://github.com/firebase/php-jwt)
-- [Guzzle](https://github.com/guzzle/guzzle)
-- [Monolog](https://github.com/Seldaek/monolog)
-- [Symfony Polyfills](https://github.com/symfony/polyfill)
+### **Backend (PHP)**
+- [PHP 8.2+](https://www.php.net/)
+- [PDO](https://www.php.net/manual/en/book.pdo.php) (database abstraction)
+- [MySQL/MariaDB](https://www.mysql.com/) (database)
+- [Firebase Cloud Messaging](https://firebase.google.com/docs/cloud-messaging) (push notifications)
+- [JWT](https://jwt.io/) (authentication tokens)
+- [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) (cross-origin requests)
 
-### **Other**
+### **Database Schema**
+- **Users:** Customer accounts with authentication
+- **Items:** Products with multi-language support (EN/AR/ES)
+- **Categories:** Product categorization
+- **Orders:** Order management and tracking
+- **Cart:** Shopping cart functionality
+- **Favorites:** User wishlists
+- **Address:** Delivery addresses with GPS coordinates
+- **Rating:** Product reviews and ratings
+- **Coupon:** Discount system
+- **Delivery:** Delivery personnel management
+- **Notification:** Push notification system
+
+### **Other Tools**
 - [Git](https://git-scm.com/)
-- [Android Studio](https://developer.android.com/studio) / [Xcode](https://developer.apple.com/xcode/) (for mobile builds)
-
-<details>
-<summary>Flutter Dependencies</summary>
-
-See [`pubspec.yaml`](pubspec.yaml) for the full list, including:
-- cupertino_icons
-- get
-- http
-- cached_network_image
-- image_picker
-- google_maps_flutter
-- geolocator
-- firebase_core
-- cloud_firestore
-- shared_preferences
-- url_launcher
-- flutter_svg
-- font_awesome_flutter
-- dartz
-- shimmer
-- permission_handler
-- and more.
-</details>
-
+- [Android Studio](https://developer.android.com/studio) / [Xcode](https://developer.apple.com/xcode/)
+- [Composer](https://getcomposer.org/) (PHP dependency management)
+- [Flutter Launcher Icons](https://pub.dev/packages/flutter_launcher_icons) (app icons)
+- [Flutter Native Splash](https://pub.dev/packages/flutter_native_splash) (splash screen)
 
 ---
 
 ## ⚡ Installation & Setup
 
 ### **Prerequisites**
-- Flutter 3.0+ ([Install Guide](https://docs.flutter.dev/get-started/install))
-- PHP 7.4+ and Composer
-- MySQL
+- Flutter 3.6.2+ ([Install Guide](https://docs.flutter.dev/get-started/install))
+- PHP 8.2+ and Composer
+- MySQL/MariaDB 10.4+
 - Git
 
 ### **Clone the Repository**
@@ -128,21 +141,41 @@ flutter pub get
 #### PHP Backend
 ```sh
 cd backend
-composer install
+composer install  # If you have composer dependencies
 ```
 
 ### **Configuration**
 
-- **Database:**  
-  - Create a MySQL database (default: `ecommerce`).
-  - Update credentials in `backend/connect.php`.
-  - Import your schema/data if needed.
+#### **Database Setup**
+1. Create a MySQL database named `ecommerce`
+2. Import the database schema:
+   ```sh
+   mysql -u root -p ecommerce < backend/ecommerce.sql
+   ```
+3. Update database credentials in `backend/connect.php`:
+   ```php
+   $dsn = "mysql:host=localhost;dbname=ecommerce";
+   $user = "your_username";
+   $pass = "your_password";
+   ```
 
-- **API URLs:**  
-  - Update API base URLs in `lib/apilink.dart` to match your backend host.
+#### **API Configuration**
+- Update API base URLs in `lib/apilink.dart` to match your backend host
+- Ensure CORS headers are properly configured in `backend/connect.php`
 
-- **Firebase:**  
-  - Add your `google-services.json` (Android) and `GoogleService-Info.plist` (iOS) for push notifications.
+#### **Firebase Setup**
+1. Create a Firebase project
+2. Add your `google-services.json` (Android) and `GoogleService-Info.plist` (iOS)
+3. Configure Firebase Cloud Messaging for push notifications
+
+#### **App Icons & Splash Screen**
+```sh
+# Generate app icons
+flutter pub run flutter_launcher_icons
+
+# Generate splash screen
+flutter pub run flutter_native_splash:create
+```
 
 ---
 
@@ -155,7 +188,7 @@ composer install
   php -S localhost:8000
   ```
 - **Production:**  
-  Deploy `backend/` to your web server (Apache/Nginx with PHP & MySQL).
+  Deploy `backend/` to your web server (Apache/Nginx with PHP & MySQL)
 
 ### **Run the Flutter App**
 - **Development:**  
@@ -177,21 +210,25 @@ composer install
   flutter test
   ```
 - **Backend:**  
-  Use tools like [Postman](https://www.postman.com/) or [cURL](https://curl.se/) to test API endpoints.
+  Use tools like [Postman](https://www.postman.com/) or [cURL](https://curl.se/) to test API endpoints
 
 ---
 
 ## 🚀 Deployment
 
-- **Flutter Web:**  
-  Deploy `build/web/` to any static web host (Netlify, Vercel, Firebase Hosting, etc.).
-- **Mobile/Desktop:**  
-  Distribute built APKs, IPAs, or executables.
-- **Backend:**  
-  Deploy `backend/` to a PHP-enabled server with MySQL.  
-  Ensure CORS and file permissions are set correctly.
+### **Flutter App**
+- **Web:** Deploy `build/web/` to any static web host (Netlify, Vercel, Firebase Hosting)
+- **Mobile:** Distribute built APKs/IPAs through app stores
+- **Desktop:** Distribute executables for Windows/Mac/Linux
 
-> _For CI/CD, see the sample GitHub Actions workflow in the documentation or set up your preferred pipeline._
+### **Backend**
+- Deploy `backend/` to a PHP-enabled server with MySQL
+- Ensure proper file permissions and CORS configuration
+- Set up SSL certificates for production
+
+### **Database**
+- Use managed database services (AWS RDS, Google Cloud SQL, etc.)
+- Implement regular backups and monitoring
 
 ---
 
@@ -200,15 +237,16 @@ composer install
 We welcome contributions! Please read our [Contribution Guidelines](CONTRIBUTING.md) for details.
 
 **Quick Start:**
-1. Fork the repo and clone your fork.
+1. Fork the repo and clone your fork
 2. Create a new branch: `git checkout -b feature/your-feature-name`
-3. Make your changes and commit with clear messages.
-4. Push to your fork and open a Pull Request.
+3. Make your changes and commit with clear messages
+4. Push to your fork and open a Pull Request
 
 **Code Style:**  
-- Use `flutter format .` for Dart code.
-- Follow [Effective Dart](https://dart.dev/guides/language/effective-dart) and PSR-12 for PHP.
-- Write clear, descriptive commit messages.
+- Use `flutter format .` for Dart code
+- Follow [Effective Dart](https://dart.dev/guides/language/effective-dart) guidelines
+- Follow PSR-12 for PHP code
+- Write clear, descriptive commit messages
 
 ---
 
