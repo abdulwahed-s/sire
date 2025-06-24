@@ -43,7 +43,6 @@ class OrderDetailsModel {
   String? addressWay;
   String? addressAdditional;
   String? addressBymap;
-  String? addressMarker;
   double? addressLat;
   double? addressLong;
   double? totalprice;
@@ -94,7 +93,6 @@ class OrderDetailsModel {
       this.addressWay,
       this.addressAdditional,
       this.addressBymap,
-      this.addressMarker,
       this.addressLat,
       this.addressLong,
       this.totalprice,
@@ -119,7 +117,7 @@ class OrderDetailsModel {
     itemDiscount = json['item_discount'];
     itemDate = json['item_date'];
     itemCat = json['item_cat'];
-    itemFinalPrice = (json['item_final_price']as num?)?.toDouble();
+    itemFinalPrice = (json['item_final_price'] as num?)?.toDouble();
     categoryName = json['category_name'];
     categoryNameAr = json['category_name_ar'];
     categoryNameEs = json['category_name_es'];
@@ -145,10 +143,9 @@ class OrderDetailsModel {
     addressWay = json['address_way'];
     addressAdditional = json['address_additional'];
     addressBymap = json['address_bymap'];
-    addressMarker = json['address_marker'];
     addressLat = json['address_lat'];
     addressLong = json['address_long'];
-    totalprice = (json['totalprice']as num?)?.toDouble();
+    totalprice = (json['totalprice'] as num?)?.toDouble();
     countitems = json['countitems'];
   }
 
@@ -198,7 +195,6 @@ class OrderDetailsModel {
     data['address_way'] = addressWay;
     data['address_additional'] = addressAdditional;
     data['address_bymap'] = addressBymap;
-    data['address_marker'] = addressMarker;
     data['address_lat'] = addressLat;
     data['address_long'] = addressLong;
     data['totalprice'] = totalprice;

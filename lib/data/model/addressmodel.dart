@@ -11,7 +11,6 @@ class AddressModel {
   String? addressAdditional;
   String? addressBymap;
   String? addressDeliverytime;
-  String? addressMarker;
   double? addressLat;
   double? addressLong;
 
@@ -28,7 +27,6 @@ class AddressModel {
       this.addressAdditional,
       this.addressBymap,
       this.addressDeliverytime,
-      this.addressMarker,
       this.addressLat,
       this.addressLong});
 
@@ -45,7 +43,6 @@ class AddressModel {
     addressAdditional = json['address_additional'];
     addressBymap = json['address_bymap'];
     addressDeliverytime = json['address_deliverytime'];
-    addressMarker = json['address_marker'];
     addressLat = json['address_lat'];
     addressLong = json['address_long'];
   }
@@ -64,7 +61,6 @@ class AddressModel {
     data['address_additional'] = addressAdditional;
     data['address_bymap'] = addressBymap;
     data['address_deliverytime'] = addressDeliverytime;
-    data['address_marker'] = addressMarker;
     data['address_lat'] = addressLat;
     data['address_long'] = addressLong;
     return data;
