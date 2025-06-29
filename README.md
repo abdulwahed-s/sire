@@ -1,4 +1,5 @@
-# Sire &nbsp; ![Flutter](https://img.shields.io/badge/Flutter-3.6.2%2B-blue?logo=flutter) ![PHP](https://img.shields.io/badge/PHP-8.2%2B-777bb4?logo=php) ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+# Sire
+&nbsp; ![Flutter](https://img.shields.io/badge/Flutter-3.6.2%2B-blue?logo=flutter) ![PHP](https://img.shields.io/badge/PHP-8.2%2B-777bb4?logo=php) ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
 > **A modern, full-stack, multi-role e-commerce platform built with Flutter and PHP.**
 
@@ -16,7 +17,7 @@
 - **User Authentication:** Sign up, login, password reset, and email verification
 - **Product Browsing & Search:** Explore products by category, search, and view details
 - **Favorites & Cart:** Add products to favorites and manage your shopping cart
-- **Checkout & Orders:** Place orders, apply coupons, and track order status
+- **Checkout & Orders:** Place orders, apply coupons, and track order statuses
 - **Address Management:** Add, update, and select delivery addresses with GPS coordinates
 - **Notifications:** Real-time updates for orders, offers, and system messages
 - **Ratings & Reviews:** Rate products and view community feedback
@@ -127,7 +128,7 @@
 
 ### **Clone the Repository**
 ```sh
-git clone https://github.com/<your-username>/sire.git
+git clone https://github.com/abdulwahed-s/sire.git
 cd sire
 ```
 
@@ -234,7 +235,7 @@ flutter pub run flutter_native_splash:create
 
 ## 🤝 Contribution
 
-We welcome contributions! Please read our [Contribution Guidelines](CONTRIBUTING.md) for details.
+We welcome contributions!
 
 **Quick Start:**
 1. Fork the repo and clone your fork
